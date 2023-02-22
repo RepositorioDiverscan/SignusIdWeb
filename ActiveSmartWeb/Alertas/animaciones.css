@@ -1,0 +1,21 @@
+﻿#alertas {
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+
+.delay {
+    transition: transform 500ms ease -250ms;
+    transition-delay: -250ms;
+}
+
+.moveToLeft {
+    transform: translateX(-200px);
+}
+
+@keyframes alertasA {
+    0% {
+        
+        left: 0px;
+        top: 200px;
+    }
+}

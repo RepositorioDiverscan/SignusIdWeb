@@ -1,0 +1,13 @@
+﻿.transicion {
+    transform: translate3d(1px, -150px, 1px) scale3d(1, 1, 1) translateY(50px);
+    border-radius: 5px;
+    will-change: transform;
+    transition: 0.4s ease-in-out transform;
+}
+
+.prueba {
+    transform: translate3d(0px, 100%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: 0.4s ease-in-out transform;
+}

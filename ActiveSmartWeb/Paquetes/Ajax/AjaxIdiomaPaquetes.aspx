@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AjaxIdiomaPaquetes.aspx.cs" Inherits="ActiveSmartWeb.Paquetes.Ajax.AjaxIdiomaPaquetes" %>
