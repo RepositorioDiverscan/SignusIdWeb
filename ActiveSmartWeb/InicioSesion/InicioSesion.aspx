@@ -1,10 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster/SiteMasterInicio.Master" AutoEventWireup="true" CodeBehind="InicioSesion.aspx.cs" Inherits="ActiveSmartWeb.InicioSesion.InicioSesion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <style>
+
+        .wrap-form-ai{
+            width: 100%;
+        }
+
+
+    </style>
 
 <div id="paglogin">
 
- 
+    
 
     <%--<div class="back-popup-tc none">--%>
     <div v-cloak  id="PopPupEmpresas" class="tarjeta-popup selecem" style="margin: 0 auto; display: none; z-index: 25;">

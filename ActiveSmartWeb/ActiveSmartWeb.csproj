@@ -324,6 +324,11 @@
     <Content Include="images\banner-header-signusid-basic34-p-500.jpg" />
     <Content Include="images\banner-header-signusid-basic34-p-800.jpg" />
     <Content Include="images\banner-header-signusid-basic34.jpg" />
+    <Content Include="images\banner-header-signusid-contact-p-1080.jpg" />
+    <Content Include="images\banner-header-signusid-contact-p-1600.jpg" />
+    <Content Include="images\banner-header-signusid-contact-p-500.jpg" />
+    <Content Include="images\banner-header-signusid-contact-p-800.jpg" />
+    <Content Include="images\banner-header-signusid-contact.jpg" />
     <Content Include="images\Banner_active_2_Mesa-de-trabajo-1-copia-p-1080 - Copia.png" />
     <Content Include="images\Banner_active_2_Mesa-de-trabajo-1-copia-p-1080.png" />
     <Content Include="images\Banner_active_2_Mesa-de-trabajo-1-copia-p-1600 - Copia.png" />
