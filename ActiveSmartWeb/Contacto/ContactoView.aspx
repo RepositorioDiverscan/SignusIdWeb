@@ -45,33 +45,22 @@
                     </div>
                     <div id="w-node-_0ba4e7cc-0fa9-b929-33b9-a13d966d1379-46128f7f" class="div-phone-number w-clearfix">
                         <label for="field" id="contact-phone" class="label-contacto">{{listaidioma.NumTelefono}}</label>
-                        <select id="field" name="field" data-name="Field" required="" class="select-field-5 w-select">
-                            <option value="">506</option>
-                            <option value="First">507</option>
-                            <option value="Second">508</option>
-                            <option value="Third">509</option>
-                        </select>
-                        <input type="tel" class="text-field-8 txt-phone w-input" maxlength="256" name="Contact-Phone-Number-2" data-name="Contact Phone Number 2" placeholder="" id="Contact-Phone-Number-2" v-model="telefono" v-on:keypress="ValidarSoloNumeros()">
+                        <input type="tel" class="text-field-8 w-input" maxlength="256" name="Contact-Phone-Number-2" data-name="Contact Phone Number 2" placeholder="" id="telNational" v-model="telefono" v-on:keypress="ValidarSoloNumeros()">
                         
                     </div>
                     <div id="w-node-_0ba4e7cc-0fa9-b929-33b9-a13d966d137e-46128f7f">
-                        <label for="Message" id="contact-message" class="label-contacto">Mensaje</label>
-                        <textarea data-name="Message" maxlength="5000" id="Message" name="Message" placeholder="" class="textarea-4 w-input"></textarea>
+                        <label for="Message" id="contact-message" class="label-contacto">{{listaidioma.Mensaje}}</label>
+                        <textarea data-name="Message" maxlength="5000" id="Message" name="Message" placeholder="" class="textarea-4 w-input" v-model="mensaje"></textarea>
                     </div>
                     <div id="w-node-_9bab9b2e-9967-2731-9a12-b90b5c70ad02-46128f7f">
                         <label for="Message-2" id="contact-message" class="label-contacto">Asunto</label>
-                        <input type="text" class="text-field-8 w-input" maxlength="256" name="First-Name-2" data-name="First Name 2" placeholder="" id="First-Name-2" required="">
+                        <input v-model="asunto" type="text" class="text-field-8 w-input" maxlength="256" name="First-Name-2" data-name="First Name 2" placeholder="" id="First-Name-2" required="">
                     </div>
               </div>
               <input type="submit" value="Enviar" data-wait="Please wait..." class="submit-button-3 w-button">
             
             </form>
-            <div class="w-form-done">
-              <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-              <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
+            
           </div>
         </div>
       </div>

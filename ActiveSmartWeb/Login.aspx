@@ -50,7 +50,8 @@
           </div>
         </div>
       </div>
-      <div class="section-presentacion section-icons-home-ai wf-section">
+      
+        <div class="section-presentacion section-icons-home-ai wf-section">
         <div class="container w-container">
           <div class="colums w-row">
             <div class="column-presentation w-col w-col-4"><img src="images/acces-o_activeIDsmart_automatice.jpg" loading="lazy" alt="Manos sostienen un teléfono Móvil  mientras revisa sus activos actualizados en el app de Active ID Smart." class="image-colum">
@@ -67,8 +68,7 @@
             </div>
           </div>
           <div class="w-layout-grid grid-diagonal">
-            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07c3-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07c3" class="div-contenedor-diagonal">
-                <img src="images/acces-o_activeIDsmart_registre.jpg" loading="lazy" alt="Mano con handheld realiza lectura_RFID sobre un activo" width="275" class="image-diagonal">
+            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07c3-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07c3" class="div-contenedor-diagonal"><img src="images/img-reg.png" loading="lazy" alt="Mano con handheld realiza lectura_RFID sobre un activo" width="275" class="image-diagonal">
               <a href="#" class="contenedor-texto-diagonal w-inline-block">
                 <h2 class="title-colum">REGISTRE</h2>
               </a>
@@ -113,6 +113,7 @@
           </div>
         </div>
       </div>
+
       <div class="section-presentacion wf-section">
         <div class="container w-container">
           <div class="w-layout-grid grid-descubra">
