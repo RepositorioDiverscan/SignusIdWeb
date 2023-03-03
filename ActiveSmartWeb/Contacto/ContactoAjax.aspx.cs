@@ -30,7 +30,7 @@ namespace ActiveSmartWeb.Contacto
                         var Telefono = Request.Form["Telefono"];
                         var Mensaje = Request.Form["Mensaje"];
                         var Asunto = Request.Form["Asunto"];
-                        var realizado = Correo.EnviarCorreo("ediaz.diverscan@gmail.com", Asunto, Mensaje);
+                        var realizado = Correo.EnviarCorreo("csalazar.diverscan@gmail.com", Asunto, Mensaje);
 
                         string hola = "hola";
                         break;

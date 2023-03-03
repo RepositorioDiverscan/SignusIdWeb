@@ -110,7 +110,10 @@
             border: 1px solid white;
         }
 
-
+        .contenedor-general {
+          -webkit-align-items: normal !important;
+          align-items: normal !important;
+        }
        
     </style>    
    

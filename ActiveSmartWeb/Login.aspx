@@ -50,7 +50,8 @@
           </div>
         </div>
       </div>
-      <div class="section-presentacion section-icons-home-ai wf-section">
+      
+        <div class="section-presentacion section-icons-home-ai wf-section">
         <div class="container w-container">
           <div class="colums w-row">
             <div class="column-presentation w-col w-col-4"><img src="images/acces-o_activeIDsmart_automatice.jpg" loading="lazy" alt="Manos sostienen un teléfono Móvil  mientras revisa sus activos actualizados en el app de Active ID Smart." class="image-colum">
@@ -67,8 +68,7 @@
             </div>
           </div>
           <div class="w-layout-grid grid-diagonal">
-            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07c3-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07c3" class="div-contenedor-diagonal">
-                <img src="images/acces-o_activeIDsmart_registre.jpg" loading="lazy" alt="Mano con handheld realiza lectura_RFID sobre un activo" width="275" class="image-diagonal">
+            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07c3-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07c3" class="div-contenedor-diagonal"><img src="images/img-reg.png" loading="lazy" alt="Mano con handheld realiza lectura_RFID sobre un activo" width="275" class="image-diagonal">
               <a href="#" class="contenedor-texto-diagonal w-inline-block">
                 <h2 class="title-colum">REGISTRE</h2>
               </a>
@@ -113,6 +113,7 @@
           </div>
         </div>
       </div>
+
       <div class="section-presentacion wf-section">
         <div class="container w-container">
           <div class="w-layout-grid grid-descubra">
@@ -159,9 +160,9 @@
             <div id="w-node-f12f28ac-c677-93be-3972-b43fc32f30a7-1d7244d5" class="diagonal-amarillo"></div>
             <div id="w-node-f12f28ac-c677-93be-3972-b43fc32f30a8-1d7244d5" class="div-diagonal-gris"></div>
             <div id="w-node-f12f28ac-c677-93be-3972-b43fc32f30a9-1d7244d5" class="div-background-video">
-              <div data-poster-url="https://uploads-ssl.webflow.com/606dfb37871f33efa37244d4/63d2f2f5109872764ebb20ec_home signusid animacion-poster-00001.jpg" data-video-urls="https://uploads-ssl.webflow.com/606dfb37871f33efa37244d4/63d2f2f5109872764ebb20ec_home signusid animacion-transcode.mp4,https://uploads-ssl.webflow.com/606dfb37871f33efa37244d4/63d2f2f5109872764ebb20ec_home signusid animacion-transcode.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" id="Products_video" data-beta-bgvideo-upgrade="false" class="background-video w-background-video w-background-video-atom"><video id="f12f28ac-c677-93be-3972-b43fc32f30aa-video" autoplay="" loop="" style="background-image:url(&quot;https://uploads-ssl.webflow.com/606dfb37871f33efa37244d4/63d2f2f5109872764ebb20ec_home signusid animacion-poster-00001.jpg&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
-                  <source src="https://uploads-ssl.webflow.com/606dfb37871f33efa37244d4/63d2f2f5109872764ebb20ec_home signusid animacion-transcode.mp4" data-wf-ignore="true">
-                  <source src="https://uploads-ssl.webflow.com/606dfb37871f33efa37244d4/63d2f2f5109872764ebb20ec_home signusid animacion-transcode.webm" data-wf-ignore="true">
+              <div data-poster-url="videos/last3-poster-00001.jpg" data-video-urls="videos/last3-transcode.mp4,videos/last3-transcode.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" id="Products_video" data-beta-bgvideo-upgrade="false" class="background-video w-background-video w-background-video-atom"><video id="f12f28ac-c677-93be-3972-b43fc32f30aa-video" autoplay="" loop="" style="background-image:url(&quot;videos/last3-poster-00001.jpg&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
+                  <source src="videos/last3-transcode.mp4" data-wf-ignore="true">
+                  <source src="videos/last3-transcode.webm" data-wf-ignore="true">
                 </video></div>
             </div>
             <div id="w-node-f12f28ac-c677-93be-3972-b43fc32f30ab-1d7244d5" class="div-text-banner-video">
@@ -172,18 +173,18 @@
                 </div>
                 <p class="paragraph-paquete">La versión más simple y económica que una empresa puede utilizar se basa en poder registrar todos los activos en sus diferentes categorías, ubicaciones físicas, características.</p>
                 <a href="Basic.aspx" class="button-more-info w-button">Más Información</a>
-                <a href="/RegistroUsuarioEmpresas/RegistroUsuariosEmpresas.aspx" class="button-activeid w-button">SUSCRIBIRSE</a>
+                <a href="/RegistroUsuarioEmpresas/RegistroUsuariosEmpresas.aspx" class="button-activeid w-button">Suscríbete ahora</a>
               </div>
             </div>
             <div id="w-node-df94e58f-99ae-3057-5fc3-6f3572e7080e-1d7244d5" class="div-text-banner-video">
               <div class="div-text-paquete">
                 <div class="div-title-paquetes"><img src="images/Icono_ActiveID_Smart-Pro.svg" loading="lazy" alt="Icono de Active-ID-Smart_Pro_Logo" class="icono-basic-peque">
                   <h1 class="active-id-smart">Active ID Smart</h1>
-                  <h1 class="basic">PRO</h1><img src="images/signus-id-pro.png" loading="lazy" width="300" sizes="300px" alt="Logo_activeIDsmart_Pro" srcset="images/signus-id-pro-p-500.png 500w, images/signus-id-pro-p-800.png 800w, images/signus-id-pro-p-1080.png 1080w, images/signus-id-pro.png 1779w" class="logo_activeid-pro">
+                  <h1 class="basic">PRO</h1><img src="images/signus-id-pro.png" loading="lazy" width="300" sizes="(max-width: 479px) 92vw, 300px" alt="Logo_activeIDsmart_Pro" srcset="images/signus-id-pro-p-500.png 500w, images/signus-id-pro-p-800.png 800w, images/signus-id-pro-p-1080.png 1080w, images/signus-id-pro.png 1779w" class="logo_activeid-pro">
                 </div>
                 <p class="paragraph-paquete">Con más funcionalidades la versión Active ID Smart Pro le permitirá incrementar las posibilidades de control y trazabilidad de sus activos fijos, con tan solo un click entre otros beneficios a un costo reducido</p>
                 <a href="Pro.aspx" class="button-more-info w-button">Más Información</a>
-                <a href="/RegistroUsuarioEmpresas/RegistroUsuariosEmpresas.aspx" class="button-activeid w-button">SUSCRIBIRSE</a>
+                <a href="/RegistroUsuarioEmpresas/RegistroUsuariosEmpresas.aspx" class="button-activeid w-button">Suscríbete ahora</a>
               </div>
             </div>
           </div>
@@ -203,8 +204,8 @@
               <div class="slide-2 w-slide"><img src="images/active_ID_smart_partners_carousel_Covergenets.png" loading="lazy" alt="Convergenets_Logo" class="client-convergenets"></div>
               <div class="slide-2 w-slide"><img src="images/active_ID_smart_partners_carousel_getnuts.png" loading="lazy" alt="GetNuts_Logo" class="client-getnuts"></div>
               <div class="slide-2 w-slide"><img src="images/active_ID_smart_partners_carousel_zebracenter.png" loading="lazy" alt="Zebracenter_Logo" class="client-zebra_center"></div>
-              <div class="slide-2 w-slide"><img src="images/logo-compania-atlas.png" loading="lazy" sizes="(max-width: 767px) 104px, (max-width: 991px) 18vw, 180px" width="180" srcset="images/logo-compania-atlas-p-500.png 500w, images/logo-compania-atlas.png 686w" alt="" class="client-d_aquidesign"></div>
-              <div class="slide-2 w-slide"><img src="images/logo-crelosa.png" loading="lazy" sizes="(max-width: 767px) 104px, (max-width: 991px) 18vw, 180px" width="180" srcset="images/logo-crelosa-p-500.png 500w, images/logo-crelosa.png 686w" alt="" class="client-d_aquidesign"></div>
+              <div class="slide-2 w-slide"><img src="images/logo-compania-atlas.png" loading="lazy" sizes="100vw" width="180" srcset="images/logo-compania-atlas-p-500.png 500w, images/logo-compania-atlas.png 686w" alt="" class="client-d_aquidesign"></div>
+              <div class="slide-2 w-slide"><img src="images/logo-crelosa.png" loading="lazy" sizes="100vw" width="180" srcset="images/logo-crelosa-p-500.png 500w, images/logo-crelosa.png 686w" alt="" class="client-d_aquidesign"></div>
               <div class="slide-2 w-slide"><img src="images/active_ID_smart_partners_carousel_catie.png" loading="lazy" height="170" width="270" alt="Catie_Logo" class="client-catie"></div>
               <div class="slide-2 w-slide"><img src="images/active_ID_smart_partners_carousel_municipalidad_sarapiqui.png" loading="lazy" width="270" height="170" alt="Escudo-Municipalidad-de-Sarapiquí" class="client-muni_sarapiqui"></div>
               <div class="slide-2 w-slide"><img src="images/active_ID_smart_partners_carousel_municipalidad_turrialba.png" loading="lazy" height="170" alt="Escudo-Municipalidad-de-Turrialba" class="client-muni_turrialba"></div>
@@ -220,6 +221,7 @@
             <div class="slide-nav w-slider-nav w-shadow w-round"></div>
           </div>
         </div>
+        <div class="div-fotos-logos"><img src="images/active_ID_smart_partners_carousel_eta_mobile.png" loading="lazy" width="100" height="60" alt="ETA-Mobile_Logo"><img src="images/active_ID_smart_partners_carousel_Datasys.png" loading="lazy" width="100" height="60" alt="DATASYS_Logo"><img src="images/logo-clientes-signusid-02.jpg" loading="lazy" width="100" height="60" srcset="images/logo-clientes-signusid-02-p-500.jpg 500w, images/logo-clientes-signusid-02-p-800.jpg 800w, images/logo-clientes-signusid-02.jpg 967w" sizes="(max-width: 479px) 15vw, (max-width: 767px) 16vw, 100px" alt=""><img src="images/active_ID_smart_partners_carousel_municipalidad_turrialba.png" loading="lazy" width="100" height="60" alt="Escudo-Municipalidad-de-Turrialba"><img src="images/active_ID_smart_partners_carousel_lincoln_school.png" loading="lazy" width="100" height="60" alt="Lincoln_School_Logo"><img src="images/logo-clientes-signusid-01.jpg" loading="lazy" width="100" height="60" srcset="images/logo-clientes-signusid-01-p-500.jpg 500w, images/logo-clientes-signusid-01-p-800.jpg 800w, images/logo-clientes-signusid-01.jpg 967w" sizes="(max-width: 479px) 15vw, (max-width: 767px) 16vw, 100px" alt=""><img src="images/active_ID_smart_partners_carousel_Covergenets.png" loading="lazy" width="100" height="60" alt="Convergenets_Logo"><img src="images/logo-clientes-signusid-03.jpg" loading="lazy" width="150" sizes="(max-width: 479px) 15vw, (max-width: 991px) 17vw, 150px" srcset="images/logo-clientes-signusid-03-p-500.jpg 500w, images/logo-clientes-signusid-03-p-800.jpg 800w, images/logo-clientes-signusid-03.jpg 967w" alt=""><img src="images/active_ID_smart_partners_carousel_gosocket_1.png" loading="lazy" width="150" alt="GoSocket_Logo"><img src="images/logo-clientes-signusid-05.jpg" loading="lazy" width="150" sizes="(max-width: 479px) 15vw, (max-width: 991px) 17vw, 150px" srcset="images/logo-clientes-signusid-05-p-500.jpg 500w, images/logo-clientes-signusid-05-p-800.jpg 800w, images/logo-clientes-signusid-05.jpg 967w" alt=""></div>
       </div>
       <div class="section-partners wf-section">
         <div class="text-partners">Certificaciones de Calidad y Estandarización</div>
