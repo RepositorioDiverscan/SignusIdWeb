@@ -57,7 +57,8 @@
                         <input v-model="asunto" type="text" class="text-field-8 w-input" maxlength="256" name="First-Name-2" data-name="First Name 2" placeholder="" id="First-Name-2" required="">
                     </div>
               </div>
-              <input type="submit" value="Enviar" data-wait="Please wait..." class="submit-button-3 w-button">
+        
+              <input type="submit" :value="listaidioma.Enviar" @click="ObtenerDatosRegistro()" data-wait="Please wait..." class="submit-button-3 w-button">
             
             </form>
             
