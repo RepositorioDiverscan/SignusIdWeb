@@ -127,7 +127,8 @@
                     for="checkbox">Estoy de acuerdo con los <a href="#" class="link-reg-ai">
                       <span class="tyc-span-reg-ai">Términos y Condiciones</span></a></span></label>
                  
-                  <button v-cloak  v-on:click="ObtenerDatosRegistro()" class="btn-siguiente-reg-ai w-button">{{listaIdiomas.BtnSiguiente}}</button>
+                    <a href ="ValidarCuenta.aspx">Siguiente</a>
+                  <%--<button v-cloak  v-on:click="ObtenerDatosRegistro()" class="btn-siguiente-reg-ai w-button">{{listaIdiomas.BtnSiguiente}}</button>--%>
                 </div>
                 
               </div>
