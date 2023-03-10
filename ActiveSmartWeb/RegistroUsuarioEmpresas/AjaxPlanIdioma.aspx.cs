@@ -30,8 +30,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         eIdioma.DescripcionBusiness =   EIdiomaPlanesEspanol.DescripcionBusiness;
                         eIdioma.MontoUsuarioFree =      EIdiomaPlanesEspanol.MontoUsuarioFree;
                         eIdioma.MontoUsuarioBasic =     EIdiomaPlanesEspanol.MontoUsuarioBasic;
+                        eIdioma.MontoUsuarioBasicMensual = EIdiomaPlanesEspanol.MontoUsuarioBasicMensual;
                         eIdioma.MontoUsuarioPro =       EIdiomaPlanesEspanol.MontoUsuarioPro;
                         eIdioma.MontoUsuarioBusiness =  EIdiomaPlanesEspanol.MontoUsuarioBusiness;
+                        eIdioma.FacturaMensual =           EIdiomaPlanesEspanol.FacturaMensual;
                         eIdioma.FacturaFree =           EIdiomaPlanesEspanol.FacturaFree;
                         eIdioma.FacturaPro =            EIdiomaPlanesEspanol.FacturaPro;
                         eIdioma.FacturaBusiness =       EIdiomaPlanesEspanol.FacturaBusiness;
@@ -79,8 +81,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         eIdioma.DescripcionBusiness = EIdiomaPlanesEspanol.DescripcionBusiness;
                         eIdioma.MontoUsuarioFree = EIdiomaPlanesEspanol.MontoUsuarioFree;
                         eIdioma.MontoUsuarioBasic = EIdiomaPlanesEspanol.MontoUsuarioBasic;
+                        eIdioma.MontoUsuarioBasicMensual = EIdiomaPlanesEspanol.MontoUsuarioBasicMensual;
                         eIdioma.MontoUsuarioPro = EIdiomaPlanesEspanol.MontoUsuarioPro;
                         eIdioma.MontoUsuarioBusiness = EIdiomaPlanesEspanol.MontoUsuarioBusiness;
+                        eIdioma.FacturaMensual = EIdiomaPlanesEspanol.FacturaMensual;
                         eIdioma.FacturaFree = EIdiomaPlanesEspanol.FacturaFree;
                         eIdioma.FacturaPro = EIdiomaPlanesEspanol.FacturaPro;
                         eIdioma.FacturaBusiness = EIdiomaPlanesEspanol.FacturaBusiness;
