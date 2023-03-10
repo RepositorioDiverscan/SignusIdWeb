@@ -212,7 +212,7 @@
                           <div class="formblock-plan-ai w-form">
                             <div id="email-form-2" name="email-form-2" data-name="Email Form 2" method="get" class="form-choose-plan-ai">
                                 <label class="radio-wrap-plan-ai w-radio">
-                                    <input type="radio" data-name="Radio 7" id="one" name="rbpago" value="1" class="w-form-formradioinput radio-plan-ai w-radio-input" v-model="frecuenciaPago" />
+                                    <input type="radio" data-name="Radio 7" id="one" name="rbpago" value="1" class="w-form-formradioinput radio-plan-ai w-radio-input" v-model="frecuenciaPago" checked />
                                     <span class="label-plan-chosen-ai w-form-label" for="radio-7" v-cloak>{{listaIdiomas.MetodoAnual}}</span>
                                 </label>
                             </div>
@@ -229,7 +229,7 @@
                           <div class="formblock-plan-ai w-form">
                             <div id="email-form-2" name="email-form-2" data-name="Email Form 2" method="get" class="form-choose-plan-ai">
                                 <label class="radio-wrap-plan-ai w-radio">
-                                    <input type="radio" data-name="Radio 7" id="two" name="rbpago" value="2" class="w-form-formradioinput radio-plan-ai w-radio-input" v-model="frecuenciaPago" checked />
+                                    <input type="radio" data-name="Radio 7" id="two" name="rbpago" value="2" class="w-form-formradioinput radio-plan-ai w-radio-input" v-model="frecuenciaPago" />
                                     <span class="label-plan-chosen-ai w-form-label" for="radio-7" v-cloak>{{listaIdiomas.MetodoMensual}}</span>
                                 </label>
                             </div>

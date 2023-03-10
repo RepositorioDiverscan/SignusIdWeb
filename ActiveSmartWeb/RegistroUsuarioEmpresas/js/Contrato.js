@@ -22,7 +22,7 @@ const contrato = new Vue({
         textoPlan: "",
         precio: "0",
         rutaImagen: "../images/signus_id_basic.svg",
-        frecuenciaPago: "2",
+        frecuenciaPago: "1",
         terminoscondiciones: "",
         adicionalesseleccionados: []
 

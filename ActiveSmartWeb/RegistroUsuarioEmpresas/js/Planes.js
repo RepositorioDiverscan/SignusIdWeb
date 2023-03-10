@@ -68,7 +68,6 @@ const Planes = new Vue({
 
 
             sessionStorage.setItem('CodigoPlan', '1');
-            console.log(sessionStorage.getItem('CodigoPlan'));
             window.location.assign('Checkout.aspx');
         },
 
