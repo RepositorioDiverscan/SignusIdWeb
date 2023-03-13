@@ -60,7 +60,7 @@
 
 </head>
 <body>
-  <div class="header-steps-payout-ai"><img src="../images/signus_id.png" loading="lazy" width="158" srcset="../images/Logo_ActiveID_Smart_Mesa-de-trabajo-1-p-500.png 500w, ../images/Logo_ActiveID_Smart_Mesa-de-trabajo-1-p-800.png 800w, ../images/Logo_ActiveID_Smart_Mesa-de-trabajo-1.png 1080w" sizes="150px" alt="" class="logo-payout-ai"></div>
+  <div class="header-steps-payout-ai"><img src="../images/signus_id.png" loading="lazy" width="158" srcset="../images/signus_id-p-500.png 500w, ../images/signus_id-p-800.png 800w, ../images/signus_id-p-1080.png 1080w, ../images/signus_id.png 1730w" sizes="150px" alt="" class="logo-payout-ai"></div>
   <div class="contenedor-general" id="context">
     <div class="main">
       <div class="section wf-section">
@@ -88,34 +88,38 @@
                     <div class="div-type-compra-ai">
                       <h4 class="p-pago-adicio-ai" v-cloak>{{listaIdiomas.TituloConfigure}}</h4>
 
+
+                        <%--Configure Adicionales--%>
                       <div v-for="(adicional,index) in adicionales" :key="index">
 
-                      <div class="p-adicionales-ai" v-cloak>{{adicional.Nombre}}</div>
-                      <div class="coulms-plan-ai colums-pack-ai w-row">
-                        <div class="col-plan-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                          <div class="div-cant-compra-ai">
-                            <div class="fb-cant-ai w-form">
-                              <div id="email-form-3" name="email-form-3" data-name="Email Form 3" method="get" class="form-cant-ai w-clearfix">
-                                <a href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</a>
+                          <div class="p-adicionales-ai" v-cloak>{{adicional.Nombre}}</div>
+                          <div class="coulms-plan-ai colums-pack-ai w-row">
+                            <div class="col-plan-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
+                              <div class="div-cant-compra-ai">
+                                <div class="fb-cant-ai w-form">
+                                  <div id="email-form-3" name="email-form-3" data-name="Email Form 3" method="get" class="form-cant-ai w-clearfix">
+                                    <a href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</a>
 
-                                <input type="text" class="txt-cantidad-ai w-input" maxlength="2" value="0" :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
+                                    <input type="text" class="txt-cantidad-ai w-input" maxlength="2" value="0" :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
                                 
-                                <a href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</a>
+                                    <a href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</a>
+                                  </div>
+                                </div>
                               </div>
                             </div>
+                            <div class="col-paln-ai w-clearfix w-col w-col-3 w-col-small-3 w-col-tiny-6">
+                              <div class="cant-act-ai"v-cloak>{{adicional.Cantidad}}</div>
+                            </div>
+                            <div class="col-paln-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
+                              <div class="p-price-plan-calc-ai texto-tachado-plan-ai">US$19.99/mes</div>
+                            </div>
+                            <div class="col-paln-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
+                              <div class="p-price-plan-calc-ai" v-cloak>US${{adicional.Costo}}/mes</div>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-paln-ai w-clearfix w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                          <div class="cant-act-ai"v-cloak>{{adicional.Cantidad}}</div>
-                        </div>
-                        <div class="col-paln-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                          <div class="p-price-plan-calc-ai texto-tachado-plan-ai">US$19.99/mes</div>
-                        </div>
-                        <div class="col-paln-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                          <div class="p-price-plan-calc-ai" v-cloak>US${{adicional.Costo}}/mes</div>
-                        </div>
+
                       </div>
-                      </div>
+
                     </div>
 
 

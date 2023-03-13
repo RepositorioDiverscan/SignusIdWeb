@@ -185,7 +185,6 @@ const contrato = new Vue({
         CargarPrecio: function () {
             var self = this;
             var codigo = sessionStorage.getItem("CodigoPlan");
-
             
                 if(codigo == "1"){
                     this.rutaImagen = "../images/signus_id_basic.svg";
