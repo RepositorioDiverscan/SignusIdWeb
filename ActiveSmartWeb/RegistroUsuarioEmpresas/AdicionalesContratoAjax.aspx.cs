@@ -72,6 +72,56 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             _adicionalcontratadomostrar.Add(idAdicional, (adicionelesContratadosmostrar));
         }
 
+        private void validadRegalia(Boolean suma,int numActivos)
+        {
+            int numRegalia = 2;
+            if (suma) 
+            {
+                if (numActivos == 500 || numActivos == 1000 || numActivos == 1500 || numActivos == 2000)
+                {
+                    agregarRegalia(numRegalia);
+                }
+
+            } else
+            {
+                if (numActivos ==250 || numActivos==750 || numActivos == 1250 || numActivos == 1750)
+                {
+                    retirarRegalia(numRegalia);
+                }
+            }
+        }
+
+        private void agregarRegalia(int numRegalias)
+        {
+            var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
+
+            foreach (var paquete in ePaqueteAdicionales)
+            {
+                if (paquete.IdPaqueteContratado != 1) 
+                {
+                    _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad += numRegalias;
+
+                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad += numRegalias;
+                }
+            }
+            
+        }
+
+        private void retirarRegalia(int numRegalias)
+        {
+            var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
+
+            foreach (var paquete in ePaqueteAdicionales)
+            {
+                if (paquete.IdPaqueteContratado != 1)
+                {
+                    _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad -= numRegalias;
+
+                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad -= numRegalias;
+                }
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -191,7 +241,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         var nombresumar = Request.Form["NombreAdicional"];
 
-                        var cantidadpaquetesumar = Convert.ToInt32(Request.Form["Cantidadpaquete"]);
+                        var cantidadpaquetesumar = Convert.ToInt32(Request.Form["Cantidadpaquete"]);//250
 
                       
 
@@ -200,7 +250,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                           var aa = decimal.TryParse(Request.Form["Costo"], out costosumar);
                           */
-                        int cantidadsumar = 0;
+                        int cantidadsumar = 0;//Cantidad de paquetes
                         var esEnterosumar = int.TryParse(Request.Form["CantidaddePaquetes"], out cantidadsumar);
 
                         if (esEnterosumar)
@@ -219,6 +269,11 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                     costosumar += 0.01M;
                                 }
                                 _adicionalcontratadomostrar[idAdicionalsumar].Costo += costosumar;
+
+                                if(idAdicionalsumar == 1)
+                                {
+                                    validadRegalia(true,cantidadsumar * cantidadpaquetesumar);
+                                }
 
                             }
                             else
@@ -254,6 +309,11 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         }
 
                         _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
+
+                        if (idAdicionalrestar == 1)
+                        {
+                            validadRegalia(false, cantidadrestar * cantidadpaqueterestar);
+                        }
 
                         //Validacion para saber si la cantidad solicitada del adicional es 0, si es así se elimina el adicional del diccionario.
                         if (_adicionalcontratado[idAdicionalrestar].Cantidad <= 0)
