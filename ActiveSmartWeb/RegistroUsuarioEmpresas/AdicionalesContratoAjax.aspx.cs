@@ -88,6 +88,18 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         
                         Response.Write(JsonConvert.SerializeObject(ePaqueteAdicionales, Formatting.Indented));
 
+                        foreach(var paquete in ePaqueteAdicionales)
+                        {
+                            crearEntidades(
+                            paquete.IdPaqueteContratado,
+                            paquete.IdPaqueteContratado == 1?1:2,
+                            paquete.Cantidad,
+                            paquete.Nombre,
+                            0
+                            );
+                        }
+                        
+
                         break;
 
                     //Opcion del switch para cargar los adicionales seleccionados por el usuario.

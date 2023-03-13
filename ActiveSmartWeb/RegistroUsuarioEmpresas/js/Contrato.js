@@ -38,6 +38,7 @@ const contrato = new Vue({
         this.CargarAdicionales();
         this.CargarPrecio();
         this.CargarInputPaises();
+        this.CargarAdicionalesContratado();
     },
     methods: {
 
