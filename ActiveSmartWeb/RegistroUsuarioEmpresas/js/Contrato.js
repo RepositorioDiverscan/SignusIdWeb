@@ -151,6 +151,7 @@ const contrato = new Vue({
             $.post(urlAdicionalesContratoAjax, {
                 option: 'CargarAdicionales'
             }, function (data, error) {
+
                 self.adicionales = JSON.parse(data);
 
             });
@@ -339,6 +340,7 @@ const contrato = new Vue({
                      $.post(urlAdicionalesContratoAjax, {
                          option: 'RestarAdicional',
                          IdAdicional: adicional.IdPaqueteContratado,
+                         NombreAdicional: adicional.Nombre,
                          Cantidadpaquete: adicional.Cantidad,
                          Costo: adicional.Costo,
                          CantidaddePaquetes: cantidadResta

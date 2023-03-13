@@ -52,6 +52,25 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             }
         }
 
+        private void crearEntidades(int idAdicional, int cantidad, int cantidadpaquete, string nombre, decimal costo)
+        {
+            //Crea los entidades de los adicionales una de ellas es para poder mostrarlos y la otra para guardarlos y se guardan los valores suministrados.
+            EPaqueteAdicionalContratado adicionelesContratados = new EPaqueteAdicionalContratado();
+            adicionelesContratados.IdPaqueteContratado = idAdicional;
+            adicionelesContratados.Cantidad = cantidad;
+
+            EPaqueteAdicional adicionelesContratadosmostrar = new EPaqueteAdicional();
+            adicionelesContratadosmostrar.IdPaqueteContratado = idAdicional;
+            adicionelesContratadosmostrar.Cantidad = cantidadpaquete * cantidad;
+            adicionelesContratadosmostrar.Nombre = nombre;
+            adicionelesContratadosmostrar.Descripcion = "";
+            adicionelesContratadosmostrar.Tipo = 0;
+            adicionelesContratadosmostrar.Costo = costo * cantidad;
+
+            //Añade a los diccionarios las entidades anterirormente creadas.
+            _adicionalcontratado.Add(idAdicional, (adicionelesContratados));
+            _adicionalcontratadomostrar.Add(idAdicional, (adicionelesContratadosmostrar));
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -137,22 +156,9 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                             }
                             else
                             {
-                                //Crea los entidades de los adicionales una de ellas es para poder mostrarlos y la otra para guardarlos y se guardan los valores suministrados.
-                                EPaqueteAdicionalContratado adicionelesContratados = new EPaqueteAdicionalContratado();
-                                adicionelesContratados.IdPaqueteContratado = idAdicional;
-                                adicionelesContratados.Cantidad = cantidad;
 
-                                EPaqueteAdicional adicionelesContratadosmostrar = new EPaqueteAdicional();
-                                adicionelesContratadosmostrar.IdPaqueteContratado = idAdicional;
-                                adicionelesContratadosmostrar.Cantidad = cantidadpaquete * cantidad;
-                                adicionelesContratadosmostrar.Nombre = nombre;
-                                adicionelesContratadosmostrar.Descripcion = "";
-                                adicionelesContratadosmostrar.Tipo = 0;
-                                adicionelesContratadosmostrar.Costo = costo * cantidad;
-
-                                //Añade a los diccionarios las entidades anterirormente creadas.
-                                _adicionalcontratado.Add(idAdicional, (adicionelesContratados));
-                                _adicionalcontratadomostrar.Add(idAdicional, (adicionelesContratadosmostrar));
+                                crearEntidades(idAdicional, cantidad, cantidadpaquete, nombre, costo);
+                                
                             }
 
                             //Validacion para saber si la cantidad solicitada del adicional es 0, si es así se elimina el adicional del diccionario.
@@ -196,27 +202,17 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                                 //Si el adicional ya estiste entonces suma 1 vez las variables.
                                 _adicionalcontratadomostrar[idAdicionalsumar].Cantidad += cantidadpaquetesumar;
+                                if (idAdicionalsumar == 1 && cantidadsumar == 2)
+                                {
+                                    costosumar += 0.01M;
+                                }
                                 _adicionalcontratadomostrar[idAdicionalsumar].Costo += costosumar;
 
                             }
                             else
                             {
-                                //Crea los entidades de los adicionales una de ellas es para poder mostrarlos y la otra para guardarlos y se guardan los valores suministrados.
-                                EPaqueteAdicionalContratado adicionelesContratados = new EPaqueteAdicionalContratado();
-                                adicionelesContratados.IdPaqueteContratado = idAdicionalsumar;
-                                adicionelesContratados.Cantidad = cantidadsumar;
-
-                                EPaqueteAdicional adicionelesContratadosmostrar = new EPaqueteAdicional();
-                                adicionelesContratadosmostrar.IdPaqueteContratado = idAdicionalsumar;
-                                adicionelesContratadosmostrar.Cantidad = cantidadpaquetesumar;
-                                adicionelesContratadosmostrar.Nombre = nombresumar;
-                                adicionelesContratadosmostrar.Descripcion = "";
-                                adicionelesContratadosmostrar.Tipo = 0;
-                                adicionelesContratadosmostrar.Costo = costosumar;
-
-                                //Añade a los diccionarios las entidades anterirormente creadas.
-                                _adicionalcontratado.Add(idAdicionalsumar, (adicionelesContratados));
-                                _adicionalcontratadomostrar.Add(idAdicionalsumar, (adicionelesContratadosmostrar));
+                                crearEntidades(idAdicionalsumar, cantidadsumar, cantidadpaquetesumar, nombresumar, costosumar);
+                                
                             }
 
                         }
@@ -239,6 +235,12 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         //Si el adicional ya estiste entonces resta 1 vez las variables.
                         _adicionalcontratadomostrar[idAdicionalrestar].Cantidad -= cantidadpaqueterestar;
+
+                        if (idAdicionalrestar == 1 && cantidadrestar == 1)
+                        {
+                            costorestar += 0.01M;
+                        }
+
                         _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
 
                         //Validacion para saber si la cantidad solicitada del adicional es 0, si es así se elimina el adicional del diccionario.
