@@ -66,16 +66,16 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                     case "CargarAdicionales":
 
                         var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
-
+                        
                         Response.Write(JsonConvert.SerializeObject(ePaqueteAdicionales, Formatting.Indented));
 
                         break;
 
                     //Opcion del switch para cargar los adicionales seleccionados por el usuario.
                     case "CargarAdicionalescontratados":
-
+                        
                         Response.Write(JsonConvert.SerializeObject(_adicionalcontratadomostrar, Formatting.Indented));
-
+                        
                         break;
 
                     //Opcion del switch para cargar el total del contrato
