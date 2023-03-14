@@ -94,6 +94,38 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
         }
 
 
+        private void validarRegaliasInput(int numActivos)
+        {
+            int cantidadActualActivos = _adicionalcontratado[1].Cantidad;
+
+            if (cantidadActualActivos < numActivos)
+            {
+                if(numActivos == 250)
+                {
+                    setRegalia(numRegalia);
+                }
+            }
+        }
+
+        private void setRegalia(int numRegalias)
+        {
+            var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
+            int adicionalesContratados2 = _adicionalcontratado[2].Cantidad - _adicionalcontratado[2].CantidadRegalias;
+            foreach (var paquete in ePaqueteAdicionales)
+            {
+                if (paquete.IdPaqueteContratado != 1)
+                {
+                    int adicionalesContratados = _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad - _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias;
+                    
+                    _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad = numRegalias + adicionalesContratados;
+                    _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias = numRegalias;
+
+                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad = numRegalias + adicionalesContratados;
+                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias = numRegalias;
+                }
+            }
+        }
+
         private void agregarRegalia(int numRegalias)
         {
             var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
@@ -216,30 +248,28 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         if (esEntero)
                         {
-                            //Validamos si el id del adicional (llave del adicional) ya existe en los diccionarios.
-                            if (_adicionalcontratado.ContainsKey(idAdicional) && _adicionalcontratadomostrar.ContainsKey(idAdicional))
+                            
+                            if(idAdicional == 1)
                             {
-                                //Si el adicional ya estiste entonces sustituye los valores guardados con los nuevos valores.
-                                _adicionalcontratado[idAdicional].Cantidad = cantidad;
+                                validarRegaliasInput(cantidadpaquete);
+                                if (cantidad == 1)
+                                {
+                                    cantidad = 0;//Esto porque la primera unidad no se cobra
+                                }
+                                _adicionalcontratado[idAdicional].Cantidad = cantidad + 1;//Mas 1 por la regalia del plan 
 
-
-                                _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * cantidad;
+                                _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * (cantidad +1);
                                 _adicionalcontratadomostrar[idAdicional].Costo = costo * cantidad;
-
+                                
                             }
                             else
                             {
+                                _adicionalcontratado[idAdicional].Cantidad = cantidad + 1;//Mas 1 por la regalia del plan 
 
-                                crearEntidades(idAdicional, cantidad, cantidadpaquete, nombre, costo);
-                                
+                                _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * (cantidad +1);
+                                _adicionalcontratadomostrar[idAdicional].Costo = costo * cantidad;
                             }
-
-                            //Validacion para saber si la cantidad solicitada del adicional es 0, si es así se elimina el adicional del diccionario.
-                            if (_adicionalcontratado[idAdicional].Cantidad <= 0)
-                            {
-                                _adicionalcontratado.Remove(idAdicional);
-                                _adicionalcontratadomostrar.Remove(idAdicional);
-                            }
+                            
 
                         }
 
