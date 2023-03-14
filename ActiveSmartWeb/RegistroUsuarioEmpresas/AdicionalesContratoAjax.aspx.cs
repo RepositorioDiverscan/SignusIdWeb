@@ -13,7 +13,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
     public partial class AdicionalesContratoAjax : System.Web.UI.Page
     {
         NUsuarioEmpresa nUsuarioEmpresa = new NUsuarioEmpresa();
-
+        private int numRegalia = 2;
         //Directorio de los paquetes adicionales seleccionados por el usuario para poder mostrarlos en la pantalla.
         private Dictionary<int, EPaqueteAdicional> _adicionalcontratadomostrar
         {
@@ -54,7 +54,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
         private void crearEntidades(int idAdicional, int cantidad, int cantidadpaquete, string nombre, decimal costo)
         {
-            int cantidadRegalias = idAdicional == 1 ? 1 : 2;
+            int cantidadRegalias = idAdicional == 1 ? 1 : numRegalia;
             //Crea los entidades de los adicionales una de ellas es para poder mostrarlos y la otra para guardarlos y se guardan los valores suministrados.
             EPaqueteAdicionalContratado adicionelesContratados = new EPaqueteAdicionalContratado();
             adicionelesContratados.IdPaqueteContratado = idAdicional;
@@ -76,7 +76,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
         private void validadRegalia(Boolean suma,int numActivos)
         {
-            int numRegalia = 2;
+            
             if (suma) 
             {
                 if (numActivos == 500 || numActivos == 1000 || numActivos == 1500 || numActivos == 2000)
@@ -92,6 +92,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 }
             }
         }
+
 
         private void agregarRegalia(int numRegalias)
         {
