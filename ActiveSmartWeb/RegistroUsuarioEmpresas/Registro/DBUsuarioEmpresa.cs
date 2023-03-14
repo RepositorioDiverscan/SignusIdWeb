@@ -207,6 +207,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
                     int id = Convert.ToInt32(reader["IdTipoContrato"].ToString());
                     string nombreplan = reader["NombreTipoContrato"].ToString();
                     decimal costo = Convert.ToDecimal(reader["Costo"].ToString());
+                    int cantidadRegalias = Convert.ToInt32(reader["cantidadRegalias"].ToString());
 
                     etipoplanes.IdTipoPlan = id;
                     etipoplanes.NombrePlan = nombreplan;

@@ -54,17 +54,19 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
         private void crearEntidades(int idAdicional, int cantidad, int cantidadpaquete, string nombre, decimal costo)
         {
+            int cantidadRegalias = idAdicional == 1 ? 1 : 2;
             //Crea los entidades de los adicionales una de ellas es para poder mostrarlos y la otra para guardarlos y se guardan los valores suministrados.
             EPaqueteAdicionalContratado adicionelesContratados = new EPaqueteAdicionalContratado();
             adicionelesContratados.IdPaqueteContratado = idAdicional;
             adicionelesContratados.Cantidad = cantidad;
+            adicionelesContratados.CantidadRegalias = cantidadRegalias;
 
             EPaqueteAdicional adicionelesContratadosmostrar = new EPaqueteAdicional();
             adicionelesContratadosmostrar.IdPaqueteContratado = idAdicional;
             adicionelesContratadosmostrar.Cantidad = cantidadpaquete * cantidad;
             adicionelesContratadosmostrar.Nombre = nombre;
             adicionelesContratadosmostrar.Descripcion = "";
-            adicionelesContratadosmostrar.Tipo = 0;
+            adicionelesContratadosmostrar.CantidadRegalias = cantidadRegalias;
             adicionelesContratadosmostrar.Costo = costo * cantidad;
 
             //Añade a los diccionarios las entidades anterirormente creadas.
@@ -100,8 +102,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 if (paquete.IdPaqueteContratado != 1) 
                 {
                     _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad += numRegalias;
+                    _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias += numRegalias;
 
                     _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad += numRegalias;
+                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias += numRegalias;
                 }
             }
             
@@ -115,9 +119,15 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             {
                 if (paquete.IdPaqueteContratado != 1)
                 {
-                    _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad -= numRegalias;
+                    if (_adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias >= (numRegalias*2))
+                    {
+                        _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad -= numRegalias;
+                        _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias -= numRegalias;
 
-                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad -= numRegalias;
+                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad -= numRegalias;
+                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias -= numRegalias;
+                    }
+                    
                 }
             }
         }
