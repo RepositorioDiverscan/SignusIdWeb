@@ -103,6 +103,9 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 if(numActivos == 250)
                 {
                     setRegalia(numRegalia);
+                } else if(numActivos >= 500 && numActivos <= 750)
+                {
+                    setRegalia(numRegalia * 2);
                 }
             }
         }
@@ -110,12 +113,12 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
         private void setRegalia(int numRegalias)
         {
             var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
-            int adicionalesContratados2 = _adicionalcontratado[2].Cantidad - _adicionalcontratado[2].CantidadRegalias;
+           
             foreach (var paquete in ePaqueteAdicionales)
             {
                 if (paquete.IdPaqueteContratado != 1)
                 {
-                    int adicionalesContratados = _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad - _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias;
+                    int adicionalesContratados = _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad - _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias;
                     
                     _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad = numRegalias + adicionalesContratados;
                     _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias = numRegalias;
@@ -254,12 +257,12 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                 validarRegaliasInput(cantidadpaquete);
                                 if (cantidad == 1)
                                 {
-                                    cantidad = 0;//Esto porque la primera unidad no se cobra
+                                    _adicionalcontratadomostrar[idAdicional].Costo = 0;//La primera unidad es de regalia
                                 }
-                                _adicionalcontratado[idAdicional].Cantidad = cantidad + 1;//Mas 1 por la regalia del plan 
+                                _adicionalcontratado[idAdicional].Cantidad = cantidad;
 
-                                _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * (cantidad +1);
-                                _adicionalcontratadomostrar[idAdicional].Costo = costo * cantidad;
+                                _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * (cantidad);
+                                
                                 
                             }
                             else
@@ -300,8 +303,15 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                             //Validamos si el id del adicional (llave del adicional) ya existe en los diccionarios.
                             if (_adicionalcontratado.ContainsKey(idAdicionalsumar) && _adicionalcontratadomostrar.ContainsKey(idAdicionalsumar))
                             {
-                                //Si el adicional ya estiste entonces sustituye los valores guardados con los nuevos valores.
-                                _adicionalcontratado[idAdicionalsumar].Cantidad = cantidadsumar;
+
+                                if (idAdicionalsumar == 1)
+                                {
+                                    _adicionalcontratado[idAdicionalsumar].Cantidad = cantidadsumar;
+                                } else
+                                {
+                                    _adicionalcontratado[idAdicionalsumar].Cantidad += cantidadpaquetesumar;
+                                }
+                                
 
                                 //Si el adicional ya estiste entonces suma 1 vez las variables.
                                 _adicionalcontratadomostrar[idAdicionalsumar].Cantidad += cantidadpaquetesumar;
@@ -311,11 +321,15 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                 }
                                 _adicionalcontratadomostrar[idAdicionalsumar].Costo += costosumar;
 
-                                if(idAdicionalsumar == 1)
+                                var x = _adicionalcontratado[idAdicionalsumar].Cantidad;
+                                var y = _adicionalcontratadomostrar[idAdicionalsumar].Cantidad;
+
+                                if (idAdicionalsumar == 1)
                                 {
                                     validadRegalia(true,cantidadsumar * cantidadpaquetesumar);
                                 }
 
+                                
                             }
                             else
                             {

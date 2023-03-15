@@ -99,9 +99,10 @@
                                 <div class="fb-cant-ai w-form">
                                   <div id="email-form-3" name="email-form-3" data-name="Email Form 3" method="get" class="form-cant-ai w-clearfix">
                                     <a href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</a>
+                                    
+                                    <input v-if="adicional.IdPaqueteContratado == 1" type="text" class="txt-cantidad-ai w-input" maxlength="2" value=1 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
+                                    <input v-if="adicional.IdPaqueteContratado != 1" type="text" class="txt-cantidad-ai w-input" maxlength="2" value=2 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
 
-                                    <input type="text" class="txt-cantidad-ai w-input" maxlength="2" value=1 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
-                                
                                     <a href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</a>
                                   </div>
                                 </div>
