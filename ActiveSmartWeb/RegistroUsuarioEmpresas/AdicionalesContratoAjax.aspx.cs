@@ -106,6 +106,17 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 } else if(numActivos >= 500 && numActivos <= 750)
                 {
                     setRegalia(numRegalia * 2);
+                } else if (numActivos >= 1000 && numActivos <= 1250)
+                {
+                    setRegalia(numRegalia * 3);
+                }
+                else if (numActivos >= 1500 && numActivos <= 1750)
+                {
+                    setRegalia(numRegalia * 4);
+                }
+                else if (numActivos == 2000 )
+                {
+                    setRegalia(numRegalia * 5);
                 }
             }
         }
@@ -254,10 +265,13 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                             
                             if(idAdicional == 1)
                             {
-                                validarRegaliasInput(cantidadpaquete);
+                                validarRegaliasInput(cantidadpaquete * cantidad);
                                 if (cantidad == 1)
                                 {
                                     _adicionalcontratadomostrar[idAdicional].Costo = 0;//La primera unidad es de regalia
+                                } else
+                                {
+                                    _adicionalcontratadomostrar[idAdicional].Costo = costo * (cantidad-1) +0.01M;//La primera no se cobra
                                 }
                                 _adicionalcontratado[idAdicional].Cantidad = cantidad;
 
@@ -267,7 +281,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                             }
                             else
                             {
-                                _adicionalcontratado[idAdicional].Cantidad = cantidad + 1;//Mas 1 por la regalia del plan 
+                                _adicionalcontratado[idAdicional].Cantidad = cantidad; 
 
                                 _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * (cantidad +1);
                                 _adicionalcontratadomostrar[idAdicional].Costo = costo * cantidad;
