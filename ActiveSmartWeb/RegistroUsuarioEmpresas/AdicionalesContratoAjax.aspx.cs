@@ -281,11 +281,23 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                             }
                             else
                             {
-                                _adicionalcontratado[idAdicional].Cantidad = cantidad; 
+                                if (_adicionalcontratado[idAdicional].CantidadRegalias <= cantidad)
+                                {
+                                    _adicionalcontratado[idAdicional].Cantidad = cantidad;
 
-                                _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * cantidad;                                                            
-                                _adicionalcontratadomostrar[idAdicional].Costo += costo * (cantidad - _adicionalcontratadomostrar[idAdicional].CantidadRegalias);
-                                                             
+                                    _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * cantidad;
+
+                                    if(_adicionalcontratado[idAdicional].CantidadRegalias == cantidad)
+                                    {
+                                        _adicionalcontratadomostrar[idAdicional].Costo = 0;
+                                    }else
+                                    {
+                                        _adicionalcontratadomostrar[idAdicional].Costo += costo * (cantidad - _adicionalcontratadomostrar[idAdicional].CantidadRegalias);
+                                    }
+                                    
+
+                                }
+
                             }
                             
 
