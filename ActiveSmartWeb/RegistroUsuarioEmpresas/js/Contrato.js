@@ -167,7 +167,7 @@ const contrato = new Vue({
             }, function (data, error) {
                 self.adicionalesseleccionados = JSON.parse(data);
                 self.CargarTotal();
-
+                self.actualizarValoresInputs();
             });
         },
 
@@ -358,11 +358,9 @@ const contrato = new Vue({
                     }, function (respuesta, error) {
 
                         self.CargarAdicionalesContratado();
-                        //self.actualizarValoresInputs();
 
                     });
 
-                    
                 }
             }
         },
@@ -386,9 +384,9 @@ const contrato = new Vue({
                      }, function (respuesta, error) {
 
                          self.CargarAdicionalesContratado();
-                         //self.actualizarValoresInputs();
+                         
                      });
-
+                     
                  }
              }  
         },
