@@ -39,6 +39,7 @@ const contrato = new Vue({
         this.CargarPrecio();
         this.CargarInputPaises();
         this.CargarAdicionalesContratado();
+        this.actualizarValoresInputs();
     },
     methods: {
 
@@ -272,12 +273,12 @@ const contrato = new Vue({
 
         },
 
-        //Metodo para agregar un adicional por medio de un metodo change.
-        agregaradicional: function (adicional) {
+        //Metodo para agregar un adicional de activos por medio de un metodo change.
+        agregaradicionalActivos: function (adicional) {
             var self = this;
             let cantidadSumar = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
             if (!isNaN(cantidadSumar)) {
-                if (cantidadSumar <= 99) {
+                if (cantidadSumar <= 99 && cantidadSumar > 0) {
                     document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
 
                     $.post(urlAdicionalesContratoAjax, {
@@ -294,9 +295,45 @@ const contrato = new Vue({
                     });
 
 
+                } else {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = 1;
+                    self.agregaradicionalActivos(adicional);
                 }
             } else {
-                document.getElementById(`${adicional.IdPaqueteContratado}`).value = 0;
+                document.getElementById(`${adicional.IdPaqueteContratado}`).value = 1;
+                self.agregaradicionalActivos(adicional);
+            }
+
+        },
+
+        //Metodo para agregar un adicional de activos por medio de un metodo change.
+        agregaradicional: function (adicional) {
+            var self = this;
+            let cantidadSumar = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
+            if (!isNaN(cantidadSumar)) {
+                if (cantidadSumar <= 99 && cantidadSumar >= 2) {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
+
+                    $.post(urlAdicionalesContratoAjax, {
+                        option: 'agregaradicional',
+                        IdAdicional: adicional.IdPaqueteContratado,
+                        NombreAdicional: adicional.Nombre,
+                        Cantidadpaquete: adicional.Cantidad,
+                        Costo: adicional.Costo,
+                        CantidaddePaquetes: cantidadSumar
+                    }, function (respuesta, error) {
+
+                        self.CargarAdicionalesContratado();
+
+                    });
+
+
+                } else {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = 2;
+                    self.agregaradicional(adicional);
+                }
+            } else {
+                document.getElementById(`${adicional.IdPaqueteContratado}`).value = 2;
                 self.agregaradicional(adicional);
             }
 
@@ -321,6 +358,7 @@ const contrato = new Vue({
                     }, function (respuesta, error) {
 
                         self.CargarAdicionalesContratado();
+                        //self.actualizarValoresInputs();
 
                     });
 
@@ -348,12 +386,23 @@ const contrato = new Vue({
                      }, function (respuesta, error) {
 
                          self.CargarAdicionalesContratado();
-
+                         //self.actualizarValoresInputs();
                      });
 
                  }
              }  
         },
+
+        actualizarValoresInputs: function () {
+            var self = this;
+            $.each(self.adicionalesseleccionados, function (index, adicional) {
+                if (adicional.IdPaqueteContratado != 1) {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = adicional.Cantidad;
+                }
+
+            });
+        },
+
 
         CargarInputPaises: function () {
             //Configuracion del campo de seleccion de paises
