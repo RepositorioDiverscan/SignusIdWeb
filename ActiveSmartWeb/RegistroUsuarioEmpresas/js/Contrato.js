@@ -335,7 +335,7 @@ const contrato = new Vue({
             let cantidadResta = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
              cantidadResta = cantidadResta - 1
              if (!isNaN(cantidadResta)) {
-                 if (cantidadResta > 0) {
+                 if ((cantidadResta > 0 && adicional.IdPaqueteContratado == 1) || (cantidadResta > 1 && adicional.IdPaqueteContratado != 1)) {
                      document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadResta
 
                      $.post(urlAdicionalesContratoAjax, {
