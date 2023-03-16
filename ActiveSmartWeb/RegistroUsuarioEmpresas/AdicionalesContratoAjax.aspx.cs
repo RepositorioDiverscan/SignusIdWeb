@@ -82,17 +82,17 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             {
                 if (numActivos == 500 || numActivos == 1000 || numActivos == 1500 || numActivos == 2000)
                 {
-                    agregarRegalia(numRegalia);
+                    agregarRegalia();
                 } else if (numActivos >= activosAdicionalesIlimitados)
                 {
-                    setRegaliasIlimitadas(numRegalia);
+                    setCostoCero();
                 }
 
             } else
             {
                 if (numActivos ==250 || numActivos==750 || numActivos == 1250 || numActivos == 1750)
                 {
-                    retirarRegalia(numRegalia);
+                    retirarRegalia();
                 }
             }
         }
@@ -125,6 +125,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             }
         }
 
+        //Setea el numero de regalias
         private void setRegalia(int numRegalias)
         {
             var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
@@ -144,7 +145,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             }
         }
 
-        private void setRegaliasIlimitadas(int numRegalias)
+        //Setea el costo de los adicionales en cero, menos los activos
+        private void setCostoCero()
         {
             var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
 
@@ -157,7 +159,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             }
         }
 
-        private void agregarRegalia(int numRegalias)
+        //Agrega regalias 
+        private void agregarRegalia()
         {
             var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
 
@@ -165,17 +168,17 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             {
                 if (paquete.IdPaqueteContratado != 1) 
                 {
-                    _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad += numRegalias;
-                    _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias += numRegalias;
+                    _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad += numRegalia;
+                    _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias += numRegalia;
 
-                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad += numRegalias;
-                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias += numRegalias;
+                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad += numRegalia;
+                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias += numRegalia;
                 }
             }
             
         }
 
-        private void retirarRegalia(int numRegalias)
+        private void retirarRegalia()
         {
             var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
 
@@ -183,13 +186,13 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             {
                 if (paquete.IdPaqueteContratado != 1)
                 {
-                    if (_adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias >= (numRegalias*2))
+                    if (_adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias >= (numRegalia*2))
                     {
-                        _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad -= numRegalias;
-                        _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias -= numRegalias;
+                        _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad -= numRegalia;
+                        _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias -= numRegalia;
 
-                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad -= numRegalias;
-                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias -= numRegalias;
+                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad -= numRegalia;
+                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias -= numRegalia;
                     }
                     
                 }
