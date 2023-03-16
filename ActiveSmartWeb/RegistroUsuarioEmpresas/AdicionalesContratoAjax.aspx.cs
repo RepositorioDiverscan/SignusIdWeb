@@ -122,7 +122,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 {
                     setRegalia(numRegalia * 4);
                 }
-                else if (numActivos == 2000 )
+                else if (numActivos >= 2000 )
                 {
                     setRegalia(numRegalia * 5);
                 }
@@ -321,7 +321,14 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                                 _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * (cantidad);
                                 
-                                
+                                if ((cantidadpaquete * cantidad) >= activosAdicionalesIlimitados && idAdicional ==1)
+                                {
+                                    setCostoCero();
+                                }else
+                                {
+                                    recalcularCostos();
+                                }
+
                             }
                             else
                             {
@@ -340,6 +347,11 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                     }
                                     
 
+                                }else
+                                {
+                                    _adicionalcontratado[idAdicional].Cantidad = _adicionalcontratado[idAdicional].CantidadRegalias;
+
+                                    _adicionalcontratadomostrar[idAdicional].Cantidad = _adicionalcontratado[idAdicional].CantidadRegalias;
                                 }
 
                             }
