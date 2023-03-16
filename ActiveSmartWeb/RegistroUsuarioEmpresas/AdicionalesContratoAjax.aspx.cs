@@ -82,6 +82,9 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 if (numActivos == 500 || numActivos == 1000 || numActivos == 1500 || numActivos == 2000)
                 {
                     agregarRegalia(numRegalia);
+                } else if (numActivos >= 2250)
+                {
+                    setRegaliasIlimitadas(numRegalia);
                 }
 
             } else
@@ -136,6 +139,19 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                     _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad = numRegalias + adicionalesContratados;
                     _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias = numRegalias;
+                }
+            }
+        }
+
+        private void setRegaliasIlimitadas(int numRegalias)
+        {
+            var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
+
+            foreach (var paquete in ePaqueteAdicionales)
+            {
+                if (paquete.IdPaqueteContratado != 1)
+                {
+                    _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = 0;
                 }
             }
         }
@@ -330,28 +346,33 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                             //Validamos si el id del adicional (llave del adicional) ya existe en los diccionarios.
                             if (_adicionalcontratado.ContainsKey(idAdicionalsumar) && _adicionalcontratadomostrar.ContainsKey(idAdicionalsumar))
                             {
-
+                                //Si el id es uno se usa la cantidad a sumar, para los demas el paquete a sumar
                                 if (idAdicionalsumar == 1)
                                 {
-                                    _adicionalcontratado[idAdicionalsumar].Cantidad = cantidadsumar;
+                                    _adicionalcontratado[idAdicionalsumar].Cantidad = cantidadsumar; 
                                 } else
                                 {
                                     _adicionalcontratado[idAdicionalsumar].Cantidad += cantidadpaquetesumar;
                                 }
                                 
 
-                                //Si el adicional ya estiste entonces suma 1 vez las variables.
+                                
                                 _adicionalcontratadomostrar[idAdicionalsumar].Cantidad += cantidadpaquetesumar;
+
+                                //A la primera suma se le agrega 0.01 al costo para que quede en numeros cerrados
                                 if (idAdicionalsumar == 1 && cantidadsumar == 2)
                                 {
                                     costosumar += 0.01M;
                                 }
-                                _adicionalcontratadomostrar[idAdicionalsumar].Costo += costosumar;
 
-                                var x = _adicionalcontratado[idAdicionalsumar].Cantidad;
-                                var y = _adicionalcontratadomostrar[idAdicionalsumar].Cantidad;
+                                //Valida si el adicional son activos o si es un adicional diferente y los activos no superan el numero para adicionales ilimitados
+                                if (idAdicionalsumar == 1 || (idAdicionalsumar !=1 && _adicionalcontratadomostrar[1].Cantidad < 2250))
+                                {
+                                    _adicionalcontratadomostrar[idAdicionalsumar].Costo += costosumar;
+                                }       
 
-                                if (idAdicionalsumar == 1)
+
+                                if (idAdicionalsumar == 1 && (cantidadsumar * cantidadpaquetesumar <= 2250))
                                 {
                                     validadRegalia(true,cantidadsumar * cantidadpaquetesumar);
                                 }
