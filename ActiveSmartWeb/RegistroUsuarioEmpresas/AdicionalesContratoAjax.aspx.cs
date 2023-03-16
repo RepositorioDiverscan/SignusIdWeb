@@ -292,7 +292,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                         _adicionalcontratadomostrar[idAdicional].Costo = 0;
                                     }else
                                     {
-                                        _adicionalcontratadomostrar[idAdicional].Costo += costo * (cantidad - _adicionalcontratadomostrar[idAdicional].CantidadRegalias);
+                                        _adicionalcontratadomostrar[idAdicional].Costo = costo * (cantidad - _adicionalcontratadomostrar[idAdicional].CantidadRegalias);
                                     }
                                     
 
