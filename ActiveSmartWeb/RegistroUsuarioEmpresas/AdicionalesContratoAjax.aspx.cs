@@ -93,6 +93,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 if (numActivos ==250 || numActivos==750 || numActivos == 1250 || numActivos == 1750)
                 {
                     retirarRegalia();
+
+                } else if (numActivos == 2000)
+                {
+                    recalcularCostos();
                 }
             }
         }
@@ -155,6 +159,26 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 if (paquete.IdPaqueteContratado != 1)
                 {
                     _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = 0;
+                }
+            }
+        }
+
+        private void recalcularCostos()
+        {
+            var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
+
+            foreach (var paquete in ePaqueteAdicionales)
+            {
+                if (paquete.IdPaqueteContratado != 1)
+                {
+                    if (_adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias == _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad)
+                    {
+                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = 0;
+                    }
+                    else
+                    {
+                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = paquete.Costo * (_adicionalcontratado[paquete.IdPaqueteContratado].Cantidad - _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias);
+                    }
                 }
             }
         }
@@ -440,7 +464,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         }
 
 
-                            if (idAdicionalrestar == 1)
+                        if (idAdicionalrestar == 1)
                         {
                             validadRegalia(false, cantidadrestar * cantidadpaqueterestar);
                         }
