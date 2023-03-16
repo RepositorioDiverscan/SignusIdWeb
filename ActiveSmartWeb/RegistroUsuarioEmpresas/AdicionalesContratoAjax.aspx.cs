@@ -14,6 +14,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
     {
         NUsuarioEmpresa nUsuarioEmpresa = new NUsuarioEmpresa();
         private int numRegalia = 2;
+        private int activosAdicionalesIlimitados = 2250;
         //Directorio de los paquetes adicionales seleccionados por el usuario para poder mostrarlos en la pantalla.
         private Dictionary<int, EPaqueteAdicional> _adicionalcontratadomostrar
         {
@@ -82,7 +83,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 if (numActivos == 500 || numActivos == 1000 || numActivos == 1500 || numActivos == 2000)
                 {
                     agregarRegalia(numRegalia);
-                } else if (numActivos >= 2250)
+                } else if (numActivos >= activosAdicionalesIlimitados)
                 {
                     setRegaliasIlimitadas(numRegalia);
                 }
@@ -366,13 +367,13 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                 }
 
                                 //Valida si el adicional son activos o si es un adicional diferente y los activos no superan el numero para adicionales ilimitados
-                                if (idAdicionalsumar == 1 || (idAdicionalsumar !=1 && _adicionalcontratadomostrar[1].Cantidad < 2250))
+                                if (idAdicionalsumar == 1 || (idAdicionalsumar !=1 && _adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados))
                                 {
                                     _adicionalcontratadomostrar[idAdicionalsumar].Costo += costosumar;
                                 }       
 
 
-                                if (idAdicionalsumar == 1 && (cantidadsumar * cantidadpaquetesumar <= 2250))
+                                if (idAdicionalsumar == 1 && (cantidadsumar * cantidadpaquetesumar <= activosAdicionalesIlimitados))
                                 {
                                     validadRegalia(true,cantidadsumar * cantidadpaquetesumar);
                                 }
