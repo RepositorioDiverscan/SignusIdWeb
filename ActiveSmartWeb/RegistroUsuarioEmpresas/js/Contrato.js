@@ -41,6 +41,11 @@ const contrato = new Vue({
         this.CargarAdicionalesContratado();
         this.actualizarValoresInputs();
     },
+    watch: {
+        frecuenciaPago: function (valorNuevo, ValorAnterior) {
+            console.log(valorNuevo);
+        }
+    },
     methods: {
 
         //Metodo para cargar los idiomas.
