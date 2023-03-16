@@ -401,20 +401,43 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         var costorestar = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US")); ;
 
-                        //Si el adicional ya estiste entonces sustituye los valores guardados con los nuevos valores.
-                        _adicionalcontratado[idAdicionalrestar].Cantidad = cantidadrestar;
+                        if (idAdicionalrestar == 1)
+                        {
+                            //Sustituye los valores guardados con los nuevos valores.
+                            _adicionalcontratado[idAdicionalrestar].Cantidad = cantidadrestar;
 
-                        //Si el adicional ya estiste entonces resta 1 vez las variables.
-                        _adicionalcontratadomostrar[idAdicionalrestar].Cantidad -= cantidadpaqueterestar;
+                            //Resta 1 vez las variables.
+                            _adicionalcontratadomostrar[idAdicionalrestar].Cantidad -= cantidadpaqueterestar;
+
+                        } else if (_adicionalcontratado[idAdicionalrestar].CantidadRegalias <= cantidadrestar)
+                        {
+                            //Sustituye los valores guardados con los nuevos valores.
+                            _adicionalcontratado[idAdicionalrestar].Cantidad = cantidadrestar;
+
+                            //Resta 1 vez las variables.
+                            _adicionalcontratadomostrar[idAdicionalrestar].Cantidad -= cantidadpaqueterestar;
+                        }
+
+                        
 
                         if (idAdicionalrestar == 1 && cantidadrestar == 1)
                         {
                             costorestar += 0.01M;
                         }
 
-                        _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
-
+                        //Valida si el adicional son activos o si es un adicional diferente
                         if (idAdicionalrestar == 1)
+                        {
+                            _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
+
+                            //Valida que los activos no superan el numero para adicionales ilimitados y que la resta no sea menor a las regalias
+                        } else if (_adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados && _adicionalcontratado[idAdicionalrestar].CantidadRegalias <= cantidadrestar)
+                        {
+                            _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
+                        }
+
+
+                            if (idAdicionalrestar == 1)
                         {
                             validadRegalia(false, cantidadrestar * cantidadpaqueterestar);
                         }
