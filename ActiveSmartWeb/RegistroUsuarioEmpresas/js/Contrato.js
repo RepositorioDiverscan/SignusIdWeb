@@ -213,7 +213,7 @@ const contrato = new Vue({
 
                 let datos = JSON.parse(data);
                 self.textoPlan = datos.NombrePlan;
-                console.log(datos);
+
                 if (self.frecuenciaPago == "1") {
                     self.precio = datos.Costo;
                     if (datos.Cantidad == 250) {
