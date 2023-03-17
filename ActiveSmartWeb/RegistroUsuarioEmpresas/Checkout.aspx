@@ -195,7 +195,8 @@
                             <div class="p-price-plan-calc-ai texto-tachado-plan-ai">US$19.99/mes</div>
                             </div>
                             <div class="col-paln-ai col-ad-ai xx w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                            <div class="p-price-plan-calc-ai" v-cloak>US${{adicionalseleccionado.Costo}}/mes</div>
+                            <div v-if="frecuenciaPago=='1'" class="p-price-plan-calc-ai" v-cloak>US${{adicionalseleccionado.Costo}}/mes</div>
+                            <div v-if="frecuenciaPago=='2'" class="p-price-plan-calc-ai" v-cloak>US${{adicionalseleccionado.CostoMensual}}/mes</div>
                             </div>
                         </div>
                     </div>
