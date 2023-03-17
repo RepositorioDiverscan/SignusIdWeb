@@ -53,7 +53,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             }
         }
 
-        private void crearEntidades(int idAdicional, int cantidad, int cantidadpaquete, string nombre, decimal costo)
+        private void crearEntidades(int idAdicional, int cantidad, int cantidadpaquete, string nombre, decimal costo, decimal costoMensual)
         {
             int cantidadRegalias = idAdicional == 1 ? 1 : numRegalia;
             //Crea los entidades de los adicionales una de ellas es para poder mostrarlos y la otra para guardarlos y se guardan los valores suministrados.
@@ -69,6 +69,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             adicionelesContratadosmostrar.Descripcion = "";
             adicionelesContratadosmostrar.CantidadRegalias = cantidadRegalias;
             adicionelesContratadosmostrar.Costo = costo * cantidad;
+            adicionelesContratadosmostrar.CostoMensual = costoMensual * cantidad;
 
             //Añade a los diccionarios las entidades anterirormente creadas.
             _adicionalcontratado.Add(idAdicional, (adicionelesContratados));
@@ -246,6 +247,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                             paquete.IdPaqueteContratado == 1?1:2,
                             paquete.Cantidad,
                             paquete.Nombre,
+                            0,
                             0
                             );
                         }
@@ -266,8 +268,20 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         //Costo del plan seleccionado.
                         var precioplan = Convert.ToDecimal(Request.Form["precioplan"]);
 
+                        //Frecuencia de pago
+                        var frecuenciaPago = Convert.ToInt32(Request.Form["frecuenciaPago"]);
+
                         //Costos de la suma de todos los adicionales seleccionados.
-                        var suma = _adicionalcontratadomostrar.Sum(x => x.Value.Costo);
+                        decimal suma;
+                        if (frecuenciaPago == 1)
+                        {
+                            suma = _adicionalcontratadomostrar.Sum(x => x.Value.Costo);
+                        }
+                        else
+                        {
+                            suma = _adicionalcontratadomostrar.Sum(x => x.Value.CostoMensual);
+                        }
+                        
 
                         //Suma del costo del plan y los adicionales.
                         suma = suma + precioplan;
@@ -297,6 +311,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var cantidadpaquete = Convert.ToInt32(Request.Form["Cantidadpaquete"]);
 
                         decimal costo = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US"));
+                        decimal costoMensual = Convert.ToDecimal(Request.Form["CostoMensual"], new CultureInfo("en-US"));
 
                        // var costo = Convert.ToDecimal(Request.Form["Costo"]);
                         // decimal var1 = Convert.ToDecimal("-37.7130883", new CultureInfo("en-US"));
@@ -313,9 +328,11 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                 if (cantidad == 1)
                                 {
                                     _adicionalcontratadomostrar[idAdicional].Costo = 0;//La primera unidad es de regalia
+                                    _adicionalcontratadomostrar[idAdicional].CostoMensual = 0;
                                 } else
                                 {
                                     _adicionalcontratadomostrar[idAdicional].Costo = costo * (cantidad-1) +0.01M;//La primera no se cobra
+                                    _adicionalcontratadomostrar[idAdicional].CostoMensual = costoMensual * (cantidad - 1);
                                 }
                                 _adicionalcontratado[idAdicional].Cantidad = cantidad;
 
@@ -341,9 +358,12 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                     if(_adicionalcontratado[idAdicional].CantidadRegalias == cantidad)
                                     {
                                         _adicionalcontratadomostrar[idAdicional].Costo = 0;
-                                    }else
+                                        _adicionalcontratadomostrar[idAdicional].CostoMensual = 0;
+                                    }
+                                    else
                                     {
                                         _adicionalcontratadomostrar[idAdicional].Costo = costo * (cantidad - _adicionalcontratadomostrar[idAdicional].CantidadRegalias);
+                                        _adicionalcontratadomostrar[idAdicional].CostoMensual = costoMensual * (cantidad - _adicionalcontratadomostrar[idAdicional].CantidadRegalias);
                                     }
                                     
 
@@ -373,6 +393,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                       
 
                         var costosumar = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US"));
+                        var costoMensualsumar = Convert.ToDecimal(Request.Form["CostoMensual"], new CultureInfo("en-US"));
                         /*  decimal costosumar = 0.0M;
 
                           var aa = decimal.TryParse(Request.Form["Costo"], out costosumar);
@@ -409,6 +430,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                 if (idAdicionalsumar == 1 || (idAdicionalsumar !=1 && _adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados))
                                 {
                                     _adicionalcontratadomostrar[idAdicionalsumar].Costo += costosumar;
+                                    _adicionalcontratadomostrar[idAdicionalsumar].CostoMensual += costoMensualsumar;
                                 }       
 
 
@@ -417,11 +439,6 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                     validadRegalia(true,cantidadsumar * cantidadpaquetesumar);
                                 }
 
-                                
-                            }
-                            else
-                            {
-                                crearEntidades(idAdicionalsumar, cantidadsumar, cantidadpaquetesumar, nombresumar, costosumar);
                                 
                             }
 
@@ -438,7 +455,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         var cantidadpaqueterestar = Convert.ToInt32(Request.Form["Cantidadpaquete"]);
 
-                        var costorestar = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US")); ;
+                        var costorestar = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US"));
+                        var costoMensualrestar = Convert.ToDecimal(Request.Form["CostoMensual"], new CultureInfo("en-US"));
 
                         if (idAdicionalrestar == 1)
                         {
@@ -468,24 +486,19 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         if (idAdicionalrestar == 1)
                         {
                             _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
+                            _adicionalcontratadomostrar[idAdicionalrestar].CostoMensual -= costoMensualrestar;
 
                             //Valida que los activos no superan el numero para adicionales ilimitados y que la resta no sea menor a las regalias
                         } else if (_adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados && _adicionalcontratado[idAdicionalrestar].CantidadRegalias <= cantidadrestar)
                         {
                             _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
+                            _adicionalcontratadomostrar[idAdicionalrestar].CostoMensual -= costoMensualrestar;
                         }
 
 
                         if (idAdicionalrestar == 1)
                         {
                             validadRegalia(false, cantidadrestar * cantidadpaqueterestar);
-                        }
-
-                        //Validacion para saber si la cantidad solicitada del adicional es 0, si es así se elimina el adicional del diccionario.
-                        if (_adicionalcontratado[idAdicionalrestar].Cantidad <= 0)
-                        {
-                            _adicionalcontratado.Remove(idAdicionalrestar);
-                            _adicionalcontratadomostrar.Remove(idAdicionalrestar);
                         }
 
 

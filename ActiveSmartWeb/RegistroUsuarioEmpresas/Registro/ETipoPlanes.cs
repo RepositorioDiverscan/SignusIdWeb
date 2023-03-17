@@ -11,12 +11,14 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
         private int _Idtipoplan;
         private string _Nombre;
         private decimal _Costo;
+        private decimal _CostoMensual;
 
-        public ETipoPlanes(int idtipoplan, string nombre, decimal costo)
+        public ETipoPlanes(int idtipoplan, string nombre, decimal costo, decimal costoMensual)
         {
             _Idtipoplan = idtipoplan;
             _Nombre = nombre;
             _Costo = costo;
+            _CostoMensual = costoMensual;
         }
 
         public ETipoPlanes() { }
@@ -24,5 +26,6 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
         public int IdTipoPlan { get => _Idtipoplan; set => _Idtipoplan = value; }
         public string NombrePlan { get => _Nombre; set => _Nombre = value; }
         public decimal Costo { get => _Costo; set => _Costo = value; }
+        public decimal CostoMensual { get => _CostoMensual; set => _CostoMensual = value; }
     }
 }

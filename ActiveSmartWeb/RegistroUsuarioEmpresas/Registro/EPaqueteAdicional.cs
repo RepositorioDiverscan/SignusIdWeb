@@ -13,8 +13,9 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
         private int _CantidadRegalias;
         private int _Cantidad;
         private decimal _Costo;
+        private decimal _CostoMensual;
 
-        public EPaqueteAdicional(int idPaqueteContratado, string nombre, string descripcion, int cantidadRegalias, int cantidad, decimal costo)
+        public EPaqueteAdicional(decimal costoMensual, int idPaqueteContratado, string nombre, string descripcion, int cantidadRegalias, int cantidad, decimal costo)
         {
             _IdPaqueteContratado = idPaqueteContratado;
             _Nombre = nombre;
@@ -22,6 +23,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
             _CantidadRegalias = cantidadRegalias;
             _Cantidad = cantidad;
             _Costo = costo;
+            _CostoMensual = costoMensual;
         }
 
         public EPaqueteAdicional() { }
@@ -32,6 +34,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
         public int CantidadRegalias { get => _CantidadRegalias; set => _CantidadRegalias = value; }
         public int Cantidad { get => _Cantidad; set => _Cantidad = value; }
         public decimal Costo { get => _Costo; set => _Costo = value; }
+        public decimal CostoMensual { get => _CostoMensual; set => _CostoMensual = value; }
 
     }
 }

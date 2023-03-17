@@ -39,11 +39,13 @@ const contrato = new Vue({
         this.CargarPrecio();
         this.CargarInputPaises();
         this.CargarAdicionalesContratado();
-        this.actualizarValoresInputs();
     },
     watch: {
         frecuenciaPago: function (valorNuevo, ValorAnterior) {
-            console.log(valorNuevo);
+            var self = this;
+            console.log(self.adicionalesseleccionados[1]);
+            self.CargarPrecio();
+            self.CargarAdicionalesContratado();
         }
     },
     methods: {
@@ -181,7 +183,8 @@ const contrato = new Vue({
             var self = this;
             $.post(urlAdicionalesContratoAjax, {
                 option: 'CargarTotal',
-                precioplan: self.precio
+                precioplan: self.precio,
+                frecuenciaPago: self.frecuenciaPago,
             }, function (data, error) {
 
                 self.totalpago = data;
@@ -211,8 +214,19 @@ const contrato = new Vue({
 
                 let datos = JSON.parse(data);
                 self.textoPlan = datos.NombrePlan;
-                self.precio = datos.Costo;
-                self.totalpago = datos.Costo;
+                if (self.frecuenciaPago == "1") {
+                    self.precio = datos.Costo;
+                    self.totalpago = datos.Costo;
+                    
+                    
+                } else {
+                    self.precio = datos.CostoMensual;
+                    self.totalpago = datos.CostoMensual;
+
+                    
+                }
+                
+                
             });
         },
 
@@ -292,6 +306,7 @@ const contrato = new Vue({
                         NombreAdicional: adicional.Nombre,
                         Cantidadpaquete: adicional.Cantidad,
                         Costo: adicional.Costo,
+                        CostoMensual: adicional.CostoMensual,
                         CantidaddePaquetes: cantidadSumar
                     }, function (respuesta, error) {
 
@@ -325,6 +340,7 @@ const contrato = new Vue({
                         NombreAdicional: adicional.Nombre,
                         Cantidadpaquete: adicional.Cantidad,
                         Costo: adicional.Costo,
+                        CostoMensual: adicional.CostoMensual,
                         CantidaddePaquetes: cantidadSumar
                     }, function (respuesta, error) {
 
@@ -359,6 +375,7 @@ const contrato = new Vue({
                         NombreAdicional: adicional.Nombre,
                         Cantidadpaquete: adicional.Cantidad,
                         Costo: adicional.Costo,
+                        CostoMensual: adicional.CostoMensual,
                         CantidaddePaquetes: cantidadSumar
                     }, function (respuesta, error) {
 
@@ -385,6 +402,7 @@ const contrato = new Vue({
                          NombreAdicional: adicional.Nombre,
                          Cantidadpaquete: adicional.Cantidad,
                          Costo: adicional.Costo,
+                         CostoMensual: adicional.CostoMensual,
                          CantidaddePaquetes: cantidadResta
                      }, function (respuesta, error) {
 
