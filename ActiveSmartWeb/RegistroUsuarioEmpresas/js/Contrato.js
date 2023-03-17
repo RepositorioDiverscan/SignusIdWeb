@@ -43,7 +43,6 @@ const contrato = new Vue({
     watch: {
         frecuenciaPago: function (valorNuevo, ValorAnterior) {
             var self = this;
-            console.log(self.adicionalesseleccionados[1]);
             self.CargarPrecio();
             self.CargarAdicionalesContratado();
         }
@@ -214,15 +213,19 @@ const contrato = new Vue({
 
                 let datos = JSON.parse(data);
                 self.textoPlan = datos.NombrePlan;
+                console.log(datos);
                 if (self.frecuenciaPago == "1") {
                     self.precio = datos.Costo;
-                    self.totalpago = datos.Costo;
-                    
+                    if (datos.Cantidad == 250) {
+                        self.totalpago = datos.Costo;
+                    }
+
                     
                 } else {
                     self.precio = datos.CostoMensual;
-                    self.totalpago = datos.CostoMensual;
-
+                    if (datos.Cantidad == 250) {
+                        self.totalpago = datos.CostoMensual;
+                    }
                     
                 }
                 
