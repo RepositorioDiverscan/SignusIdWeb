@@ -65,7 +65,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             EPaqueteAdicional adicionelesContratadosmostrar = new EPaqueteAdicional();
             adicionelesContratadosmostrar.IdPaqueteContratado = idAdicional;
             adicionelesContratadosmostrar.Cantidad = cantidadpaquete * cantidad;
-            adicionelesContratadosmostrar.CantidadFree = cantidadpaqueteFree * cantidad;
+            adicionelesContratadosmostrar.CantidadFree = cantidadpaqueteFree;
             adicionelesContratadosmostrar.Nombre = nombre;
             adicionelesContratadosmostrar.Descripcion = "";
             adicionelesContratadosmostrar.CantidadRegalias = cantidadRegalias;
