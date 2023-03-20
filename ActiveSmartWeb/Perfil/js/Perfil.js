@@ -161,7 +161,7 @@ const Perfil = new Vue({
 
                                     $.post(urlPerfil, {
                                         opciones: 'ActualizarUsuario',
-
+                                        
                                         IdPerfilUsuario: self.idPerfilUsuario,
                                         Nombre: self.nombre,
                                         Apellidos: self.apellidos,

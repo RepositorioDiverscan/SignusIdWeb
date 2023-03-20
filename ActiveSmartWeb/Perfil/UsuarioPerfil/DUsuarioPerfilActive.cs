@@ -49,6 +49,8 @@ namespace ActiveSmartWeb.Perfil.UsuarioPerfil
             db.AddInParameter(dbCommand, "@Puesto", DbType.String, usuario.Posicion);
             db.AddInParameter(dbCommand, "@Telefono", DbType.String, usuario.Telefono);
             db.AddInParameter(dbCommand, "@IdPerfilEmpresa", DbType.Int32, usuario.IdPerfilEmpresa);
+            db.AddInParameter(dbCommand, "@Nombre", DbType.String, usuario.Nombre);
+            db.AddInParameter(dbCommand, "@Apellidos", DbType.String, usuario.Apellidos);
             db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
             dbCommand.CommandTimeout = 3600;
             db.ExecuteNonQuery(dbCommand);
