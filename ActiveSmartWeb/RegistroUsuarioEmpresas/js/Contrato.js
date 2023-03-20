@@ -16,6 +16,7 @@ const contrato = new Vue({
         direccion: "",
 
         listaIdiomas: {},
+        codigoPlan: sessionStorage.getItem("CodigoPlan"),
         idiomaLogin: "",
         adicionales: [],
         totalpago: "0",
@@ -173,7 +174,8 @@ const contrato = new Vue({
             }, function (data, error) {
                 self.adicionalesseleccionados = JSON.parse(data);
                 self.CargarTotal();
-                self.actualizarValoresInputs();
+                self.validarCodigoPlan();
+                console.log(self.codigoPlan);
             });
         },
 
@@ -194,9 +196,8 @@ const contrato = new Vue({
         //Metodo para cargar el precio,nombre y la imagen del plan seleccionado.
         CargarPrecio: function () {
             var self = this;
-            var codigo = sessionStorage.getItem("CodigoPlan");
             
-                if(codigo == "1"){
+                if (self.codigoPlan == "1"){
                     this.rutaImagen = "../images/signus_id_basic.svg";
                 }
                 else{
@@ -207,7 +208,7 @@ const contrato = new Vue({
 
             $.post(urlAdicionalesContratoAjax, {
                 option: 'CargarPrecio',
-                CodigoPlan: codigo
+                CodigoPlan: self.codigoPlan
 
             }, function (data, error) {
 
@@ -417,10 +418,19 @@ const contrato = new Vue({
              }  
         },
 
+        //valida el codigo del plan para cargar los valores en los inputs
+        validarCodigoPlan: function () {
+            var self = this;
+            if (self.codigoPlan == 2) {
+                self.actualizarValoresInputs();
+            }
+        },
+
+        //Actualiza los valores de los inputs
         actualizarValoresInputs: function () {
             var self = this;
             $.each(self.adicionalesseleccionados, function (index, adicional) {
-                if (adicional.IdPaqueteContratado != 1) {
+                if (adicional.IdPaqueteContratado != 1 ) {
                     document.getElementById(`${adicional.IdPaqueteContratado}`).value = adicional.Cantidad;
                 }
 

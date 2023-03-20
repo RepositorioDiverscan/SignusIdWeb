@@ -98,18 +98,22 @@
                               <div class="div-cant-compra-ai">
                                 <div class="fb-cant-ai w-form">
                                   <div id="email-form-3" name="email-form-3" data-name="Email Form 3" method="get" class="form-cant-ai w-clearfix">
-                                    <a href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</a>
+                                    <a v-if="codigoPlan==2" href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</a>
                                     
-                                    <input v-if="adicional.IdPaqueteContratado == 1" type="text" class="txt-cantidad-ai w-input" maxlength="2" value=1 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicionalActivos(adicional)">
-                                    <input v-if="adicional.IdPaqueteContratado != 1" type="text" class="txt-cantidad-ai w-input" maxlength="2" value=2 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
+                                     <input v-if="codigoPlan==1" disabled type="text" class="txt-cantidad-ai w-input" maxlength="2" value=1 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicionalActivos(adicional)">
+                                     
+                                      <%--Inputs del plan basic--%>
+                                    <input v-if="adicional.IdPaqueteContratado == 1 && codigoPlan==2" type="text" class="txt-cantidad-ai w-input" maxlength="2" value=1 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicionalActivos(adicional)">
+                                    <input v-if="adicional.IdPaqueteContratado != 1 && codigoPlan==2" type="text" class="txt-cantidad-ai w-input" maxlength="2" value=2 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
 
-                                    <a href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</a>
+                                    <a v-if="codigoPlan==2" href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</a>
                                   </div>
                                 </div>
                               </div>
                             </div>
                             <div class="col-paln-ai w-clearfix w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                              <div class="cant-act-ai"v-cloak>{{adicional.Cantidad}}</div>
+                              <div v-if="codigoPlan==1" class="cant-act-ai"v-cloak>{{adicional.CantidadFree}}</div>
+                              <div v-if="codigoPlan==2" class="cant-act-ai"v-cloak>{{adicional.Cantidad}}</div>
                             </div>
                             <div class="col-paln-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
                               <div class="p-price-plan-calc-ai texto-tachado-plan-ai">US$19.99/mes</div>
@@ -189,7 +193,8 @@
                             <div class="p-adic-pag-ai" v-cloak>{{adicionalseleccionado.Nombre}}</div>
                             </div>
                             <div class="col-paln-ai col-ad-ai xx w-clearfix w-col w-col-2 w-col-small-3 w-col-tiny-6">
-                            <div class="cant-act-ai" v-cloak>{{adicionalseleccionado.Cantidad}}</div>
+                            <div v-if="codigoPlan==1" class="cant-act-ai" v-cloak>{{adicionalseleccionado.CantidadFree}}</div>
+                            <div v-if="codigoPlan==2" class="cant-act-ai" v-cloak>{{adicionalseleccionado.Cantidad}}</div>
                             </div>
                             <div class="col-paln-ai col-ad-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
                             <div class="p-price-plan-calc-ai texto-tachado-plan-ai">US$19.99/mes</div>

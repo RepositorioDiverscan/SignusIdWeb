@@ -181,6 +181,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
                         reader["Descripcion"].ToString(),
                         Convert.ToInt32(reader["Tipo"].ToString()),
                         Convert.ToInt32(reader["Cantidad"].ToString()),
+                        Convert.ToInt32(reader["CantidadFree"].ToString()),
                         Convert.ToDecimal(reader["Costo"].ToString())
 
                     ));

@@ -53,7 +53,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             }
         }
 
-        private void crearEntidades(int idAdicional, int cantidad, int cantidadpaquete, string nombre, decimal costo, decimal costoMensual)
+        private void crearEntidades(int idAdicional, int cantidad, int cantidadpaquete, int cantidadpaqueteFree, string nombre, decimal costo, decimal costoMensual)
         {
             int cantidadRegalias = idAdicional == 1 ? 1 : numRegalia;
             //Crea los entidades de los adicionales una de ellas es para poder mostrarlos y la otra para guardarlos y se guardan los valores suministrados.
@@ -65,6 +65,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             EPaqueteAdicional adicionelesContratadosmostrar = new EPaqueteAdicional();
             adicionelesContratadosmostrar.IdPaqueteContratado = idAdicional;
             adicionelesContratadosmostrar.Cantidad = cantidadpaquete * cantidad;
+            adicionelesContratadosmostrar.CantidadFree = cantidadpaqueteFree * cantidad;
             adicionelesContratadosmostrar.Nombre = nombre;
             adicionelesContratadosmostrar.Descripcion = "";
             adicionelesContratadosmostrar.CantidadRegalias = cantidadRegalias;
@@ -76,6 +77,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             _adicionalcontratadomostrar.Add(idAdicional, (adicionelesContratadosmostrar));
         }
 
+        //Valida la cantidad de activos agregados para dar o retirar regalias
         private void validadRegalia(Boolean suma,int numActivos)
         {
             
@@ -102,7 +104,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             }
         }
 
-
+        //Valida la cantidad de activos agregados mediante el input para dar o retirar regalias
         private void validarRegaliasInput(int numActivos)
         {
             int cantidadActualActivos = _adicionalcontratado[1].Cantidad;
@@ -164,6 +166,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             }
         }
 
+        //Recalcula los costos de los adicionales, menos los activos 
         private void recalcularCostos()
         {
             var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
@@ -203,6 +206,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             
         }
 
+        //Retira regalias
         private void retirarRegalia()
         {
             var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
@@ -246,6 +250,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                             paquete.IdPaqueteContratado,
                             paquete.IdPaqueteContratado == 1?1:2,
                             paquete.Cantidad,
+                            paquete.CantidadFree,
                             paquete.Nombre,
                             0,
                             0
