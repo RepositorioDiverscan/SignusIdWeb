@@ -175,11 +175,13 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
                 {
 
                     ePaquetesAdicionales.Add(new EPaqueteAdicional(
+                        Convert.ToDecimal(reader["CostoMensual"].ToString()),
                         Convert.ToInt32(reader["IdPaqueteContratado"].ToString()),
                         reader["Nombre"].ToString(),
                         reader["Descripcion"].ToString(),
                         Convert.ToInt32(reader["Tipo"].ToString()),
                         Convert.ToInt32(reader["Cantidad"].ToString()),
+                        Convert.ToInt32(reader["CantidadFree"].ToString()),
                         Convert.ToDecimal(reader["Costo"].ToString())
 
                     ));
@@ -207,10 +209,13 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
                     int id = Convert.ToInt32(reader["IdTipoContrato"].ToString());
                     string nombreplan = reader["NombreTipoContrato"].ToString();
                     decimal costo = Convert.ToDecimal(reader["Costo"].ToString());
+                    int cantidadRegalias = Convert.ToInt32(reader["cantidadRegalias"].ToString());
+                    decimal costoMensual = Convert.ToDecimal(reader["CostoMensual"].ToString());
 
                     etipoplanes.IdTipoPlan = id;
                     etipoplanes.NombrePlan = nombreplan;
                     etipoplanes.Costo = costo;
+                    etipoplanes.CostoMensual = costoMensual;
                 }
             }
 

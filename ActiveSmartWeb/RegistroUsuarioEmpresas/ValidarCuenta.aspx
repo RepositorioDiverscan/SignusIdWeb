@@ -4,7 +4,7 @@
     <div class="contenedor-general" id="cod">
     <div class="main-ai">
       <div class="wrap-conf-code-ai">
-        <%--<div class="div-block-211 div-steps-ai step_one"><img src="/images/paso_1.png" loading="lazy" width="151" height="" alt=""></div>--%>
+        <div class="div-block-211 div-steps-ai step_one"><img src="/images/paso_1.png" loading="lazy" width="151" height="" alt=""></div>
         <div class="div-block-code-ai">
           <h4 class="h-welcome-t-ai">{{listaIdiomas.Bienvenido}}</h4>
           <p class="p-mensaje-code-ai">{{listaIdiomas.ParrafoCodigo1}}<span class="txt-correo-conf-code-ai"> ******{{extEmail}}</span><br>{{listaIdiomas.ParrafoCodigo2}} </p>
@@ -14,7 +14,7 @@
               <div class="undo-div-ai w-clearfix">
                 <a href="#" v-on:click="NuevoCodigo()"  class="get-new-code-ai">{{listaIdiomas.GenerarCodigo}}</a>
               </div>
-                <input type="submit" :value="[[listaIdiomas.Aceptar]]" data-wait="Please wait..." class="btn-accept-code-ai w-button" v-on:click="ValidarCodigo()">
+              <input type="submit" :value="[[listaIdiomas.Aceptar]]" data-wait="Please wait..." class="btn-accept-code-ai w-button" v-on:click="ValidarCodigo()">
 
           </div>
         </div>

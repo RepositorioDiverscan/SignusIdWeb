@@ -16,13 +16,14 @@ const contrato = new Vue({
         direccion: "",
 
         listaIdiomas: {},
+        codigoPlan: sessionStorage.getItem("CodigoPlan"),
         idiomaLogin: "",
         adicionales: [],
         totalpago: "0",
         textoPlan: "",
         precio: "0",
         rutaImagen: "../images/signus_id_basic.svg",
-        frecuenciaPago: "2",
+        frecuenciaPago: "1",
         terminoscondiciones: "",
         adicionalesseleccionados: []
 
@@ -38,6 +39,14 @@ const contrato = new Vue({
         this.CargarAdicionales();
         this.CargarPrecio();
         this.CargarInputPaises();
+        this.CargarAdicionalesContratado();
+    },
+    watch: {
+        frecuenciaPago: function (valorNuevo, ValorAnterior) {
+            var self = this;
+            self.CargarPrecio();
+            self.CargarAdicionalesContratado();
+        }
     },
     methods: {
 
@@ -151,6 +160,7 @@ const contrato = new Vue({
             $.post(urlAdicionalesContratoAjax, {
                 option: 'CargarAdicionales'
             }, function (data, error) {
+
                 self.adicionales = JSON.parse(data);
 
             });
@@ -164,7 +174,7 @@ const contrato = new Vue({
             }, function (data, error) {
                 self.adicionalesseleccionados = JSON.parse(data);
                 self.CargarTotal();
-
+                self.validarCodigoPlan();
             });
         },
 
@@ -173,7 +183,8 @@ const contrato = new Vue({
             var self = this;
             $.post(urlAdicionalesContratoAjax, {
                 option: 'CargarTotal',
-                precioplan: self.precio
+                precioplan: self.precio,
+                frecuenciaPago: self.frecuenciaPago,
             }, function (data, error) {
 
                 self.totalpago = data;
@@ -184,10 +195,8 @@ const contrato = new Vue({
         //Metodo para cargar el precio,nombre y la imagen del plan seleccionado.
         CargarPrecio: function () {
             var self = this;
-            var codigo = sessionStorage.getItem("CodigoPlan");
-
             
-                if(codigo == "1"){
+                if (self.codigoPlan == "1"){
                     this.rutaImagen = "../images/signus_id_basic.svg";
                 }
                 else{
@@ -198,14 +207,29 @@ const contrato = new Vue({
 
             $.post(urlAdicionalesContratoAjax, {
                 option: 'CargarPrecio',
-                CodigoPlan: codigo
+                CodigoPlan: self.codigoPlan
 
             }, function (data, error) {
 
                 let datos = JSON.parse(data);
                 self.textoPlan = datos.NombrePlan;
-                self.precio = datos.Costo;
-                self.totalpago = datos.Costo;
+
+                if (self.frecuenciaPago == "1") {
+                    self.precio = datos.Costo;
+                    if (datos.Cantidad == self.adicionales[0].Cantidad) {
+                        self.totalpago = datos.Costo;
+                    }
+
+                    
+                } else {
+                    self.precio = datos.CostoMensual;
+                    if (datos.Cantidad == self.adicionales[0].Cantidad) {
+                        self.totalpago = datos.CostoMensual;
+                    }
+                    
+                }
+                
+                
             });
         },
 
@@ -271,12 +295,12 @@ const contrato = new Vue({
 
         },
 
-        //Metodo para agregar un adicional por medio de un metodo change.
-        agregaradicional: function (adicional) {
+        //Metodo para agregar un adicional de activos por medio de un metodo change.
+        agregaradicionalActivos: function (adicional) {
             var self = this;
             let cantidadSumar = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
             if (!isNaN(cantidadSumar)) {
-                if (cantidadSumar <= 99) {
+                if (cantidadSumar <= 99 && cantidadSumar > 0) {
                     document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
 
                     $.post(urlAdicionalesContratoAjax, {
@@ -285,6 +309,7 @@ const contrato = new Vue({
                         NombreAdicional: adicional.Nombre,
                         Cantidadpaquete: adicional.Cantidad,
                         Costo: adicional.Costo,
+                        CostoMensual: adicional.CostoMensual,
                         CantidaddePaquetes: cantidadSumar
                     }, function (respuesta, error) {
 
@@ -293,9 +318,46 @@ const contrato = new Vue({
                     });
 
 
+                } else {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = 1;
+                    self.agregaradicionalActivos(adicional);
                 }
             } else {
-                document.getElementById(`${adicional.IdPaqueteContratado}`).value = 0;
+                document.getElementById(`${adicional.IdPaqueteContratado}`).value = 1;
+                self.agregaradicionalActivos(adicional);
+            }
+
+        },
+
+        //Metodo para agregar un adicional de activos por medio de un metodo change.
+        agregaradicional: function (adicional) {
+            var self = this;
+            let cantidadSumar = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
+            if (!isNaN(cantidadSumar)) {
+                if (cantidadSumar <= 99 && cantidadSumar >= 2) {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
+
+                    $.post(urlAdicionalesContratoAjax, {
+                        option: 'agregaradicional',
+                        IdAdicional: adicional.IdPaqueteContratado,
+                        NombreAdicional: adicional.Nombre,
+                        Cantidadpaquete: adicional.Cantidad,
+                        Costo: adicional.Costo,
+                        CostoMensual: adicional.CostoMensual,
+                        CantidaddePaquetes: cantidadSumar
+                    }, function (respuesta, error) {
+
+                        self.CargarAdicionalesContratado();
+
+                    });
+
+
+                } else {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = 2;
+                    self.agregaradicional(adicional);
+                }
+            } else {
+                document.getElementById(`${adicional.IdPaqueteContratado}`).value = 2;
                 self.agregaradicional(adicional);
             }
 
@@ -316,6 +378,7 @@ const contrato = new Vue({
                         NombreAdicional: adicional.Nombre,
                         Cantidadpaquete: adicional.Cantidad,
                         Costo: adicional.Costo,
+                        CostoMensual: adicional.CostoMensual,
                         CantidaddePaquetes: cantidadSumar
                     }, function (respuesta, error) {
 
@@ -323,7 +386,6 @@ const contrato = new Vue({
 
                     });
 
-                    
                 }
             }
         },
@@ -334,24 +396,46 @@ const contrato = new Vue({
             let cantidadResta = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
              cantidadResta = cantidadResta - 1
              if (!isNaN(cantidadResta)) {
-                 if (cantidadResta >= 0) {
+                 if ((cantidadResta > 0 && adicional.IdPaqueteContratado == 1) || (cantidadResta > 1 && adicional.IdPaqueteContratado != 1)) {
                      document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadResta
 
                      $.post(urlAdicionalesContratoAjax, {
                          option: 'RestarAdicional',
                          IdAdicional: adicional.IdPaqueteContratado,
+                         NombreAdicional: adicional.Nombre,
                          Cantidadpaquete: adicional.Cantidad,
                          Costo: adicional.Costo,
+                         CostoMensual: adicional.CostoMensual,
                          CantidaddePaquetes: cantidadResta
                      }, function (respuesta, error) {
 
                          self.CargarAdicionalesContratado();
-
+                         
                      });
-
+                     
                  }
              }  
         },
+
+        //valida el codigo del plan para cargar los valores en los inputs
+        validarCodigoPlan: function () {
+            var self = this;
+            if (self.codigoPlan == 2) {
+                self.actualizarValoresInputs();
+            }
+        },
+
+        //Actualiza los valores de los inputs
+        actualizarValoresInputs: function () {
+            var self = this;
+            $.each(self.adicionalesseleccionados, function (index, adicional) {
+                if (adicional.IdPaqueteContratado != 1 ) {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = adicional.Cantidad;
+                }
+
+            });
+        },
+
 
         CargarInputPaises: function () {
             //Configuracion del campo de seleccion de paises

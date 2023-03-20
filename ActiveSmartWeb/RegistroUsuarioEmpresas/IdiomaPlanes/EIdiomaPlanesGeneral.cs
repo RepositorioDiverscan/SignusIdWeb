@@ -15,8 +15,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.IdiomaPlanes
         private string _descripcionBusiness;
         private string _montoUsuarioFree;
         private string _montoUsuarioBasic;
+        private string _montoUsuarioBasicMensual;
         private string _montoUsuarioPro;
         private string _montoUsuarioBusiness;
+        private string _facturaMensual;
         private string _facturaFree;
         private string _facturaBasic;
         private string _facturaPro;
@@ -29,7 +31,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.IdiomaPlanes
         {
         }
 
-        public EIdiomaPlanesGeneral(string titulo, string descripcionFree, string descripcionBasic, string descripcionPro, string descripcionBusiness, string montoUsuarioFree, string montoUsuarioBasic, string montoUsuarioPro, string montoUsuarioBusiness, string facturaFree, string facturaBasic, string facturaPro, string facturaBusiness, string btnFree, string btnBasic, string btnPro, string btnBusiness )
+        public EIdiomaPlanesGeneral(string titulo, string descripcionFree, string descripcionBasic, string descripcionPro, string descripcionBusiness, string montoUsuarioFree, string montoUsuarioBasic, string montoUsuarioBasicMensual, string montoUsuarioPro, string montoUsuarioBusiness, string facturaFree, string facturaMensual, string facturaBasic, string facturaPro, string facturaBusiness, string btnFree, string btnBasic, string btnPro, string btnBusiness )
         {                                                                                                                                                                                                                                                                                                                                          
             Titulo = titulo;                                                                                                                                                                                                                                                                                                                    
             DescripcionFree = descripcionFree;                                                                                                                                                                                                                                                                                    
@@ -38,8 +40,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.IdiomaPlanes
             DescripcionBusiness = descripcionBusiness;
             MontoUsuarioFree = montoUsuarioFree;
             MontoUsuarioBasic = montoUsuarioBasic;
+            MontoUsuarioBasicMensual = montoUsuarioBasicMensual;
             MontoUsuarioPro = montoUsuarioPro;
             MontoUsuarioBusiness = montoUsuarioBusiness;
+            FacturaMensual = facturaMensual;
             FacturaFree = facturaFree;
             FacturaBasic = facturaBasic;
             FacturaPro = facturaPro;
@@ -59,8 +63,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.IdiomaPlanes
         public string DescripcionBusiness { get => _descripcionBusiness; set => _descripcionBusiness = value; }
         public string MontoUsuarioFree { get => _montoUsuarioFree; set => _montoUsuarioFree = value; }
         public string MontoUsuarioBasic { get => _montoUsuarioBasic; set => _montoUsuarioBasic = value; }
+        public string MontoUsuarioBasicMensual { get => _montoUsuarioBasicMensual; set => _montoUsuarioBasicMensual = value; }
         public string MontoUsuarioPro { get => _montoUsuarioPro; set => _montoUsuarioPro = value; }
         public string MontoUsuarioBusiness { get => _montoUsuarioBusiness; set => _montoUsuarioBusiness = value; }
+        public string FacturaMensual { get => _facturaMensual; set => _facturaMensual = value; }
         public string FacturaFree { get => _facturaFree; set => _facturaFree = value; }
         public string FacturaBasic { get => _facturaBasic; set => _facturaBasic = value; }
         public string FacturaPro { get => _facturaPro; set => _facturaPro = value; }

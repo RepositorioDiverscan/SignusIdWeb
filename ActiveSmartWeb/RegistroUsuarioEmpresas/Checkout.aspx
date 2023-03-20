@@ -60,7 +60,7 @@
 
 </head>
 <body>
-  <div class="header-steps-payout-ai"><img src="../images/signus_id.png" loading="lazy" width="158" srcset="../images/Logo_ActiveID_Smart_Mesa-de-trabajo-1-p-500.png 500w, ../images/Logo_ActiveID_Smart_Mesa-de-trabajo-1-p-800.png 800w, ../images/Logo_ActiveID_Smart_Mesa-de-trabajo-1.png 1080w" sizes="150px" alt="" class="logo-payout-ai"></div>
+  <div class="header-steps-payout-ai"><img src="../images/signus_id.png" loading="lazy" width="158" srcset="../images/signus_id-p-500.png 500w, ../images/signus_id-p-800.png 800w, ../images/signus_id-p-1080.png 1080w, ../images/signus_id.png 1730w" sizes="150px" alt="" class="logo-payout-ai"></div>
   <div class="contenedor-general" id="context">
     <div class="main">
       <div class="section wf-section">
@@ -88,34 +88,43 @@
                     <div class="div-type-compra-ai">
                       <h4 class="p-pago-adicio-ai" v-cloak>{{listaIdiomas.TituloConfigure}}</h4>
 
+
+                        <%--Configure Adicionales--%>
                       <div v-for="(adicional,index) in adicionales" :key="index">
 
-                      <div class="p-adicionales-ai" v-cloak>{{adicional.Nombre}}</div>
-                      <div class="coulms-plan-ai colums-pack-ai w-row">
-                        <div class="col-plan-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                          <div class="div-cant-compra-ai">
-                            <div class="fb-cant-ai w-form">
-                              <div id="email-form-3" name="email-form-3" data-name="Email Form 3" method="get" class="form-cant-ai w-clearfix">
-                                <a href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</a>
+                          <div class="p-adicionales-ai" v-cloak>{{adicional.Nombre}}</div>
+                          <div class="coulms-plan-ai colums-pack-ai w-row">
+                            <div class="col-plan-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
+                              <div class="div-cant-compra-ai">
+                                <div class="fb-cant-ai w-form">
+                                  <div id="email-form-3" name="email-form-3" data-name="Email Form 3" method="get" class="form-cant-ai w-clearfix">
+                                    <a v-if="codigoPlan==2" href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</a>
+                                    
+                                     <input v-if="codigoPlan==1" disabled type="text" class="txt-cantidad-ai w-input" maxlength="2" value=1 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicionalActivos(adicional)">
+                                     
+                                      <%--Inputs del plan basic--%>
+                                    <input v-if="adicional.IdPaqueteContratado == 1 && codigoPlan==2" type="text" class="txt-cantidad-ai w-input" maxlength="2" value=1 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicionalActivos(adicional)">
+                                    <input v-if="adicional.IdPaqueteContratado != 1 && codigoPlan==2" type="text" class="txt-cantidad-ai w-input" maxlength="2" value=2 :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
 
-                                <input type="text" class="txt-cantidad-ai w-input" maxlength="2" value="0" :id="adicional.IdPaqueteContratado" style="text-align:center" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
-                                
-                                <a href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</a>
+                                    <a v-if="codigoPlan==2" href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</a>
+                                  </div>
+                                </div>
                               </div>
                             </div>
+                            <div class="col-paln-ai w-clearfix w-col w-col-3 w-col-small-3 w-col-tiny-6">
+                              <div v-if="codigoPlan==1" class="cant-act-ai"v-cloak>{{adicional.CantidadFree}}</div>
+                              <div v-if="codigoPlan==2" class="cant-act-ai"v-cloak>{{adicional.Cantidad}}</div>
+                            </div>
+                            <div class="col-paln-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
+                              <div class="p-price-plan-calc-ai texto-tachado-plan-ai">US$19.99/mes</div>
+                            </div>
+                            <div class="col-paln-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
+                              <div class="p-price-plan-calc-ai" v-cloak>US${{adicional.Costo}}/mes</div>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-paln-ai w-clearfix w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                          <div class="cant-act-ai"v-cloak>{{adicional.Cantidad}}</div>
-                        </div>
-                        <div class="col-paln-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                          <div class="p-price-plan-calc-ai texto-tachado-plan-ai">US$19.99/mes</div>
-                        </div>
-                        <div class="col-paln-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                          <div class="p-price-plan-calc-ai" v-cloak>US${{adicional.Costo}}/mes</div>
-                        </div>
+
                       </div>
-                      </div>
+
                     </div>
 
 
@@ -184,13 +193,15 @@
                             <div class="p-adic-pag-ai" v-cloak>{{adicionalseleccionado.Nombre}}</div>
                             </div>
                             <div class="col-paln-ai col-ad-ai xx w-clearfix w-col w-col-2 w-col-small-3 w-col-tiny-6">
-                            <div class="cant-act-ai" v-cloak>{{adicionalseleccionado.Cantidad}}</div>
+                            <div v-if="codigoPlan==1" class="cant-act-ai" v-cloak>{{adicionalseleccionado.CantidadFree}}</div>
+                            <div v-if="codigoPlan==2" class="cant-act-ai" v-cloak>{{adicionalseleccionado.Cantidad}}</div>
                             </div>
                             <div class="col-paln-ai col-ad-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
                             <div class="p-price-plan-calc-ai texto-tachado-plan-ai">US$19.99/mes</div>
                             </div>
                             <div class="col-paln-ai col-ad-ai xx w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                            <div class="p-price-plan-calc-ai" v-cloak>US${{adicionalseleccionado.Costo}}/mes</div>
+                            <div v-if="frecuenciaPago=='1'" class="p-price-plan-calc-ai" v-cloak>US${{adicionalseleccionado.Costo}}/mes</div>
+                            <div v-if="frecuenciaPago=='2'" class="p-price-plan-calc-ai" v-cloak>US${{adicionalseleccionado.CostoMensual}}/mes</div>
                             </div>
                         </div>
                     </div>
@@ -212,7 +223,7 @@
                           <div class="formblock-plan-ai w-form">
                             <div id="email-form-2" name="email-form-2" data-name="Email Form 2" method="get" class="form-choose-plan-ai">
                                 <label class="radio-wrap-plan-ai w-radio">
-                                    <input type="radio" data-name="Radio 7" id="one" name="rbpago" value="1" class="w-form-formradioinput radio-plan-ai w-radio-input" v-model="frecuenciaPago" />
+                                    <input type="radio" data-name="Radio 7" id="one" name="rbpago" value="1" class="w-form-formradioinput radio-plan-ai w-radio-input" v-model="frecuenciaPago" checked />
                                     <span class="label-plan-chosen-ai w-form-label" for="radio-7" v-cloak>{{listaIdiomas.MetodoAnual}}</span>
                                 </label>
                             </div>
@@ -229,7 +240,7 @@
                           <div class="formblock-plan-ai w-form">
                             <div id="email-form-2" name="email-form-2" data-name="Email Form 2" method="get" class="form-choose-plan-ai">
                                 <label class="radio-wrap-plan-ai w-radio">
-                                    <input type="radio" data-name="Radio 7" id="two" name="rbpago" value="2" class="w-form-formradioinput radio-plan-ai w-radio-input" v-model="frecuenciaPago" checked />
+                                    <input type="radio" data-name="Radio 7" id="two" name="rbpago" value="2" class="w-form-formradioinput radio-plan-ai w-radio-input" v-model="frecuenciaPago" />
                                     <span class="label-plan-chosen-ai w-form-label" for="radio-7" v-cloak>{{listaIdiomas.MetodoMensual}}</span>
                                 </label>
                             </div>
