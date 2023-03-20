@@ -377,6 +377,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                     _adicionalcontratado[idAdicional].Cantidad = _adicionalcontratado[idAdicional].CantidadRegalias;
 
                                     _adicionalcontratadomostrar[idAdicional].Cantidad = _adicionalcontratado[idAdicional].CantidadRegalias;
+                                    _adicionalcontratadomostrar[idAdicional].Costo = 0;
+                                    _adicionalcontratadomostrar[idAdicional].CostoMensual = 0;
                                 }
 
                             }
