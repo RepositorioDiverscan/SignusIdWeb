@@ -175,7 +175,6 @@ const contrato = new Vue({
                 self.adicionalesseleccionados = JSON.parse(data);
                 self.CargarTotal();
                 self.validarCodigoPlan();
-                console.log(self.codigoPlan);
             });
         },
 
@@ -217,14 +216,14 @@ const contrato = new Vue({
 
                 if (self.frecuenciaPago == "1") {
                     self.precio = datos.Costo;
-                    if (datos.Cantidad == 250) {
+                    if (datos.Cantidad == self.adicionales[0].Cantidad) {
                         self.totalpago = datos.Costo;
                     }
 
                     
                 } else {
                     self.precio = datos.CostoMensual;
-                    if (datos.Cantidad == 250) {
+                    if (datos.Cantidad == self.adicionales[0].Cantidad) {
                         self.totalpago = datos.CostoMensual;
                     }
                     
