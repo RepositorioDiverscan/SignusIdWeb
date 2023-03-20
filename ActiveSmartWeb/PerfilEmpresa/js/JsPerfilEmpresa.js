@@ -42,6 +42,7 @@ const PerfilEmpresa = new Vue({
     },
 
     mounted: function () {
+
         this.ValidarSesion();
         this.listaIdiomas = this.ObtenerIdiomaPerfilEmpresa();
         this.CargarInformacionUsuario();
