@@ -14,8 +14,8 @@
               <div class="undo-div-ai w-clearfix">
                 <a href="#" v-on:click="NuevoCodigo()"  class="get-new-code-ai">{{listaIdiomas.GenerarCodigo}}</a>
               </div>
-                <%--<input type="submit" :value="[[listaIdiomas.Aceptar]]" data-wait="Please wait..." class="btn-accept-code-ai w-button" v-on:click="ValidarCodigo()">--%>
-              <a href="../RegistroUsuarioEmpresas/SeleccionPlan.aspx">Siguiente</a>
+              <input type="submit" :value="[[listaIdiomas.Aceptar]]" data-wait="Please wait..." class="btn-accept-code-ai w-button" v-on:click="ValidarCodigo()">
+
           </div>
         </div>
       </div>
