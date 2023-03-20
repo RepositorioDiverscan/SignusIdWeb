@@ -209,6 +209,7 @@ const PerfilEmpresa = new Vue({
                         Correo: self.CorreoTxt,
                         Telefono: self.phoneInput1.getNumber(),
                         Industria: self.selectIndustria,
+                        Moneda: self.monedaSel,
                     })
 
                 }, function (respuesta, error) {
