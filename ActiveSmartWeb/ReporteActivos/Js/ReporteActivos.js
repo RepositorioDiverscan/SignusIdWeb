@@ -240,6 +240,9 @@ const ReporteActivos = new Vue({
                     1: {
                         columnWidth: 'auto'
                     }
+                },
+                headerStyles: {
+                    fillColor: [234, 187, 0] // Color rojo en formato RGB
                 }
             })
             pdf.save('ReporteActivos.pdf');
