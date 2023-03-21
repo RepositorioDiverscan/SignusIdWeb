@@ -9,7 +9,7 @@
           <div id="w-node-d648a741-eb22-8676-6b39-5000b52a816d-53d8c7b1" class="div-banner-extremo"></div>
           <div id="w-node-d648a741-eb22-8676-6b39-5000b52a816e-53d8c7b1">
             <div class="w-layout-grid grid-container-title" style="padding-top:10px; padding-bottom:10px">
-              <a href="#" onclick="window.history.back()" class="link-block-back w-inline-block"><img src="../images/Back-arrow.svg" loading="lazy" height="26" width="26" alt="" class="back"></a>
+              <a href="../Tomafisica/TomaFisica.aspx" class="link-block-back w-inline-block"><img src="../images/Back-arrow.svg" loading="lazy" height="26" width="26" alt="" class="back"></a>
               <h1 id="w-node-d648a741-eb22-8676-6b39-5000b52a8172-53d8c7b1" class="titulo-principal" v-cloak>{{Listaidiomas.Titulo}}</h1> 
                 <div data-hover="false" data-delay="0" id="w-node-_01c345db-44dd-5950-8797-fc0e77f5b71f-731f63ba" class="dropdown-detalles-ai w-dropdown">
                   <div class="toggle-detalles-ai w-dropdown-toggle" style="padding:0px"><img src="../images/info2.svg" loading="lazy" alt="" class="img-detalles-ai"></div>
