@@ -244,6 +244,7 @@ const ReporteActivos = new Vue({
             })
             pdf.save('ReporteActivos.pdf');
             alertify.success(self.listaIdioma.OkDescarga);
+            this.FiltrarCE();
         },
 
         ExportarExcel: function () {
