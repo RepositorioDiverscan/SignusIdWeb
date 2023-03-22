@@ -412,6 +412,9 @@ const ReporteInventarios = new Vue({
                         1: {
                             columnWidth:'auto'
                         }
+                    },
+                    headerStyles: {
+                        fillColor: [234, 187, 0] // Color amarillo de signus en formato RGB
                     }
                 })
                 pdf.save('ReporteActivos.pdf');
