@@ -215,7 +215,7 @@ var urlfuncmenu = 'FuncionesMenuPrincipalAjax.aspx'
                     configMenu: "ObtenerTomasIncompletas",
                     IdPerfilActive: usuario[0].IdPerfilActive
                 }, function (data, error) {
-                    self.tomasIncompletas = JSON.parse(data);
+                    self.tomasIncompletas = data;
                     self.LlenarGrafica();
                 });
             },

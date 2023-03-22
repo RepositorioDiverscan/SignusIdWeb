@@ -69,7 +69,7 @@ namespace ActiveSmartWeb.Menu
                         var idPerfilActive4 = Convert.ToInt32(Request.Form["IdPerfilActive"].ToString());
                         tomasIn = _nConfiguracionMenuPerfil.ConsultarTomasIncompletas(idPerfilActive4);
 
-                        Response.Write(JsonConvert.SerializeObject(tomasIn, Formatting.Indented));
+                        Response.Write(tomasIn);
                         break;
                 }
             }
