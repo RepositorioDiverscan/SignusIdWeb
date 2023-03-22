@@ -256,8 +256,9 @@ var urlfuncmenu = 'FuncionesMenuPrincipalAjax.aspx'
                     IdPerfilActive: usuario[0].IdPerfilActive,
 
                 }, function (res, error) {
-                    var total = JSON.parse(res);
-                    self.TotalIncidentes = total;
+                    var total = res;
+                    self.totalIncidentes = total;
+                    
                 });
 
 
