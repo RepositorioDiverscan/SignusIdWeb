@@ -216,6 +216,7 @@ const GestionServicio = new Vue({
                 IdPerfilEmpresa: self.idPerfilEmpresa,
 
             }, function (data, error) {
+                console.log(JSON.parse(data));
                 self.ListaGestionS = JSON.parse(data);
                 self.ObtenerPaginas();
             }
@@ -223,6 +224,11 @@ const GestionServicio = new Vue({
 
             );
 
+        },
+
+        FormatearFecha: function (fecha) {
+            var fechaFormato = new Date(fecha);
+            return fechaFormato.getDate() + "/" + (fechaFormato.getMonth() + 1) + "/" + fechaFormato.getFullYear();
         },
 
         ActualizarEstado: function (IdGestionS, EstadoGestion) {
