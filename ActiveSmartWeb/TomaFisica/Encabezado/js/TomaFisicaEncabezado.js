@@ -30,6 +30,7 @@ const UbicacionesB = new Vue({
         select_UbicacionA: -1,
         select_Categorias: -1,
         idPerfilEmpresa: '',
+        editando: false,
     },
 
 
@@ -44,9 +45,15 @@ const UbicacionesB = new Vue({
         this.TiempoTranscurrido();
         this.ConsultaIdToma();
         this.ObtenerUbicaciones();
+        this.validarEditando();
        
     },
     methods: {
+        validarEditando: function () {
+            const elemento = sessionStorage.getItem('DatosToma');
+            this.editando = !!elemento;
+            console.log(this.editando);
+        },
         ObtenerIdioma: function () {
             var idiToma = "ES"
             if (localStorage.getItem("idiomaApp") != undefined) {
@@ -157,19 +164,18 @@ const UbicacionesB = new Vue({
                 
             }, function (respuesta, error) {
                 if (respuesta == "Actualizado") {
-                    self.nombre = '';
-                    self.descripcion = '';
-                    self.idTomaFisica = '';
-                    self.fechaInicial = '';
-                    self.fechaFinal = '';
-                    self.IdPerfilActive = '';
-                    self.IdCategoria = '';
-                    self.select_Categorias = -1;
-                    self.select_Usuarios = -1;
-                    self.select_UbicacionA = -1;
-                    self.idTomaFisica = '';
+                    //self.nombre = '';
+                    //self.descripcion = '';
+                    //self.idTomaFisica = '';
+                    //self.fechaInicial = '';
+                    //self.fechaFinal = '';
+                    //self.IdPerfilActive = '';
+                    //self.IdCategoria = '';
+                    //self.select_Categorias = -1;
+                    //self.select_Usuarios = -1;
+                    //self.select_UbicacionA = -1;
+                    //self.idTomaFisica = '';
                     alertas.success(self.Listaidiomas.Atencion, self.Listaidiomas.ActualizaE);
-                    sessionStorage.removeItem('DatosToma');
                 }
                 else {
                     alertas.error(self.Listaidiomas.Atencion, self.Listaidiomas.ErrorActual);

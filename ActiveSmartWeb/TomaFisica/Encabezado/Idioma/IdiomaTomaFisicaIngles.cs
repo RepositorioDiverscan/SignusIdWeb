@@ -8,6 +8,7 @@ namespace ActiveSmartWeb.TomaFisica.Encabezado.Idioma
     public class IdiomaTomaFisicaIngles
     {
         public const string _titulo = "CREATE PHYSICAL INVENTORIES";
+        public const string _tituloEditando = "EDIT PHYSICAL INVENTORIES";
         public const string _nombre = "Name*";
         public const string _descripcion = "Description*";
         public const string _fecha = "Date";

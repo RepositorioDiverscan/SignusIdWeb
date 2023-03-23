@@ -22,6 +22,7 @@ namespace ActiveSmartWeb.TomaFisica.Encabezado
                 {
                     case "ES":
                         Idioma.Titulo = IdiomaTomaFisicaEspanol._titulo;
+                        Idioma.TituloEditando = IdiomaTomaFisicaEspanol._tituloEditando;
                         Idioma.Nombre = IdiomaTomaFisicaEspanol._nombre;
                         Idioma.Descripcion = IdiomaTomaFisicaEspanol._descripcion;
                         Idioma.Anuncio = IdiomaTomaFisicaEspanol._anuncio;
@@ -55,6 +56,7 @@ namespace ActiveSmartWeb.TomaFisica.Encabezado
                         break;
                     case "EN":
                         Idioma.Titulo = IdiomaTomaFisicaIngles._titulo;
+                        Idioma.TituloEditando = IdiomaTomaFisicaIngles._tituloEditando;
                         Idioma.Nombre = IdiomaTomaFisicaIngles._nombre;
                         Idioma.Descripcion = IdiomaTomaFisicaIngles._descripcion;
                         Idioma.Anuncio = IdiomaTomaFisicaIngles._anuncio;
@@ -88,6 +90,7 @@ namespace ActiveSmartWeb.TomaFisica.Encabezado
                         break;
                     default:
                         Idioma.Titulo = IdiomaTomaFisicaEspanol._titulo;
+                        Idioma.TituloEditando = IdiomaTomaFisicaEspanol._tituloEditando;
                         Idioma.Nombre = IdiomaTomaFisicaEspanol._nombre;
                         Idioma.Descripcion = IdiomaTomaFisicaEspanol._descripcion;
                         Idioma.Anuncio = IdiomaTomaFisicaEspanol._anuncio;
