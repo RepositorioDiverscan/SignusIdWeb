@@ -43,7 +43,7 @@
                         <img src="../../images/icono_buscar_acces-o-01.svg" loading="lazy" alt="">
                     </a>
                     <div id="w-node-df034803-1e3e-ca71-07ba-195924f41dde-731f63ba" class="contenedor-botones carga-descarga"></div>
-                      <a id="w-node-df034803-1e3e-ca71-07ba-195924f41ddf-731f63ba" href="TomaFisicaEncabezado.aspx" class="link-block-boton dere w-inline-block">
+                      <a id="w-node-df034803-1e3e-ca71-07ba-195924f41ddf-731f63ba" href="#" v-on:click="EliminarInfoToma()" class="link-block-boton dere w-inline-block">
                           <img src="../images/icono_mas_activeID.svg" loading="lazy" alt="">
                       </a>
                       <a id="w-node-df034803-1e3e-ca71-07ba-195924f41de1-731f63ba" href="#" class="link-block-boton bell-link w-inline-block">
