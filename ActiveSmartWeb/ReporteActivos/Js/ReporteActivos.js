@@ -267,7 +267,7 @@ const ReporteActivos = new Vue({
                 function (data, error) {
 
                     var base64 = data;
-                    var nombreArchivo = "archivo.xlsx";
+                    var nombreArchivo = "ReporteActivos.xlsx";
                     // Convertimos la cadena base 64 a un array de bytes
                     var bytes = atob(base64);
                     var byteArray = new Uint8Array(bytes.length);
