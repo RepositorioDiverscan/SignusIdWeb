@@ -47,10 +47,6 @@ const UbicacionesB = new Vue({
        
     },
     methods: {
-        EliminarInfoToma: function () {
-            sessionStorage.removeItem('DatosToma');
-            window.location.href = "../Tomafisica/TomaFisica.aspx";
-        },
         ObtenerIdioma: function () {
             var idiToma = "ES"
             if (localStorage.getItem("idiomaApp") != undefined) {
