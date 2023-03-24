@@ -156,7 +156,7 @@
                             </div>
                         </div>
                         <h4 class="heading-3 h-empleados-ai">Activos asignados</h4>
-                        <h4 class="heading-4-subheading" v-cloak>{{nombreUsuario}}</h4>
+                        <%--<h4 class="heading-4-subheading" v-cloak>{{nombreUsuario}}</h4>--%>
                         <div class="div-tarjeta div-usuarios-ai">
                             <div class="form-block-usuarios w-form">
                                 <div id="email-form-4" name="email-form-4" data-name="Email Form 4" method="get" class="form-rol-usuarios-ai">
