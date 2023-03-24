@@ -2267,6 +2267,7 @@
     <Content Include="SiteMaster\SiteMasterInicio.Master" />
     <Content Include="Recursos\JSON\Monedas.JSON" />
     <Content Include="PlantillaExcelReporte\PlantillaReporte.xlsx" />
+    <Content Include="PlantillaExcelReporte\ExcelcargaSIGNUSID.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

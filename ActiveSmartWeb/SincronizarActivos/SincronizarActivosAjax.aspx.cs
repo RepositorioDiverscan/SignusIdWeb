@@ -451,8 +451,10 @@ namespace ActiveSmartWeb.SincronizarActivos
 
             List<ECategoriaActivo> Categoria = _nSincronizaActivos.ConsultaCategoriaActivos();
 
-            var rutaBase = "C:\\PlantillaExcel\\ExcelcargaSIGNUSID.xlsx";
-            var rutaDestino = "C:\\PlantillaExcel\\ExcelcargaSIGNUSID_1.xlsx";
+            //var rutaBase = "E:\\Cristopher Salazar\\SignusIdWeb\\ActiveSmartWeb\\PlantillaExcelReporte\\ExcelcargaSIGNUSID.xlsx";
+            var rutaBase = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PlantillaExcelReporte", "ExcelcargaSIGNUSID.xlsx");
+            //var rutaDestino = "C:\\PlantillaExcel\\ExcelcargaSIGNUSID_1.xlsx";
+            var rutaDestino = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PlantillaExcelReporte", "ExcelcargaSIGNUSID_1.xlsx");
 
             var fileInfoDestino = new FileInfo(rutaDestino);
 
@@ -468,7 +470,7 @@ namespace ActiveSmartWeb.SincronizarActivos
                 {
                     foreach (EUbicacionA element in ubicaciones)
                     {
-                        hojaActual.Cells[count, 1].Value = element.Nombre;
+                        hojaActual.Cells[count, 2].Value = element.Nombre;
 
                         count = count + 1;
                     }
@@ -483,8 +485,8 @@ namespace ActiveSmartWeb.SincronizarActivos
                     foreach (EEstadoActivo element in Estado)
                     {
                      
-                        hojaActual2.Cells[count, 1].Value = element.NombreEstado;
-                        hojaActual2.Cells[count, 2].Value = element.DescripcionEstado;                      
+                        hojaActual2.Cells[count, 2].Value = element.NombreEstado;
+                        hojaActual2.Cells[count, 3].Value = element.DescripcionEstado;                      
 
                         count = count + 1;
                     }
@@ -498,8 +500,8 @@ namespace ActiveSmartWeb.SincronizarActivos
                 {
                     foreach (ECategoriaActivo element in Categoria)
                     {
-                        hojaActual3.Cells[count, 1].Value = element.NombreCategoria;
-                        hojaActual3.Cells[count, 2].Value = element.DescripcionCategoria;
+                        hojaActual3.Cells[count, 2].Value = element.NombreCategoria;
+                        hojaActual3.Cells[count, 3].Value = element.DescripcionCategoria;
 
                         count = count + 1;
                     }
