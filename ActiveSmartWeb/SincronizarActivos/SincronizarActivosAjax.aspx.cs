@@ -345,6 +345,7 @@ namespace ActiveSmartWeb.SincronizarActivos
             return dataFiles;
         }
 
+        //Pasamos la fecha de dd/mm/yyyy a mm/dd/yyyy
         private string convertirFecha(string fecha)
         {
             string[] partesFecha = fecha.Split('/');
