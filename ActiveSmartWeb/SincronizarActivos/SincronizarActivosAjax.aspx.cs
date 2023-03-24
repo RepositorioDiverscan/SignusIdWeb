@@ -18,6 +18,7 @@ using ActiveSmartWeb.CategoriaActivo.Categoria;
 using ActiveSmartWeb.EstadoActivoFijo.EstadoActivo;
 using ActiveSmartWeb.Ubicaciones.UbicacionA;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
 
 namespace ActiveSmartWeb.SincronizarActivos
 {
@@ -276,52 +277,59 @@ namespace ActiveSmartWeb.SincronizarActivos
 
 
                     var numeroEtiqueta = "";
-                    if (excelWorksheet.Cells[row, 1].Value != null)
-                        numeroEtiqueta = excelWorksheet.Cells[row, 1].Value.ToString();
+                    if (excelWorksheet.Cells[row, 2].Value != null)
+                        numeroEtiqueta = excelWorksheet.Cells[row, 2].Value.ToString();
 
 
                     var descripcion = "";
-                    if (excelWorksheet.Cells[row, 2].Value != null)
-                        descripcion = excelWorksheet.Cells[row, 2].Value.ToString();
+                    if (excelWorksheet.Cells[row, 3].Value != null)
+                        descripcion = excelWorksheet.Cells[row, 3].Value.ToString();
 
                     var categoria = "";
-                    if (excelWorksheet.Cells[row, 3].Value != null)
-                        categoria = excelWorksheet.Cells[row, 3].Value.ToString();
+                    if (excelWorksheet.Cells[row, 4].Value != null)
+                        categoria = excelWorksheet.Cells[row, 4].Value.ToString();
 
                     var estado = "";
-                    if (excelWorksheet.Cells[row, 4].Value != null)
-                        estado = excelWorksheet.Cells[row, 4].Value.ToString();
+                    if (excelWorksheet.Cells[row, 5].Value != null)
+                        estado = excelWorksheet.Cells[row, 5].Value.ToString();
 
                     var ubicacion = "";
-                    if (excelWorksheet.Cells[row, 5].Value != null)
-                        ubicacion = excelWorksheet.Cells[row, 5].Value.ToString();
+                    if (excelWorksheet.Cells[row, 6].Value != null)
+                        ubicacion = excelWorksheet.Cells[row, 6].Value.ToString();
 
                     var marca = "";
-                    if (excelWorksheet.Cells[row, 6].Value != null)
-                        marca = excelWorksheet.Cells[row, 6].Value.ToString();
+                    if (excelWorksheet.Cells[row, 7].Value != null)
+                        marca = excelWorksheet.Cells[row, 7].Value.ToString();
 
                     var modelo = "";
-                    if (excelWorksheet.Cells[row, 7].Value != null)
-                        modelo = excelWorksheet.Cells[row, 7].Value.ToString();
+                    if (excelWorksheet.Cells[row, 8].Value != null)
+                        modelo = excelWorksheet.Cells[row, 8].Value.ToString();
 
                     var serie = "";
-                    if (excelWorksheet.Cells[row, 8].Value != null)
-                        serie = excelWorksheet.Cells[row, 8].Value.ToString();
+                    if (excelWorksheet.Cells[row, 9].Value != null)
+                        serie = excelWorksheet.Cells[row, 9].Value.ToString();
 
                     var costo = "";
-                    if (excelWorksheet.Cells[row, 9].Value != null)
-                        costo = excelWorksheet.Cells[row, 9].Value.ToString();
+                    if (excelWorksheet.Cells[row, 10].Value != null)
+                        costo = excelWorksheet.Cells[row, 10].Value.ToString();
 
                     var factura = "";
-                    if (excelWorksheet.Cells[row, 10].Value != null)
-                        factura = excelWorksheet.Cells[row, 10].Value.ToString();
+                    if (excelWorksheet.Cells[row, 11].Value != null)
+                        factura = excelWorksheet.Cells[row, 11].Value.ToString();
 
                     var fechaCompra = "";
-                    if (excelWorksheet.Cells[row, 11].Value != null)
-                        fechaCompra = excelWorksheet.Cells[row, 11].Value.ToString();
-
+                    if (excelWorksheet.Cells[row, 12].Value != null)
+                    {
+                        fechaCompra = excelWorksheet.Cells[row, 12].Value.ToString();
+                        fechaCompra = convertirFecha(fechaCompra);
+                        fechaCompra = fechaCompra + " 12:00:00 AM";
+                    }
+                        
                     if (fechaCompra == "")
                     { fechaCompra = DateTime.Today.ToString(); }
+
+                    
+
 
                     cantidad = cantidad + 1;
                     dataFiles.Add(new ESincronizaActivos(numeroEtiqueta, descripcion, categoria,
@@ -335,6 +343,21 @@ namespace ActiveSmartWeb.SincronizarActivos
             }
 
             return dataFiles;
+        }
+
+        private string convertirFecha(string fecha)
+        {
+            string[] partesFecha = fecha.Split('/');
+            int dia = int.Parse(partesFecha[0]);
+            int mes = int.Parse(partesFecha[1]);
+            int anio = int.Parse(partesFecha[2]);
+
+            // crear un objeto DateTime con la fecha en formato "dd/MM/yyyy"
+            DateTime fechaOriginal = new DateTime(anio, mes, dia);
+
+            // convertir la fecha a formato "MM/dd/yyyy"
+            return fechaOriginal.ToString("MM/dd/yyyy");
+            
         }
 
         private string crearexcel(int IdEmpresa,string Base64, int IdArchivo)
