@@ -161,7 +161,7 @@ const Perfil = new Vue({
 
                                     $.post(urlPerfil, {
                                         opciones: 'ActualizarUsuario',
-
+                                        
                                         IdPerfilUsuario: self.idPerfilUsuario,
                                         Nombre: self.nombre,
                                         Apellidos: self.apellidos,
@@ -186,6 +186,10 @@ const Perfil = new Vue({
                                         } else {
                                             self.ObtenerUsuario();
                                             self.Limpiar();
+                                            var prueba = JSON.parse(sessionStorage.getItem('Empresas'));
+                                            prueba[0].Nombre = self.nombre;
+                                            sessionStorage.setItem('Empresas', JSON.stringify(prueba));
+                                            console.log(JSON.parse(sessionStorage.getItem('Empresas')));
                                             alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.UsuarioActualizado);
                                         }
 

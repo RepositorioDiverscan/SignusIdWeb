@@ -34,7 +34,7 @@ namespace ActiveSmartWeb.PerfilEmpresa.Entidades
             this.industria = industria;
             this.idEmpresa = idEmpresa;
             this.imagen = imagen;
-            Moneda = moneda;
+            this.moneda = moneda;
         }
 
         public int IdPerfilEmpresa { get => idPerfilEmpresa; set => idPerfilEmpresa = value; }

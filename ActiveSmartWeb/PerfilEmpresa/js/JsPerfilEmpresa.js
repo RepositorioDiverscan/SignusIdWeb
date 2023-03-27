@@ -42,6 +42,7 @@ const PerfilEmpresa = new Vue({
     },
 
     mounted: function () {
+
         this.ValidarSesion();
         this.listaIdiomas = this.ObtenerIdiomaPerfilEmpresa();
         this.CargarInformacionUsuario();
@@ -209,6 +210,7 @@ const PerfilEmpresa = new Vue({
                         Correo: self.CorreoTxt,
                         Telefono: self.phoneInput1.getNumber(),
                         Industria: self.selectIndustria,
+                        Moneda: self.monedaSel,
                     })
 
                 }, function (respuesta, error) {

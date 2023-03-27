@@ -27,25 +27,25 @@
             <div id="w-node-_80b7fc40-ee3a-65fb-484a-db136c4f7fbd-81b79b2e" class="div-tarjeta tarjeta-responsive">
               <div class="form-block w-form">
 
-                <div  class="form">
+                <div  id="email-form" name="email-form" data-name="Email Form" method="get" class="form">
                   <div class="w-layout-grid grid-busqueda">
                       
                       <select v-cloak id="Categor-a" name="Categor-a" data-name="Categoría" 
                            v-on:change="FiltrarCE" 
                            v-model="selectCategoria" 
-                           class="select-field select-filtro-ai w-node-e3d6520c-cccc-c8b1-abc5-5e1346015ac1-81b79b2e w-select">
-                        <option   value="0">Todas</option>
+                           class="select-field select-filtro-ai select-activo w-node-e3d6520c-cccc-c8b1-abc5-5e1346015ac1-81b79b2e w-select">
+                        <option   value="0">Categoría</option>
                         <option v-for="ubi in Categorias" :key="ubi.IdCategoriaActivo" :value="ubi.IdCategoriaActivo"
                             >{{ubi.NombreCategoria}}</option >                                           
                     
                     </select>
                     
-                      <select v-cloak id="Todos" 
+                      <select v-cloak id="Estado" name="Estado" data-name="Estado"
                            v-on:change="FiltrarCE" 
                           v-model="selectEstado" 
-                       class="select-field select-filtro-ai w-node-d5abb89d-4b4f-d2fe-eb00-2132f4ef7838-81b79b2e w-select">
+                      class="select-field select-filtro-ai select-activo w-node-d5abb89d-4b4f-d2fe-eb00-2132f4ef7838-81b79b2e w-select">
                     
-                         <option value="0">Todos</option>
+                         <option value="0">Estado</option>
                         <option v-for="estado in Estados" :key="estado.IdEstadoActivo" 
                             :value="estado.IdEstadoActivo"  >{{estado.NombreEstado}}</option >     
                       </select>

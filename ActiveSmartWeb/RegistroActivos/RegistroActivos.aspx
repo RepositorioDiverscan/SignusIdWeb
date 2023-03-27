@@ -66,8 +66,9 @@
                         <input v-bind:disabled="editarcampos" type="text" v-model="marca" class="text-field w-input" maxlength="50" name="name-4" data-name="Name 4" placeholder="" id="marca"></div>
                     <div id="w-node-e462f054-586b-dc08-bbfc-3cd35a18ede3-2106bd5d" class="form-line"><label v-cloak for="name-5" class="field-label">{{listaidiomaRegistroActivo.Modelo}}</label> 
                         <input v-bind:disabled="editarcampos" type="text" v-model="modelo"  class="text-field w-input" maxlength="50" name="name-4" data-name="Name 4" placeholder="" id="modelo"></div>
+
                     <div id="w-node-_9e8e6069-b991-1517-a8fd-bd574f24680f-2106bd5d" class="form-line"><label v-cloak for="name-5" class="field-label">{{listaidiomaRegistroActivo.Ubicacion}}</label> 
-                        <select v-cloak id="selU" name="field-4" v-bind:style="editarselect" v-model="selectUbicacion"  data-name="Field 4" class="select-field w-select">
+                        <select v-cloak id="selU" name="field-4"  v-model="selectUbicacion"  data-name="Field 4" class="select-field w-select">
                         <option value="0">{{listaidiomaRegistroActivo.SelectUbi}}</option> 
                         <option v-for="ubicacion in Ubicaciones" :key="ubicacion.IdUbicacionA" :value="ubicacion.IdUbicacionA" >{{ubicacion.Nombre}}</option >    
                      </select></div>

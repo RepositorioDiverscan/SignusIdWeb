@@ -8,6 +8,7 @@ namespace ActiveSmartWeb.TomaFisica.Encabezado.Idioma
     public class IdiomaTomaFisicaEspanol
     {
         public const string _titulo = "CREAR TOMA FÍSICA";
+        public const string _tituloEditando = "EDITAR TOMA FÍSICA";
         public const string _nombre = "Nombre*";
         public const string _descripcion = "Descripción*";
         public const string _fecha = "Fecha";
@@ -41,7 +42,7 @@ namespace ActiveSmartWeb.TomaFisica.Encabezado.Idioma
         public const string _msj2 = "Tomas físicas";
         public const string _selCat = "Seleccione una categoría";
         public const string _selUbi = "Seleccione un usuario";
-        public const string _selUsu = "TSeleccione una ubicación";
+        public const string _selUsu = "Seleccione un usuario";
         public const string _plhDesc = "Escriba una descripción";
         public const string _todos = "Todos";
     }

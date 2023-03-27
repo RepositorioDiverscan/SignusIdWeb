@@ -146,7 +146,7 @@ const contrato = new Vue({
                 IdPerfilEmpresa: self.idPerfilEmpresa
 
             }, function (data, error) {
-                var nombre = 'Activos'
+                var nombre = 'SincronizarActivos'
                 fetch(data)
                     .then(resp => resp.blob())
                     .then(blob => {

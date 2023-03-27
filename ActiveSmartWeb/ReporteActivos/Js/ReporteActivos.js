@@ -240,10 +240,14 @@ const ReporteActivos = new Vue({
                     1: {
                         columnWidth: 'auto'
                     }
+                },
+                headerStyles: {
+                    fillColor: [234, 187, 0] // Color amarillo de signus en formato RGB
                 }
             })
             pdf.save('ReporteActivos.pdf');
             alertify.success(self.listaIdioma.OkDescarga);
+            this.FiltrarCE();
         },
 
         ExportarExcel: function () {
@@ -262,21 +266,26 @@ const ReporteActivos = new Vue({
 
                 function (data, error) {
 
-                    var nombre = 'ReporteActivos'
-                    fetch(data)
-                        .then(resp => resp.blob())
-                        .then(blob => {
-                            const url = window.URL.createObjectURL(blob);
-                            const a = document.createElement('a');
-                            a.style.display = 'none';
-                            a.href = url;
-                            a.download = nombre;
-                            document.body.appendChild(a);
-                            a.click();
-                            window.URL.revokeObjectURL(url);
-                            alertify.success(self.listaIdioma.OkDescarga); //alerta de correcto
-                        })
-                        .catch(() => alertify.error(self.listaIdioma.ErrorDescarg));
+                    var base64 = data;
+                    var nombreArchivo = "ReporteActivos.xlsx";
+                    // Convertimos la cadena base 64 a un array de bytes
+                    var bytes = atob(base64);
+                    var byteArray = new Uint8Array(bytes.length);
+                    for (var i = 0; i < bytes.length; i++) {
+                        byteArray[i] = bytes.charCodeAt(i);
+                    }
+
+                    // Creamos un objeto Blob a partir del array de bytes
+                    var blob = new Blob([byteArray], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+                    // Creamos un enlace de descarga y simulamos un clic para descargar el archivo
+                    var url = window.URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.download = nombreArchivo;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
                 })
         },
         ValidarSesion: function () {

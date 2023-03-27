@@ -43,10 +43,12 @@ namespace ActiveSmartWeb.Perfil
 
                         UsuarioPerfilActive usuarioPerfilActive = new UsuarioPerfilActive();
                         usuarioPerfilActive.IdPerfilUsuario = Convert.ToInt32(Request.Form["IdPerfilUsuario"].ToString());
-                        usuarioPerfilActive.Posicion = Request.Form["Puesto"].ToString(); ;
+                        usuarioPerfilActive.Posicion = Request.Form["Puesto"].ToString(); 
                         usuarioPerfilActive.Telefono = Request.Form["Telefono"].ToString();
                         usuarioPerfilActive.Identificacion = Request.Form["Identificacion"].ToString();
                         usuarioPerfilActive.IdPerfilEmpresa = Convert.ToInt32(Request.Form["IdPerfilEmpresa"].ToString());
+                        usuarioPerfilActive.Nombre = Request.Form["Nombre"].ToString();
+                        usuarioPerfilActive.Apellidos = Request.Form["Apellidos"].ToString();
 
                         var respuesta = nUsuarioPerfilActive.ActualizarPefilActiveUsuario(usuarioPerfilActive);
                         Response.Write(JsonConvert.SerializeObject(respuesta, Formatting.Indented));

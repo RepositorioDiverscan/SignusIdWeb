@@ -11,7 +11,7 @@ namespace ActiveSmartWeb.GestionServicio.Idioma
         private const string _solicitante = "Solicitante";
         private const string _activo = "Activo";
         private const string _razonServicio = "Razón de servicio";
-        private const string _tipRazon = "Tipo de razón";
+        private const string _tipRazon = "Estado";
         private const string _asignar = "Asignar a:";
         private const string _descReq = "Descripción del Requerimiento";
         private const string _tReq = "Requerimiento de servicio";
@@ -23,7 +23,7 @@ namespace ActiveSmartWeb.GestionServicio.Idioma
         private const string _plhTipoBusqueda = "Tipo de Búsqueda";
         private const string _plhDescActivo = "Descripción del Activo";
         private const string _plhSeleccionarRazon = "Seleccionar razón de servicio";
-        private const string _plhSeleccionartipR = "Seleccionar tipo de razón";
+        private const string _plhSeleccionartipR = "Seleccionar el Estado";
         private const string _plhSeleccionarColab = "Seleccione Colaborador";
         private const string _tipBusPlaca = "Búsqueda por número de placa";
         private const string _tipBusActivo = "Búsqueda por número de activo";

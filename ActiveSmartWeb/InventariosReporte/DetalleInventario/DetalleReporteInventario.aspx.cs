@@ -11,6 +11,8 @@ using System.ComponentModel;
 using ActiveSmartWeb.TomaFisica.DetalleToma;
 using System.IO;
 using OfficeOpenXml;
+using OfficeOpenXml.Drawing;
+using OfficeOpenXml.Style;
 
 namespace ActiveSmartWeb.InventariosReporte.DetalleInventario
 {
@@ -94,46 +96,107 @@ namespace ActiveSmartWeb.InventariosReporte.DetalleInventario
     {
         if (idToma < 0)
             return "";
+        
+        // Creamos un nuevo archivo de Excel
+        using (var excelPackage = new ExcelPackage())
+        {
+            // Creamos una hoja de trabajo en el archivo
+            var worksheet = excelPackage.Workbook.Worksheets.Add("Activos");
 
-        DDetalleToma dDetalleToma = new DDetalleToma();
-        NDetalleToma nDetalleToma = new NDetalleToma(dDetalleToma);
+            // Escribimos los encabezados de las columnas
+            worksheet.Cells[2, 1].Value = "Número de Activo";
+            worksheet.Cells[2, 2].Value = "Placa";
+            worksheet.Cells[2, 3].Value = "Descripción";
+            worksheet.Cells[2, 4].Value = "Observación de la Toma de Activos";
+            worksheet.Cells[2, 5].Value = "Resultado de Inventario";
 
-        var activos =0;
-        IdiomaGeneralReporte idioma = obtenerHeadersPorIdioma();
-        PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(EDetalleToma));
-        PropertyDescriptor[] propertiesSelected = new PropertyDescriptor[4];
-        propertiesSelected[0] = properties.Find("NumeroActivo", false);
-        propertiesSelected[1] = properties.Find("PlacaActivo", false);
-        propertiesSelected[2] = properties.Find("ObservacionActivo", false);
-        propertiesSelected[3] = properties.Find("DescripcionActivo", false);
-
-        var propertySelected = new PropertyDescriptorCollection(propertiesSelected);
-        var rutaVirtual = "~/temp/" + string.Format("ReporteInventario-" + idToma + ".xlsx");
-        var fileName = Server.MapPath(rutaVirtual);
-        List<string> headersTomaA = new List<string>() { idioma.NombreToma,idioma.Categoria, idioma.Ubicacion};
-        List<string> headersTomaB = new List<string>() { nombreToma, categoria, ubicacion};
-        List<string> headersActivos = new List<string>() { idioma.NumActivo, idioma.PlacaActivo,idioma.Descripcion, idioma.Observacion, idioma.DescripcionActivo};
-          
-            List<string> ListActivos = new List<string>();
-            for (int i = 0; i <= ListaActivos.Count()-1; i++)
+                // Escribimos los datos de cada activo en las filas siguientes
+            for (int i = 0; i < ListaActivos.Count; i++)
             {
-                string[] Activo = { ListaActivos[i].NumeroActivo, ListaActivos[i].PlacaActivo, ListaActivos[i].DescripcionActivo, ListaActivos[i].ObservacionActivo };
-                ListActivos.AddRange(Activo);
+                worksheet.Cells[i + 3, 1].Value = ListaActivos[i].NumeroActivo;
+                worksheet.Cells[i + 3, 2].Value = ListaActivos[i].PlacaActivo;
+                worksheet.Cells[i + 3, 3].Value = ListaActivos[i].DescripcionActivo;
+                if(ListaActivos[i].ObservacionActivo == "")
+                {
+                    worksheet.Cells[i + 3, 4].Value = "Sin observación";
+                } 
+                else
+                {
+                    worksheet.Cells[i + 3, 4].Value = ListaActivos[i].ObservacionActivo;
+                }
+                
+                if(ListaActivos[i].Estado == 1)
+                {
+                    worksheet.Cells[i + 3, 5].Value = "Encontrado";
+                }
+                else
+                {
+                    worksheet.Cells[i + 3, 5].Value = "Faltante";
+                }
+                 
+
             }
 
-            List<List<string>> headers = new List<List<string>>() { headersTomaA, headersTomaB, headersActivos };
+            // Ajustamos el ancho de todas las columnas según su contenido
+            worksheet.Cells.AutoFitColumns();
 
+            // Centramos el texto en todas las celdas
+            var range = worksheet.Cells[2, 1, ListaActivos.Count + 2, 5];
+            range.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
-            ExportData( fileName, propertySelected, headers, ListaActivos);
+            // Agregar bordes a todas las celdas en la tabla
+            var tableRange = worksheet.Cells[2, 1, ListaActivos.Count + 2, 5];
+            tableRange.Style.Border.Top.Style = ExcelBorderStyle.Thin;
+            tableRange.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+            tableRange.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+            tableRange.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
 
+            // Creamos un nuevo color en formato RGB
+            var colorDeFondo = System.Drawing.Color.FromArgb(231, 180, 31);
 
-            //LO CONVIERTE EN BSE 64
-            string cadenaADevolver = Convert.ToBase64String(System.IO.File.ReadAllBytes(fileName));
-        if (File.Exists(fileName))
-        {
-            File.Delete(fileName); //ELIMINA 
-        }
-        return "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," + cadenaADevolver; //ENCABEZADO DE BSE 64 Y LE PASA LA DATA
+            // Establecemos el color de fondo de la segunda fila
+            var segundaFila = worksheet.Cells[2, 1, 2, 5];
+            segundaFila.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+            segundaFila.Style.Fill.BackgroundColor.SetColor(colorDeFondo);
+
+            int RowIndex = 1;
+            int ColIndex = 1;
+
+            // Ajustar el tamaño de la fila y la columna en función del tamaño de la imagen
+            worksheet.Row(RowIndex).Height = 68;
+
+            //Obtenemos la ubicacion de la imagen
+            string imagePath = Server.MapPath("~/images/signus_id.png");
+
+            //Creamos el elemento imagen
+            System.Drawing.Image img = System.Drawing.Image.FromFile(imagePath);
+
+            //Agregamos la imagen al excel
+            ExcelPicture pic = worksheet.Drawings.AddPicture("Picture_Name", img);
+
+            //Seteamos la posicion de la imagen
+            pic.SetPosition(RowIndex - 1, 0, ColIndex - 1, 0);
+
+            // Ajustar el tamaño de la imagen
+            pic.SetSize(238, 69);
+
+            // Combinar las celdas de la columna 1 a la columna 3 en la fila 1
+            ExcelRange mergedCell = worksheet.Cells[1, 1, 1, 3];
+            mergedCell.Merge = true;
+
+            // Guardamos el archivo en un MemoryStream
+            using (var memoryStream = new MemoryStream())
+            {
+                excelPackage.SaveAs(memoryStream);
+
+                // Convertimos el archivo a base 64
+                var bytes = memoryStream.ToArray();
+                var base64 = Convert.ToBase64String(bytes);
+
+                return base64;
+                }
+            }
+
     }
         public static void ExportData( string pfilePath, PropertyDescriptorCollection properties, List<List<string>> headers, List<EDetalleInventario> Activos)
         {

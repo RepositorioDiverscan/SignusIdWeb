@@ -8,6 +8,7 @@ namespace ActiveSmartWeb.TomaFisica.Encabezado.Idioma
     public class IdiomaTomaFisicaGeneral
     {
         private string _titulo;
+        private string _tituloEditando;
         private string _nombre;
         private string _descripcion;
         private string _anuncio;
@@ -48,9 +49,10 @@ namespace ActiveSmartWeb.TomaFisica.Encabezado.Idioma
         {
         }
 
-        public IdiomaTomaFisicaGeneral(string titulo, string nombre, string descripcion, string anuncio, string tienda, string fechaFinal, string fechaInicial, string categoria, string validNombre, string errorAgreg, string errorActual, string registroE, string actualizaE, string errorfechas, string tituloEditar, string errorRango, string errorConsulta, string msjDescarga, string msjIntenteNuev, string descargaToma, string descargaActivo, string errorRangoFechas, string estado, string atencion, string usuAsig, string ubicaciones, string validSelCat, string validSelUsu, string validSelUbi, string msj1, string msj2, string selCat, string selUbi, string selUsu, string plhDesc, string todos)
+        public IdiomaTomaFisicaGeneral(string titulo, string tituloEditando, string nombre, string descripcion, string anuncio, string tienda, string fechaFinal, string fechaInicial, string categoria, string validNombre, string errorAgreg, string errorActual, string registroE, string actualizaE, string errorfechas, string tituloEditar, string errorRango, string errorConsulta, string msjDescarga, string msjIntenteNuev, string descargaToma, string descargaActivo, string errorRangoFechas, string estado, string atencion, string usuAsig, string ubicaciones, string validSelCat, string validSelUsu, string validSelUbi, string msj1, string msj2, string selCat, string selUbi, string selUsu, string plhDesc, string todos)
         {
             _titulo = titulo;
+            _tituloEditando = tituloEditando;
             _nombre = nombre;
             _descripcion = descripcion;
             _anuncio = anuncio;
@@ -89,6 +91,7 @@ namespace ActiveSmartWeb.TomaFisica.Encabezado.Idioma
         }
 
         public string Titulo { get => _titulo; set => _titulo = value; }
+        public string TituloEditando { get => _tituloEditando; set => _tituloEditando = value; }
         public string Nombre { get => _nombre; set => _nombre = value; }
         public string Descripcion { get => _descripcion; set => _descripcion = value; }
         public string Anuncio { get => _anuncio; set => _anuncio = value; }

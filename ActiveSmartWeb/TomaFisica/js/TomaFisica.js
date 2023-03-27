@@ -50,7 +50,12 @@ const TomaFisica = new Vue({
             this.ObtenerTodosDatos();
         },
 
-        methods: {
+    methods: {
+            //Elimina la informacion de la toma por si se va a ingresar a crear toma no cargue los datos de la anterior
+            EliminarInfoToma: function () {
+            sessionStorage.removeItem('DatosToma');
+            window.location.href = "TomaFisicaEncabezado.aspx";
+            },
             EstablecerFechasHoy: function () {
                 var tiempoTranscurrido = Date.now();
                 var actual = new Date(tiempoTranscurrido);

@@ -24,6 +24,7 @@ namespace ActiveSmartWeb.PerfilEmpresa.Entidades
             db.AddInParameter(dbCommand, "@Direccion", DbType.String, perfilEmpresa.Direccion);
             db.AddInParameter(dbCommand, "@IdIndustria", DbType.Int64, perfilEmpresa.Industria);
             db.AddInParameter(dbCommand, "@ContactoPrincipal", DbType.String, perfilEmpresa.ContactoPrincipal);
+            db.AddInParameter(dbCommand, "@Moneda", DbType.String, perfilEmpresa.Moneda);
             db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
             dbCommand.CommandTimeout = 3600;
             db.ExecuteNonQuery(dbCommand);

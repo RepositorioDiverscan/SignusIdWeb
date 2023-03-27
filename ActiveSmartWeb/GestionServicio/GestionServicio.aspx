@@ -100,7 +100,8 @@
                       <label v-cloak for="field-4" class="field-label">{{listaIdiomas.TipRazon}}*</label> 
                       
                       <select v-cloak id="field-4" v-model="estado" name="field-4" data-name="Field 4" class="select-field w-select">
-                        <option value="0">{{listaIdiomas.PlhSeleccionartipR}}</option> 
+                        <option value="0">{{listaIdiomas.PlhSeleccionartipR}}</option>
+                        <option value="Nuevo">Nuevo</option>
                         <option value="En Proceso">En Proceso</option>
                         <option value="Resuelto">Resuelto</option>
                         <option value="Cerrado">Cerrado</option>
@@ -159,7 +160,7 @@
                                 <div v-cloak class="parrafo-grid">{{gesT.Descripcion}}</div>
                               </th>
                               <th class="celda-vacia descrip">
-                                <div v-cloak class="parrafo-grid">{{listaIdiomas.TFecha}}</div>
+                                <div v-cloak class="parrafo-grid">{{FormatearFecha(gesT.Fecha)}}</div>
                               </th>
                               <th v-cloak class="celda-vacia">
                                 <div class="parrafo-grid">{{gesT.NumeroTicket}}</div>

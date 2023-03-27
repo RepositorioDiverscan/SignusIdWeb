@@ -8,7 +8,7 @@
             <div id="w-node-_1881bb3d-bb04-a65f-0013-ab2c81d3403d-731f63ba" class="div-banner-extremo"></div>
             <div id="w-node-_680aac24-239c-4b95-2e31-486e071a336c-731f63ba" class="div-block-223">
               <div class="w-layout-grid grid-container-title" style="padding-top:10px; padding-bottom:10px">
-                <a href="#" onclick="window.history.back()" class="link-block-back w-inline-block"><img src="../images/Back-arrow.svg" loading="lazy" height="26" width="26" alt="" class="back"></a>
+                <a href="../Menu/MenuPrincipal.aspx" class="link-block-back w-inline-block"><img src="../images/Back-arrow.svg" loading="lazy" height="26" width="26" alt="" class="back"></a>
                 <h1 id="w-node-_680aac24-239c-4b95-2e31-486e071a3370-731f63ba" class="titulo-principal-2" v-cloak>{{listaIdiomaToma.Titulo}}</h1> 
                 <div data-hover="false" data-delay="0" id="w-node-_01c345db-44dd-5950-8797-fc0e77f5b71f-731f63ba" class="dropdown-detalles-ai w-dropdown">
                   <div class="toggle-detalles-ai w-dropdown-toggle" style="padding:0px"><img src="../images/info2.svg" loading="lazy" alt="" class="img-detalles-ai"></div>
@@ -43,7 +43,7 @@
                         <img src="../../images/icono_buscar_acces-o-01.svg" loading="lazy" alt="">
                     </a>
                     <div id="w-node-df034803-1e3e-ca71-07ba-195924f41dde-731f63ba" class="contenedor-botones carga-descarga"></div>
-                      <a id="w-node-df034803-1e3e-ca71-07ba-195924f41ddf-731f63ba" href="TomaFisicaEncabezado.aspx" class="link-block-boton dere w-inline-block">
+                      <a id="w-node-df034803-1e3e-ca71-07ba-195924f41ddf-731f63ba" href="#" v-on:click="EliminarInfoToma()" class="link-block-boton dere w-inline-block">
                           <img src="../images/icono_mas_activeID.svg" loading="lazy" alt="">
                       </a>
                       <a id="w-node-df034803-1e3e-ca71-07ba-195924f41de1-731f63ba" href="#" class="link-block-boton bell-link w-inline-block">
