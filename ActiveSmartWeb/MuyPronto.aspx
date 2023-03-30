@@ -19,8 +19,8 @@
   <script type="text/javascript">WebFont.load({  google: {    families: ["Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic","Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"]  }});</script>
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-  <link href="images/webclip.png" rel="apple-touch-icon">
+  <link href="images/logo-02.png" rel="shortcut icon" type="image/x-icon">
+  <link href="images/logo-02.png" rel="apple-touch-icon">
 </head>
 <body>
   <div class="div-img-muy-pronto"><img src="images/pag-muy-pronto.jpg" loading="lazy" sizes="(max-width: 1920px) 100vw, 1920px" srcset="images/pag-muy-pronto.jpg 500w, images/pag-muy-pronto.jpg 800w, images/pag-muy-pronto.jpg 1080w, images/pag-muy-pronto.jpg 1600w, images/pag-muy-pronto.jpg 1920w" alt=""></div>
