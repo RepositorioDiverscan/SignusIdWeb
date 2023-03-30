@@ -1,9 +1,13 @@
 ﻿using ActiveSmartWeb.GestionServicio.Gestion;
 using ActiveSmartWeb.Login.Entidades;
+using ActiveSmartWeb.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -14,6 +18,59 @@ namespace ActiveSmartWeb.GestionServicio
 {
     public partial class AjaxGestionServicio : System.Web.UI.Page
     {
+
+        private void enviarCorreo(string correoReceptor)
+        {
+            try
+            {
+                //Correo de envio.
+                var correode = ConfigurationManager.AppSettings["CorreDe"];
+                var pass = ConfigurationManager.AppSettings["Pass"];
+
+                string correofrom = ConfigurationManager.AppSettings["CorreEnvio"];
+
+                correoReceptor = "csalazar.diverscan@gmail.com";
+
+                string Mensaje = "Prueba";
+
+                //Configuracion para el correo.
+                var correo = new MailMessage
+                {
+                    From = new MailAddress(correofrom), //Correo de salida.
+                    Subject = "Prueba Correo", //Asunto.
+                    IsBodyHtml = true
+                };
+
+                //Configuracion para el correo cliente.
+
+                //destinatario y mensaje del correo para el cliente.
+                correo.To.Add(correoReceptor); //Correo destino
+                correo.Body = Mensaje; //Mensaje del correo
+                correo.Priority = MailPriority.Normal;
+
+                var smtp = new SmtpClient(ConfigurationManager.AppSettings["ServerSmtp"])
+                {
+                    Port = Convert.ToInt32(ConfigurationManager.AppSettings["PortSmtp"]),
+
+                    EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["SSL"])
+                };
+                if (pass.Trim() != "")
+                {
+                    smtp.Credentials = new NetworkCredential(correode, pass);
+                }
+
+                smtp.Send(correo);
+
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                
+                //FileExceptionWriter.WriteException(ex);
+                //return -1;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
              NGestionServicio _nGestion = new NGestionServicio();
@@ -56,8 +113,10 @@ namespace ActiveSmartWeb.GestionServicio
                         gestionServicio.Descripcion = descripcion;
                         gestionServicio.IdPerfilEmpresa = idPerfilEmpresaC;
 
-                        var respuesta = _nGestion.InsertarGestion(gestionServicio);
-                        Response.Write(JsonConvert.SerializeObject(respuesta, Formatting.Indented));
+                        //var respuesta = _nGestion.InsertarGestion(gestionServicio);
+                        //Response.Write(JsonConvert.SerializeObject(respuesta, Formatting.Indented));
+                        enviarCorreo("");
+                        Response.Write(JsonConvert.SerializeObject("ERROR", Formatting.Indented));
                         break;
 
                     case "ObtenerGestionesPorIdEmpresa":
