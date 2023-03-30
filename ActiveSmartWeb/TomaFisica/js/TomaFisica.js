@@ -22,7 +22,7 @@ const TomaFisica = new Vue({
         valorEncontrados: 1,
         valorNoEncontrados: 2,
         valorSobrantes: 3,
-        elementosXPagina: 3,
+        elementosXPagina: 10,
         paginas: 0,
         datosPaginados: [],
         paginaActual: 1,
