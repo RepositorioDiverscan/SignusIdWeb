@@ -229,9 +229,12 @@ const ReporteActivos = new Vue({
         GenerarReportePDF: function () {
             var pdfsize = 'a0';
             var pdf = new jsPDF('1', 'pt', pdfsize);
+            var img = new Image()
+            img.src = '../../images/signus_id.png'
+            pdf.addImage(img, 'png', 35, 30, 550, 150)
             pdf.autoTable({
                 html: '#TablaActivos',
-                startY: 60,
+                startY: 200,
                 styles: {
                     fontSize: 30,
                     cellWidth: 'wrap'

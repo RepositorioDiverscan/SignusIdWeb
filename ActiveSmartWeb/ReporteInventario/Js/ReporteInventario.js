@@ -451,7 +451,7 @@ Vue.component('reporte', {
         },
 
 
-        //aun no 
+        
         ExportarExcel: function () {
             var self = this;
             var idiomaReporte = "ES"
