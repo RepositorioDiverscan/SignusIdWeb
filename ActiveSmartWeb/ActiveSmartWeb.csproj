@@ -1387,6 +1387,7 @@
     <Compile Include="GestionServicio\Gestion\EGestionServicio.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="GestionServicio\Gestion\Helper.cs" />
     <Compile Include="GestionServicio\Gestion\NGestionServicio.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>

@@ -29,18 +29,22 @@ namespace ActiveSmartWeb.GestionServicio
 
                 string correofrom = ConfigurationManager.AppSettings["CorreEnvio"];
 
-                string Mensaje = "Gestión de Servicio" +
-                    "<br> Solicitado por: " + solicitante[0] + " " + solicitante[1] +
-                    "<br> Tipo de requerimiento: " + gestionServicio.TipoRequerimiento +
-                    "<br> Descripción del Requerimiento: " + gestionServicio.Descripcion +
-                    "<br> Activo: " + activo.DescripcionCorta +
-                    "<br> Número: " + activo.NumeroActivo +
-                    "<br> Placa: " + activo.PlacaActivo +
-                    "<br> Marca: " + activo.Marca +
-                    "<br> Número de serie: " + activo.Serie +
-                    "<br> Estado del Activo: " + activo.NombreEstado +
-                    "<br> Categoría del Activo: " + activo.NombreCategoria +
-                    "<br> Ubicación: " + activo.NombreUbicacion;
+                Helper helper = new Helper();
+
+                string Mensaje = helper.GenerarHtml("Prueba");
+
+                //string Mensaje = "Gestión de Servicio" +
+                //    "<br> Solicitado por: " + solicitante[0] + " " + solicitante[1] +
+                //    "<br> Tipo de requerimiento: " + gestionServicio.TipoRequerimiento +
+                //    "<br> Descripción del Requerimiento: " + gestionServicio.Descripcion +
+                //    "<br> Activo: " + activo.DescripcionCorta +
+                //    "<br> Número: " + activo.NumeroActivo +
+                //    "<br> Placa: " + activo.PlacaActivo +
+                //    "<br> Marca: " + activo.Marca +
+                //    "<br> Número de serie: " + activo.Serie +
+                //    "<br> Estado del Activo: " + activo.NombreEstado +
+                //    "<br> Categoría del Activo: " + activo.NombreCategoria +
+                //    "<br> Ubicación: " + activo.NombreUbicacion;
 
                 //Configuracion para el correo.
                 var correo = new MailMessage
