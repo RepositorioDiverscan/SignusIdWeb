@@ -19,7 +19,7 @@ namespace ActiveSmartWeb.GestionServicio
     public partial class AjaxGestionServicio : System.Web.UI.Page
     {
 
-        private void enviarCorreo(string correoReceptor)
+        private void enviarCorreo(string correoReceptor, EGestionServicio gestionServicio, EActivo activo)
         {
             try
             {
@@ -31,13 +31,24 @@ namespace ActiveSmartWeb.GestionServicio
 
                 correoReceptor = "csalazar.diverscan@gmail.com";
 
-                string Mensaje = "Prueba";
+                string Mensaje = "Gestión de Servicio" +
+                    "<br> Solicitado por: " + gestionServicio.IdUsuarioSolicita +
+                    "<br> Tipo de requerimiento: " + gestionServicio.TipoRequerimiento +
+                    "<br> Descripción del Requerimiento: " + gestionServicio.Descripcion +
+                    "<br> Activo: " + activo.DescripcionCorta +
+                    "<br> Número: " + activo.NumeroActivo +
+                    "<br> Placa: " + activo.PlacaActivo +
+                    "<br> Marca: " + activo.Marca +
+                    "<br> Número de serie: " + activo.Serie +
+                    "<br> Estado del Activo: " + activo.NombreEstado +
+                    "<br> Categoría del Activo: " + activo.NombreCategoria +
+                    "<br> Ubicación: " + activo.NombreUbicacion;
 
                 //Configuracion para el correo.
                 var correo = new MailMessage
                 {
                     From = new MailAddress(correofrom), //Correo de salida.
-                    Subject = "Prueba Correo", //Asunto.
+                    Subject = "Gestión de Servicio", //Asunto.
                     IsBodyHtml = true
                 };
 
@@ -115,8 +126,12 @@ namespace ActiveSmartWeb.GestionServicio
 
                         //var respuesta = _nGestion.InsertarGestion(gestionServicio);
                         //Response.Write(JsonConvert.SerializeObject(respuesta, Formatting.Indented));
-                        enviarCorreo("");
-                        Response.Write(JsonConvert.SerializeObject("ERROR", Formatting.Indented));
+                        
+                        //Obtenemos la informacion del activo
+                        EActivo infoActivo = _nGestion.ObtenerActivoId(idActivo);
+
+                        enviarCorreo("", gestionServicio, infoActivo);
+                        Response.Write(JsonConvert.SerializeObject("", Formatting.Indented));
                         break;
 
                     case "ObtenerGestionesPorIdEmpresa":

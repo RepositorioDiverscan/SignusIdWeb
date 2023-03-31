@@ -115,6 +115,52 @@ namespace ActiveSmartWeb.GestionServicio.Gestion
             return activo;
         }
 
+        public EActivo ObtenerActivoId (int idActico)
+        {
+            EActivo eA = null;
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("SP_ObtenerActivoId");
+            db.AddInParameter(dbCommand, "@IdActivo", DbType.Int32, idActico);
+            dbCommand.CommandTimeout = 3600;
+            using (var reader = db.ExecuteReader(dbCommand))
+            {
+                if (reader.Read())
+                {
+                    eA = new EActivo();
+                    eA.IdActivo = reader["IdActivo"].ToString();
+                    eA.NumeroActivo = reader["NumeroActivo"].ToString();
+                    eA.PlacaActivo = reader["PlacaActivo"].ToString();
+                    eA.DescripcionCorta = reader["DescripcionCorta"].ToString();
+                    eA.NombreEstado = reader["NombreEstado"].ToString();
+                    eA.NombreCategoria = reader["NombreCategoria"].ToString();
+                    eA.NombreUbicacion = reader["Nombre"].ToString();
+                    eA.Marca = reader["Marca"].ToString();
+                    eA.Modelo = reader["Modelo"].ToString();
+                    eA.Serie = reader["Serie"].ToString();
+                }
+            }
+
+            return eA;
+        }
+
+        public List<string> ObtenerNombreUsuario(int IdUsuario)
+        {
+            List<string> usuario = new List<string>();
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("SP_ObtenerNombreUsuarioId");
+            db.AddInParameter(dbCommand, "@IdPerfilUsuario", DbType.Int32, IdUsuario);
+            dbCommand.CommandTimeout = 3600;
+
+            using (var reader = db.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    usuario.Add(reader["Nombre"].ToString());
+                    usuario.Add(reader["Apellidos"].ToString());
+                }
+            }
+            return usuario;
+        }
 
     }
 }

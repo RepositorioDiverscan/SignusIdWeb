@@ -86,5 +86,20 @@ namespace ActiveSmartWeb.GestionServicio.Gestion
                 return new List<string>();
             }
         }
+
+        public EActivo ObtenerActivoId(int IdActivo)
+        {
+            try
+            {
+                var activo = _gestionServicio.ObtenerActivoId(IdActivo);
+                return activo;
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return new EActivo();
+            }
+        }
+
     }
 }
