@@ -101,5 +101,33 @@ namespace ActiveSmartWeb.GestionServicio.Gestion
             }
         }
 
+        public List<string> ObtenerNombreUsuarioId(int IdActivo)
+        {
+            try
+            {
+                var activo = _gestionServicio.ObtenerNombreUsuario(IdActivo);
+                return activo;
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return new List<string>();
+            }
+        }
+
+        public string ObtenerCorreoPorId(int id)
+        {
+            try
+            {
+                return _gestionServicio.ObtenerCorreoPorId(id);
+                
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return "";
+            }
+        }
+
     }
 }

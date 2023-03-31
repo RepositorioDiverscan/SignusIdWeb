@@ -19,7 +19,7 @@ namespace ActiveSmartWeb.GestionServicio
     public partial class AjaxGestionServicio : System.Web.UI.Page
     {
 
-        private void enviarCorreo(string correoReceptor, EGestionServicio gestionServicio, EActivo activo)
+        private void enviarCorreo(string correoReceptor, EGestionServicio gestionServicio, EActivo activo, List<string> solicitante)
         {
             try
             {
@@ -29,10 +29,8 @@ namespace ActiveSmartWeb.GestionServicio
 
                 string correofrom = ConfigurationManager.AppSettings["CorreEnvio"];
 
-                correoReceptor = "csalazar.diverscan@gmail.com";
-
                 string Mensaje = "Gestión de Servicio" +
-                    "<br> Solicitado por: " + gestionServicio.IdUsuarioSolicita +
+                    "<br> Solicitado por: " + solicitante[0] + " " + solicitante[1] +
                     "<br> Tipo de requerimiento: " + gestionServicio.TipoRequerimiento +
                     "<br> Descripción del Requerimiento: " + gestionServicio.Descripcion +
                     "<br> Activo: " + activo.DescripcionCorta +
@@ -129,8 +127,13 @@ namespace ActiveSmartWeb.GestionServicio
                         
                         //Obtenemos la informacion del activo
                         EActivo infoActivo = _nGestion.ObtenerActivoId(idActivo);
+                        //Obtenemos la informacion del solicitante
+                        List<string> solicitante = _nGestion.ObtenerNombreUsuarioId(idUsuarioSolicita);
+                        //Obtenemod el correo de destino
+                        string correoDestino = _nGestion.ObtenerCorreoPorId(idUsuarioAsignado);
 
-                        enviarCorreo("", gestionServicio, infoActivo);
+
+                        enviarCorreo(correoDestino, gestionServicio, infoActivo, solicitante);
                         Response.Write(JsonConvert.SerializeObject("", Formatting.Indented));
                         break;
 

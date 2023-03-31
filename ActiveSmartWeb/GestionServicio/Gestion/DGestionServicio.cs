@@ -153,13 +153,31 @@ namespace ActiveSmartWeb.GestionServicio.Gestion
 
             using (var reader = db.ExecuteReader(dbCommand))
             {
-                while (reader.Read())
+                if (reader.Read())
                 {
                     usuario.Add(reader["Nombre"].ToString());
                     usuario.Add(reader["Apellidos"].ToString());
                 }
             }
             return usuario;
+        }
+
+        public string ObtenerCorreoPorId(int IdUsuario)
+        {
+            string correo = "";
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("SP_ObtenerCorreoPorId");
+            db.AddInParameter(dbCommand, "@IdPerfilUsuario", DbType.Int32, IdUsuario);
+            dbCommand.CommandTimeout = 3600;
+
+            using (var reader = db.ExecuteReader(dbCommand))
+            {
+                if (reader.Read())
+                {
+                    correo = (reader["Correo"].ToString());
+                }
+            }
+            return correo;
         }
 
     }
