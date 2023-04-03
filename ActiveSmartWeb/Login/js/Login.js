@@ -58,7 +58,7 @@ Vue.component('login', {
                                 }
                                 else {
                                     login.empresas = JSON.parse(sessionStorage.getItem('DUser'));
-                                    console.log('Revisa la variable');
+                                    //console.log('Revisa la variable');
                                 }
                             } else {
                                 return;

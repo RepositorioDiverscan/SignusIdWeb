@@ -239,13 +239,19 @@ const login = new Vue({
                         }
 
                         if (re == 0) {
-
-                            sessionStorage.setItem('Empresas', data)
-                            sessionStorage.setItem('DUser', data)
                             if (arraydatos.length == 1) {
-                                window.location.replace("../Menu/MenuPrincipal.aspx");
+                                if (arraydatos[0].Verificacion == 0) {
+                                    window.location.replace("../RegistroUsuarioEmpresas/ValidarCuenta.aspx");
+                                } else {
+                                    sessionStorage.setItem('Empresas', data)
+                                    sessionStorage.setItem('DUser', data)
+                                    window.location.replace("../Menu/MenuPrincipal.aspx");
+                                }
+                                
                             }
                             else {
+                                sessionStorage.setItem('Empresas', data)
+                                sessionStorage.setItem('DUser', data)
                                 login.empresas = JSON.parse(sessionStorage.getItem('DUser'));
                                 login.AbrirPopPup();
 

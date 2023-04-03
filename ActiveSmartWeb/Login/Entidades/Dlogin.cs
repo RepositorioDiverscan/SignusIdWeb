@@ -49,7 +49,8 @@ namespace ActiveSmartWeb.Login.Entidades
                         Convert.ToInt32(reader["TipoUsuario"].ToString()),
                         Convert.ToInt32(reader["CantidadIntentosLogin"].ToString()),
                         Convert.ToInt32(reader["Estado"].ToString()),
-                        reader["Correo"].ToString()
+                        reader["Correo"].ToString(),
+                        Convert.ToInt32(reader["Verificado"].ToString())
                     ));
                 }
             }
