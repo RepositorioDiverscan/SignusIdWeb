@@ -241,6 +241,12 @@ const login = new Vue({
                         if (re == 0) {
                             if (arraydatos.length == 1) {
                                 if (arraydatos[0].Verificacion == 0) {
+                                    sessionStorage.setItem('NombreEmpresa', arraydatos[0].NombreEmpresa);
+                                    sessionStorage.setItem('CorreoEmpresa', arraydatos[0].Correo);
+                                    sessionStorage.setItem('NombreUsuario', arraydatos[0].Nombre);
+                                    sessionStorage.setItem('ApellidosUsuario', arraydatos[0].Apellidos);
+                                    sessionStorage.setItem('CorreoUsuario', arraydatos[0].Correo);
+                                    sessionStorage.setItem('IdEmpresa', arraydatos[0].IdPerfilEmpresa);
                                     window.location.replace("../RegistroUsuarioEmpresas/ValidarCuenta.aspx");
                                 } else {
                                     sessionStorage.setItem('Empresas', data)
