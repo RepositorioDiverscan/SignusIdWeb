@@ -31,7 +31,7 @@ namespace ActiveSmartWeb.GestionServicio
 
                 Helper helper = new Helper();
 
-                string Mensaje = helper.GenerarHtml("Prueba");
+                string Mensaje = helper.GenerarHtml(gestionServicio, activo, solicitante);
 
                 //string Mensaje = "Gestión de Servicio" +
                 //    "<br> Solicitado por: " + solicitante[0] + " " + solicitante[1] +
