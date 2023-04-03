@@ -1,9 +1,13 @@
 ﻿using ActiveSmartWeb.GestionServicio.Gestion;
 using ActiveSmartWeb.Login.Entidades;
+using ActiveSmartWeb.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -14,6 +18,72 @@ namespace ActiveSmartWeb.GestionServicio
 {
     public partial class AjaxGestionServicio : System.Web.UI.Page
     {
+
+        private void enviarCorreo(string correoReceptor, EGestionServicio gestionServicio, EActivo activo, List<string> solicitante)
+        {
+            try
+            {
+                //Correo de envio.
+                var correode = ConfigurationManager.AppSettings["CorreDe"];
+                var pass = ConfigurationManager.AppSettings["Pass"];
+
+                string correofrom = ConfigurationManager.AppSettings["CorreEnvio"];
+
+                Helper helper = new Helper();
+
+                string Mensaje = helper.GenerarHtml(gestionServicio, activo, solicitante);
+
+                //string Mensaje = "Gestión de Servicio" +
+                //    "<br> Solicitado por: " + solicitante[0] + " " + solicitante[1] +
+                //    "<br> Tipo de requerimiento: " + gestionServicio.TipoRequerimiento +
+                //    "<br> Descripción del Requerimiento: " + gestionServicio.Descripcion +
+                //    "<br> Activo: " + activo.DescripcionCorta +
+                //    "<br> Número: " + activo.NumeroActivo +
+                //    "<br> Placa: " + activo.PlacaActivo +
+                //    "<br> Marca: " + activo.Marca +
+                //    "<br> Número de serie: " + activo.Serie +
+                //    "<br> Estado del Activo: " + activo.NombreEstado +
+                //    "<br> Categoría del Activo: " + activo.NombreCategoria +
+                //    "<br> Ubicación: " + activo.NombreUbicacion;
+
+                //Configuracion para el correo.
+                var correo = new MailMessage
+                {
+                    From = new MailAddress(correofrom), //Correo de salida.
+                    Subject = "Gestión de Servicio", //Asunto.
+                    IsBodyHtml = true
+                };
+
+                //Configuracion para el correo cliente.
+
+                //destinatario y mensaje del correo para el cliente.
+                correo.To.Add(correoReceptor); //Correo destino
+                correo.Body = Mensaje; //Mensaje del correo
+                correo.Priority = MailPriority.Normal;
+
+                var smtp = new SmtpClient(ConfigurationManager.AppSettings["ServerSmtp"])
+                {
+                    Port = Convert.ToInt32(ConfigurationManager.AppSettings["PortSmtp"]),
+
+                    EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["SSL"])
+                };
+                if (pass.Trim() != "")
+                {
+                    smtp.Credentials = new NetworkCredential(correode, pass);
+                }
+
+                smtp.Send(correo);
+
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                
+                //FileExceptionWriter.WriteException(ex);
+                //return -1;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
              NGestionServicio _nGestion = new NGestionServicio();
@@ -56,8 +126,19 @@ namespace ActiveSmartWeb.GestionServicio
                         gestionServicio.Descripcion = descripcion;
                         gestionServicio.IdPerfilEmpresa = idPerfilEmpresaC;
 
-                        var respuesta = _nGestion.InsertarGestion(gestionServicio);
-                        Response.Write(JsonConvert.SerializeObject(respuesta, Formatting.Indented));
+                        //var respuesta = _nGestion.InsertarGestion(gestionServicio);
+                        //Response.Write(JsonConvert.SerializeObject(respuesta, Formatting.Indented));
+                        
+                        //Obtenemos la informacion del activo
+                        EActivo infoActivo = _nGestion.ObtenerActivoId(idActivo);
+                        //Obtenemos la informacion del solicitante
+                        List<string> solicitante = _nGestion.ObtenerNombreUsuarioId(idUsuarioSolicita);
+                        //Obtenemod el correo de destino
+                        string correoDestino = _nGestion.ObtenerCorreoPorId(idUsuarioAsignado);
+
+
+                        enviarCorreo(correoDestino, gestionServicio, infoActivo, solicitante);
+                        Response.Write(JsonConvert.SerializeObject("", Formatting.Indented));
                         break;
 
                     case "ObtenerGestionesPorIdEmpresa":

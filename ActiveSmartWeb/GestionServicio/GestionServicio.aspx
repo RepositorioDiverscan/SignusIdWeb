@@ -133,7 +133,7 @@
               
               </div>
             </div>
-
+              <img src="../images/signus_id3.png" />
              <div id="w-node-_1881bb3d-bb04-a65f-0013-ab2c81d34079-731f63ba" class="div-tarjeta tablagestion tarjeta-gestion tarjeta-responsive">
                   <div class="contenedor-grid visor">
                 <table style="width:100%">
