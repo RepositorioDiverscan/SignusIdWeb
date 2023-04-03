@@ -767,6 +767,9 @@
     <Content Include="Perfil\AjaxPerfilUsuario.aspx" />
     <Content Include="Perfil\js\Perfil.js" />
     <Content Include="Perfil\PerfilUsuario.aspx" />
+    <Content Include="Plantillastxt\contraseña signus id 2.txt" />
+    <Content Include="Plantillastxt\correoValidacionCodigo.txt" />
+    <Content Include="Plantillastxt\link cambio de contraseña.txt" />
     <Content Include="Pro.aspx" />
     <Content Include="Prueba.aspx" />
     <Content Include="Recursos\Alertify\alertify.js" />
