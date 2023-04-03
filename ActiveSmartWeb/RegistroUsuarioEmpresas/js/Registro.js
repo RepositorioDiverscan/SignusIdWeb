@@ -108,6 +108,7 @@ const login = new Vue({
                                                                     }, function (respuesta, error) {
                                                                         if (respuesta != 'VALIDA') {
                                                                             document.getElementById('PswPrincipal').focus();
+                                                                            self.mostrarAlerta(respuesta);
                                                                         } else {
                                                                             sessionStorage.setItem('NombreEmpresa', self.nombreEmpresa);
                                                                             sessionStorage.setItem('TelefonoEmpresa', self.phoneInput4.getNumber());
@@ -124,7 +125,7 @@ const login = new Vue({
                                                                             sessionStorage.setItem('Posicion', self.posicion);
                                                                             sessionStorage.setItem('Moneda', self.moneda);
                                                                             self.InsertarUsuariosEmpresas();
-                                                                            window.location.href = "ValidarCuenta.aspx";
+                                                                            
                                                                         }
                                                                     });
                                                                 } else {
@@ -172,6 +173,10 @@ const login = new Vue({
             }
         },
 
+        mostrarAlerta: function (mensaje) {
+            alertas.error(this.listaIdiomas.Atencion, mensaje);
+        },
+
         InsertarUsuariosEmpresas: function () {
            
             var self = this;
@@ -200,7 +205,13 @@ const login = new Vue({
 
              
             }, function (data, error) {
-                    self.listaIdiomas = JSON.parse(data);
+                if (data == 'Exitoso') {
+                    //self.listaIdiomas = JSON.parse(data);
+                    window.location.href = "ValidarCuenta.aspx";
+                } else {
+                    self.mostrarAlerta(data);
+                }
+                
             });
         },
 
