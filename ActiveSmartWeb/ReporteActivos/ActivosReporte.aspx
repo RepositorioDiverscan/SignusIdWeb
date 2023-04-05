@@ -71,30 +71,30 @@
 
             <div id="w-node-_80b7fc40-ee3a-65fb-484a-db136c4f7f90-81b79b2e" 
                 class="div-tarjeta tarjeta-responsive">
-              <div class="contenedor-grid cont-grid-act">
- <table  style="width:100%; overflow:scroll;" >
-    <thead >
-        <tr v-cloak class="w-layout-grid grid _7" style="grid-template-rows: auto;grid-template-columns: 12.4% 12.4% 12.4% 12.4% 12.4% 12.4% 12.4% 12.4%;">
-            <th class="texto-blanco">{{listaIdioma.NumActivo}}</th> 
+              <div class="contenedor-grid ">
+                <table  style="width:100%; overflow:scroll;" >
+                <thead >
+                    <tr v-cloak class="w-layout-grid grid _7" style="grid-template-rows: auto;grid-template-columns: 12.4% 12.4% 12.4% 12.4% 12.4% 12.4% 12.4% 12.4%;">
+                        <th class="texto-blanco">{{listaIdioma.NumActivo}}</th> 
         
-            <th class="texto-blanco">{{listaIdioma.NumPlaca}}</th> 
+                        <th class="texto-blanco">{{listaIdioma.NumPlaca}}</th> 
         
-            <th class="texto-blanco">{{listaIdioma.Descripcion}}</th> 
+                        <th class="texto-blanco">{{listaIdioma.Descripcion}}</th> 
         
-            <th class="texto-blanco">{{listaIdioma.IdEstadoActivo}}</th>
+                        <th class="texto-blanco">{{listaIdioma.IdEstadoActivo}}</th>
        
-            <th class="texto-blanco">{{listaIdioma.IdCategoria}}</th>
+                        <th class="texto-blanco">{{listaIdioma.IdCategoria}}</th>
       
-            <th class="texto-blanco">{{listaIdioma.IdUbicacionA}}</th> 
+                        <th class="texto-blanco">{{listaIdioma.IdUbicacionA}}</th> 
         
-            <th class="texto-blanco">{{listaIdioma.FechaRegistro}}</th> 
+                        <th class="texto-blanco">{{listaIdioma.FechaRegistro}}</th> 
         
-            <th class="texto-blanco">{{listaIdioma.FechaActualiza}}</th> 
-        </tr>
-    </thead>
-    <tbody  style="display: table; flex-direction: column;  width: 55%;"  class="w-layout-grid grid ">
+                        <th class="texto-blanco">{{listaIdioma.FechaActualiza}}</th> 
+                    </tr>
+                </thead>
+    <tbody  style="display: table; flex-direction: column;"  class="w-layout-grid grid ">
 
-        <tr v-cloak v-for="(ac, index) in datosPaginados" :key="ac.IdActivo" class="w-layout-grid grid _7" style=" grid-template-columns: 22.8% 22.5% 22.6% 22.6% 22.6% 22.6% 23% 22%;">
+        <tr v-cloak v-for="(ac, index) in datosPaginados" :key="ac.IdActivo" class="w-layout-grid grid _7" <%--style=" grid-template-columns: 12.4% 12.4% 12.4% 12.4% 12.4% 12.4% 12.4% 12.4%;"--%>>
 
             <td class=" celda-vacia no-pad">
                 <div class="parrafo-grid">

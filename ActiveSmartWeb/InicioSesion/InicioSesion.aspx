@@ -15,7 +15,7 @@
     
 
     <%--<div class="back-popup-tc none">--%>
-    <div v-cloak  id="PopPupEmpresas" class="tarjeta-popup selecem" style="margin: 0 auto; display: none; z-index: 25;">
+    <div v-cloak  id="PopPupEmpresas" class="tarjeta-popup selecem" style="margin: 0 auto; display: none; z-index: 25; width:auto;">
       <div class="header-modal-ai">
         <h4 class="texto-h-ai">Seleccione su empresa</h4>
       </div>

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ActiveSmartWeb.RegistroUsuarioEmpresas.Registro;
+using ActiveSmartWeb.Utilities;
 using Newtonsoft.Json;
 
 namespace ActiveSmartWeb.RegistroUsuarioEmpresas
@@ -239,11 +240,12 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                     //Opcion del switch para cargar los adicionales.
                     case "CargarAdicionales":
-
-                        var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
+                        //Eliminamos el contenido de los diccionarios
+                        _adicionalcontratado.Clear();
+                        _adicionalcontratadomostrar.Clear();
+                        //Traemos la informacion de los adicionales
+                        var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();                       
                         
-                        Response.Write(JsonConvert.SerializeObject(ePaqueteAdicionales, Formatting.Indented));
-
                         foreach(var paquete in ePaqueteAdicionales)
                         {
                             crearEntidades(
@@ -256,7 +258,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                             0
                             );
                         }
-                        
+
+                        Response.Write(JsonConvert.SerializeObject(ePaqueteAdicionales, Formatting.Indented));
 
                         break;
 
@@ -539,7 +542,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             catch (Exception ex)
 
             {
-
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
 
             }
 

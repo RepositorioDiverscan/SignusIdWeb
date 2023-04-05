@@ -119,7 +119,7 @@ namespace ActiveSmartWeb.Utilities
 
                 //Cuerpo de correo
                 string cuerpoCorreo;
-                using (var stringReader = new StreamReader("C:/Correos Signus/correoValidacionCodigo.txt", true))
+                using (var stringReader = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Plantillastxt", "correoValidacionCodigo.txt"), true))
                 {
                     cuerpoCorreo = stringReader.ReadToEnd();
                 }

@@ -54,11 +54,10 @@ namespace ActiveSmartWeb.Login
                                 Request.Form["Email"].ToString(),
                                  Encrypt.EncriptarSHA3_512(Request.Form["Password"].ToString())
                             );
-
                         string res1 = _nlogin.ValidadInicioSesion(Request.Form["Email"].ToString(), Encrypt.EncriptarSHA3_512(Request.Form["Password"].ToString()));
 
 
-                        if (res1 != "EXITO")
+                        if (res1 != "EXITO" && res1 != "EL USUARIO NO A VERIFICADO SU CORREO")
                         {
                             Resultado = res1;
                         }

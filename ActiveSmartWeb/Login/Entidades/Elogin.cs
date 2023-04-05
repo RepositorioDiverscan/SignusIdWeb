@@ -19,11 +19,12 @@ namespace ActiveSmartWeb.Login.Entidades
         int _cantidadIntentosLogin;
         int _estado;
         string _correo;
+        int _verificacion;
         public Elogin()
         {
         }
 
-        public Elogin(long idPerfilUsuario, string nombre, string apellildo, string imagenPerfil, string identificacion, long idPerfilActive, int idPerfilEmpresa, string nombreEmpresa, int tipoUsuario, int cantidadIntentosLogin, int estado, string correo)
+        public Elogin(long idPerfilUsuario, string nombre, string apellildo, string imagenPerfil, string identificacion, long idPerfilActive, int idPerfilEmpresa, string nombreEmpresa, int tipoUsuario, int cantidadIntentosLogin, int estado, string correo, int verificacion)
         {
             IdPerfilUsuario = idPerfilUsuario;
             Nombre = nombre;
@@ -37,6 +38,7 @@ namespace ActiveSmartWeb.Login.Entidades
             CantidadIntentosLogin = cantidadIntentosLogin;
             Estado = estado;
             Correo = correo;
+            Verificacion = verificacion;
         }
 
         public long IdPerfilUsuario { get => _idPerfilUsuario; set => _idPerfilUsuario = value; }
@@ -51,6 +53,6 @@ namespace ActiveSmartWeb.Login.Entidades
         public int CantidadIntentosLogin { get => _cantidadIntentosLogin; set => _cantidadIntentosLogin = value; }
         public int Estado { get => _estado; set => _estado = value; }
         public string Correo { get => _correo; set => _correo = value; }
-
+        public int Verificacion { get => _verificacion; set => _verificacion = value; }
     }
 }

@@ -31,20 +31,8 @@ namespace ActiveSmartWeb.GestionServicio
 
                 Helper helper = new Helper();
 
+                //Se genera el html del cuerpo del correo
                 string Mensaje = helper.GenerarHtml(gestionServicio, activo, solicitante);
-
-                //string Mensaje = "Gestión de Servicio" +
-                //    "<br> Solicitado por: " + solicitante[0] + " " + solicitante[1] +
-                //    "<br> Tipo de requerimiento: " + gestionServicio.TipoRequerimiento +
-                //    "<br> Descripción del Requerimiento: " + gestionServicio.Descripcion +
-                //    "<br> Activo: " + activo.DescripcionCorta +
-                //    "<br> Número: " + activo.NumeroActivo +
-                //    "<br> Placa: " + activo.PlacaActivo +
-                //    "<br> Marca: " + activo.Marca +
-                //    "<br> Número de serie: " + activo.Serie +
-                //    "<br> Estado del Activo: " + activo.NombreEstado +
-                //    "<br> Categoría del Activo: " + activo.NombreCategoria +
-                //    "<br> Ubicación: " + activo.NombreUbicacion;
 
                 //Configuracion para el correo.
                 var correo = new MailMessage
@@ -126,8 +114,8 @@ namespace ActiveSmartWeb.GestionServicio
                         gestionServicio.Descripcion = descripcion;
                         gestionServicio.IdPerfilEmpresa = idPerfilEmpresaC;
 
-                        //var respuesta = _nGestion.InsertarGestion(gestionServicio);
-                        //Response.Write(JsonConvert.SerializeObject(respuesta, Formatting.Indented));
+                        var respuesta = _nGestion.InsertarGestion(gestionServicio);
+                        
                         
                         //Obtenemos la informacion del activo
                         EActivo infoActivo = _nGestion.ObtenerActivoId(idActivo);
@@ -138,7 +126,7 @@ namespace ActiveSmartWeb.GestionServicio
 
 
                         enviarCorreo(correoDestino, gestionServicio, infoActivo, solicitante);
-                        Response.Write(JsonConvert.SerializeObject("", Formatting.Indented));
+                        Response.Write(JsonConvert.SerializeObject(respuesta, Formatting.Indented));
                         break;
 
                     case "ObtenerGestionesPorIdEmpresa":
