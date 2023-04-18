@@ -249,17 +249,28 @@ const contrato = new Vue({
                 & this.frecuenciaPago != ''
             ) {
 
-                sessionStorage.setItem('NumeroTarjeta', self.numerotarjeta);
-                sessionStorage.setItem('fechavencimiento', self.fechaVencimiento);
-                sessionStorage.setItem('Nombretitular', self.nombretitular);
-                sessionStorage.setItem('Codigo', self.codigo);
-                sessionStorage.setItem('Pais', self.pais);
-                sessionStorage.setItem('Estado',self.estado);
-                sessionStorage.setItem('Ciudad', self.ciudad);
-                sessionStorage.setItem('Direccion', self.direccion);
                 sessionStorage.setItem('frecuencia', self.frecuenciaPago);
 
-                self.InsertarContrato();
+                $.post(urlAdicionalesContratoAjax, {
+
+                    option: "RealizarPago",
+
+                    Numerotarjeta: this.numerotarjeta,
+                    FechaVencimiento: this.fechaVencimiento,
+                    Codigo: this.codigo,
+                    Nombretitular: this.nombretitular,
+                    Pais: this.pais,
+                    Estado: this.estado,
+                    Ciudad: this.ciudad,
+                    Direccion: this.direccion,
+                    Frecuencia: this.frecuenciaPago,
+
+
+                }, function (data, error) {
+                    console.log(data);
+                });
+
+                //self.InsertarContrato();
             }
 
         },
@@ -273,16 +284,16 @@ const contrato = new Vue({
 
                 option: "InsertarContrato",
 
-                InfoUsuariotarjeta: JSON.stringify({
-                    numeroTarjeta: sessionStorage.getItem('NumeroTarjeta'),
-                    fechaVencimiento: sessionStorage.getItem('fechavencimiento'),
-                    nombretritular: sessionStorage.getItem('Nombretitular'),
-                    codigo: sessionStorage.getItem('Codigo'),
-                    pais: sessionStorage.getItem('Pais'),
-                    estado: sessionStorage.getItem('Estado'),
-                    ciudad: sessionStorage.getItem('Ciudad'),
-                    direccion: sessionStorage.getItem('Direccion'),
-                }),
+                //InfoUsuariotarjeta: JSON.stringify({
+                //    numeroTarjeta: sessionStorage.getItem('NumeroTarjeta'),
+                //    fechaVencimiento: sessionStorage.getItem('fechavencimiento'),
+                //    nombretritular: sessionStorage.getItem('Nombretitular'),
+                //    codigo: sessionStorage.getItem('Codigo'),
+                //    pais: sessionStorage.getItem('Pais'),
+                //    estado: sessionStorage.getItem('Estado'),
+                //    ciudad: sessionStorage.getItem('Ciudad'),
+                //    direccion: sessionStorage.getItem('Direccion'),
+                //}),
                 frecuencia: sessionStorage.getItem('frecuencia'),
                 correoUsuario: sessionStorage.getItem('CorreoUsuario'),
                 tipocontrato: sessionStorage.getItem("CodigoPlan")

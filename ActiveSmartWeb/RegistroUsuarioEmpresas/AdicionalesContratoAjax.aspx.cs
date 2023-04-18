@@ -8,6 +8,9 @@ using System.Web.UI.WebControls;
 using ActiveSmartWeb.RegistroUsuarioEmpresas.Registro;
 using ActiveSmartWeb.Utilities;
 using Newtonsoft.Json;
+using AuthorizeNet.Api.Controllers;
+using AuthorizeNet.Api.Contracts.V1;
+using AuthorizeNet.Api.Controllers.Bases;
 
 namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 {
@@ -535,6 +538,19 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         break;
 
+                    case "RealizarPago":
+                        var numerotarjeta = Request.Form["Numerotarjeta"];
+                        var fechaVencimiento = Request.Form["FechaVencimiento"];
+                        var codigo = Request.Form["Codigo"];
+                        var nombretitular = Request.Form["Nombretitular"];
+                        var pais = Request.Form["Pais"];
+                        var ciudad = Request.Form["Ciudad"];
+                        var direccion = Request.Form["Direccion"];
+                        var frecuencia = Request.Form["Frecuencia"];
+
+                        realizarTransaccion(1, numerotarjeta,  fechaVencimiento,  codigo,  nombretitular,  pais,  ciudad,  direccion);
+                        break;
+
                 }
 
 
@@ -547,5 +563,112 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
             }
 
         }
+
+        public static ANetApiResponse realizarTransaccion(decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular, string pais, string ciudad, string direccion)
+        {
+            string ApiLoginID = "5dP8ESWyp97";
+            string ApiTransactionKey = "87Mr8AAKc3g3s493";
+
+            Console.WriteLine("Charge Credit Card Sample");
+
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
+
+            // define the merchant information (authentication / transaction id)
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
+            {
+                name = ApiLoginID,
+                ItemElementName = ItemChoiceType.transactionKey,
+                Item = ApiTransactionKey,
+            };
+
+            var creditCard = new creditCardType
+            {
+                cardNumber = numerotarjeta.Replace(" ", ""), //"4111111111111111"
+                expirationDate = fechaVencimiento.Replace("/", ""),//"1028",
+                cardCode = codigo //"123"
+            };
+
+            var billingAddress = new customerAddressType
+            {
+                firstName = nombretitular, //"John",
+                address = direccion, //"123 My St",
+                city = ciudad, //"OurTown",
+                country = pais
+                //zip = "98004"
+            };
+
+            //standard api call to retrieve response
+            var paymentType = new paymentType { Item = creditCard };
+
+            // Add line Items
+            var lineItems = new lineItemType[2];
+            lineItems[0] = new lineItemType { itemId = "1", name = "t-shirt", quantity = 2, unitPrice = new Decimal(1.00) };
+            lineItems[1] = new lineItemType { itemId = "2", name = "snowboard", quantity = 1, unitPrice = new Decimal(2.00) };
+
+            var transactionRequest = new transactionRequestType
+            {
+                transactionType = transactionTypeEnum.authCaptureTransaction.ToString(),    // charge the card
+
+                amount = amount,
+                payment = paymentType,
+                billTo = billingAddress,
+                lineItems = lineItems
+            };
+
+            var request = new createTransactionRequest { transactionRequest = transactionRequest };
+
+            // instantiate the controller that will call the service
+            var controller = new createTransactionController(request);
+            controller.Execute();
+
+            // get the response from the service (errors contained if any)
+            var response = controller.GetApiResponse();
+
+            // validate response
+            if (response != null)
+            {
+                if (response.messages.resultCode == messageTypeEnum.Ok)
+                {
+                    if (response.transactionResponse.messages != null)
+                    {
+                        Console.WriteLine("Successfully created transaction with Transaction ID: " + response.transactionResponse.transId);
+                        Console.WriteLine("Response Code: " + response.transactionResponse.responseCode);
+                        Console.WriteLine("Message Code: " + response.transactionResponse.messages[0].code);
+                        Console.WriteLine("Description: " + response.transactionResponse.messages[0].description);
+                        Console.WriteLine("Success, Auth Code : " + response.transactionResponse.authCode);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed Transaction.");
+                        if (response.transactionResponse.errors != null)
+                        {
+                            Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
+                            Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Failed Transaction.");
+                    if (response.transactionResponse != null && response.transactionResponse.errors != null)
+                    {
+                        Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
+                        Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error Code: " + response.messages.message[0].code);
+                        Console.WriteLine("Error message: " + response.messages.message[0].text);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Null Response.");
+            }
+
+            return response;
+        }
+
     }
 }
