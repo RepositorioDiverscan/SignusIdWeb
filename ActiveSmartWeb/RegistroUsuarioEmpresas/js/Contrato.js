@@ -267,6 +267,12 @@ const contrato = new Vue({
 
 
                 }, function (data, error) {
+                    if (data == "Transacción realizada correctamente") {
+                        alertas.success("Trasacción Exitosa", data);
+                    } else {
+                        alertas.error("Error", data);
+                    }
+                    
                     console.log(data);
                 });
 

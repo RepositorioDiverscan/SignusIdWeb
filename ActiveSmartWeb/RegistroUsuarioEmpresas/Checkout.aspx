@@ -16,6 +16,8 @@
   <link href="../css/signusid.webflow.css" rel="stylesheet" type="text/css">
     <%--Paises--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/country-select-js/2.1.1/css/countrySelect.min.css" />
+    <%--Alertas--%>
+    <script src="/Alertas/alertas.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">WebFont.load({ google: { families: ["Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic", "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"] } });</script>
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
@@ -63,7 +65,7 @@
   <div class="header-steps-payout-ai"><img src="../images/signus_id.png" loading="lazy" width="158" srcset="../images/signus_id-p-500.png 500w, ../images/signus_id-p-800.png 800w, ../images/signus_id-p-1080.png 1080w, ../images/signus_id.png 1730w" sizes="150px" alt="" class="logo-payout-ai"></div>
   <div class="contenedor-general" id="context">
     <div class="main">
-      <div class="section wf-section">
+      <div id="alertas" class="section wf-section">
         <div class="container-2 w-container">
           <div class="w-layout-grid grid-main">
             <div id="w-node-_4d22b9b3-6a6e-3c88-9312-63f8170851b1-ea206ea8" class="div-banner-extremo"></div>

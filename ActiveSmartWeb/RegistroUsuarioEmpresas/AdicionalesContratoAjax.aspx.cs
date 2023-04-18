@@ -548,7 +548,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var direccion = Request.Form["Direccion"];
                         var frecuencia = Request.Form["Frecuencia"];
 
-                        realizarTransaccion(1, numerotarjeta,  fechaVencimiento,  codigo,  nombretitular,  pais,  ciudad,  direccion);
+                        string transaccion = realizarTransaccion(1, numerotarjeta,  fechaVencimiento,  codigo,  nombretitular,  pais,  ciudad,  direccion);
+                        Response.Write(transaccion);
                         break;
 
                 }
@@ -564,7 +565,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
         }
 
-        public static ANetApiResponse realizarTransaccion(decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular, string pais, string ciudad, string direccion)
+        public static string realizarTransaccion(decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular, string pais, string ciudad, string direccion)
         {
             //valores de la cuenta de authorize
             string ApiLoginID = "5dP8ESWyp97";
@@ -632,43 +633,25 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 {
                     if (response.transactionResponse.messages != null)
                     {
-                        Console.WriteLine("Successfully created transaction with Transaction ID: " + response.transactionResponse.transId);
-                        Console.WriteLine("Response Code: " + response.transactionResponse.responseCode);
-                        Console.WriteLine("Message Code: " + response.transactionResponse.messages[0].code);
-                        Console.WriteLine("Description: " + response.transactionResponse.messages[0].description);
-                        Console.WriteLine("Success, Auth Code : " + response.transactionResponse.authCode);
+                        
+                        return "Transacción realizada correctamente";
+
                     }
                     else
                     {
-                        Console.WriteLine("Failed Transaction.");
-                        if (response.transactionResponse.errors != null)
-                        {
-                            Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
-                            Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
-                        }
+                        return "No se pudo realizar la transacción, por favor revise sus datos"; 
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Failed Transaction.");
-                    if (response.transactionResponse != null && response.transactionResponse.errors != null)
-                    {
-                        Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
-                        Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Error Code: " + response.messages.message[0].code);
-                        Console.WriteLine("Error message: " + response.messages.message[0].text);
-                    }
+                    return "No se pudo realizar la transacción, por favor revise sus datos";
                 }
             }
             else
             {
-                Console.WriteLine("Null Response.");
+                return "No se pudo realizar la transacción, por favor revise sus datos";
             }
 
-            return response;
         }
 
     }
