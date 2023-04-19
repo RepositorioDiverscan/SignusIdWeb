@@ -306,9 +306,9 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         var codigoplan = Convert.ToInt32(Request.Form["CodigoPlan"]);
 
-                        var etipo = nUsuarioEmpresa.CargarPlan(codigoplan);
+                        var infoPlanes = nUsuarioEmpresa.CargarPlan(codigoplan);
 
-                        Response.Write(JsonConvert.SerializeObject(etipo, Formatting.Indented));
+                        Response.Write(JsonConvert.SerializeObject(infoPlanes, Formatting.Indented));
 
                         break;
 
@@ -547,8 +547,14 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var ciudad = Request.Form["Ciudad"];
                         var direccion = Request.Form["Direccion"];
                         var frecuencia = Request.Form["Frecuencia"];
+                        var plan = Convert.ToInt32(Request.Form["CodigoPlan"]);
 
-                        string transaccion = realizarTransaccion(1, numerotarjeta,  fechaVencimiento,  codigo,  nombretitular,  pais,  ciudad,  direccion);
+                        var infoPlan = nUsuarioEmpresa.CargarPlan(plan);
+
+                        decimal costoTotal = calcularPrecioFinal(infoPlan, frecuencia);
+                        //Response.Write(costoTotal);
+
+                        string transaccion = realizarTransaccion(costoTotal, numerotarjeta,  fechaVencimiento,  codigo,  nombretitular,  pais,  ciudad,  direccion);
                         Response.Write(transaccion);
                         break;
 
@@ -565,7 +571,31 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
         }
 
-        public static string realizarTransaccion(decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular, string pais, string ciudad, string direccion)
+        private decimal calcularPrecioFinal(ETipoPlanes infoPlan, string frecuencia)
+        {
+            var costo = frecuencia == "1" ? infoPlan.Costo : infoPlan.CostoMensual;
+
+            decimal costoTotal = 0.00M;
+
+            //Costos de la suma de todos los adicionales seleccionados.
+            if (frecuencia == "1")
+            {
+                costoTotal = _adicionalcontratadomostrar.Sum(x => x.Value.Costo);
+            }
+            else
+            {
+                costoTotal = _adicionalcontratadomostrar.Sum(x => x.Value.CostoMensual);
+            }
+
+
+            //Suma del costo del plan y los adicionales.
+            costoTotal += costo;
+
+            return costoTotal;
+
+        }
+
+        private string realizarTransaccion(decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular, string pais, string ciudad, string direccion)
         {
             //valores de la cuenta de authorize
             string ApiLoginID = "5dP8ESWyp97";

@@ -264,6 +264,7 @@ const contrato = new Vue({
                     Ciudad: this.ciudad,
                     Direccion: this.direccion,
                     Frecuencia: this.frecuenciaPago,
+                    CodigoPlan: this.codigoPlan
 
 
                 }, function (data, error) {
