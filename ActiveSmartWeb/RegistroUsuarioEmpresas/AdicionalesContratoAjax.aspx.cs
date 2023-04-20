@@ -543,9 +543,9 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var fechaVencimiento = Request.Form["FechaVencimiento"];
                         var codigo = Request.Form["Codigo"];
                         var nombretitular = Request.Form["Nombretitular"];
-                        var pais = Request.Form["Pais"];
-                        var ciudad = Request.Form["Ciudad"];
-                        var direccion = Request.Form["Direccion"];
+                        //var pais = Request.Form["Pais"];
+                        //var ciudad = Request.Form["Ciudad"];
+                        //var direccion = Request.Form["Direccion"];
                         var frecuencia = Request.Form["Frecuencia"];
                         var plan = Convert.ToInt32(Request.Form["CodigoPlan"]);
 

@@ -302,20 +302,6 @@ const contrato = new Vue({
                 alertas.error("Error", "Por favor ingrese el número de la tarjeta");
             }
 
-            if (this.numerotarjeta != ''
-                & this.fechaVencimiento != ''
-                & this.codigo != ''
-                & this.nombretitular != ''
-                & this.pais != ''
-                & this.estado != ''
-                & this.ciudad != ''
-                & this.direccion != ''
-                & this.frecuenciaPago != ''
-            ) {
-
-                
-            }
-
         },
 
         //Metodo para ingresar el contrato.
