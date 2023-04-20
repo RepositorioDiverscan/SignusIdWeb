@@ -552,14 +552,11 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var infoPlan = nUsuarioEmpresa.CargarPlan(plan);
 
                         decimal costoTotal = calcularPrecioFinal(infoPlan, frecuencia);
-                        //Response.Write(costoTotal);
-
-                        //EPaqueteAdicional valor;
-                        //_adicionalcontratadomostrar.TryGetValue(1, out valor);
-                        //Response.Write(valor.Costo);
+                        
+                        short frecuenciaDePago = (short)(frecuencia == "1" ? 12 : 1);
 
                         // string transaccion = realizarTransaccion(costoTotal, numerotarjeta,  fechaVencimiento,  codigo,  nombretitular,  pais,  ciudad,  direccion, frecuencia);
-                        string transaccion = crearSubscripcion(1,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular,pais,ciudad,direccion,frecuencia);
+                        string transaccion = crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular);
                         Response.Write(transaccion);
                         break;
 
@@ -600,7 +597,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
         }
 
-        public static string crearSubscripcion(short intervalLength, decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular, string pais, string ciudad, string direccion, string frecuencia)
+        public static string crearSubscripcion(short intervalLength, decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular)
         {
             //valores de la cuenta de authorize
             string ApiLoginID = "5dP8ESWyp97";
@@ -648,7 +645,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
             ARBSubscriptionType subscriptionType = new ARBSubscriptionType()
             {
-                amount = 0.01m,
+                amount = amount,
                 trialAmount = 0.00m,
                 paymentSchedule = schedule,
                 billTo = addressInfo,
@@ -662,7 +659,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
             ARBCreateSubscriptionResponse response = controller.GetApiResponse();   // get the response from the service (errors contained if any)
 
-            // validate response
+            //validate response
             if (response != null && response.messages.resultCode == messageTypeEnum.Ok)
             {
                 if (response != null && response.messages.message != null)
