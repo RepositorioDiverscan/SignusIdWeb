@@ -250,5 +250,34 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
             return Respuesta;
 
         }
+
+        public string InsertarContratoConSuscripcion(string correo, int frecuenciapago, int idtipocontrato, List<EPaqueteAdicionalContratado> PaquetesAdicionales)
+        {
+            //Se crea un datatable con la lista de paquetes adicionales seleccionados.
+            var dataTablePaquetesAdicionales = PaquetesAdicionales.ToDataTable();
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("SP_InsertarContrato");
+
+            db.AddInParameter(dbCommand, "@Correo", DbType.String, correo);
+            db.AddInParameter(dbCommand, "@IdFrecuenciaPago", DbType.Int32, frecuenciapago);
+            db.AddInParameter(dbCommand, "@IdTipoContrato", DbType.Int32, idtipocontrato);
+            db.AddInParameter(dbCommand, "@IdMetodoPago", DbType.Int32, 1);
+            db.AddOutParameter(dbCommand, "@Resultado", DbType.String, 600);
+
+            SqlParameter parameterPaquetesAdicionales = new SqlParameter();
+            parameterPaquetesAdicionales.ParameterName = "@TablaAdicionales";
+            parameterPaquetesAdicionales.SqlDbType = System.Data.SqlDbType.Structured;
+            parameterPaquetesAdicionales.Value = dataTablePaquetesAdicionales;
+            dbCommand.Parameters.Add(parameterPaquetesAdicionales);
+
+            dbCommand.CommandTimeout = 3600;
+            db.ExecuteNonQuery(dbCommand);
+
+            var Respuesta = db.GetParameterValue(dbCommand, "@Resultado").ToString();
+
+            return Respuesta;
+
+        }
+
     }
 }

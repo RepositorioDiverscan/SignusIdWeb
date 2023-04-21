@@ -154,6 +154,23 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
             }
         }
 
+        public string InsertarContratoConSuscripcion(string correo, int frecuenciapago, int idtipocontrato, List<EPaqueteAdicionalContratado> PaquetesAdicionales)
+        {
+            try
+            {
+
+                return dBUsuarioEmpresa.InsertarContratoConSuscripcion(correo, frecuenciapago, idtipocontrato, PaquetesAdicionales);
+
+            }
+            catch (Exception ex)
+            {
+
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return null;
+
+            }
+        }
+
         public string SeleccionMoneda(string codPais, List<Monedas> monedas)
         {
             string monedaSeleccionada = "USD $";
