@@ -256,7 +256,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
             //Se crea un datatable con la lista de paquetes adicionales seleccionados.
             var dataTablePaquetesAdicionales = PaquetesAdicionales.ToDataTable();
             var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
-            var dbCommand = db.GetStoredProcCommand("[SP_InsertarContratoConSuscripcion");
+            var dbCommand = db.GetStoredProcCommand("SP_InsertarContratoConSuscripcion");
 
             db.AddInParameter(dbCommand, "@Correo", DbType.String, correo);
             db.AddInParameter(dbCommand, "@IdFrecuenciaPago", DbType.Int32, frecuenciapago);
