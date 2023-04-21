@@ -555,8 +555,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         short frecuenciaDePago = (short)(frecuencia == "1" ? 12 : 1);
 
 
-                        EResultadoSuscripcion resultado = crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular);
-
+                        //EResultadoSuscripcion resultado = crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular);
+                        EResultadoSuscripcion resultado = new EResultadoSuscripcion("Success","2","3","4","No tiene","No tiene");
 
                         //Response.Write(transaccion);
                         break;

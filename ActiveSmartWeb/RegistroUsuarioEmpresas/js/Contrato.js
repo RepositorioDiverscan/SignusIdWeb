@@ -258,12 +258,10 @@ const contrato = new Vue({
                                                     FechaVencimiento: this.fechaVencimiento,
                                                     Codigo: this.codigo,
                                                     Nombretitular: this.nombretitular,
-                                                    Pais: this.pais,
-                                                    Estado: this.estado,
-                                                    Ciudad: this.ciudad,
-                                                    Direccion: this.direccion,
                                                     Frecuencia: this.frecuenciaPago,
-                                                    CodigoPlan: this.codigoPlan
+                                                    CodigoPlan: this.codigoPlan,
+                                                    correoUsuario: sessionStorage.getItem('CorreoUsuario'),
+                                                    tipocontrato: sessionStorage.getItem("CodigoPlan")
 
 
                                                 }, function (data, error) {
