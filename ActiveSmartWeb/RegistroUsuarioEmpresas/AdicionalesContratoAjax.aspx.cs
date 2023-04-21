@@ -366,7 +366,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                                     _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * cantidad;
 
-                                    if(_adicionalcontratado[idAdicional].CantidadRegalias == cantidad)
+                                    if(_adicionalcontratado[idAdicional].CantidadRegalias == cantidad || _adicionalcontratadomostrar[1].Cantidad >= activosAdicionalesIlimitados)
                                     {
                                         _adicionalcontratadomostrar[idAdicional].Costo = 0;
                                         _adicionalcontratadomostrar[idAdicional].CostoMensual = 0;
