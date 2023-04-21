@@ -154,12 +154,12 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
             }
         }
 
-        public string InsertarContratoConSuscripcion(string correo, int frecuenciapago, int idtipocontrato, List<EPaqueteAdicionalContratado> PaquetesAdicionales)
+        public string InsertarContratoConSuscripcion(string correo, int frecuenciapago, int idtipocontrato, List<EPaqueteAdicionalContratado> PaquetesAdicionales, EResultadoSuscripcion suscripcion, decimal monto)
         {
             try
             {
                  
-                return dBUsuarioEmpresa.InsertarContratoConSuscripcion(correo, frecuenciapago, idtipocontrato, PaquetesAdicionales);
+                return dBUsuarioEmpresa.InsertarContratoConSuscripcion(correo, frecuenciapago, idtipocontrato, PaquetesAdicionales,  suscripcion,  monto);
 
             }
             catch (Exception ex)
