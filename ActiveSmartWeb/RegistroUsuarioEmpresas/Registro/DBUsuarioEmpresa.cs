@@ -251,18 +251,24 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
 
         }
 
-        public string InsertarContratoConSuscripcion(string correo, int frecuenciapago, int idtipocontrato, List<EPaqueteAdicionalContratado> PaquetesAdicionales)
+        public string InsertarContratoConSuscripcion(string correo, int frecuenciapago, int idtipocontrato, List<EPaqueteAdicionalContratado> PaquetesAdicionales,EResultadoSuscripcion suscripcion,decimal monto)
         {
             //Se crea un datatable con la lista de paquetes adicionales seleccionados.
             var dataTablePaquetesAdicionales = PaquetesAdicionales.ToDataTable();
             var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
-            var dbCommand = db.GetStoredProcCommand("SP_InsertarContrato");
+            var dbCommand = db.GetStoredProcCommand("[SP_InsertarContratoConSuscripcion");
 
             db.AddInParameter(dbCommand, "@Correo", DbType.String, correo);
             db.AddInParameter(dbCommand, "@IdFrecuenciaPago", DbType.Int32, frecuenciapago);
             db.AddInParameter(dbCommand, "@IdTipoContrato", DbType.Int32, idtipocontrato);
             db.AddInParameter(dbCommand, "@IdMetodoPago", DbType.Int32, 1);
             db.AddOutParameter(dbCommand, "@Resultado", DbType.String, 600);
+            db.AddInParameter(dbCommand, "@SuscripcionId", DbType.String, suscripcion.SuscripcionId);
+            db.AddInParameter(dbCommand, "@IdCustomerProfile", DbType.String, suscripcion.IdCustomerProfile);
+            db.AddInParameter(dbCommand, "@IdPaymentProfile", DbType.String, suscripcion.IdPaymentProfile);
+            db.AddInParameter(dbCommand, "@AdressId", DbType.String, suscripcion.AdressId);
+            db.AddInParameter(dbCommand, "@RefId", DbType.String, suscripcion.@RefId);
+            db.AddInParameter(dbCommand, "@Monto", DbType.Decimal, monto);
 
             SqlParameter parameterPaquetesAdicionales = new SqlParameter();
             parameterPaquetesAdicionales.ParameterName = "@TablaAdicionales";
