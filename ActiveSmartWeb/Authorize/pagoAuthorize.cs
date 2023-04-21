@@ -16,7 +16,6 @@ namespace ActiveSmartWeb.Authorize
 
         public static EResultadoSuscripcion crearSubscripcion(short intervalLength, decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular)
         {
-            //valores de la cuenta de authorize
  
 
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
@@ -104,9 +103,6 @@ namespace ActiveSmartWeb.Authorize
 
         private string realizarTransaccion(decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular, string pais, string ciudad, string direccion)
         {
-            //valores de la cuenta de authorize
-            string ApiLoginID = "5dP8ESWyp97";
-            string ApiTransactionKey = "87Mr8AAKc3g3s493";
 
             Console.WriteLine("Charge Credit Card Sample");
 
