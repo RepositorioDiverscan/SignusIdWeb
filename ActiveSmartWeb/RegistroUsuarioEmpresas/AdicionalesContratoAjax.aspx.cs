@@ -543,11 +543,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var fechaVencimiento = Request.Form["FechaVencimiento"];
                         var codigo = Request.Form["Codigo"];
                         var nombretitular = Request.Form["Nombretitular"];
-                        //var pais = Request.Form["Pais"];
-                        //var ciudad = Request.Form["Ciudad"];
-                        //var direccion = Request.Form["Direccion"];
                         var frecuencia = Request.Form["Frecuencia"];
                         var plan = Convert.ToInt32(Request.Form["CodigoPlan"]);
+                        var correoUsuario = Request.Form["correoUsuario"];
+                        var tipoContrato = Convert.ToInt32(Request.Form["tipocontrato"]);
 
                         var infoPlan = nUsuarioEmpresa.CargarPlan(plan);
 
@@ -555,9 +554,11 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         
                         short frecuenciaDePago = (short)(frecuencia == "1" ? 12 : 1);
 
-                        
-                        string transaccion = crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular);
-                        Response.Write(transaccion);
+
+                        EResultadoSuscripcion resultado = crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular);
+
+
+                        //Response.Write(transaccion);
                         break;
 
                 }
@@ -597,7 +598,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
         }
 
-        public static string crearSubscripcion(short intervalLength, decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular)
+        public static EResultadoSuscripcion crearSubscripcion(short intervalLength, decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular)
         {
             //valores de la cuenta de authorize
             string ApiLoginID = "5dP8ESWyp97";
@@ -659,20 +660,31 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
             ARBCreateSubscriptionResponse response = controller.GetApiResponse();   // get the response from the service (errors contained if any)
 
+            EResultadoSuscripcion resultado = new EResultadoSuscripcion();
             //validate response
             if (response != null && response.messages.resultCode == messageTypeEnum.Ok)
             {
                 if (response != null && response.messages.message != null)
                 {
-                    return "Transacción realizada correctamente";
+                    resultado.Resultado = "Success";
+                    resultado.SuscripcionId = response.subscriptionId;
+                    resultado.IdCustomerProfile = response.profile.customerProfileId;
+                    resultado.IdPaymentProfile = response.profile.customerPaymentProfileId;
+                    resultado.AdressId = response.profile.customerAddressId == null? "No tiene" : response.profile.customerAddressId;
+                    resultado.RefId = response.refId == null? "No tiene" : response.refId;
+                    return resultado;
                 }
             }
             else if (response != null)
             {
-                return "No se pudo realizar la transacción, por favor revise sus datos";
+                
+                resultado.Resultado = "Error";
+                return resultado;
             }
 
-            return "No se pudo realizar la transacción, por favor revise sus datos";
+            
+            resultado.Resultado = "Error";
+            return resultado;
         }
 
         private string realizarTransaccion(decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular, string pais, string ciudad, string direccion, string frecuencia)

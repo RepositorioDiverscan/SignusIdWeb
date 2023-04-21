@@ -1816,6 +1816,7 @@
     <Compile Include="RegistroUsuarioEmpresas\Registro\EIndustria.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Registro\EPaqueteAdicional.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Registro\EPaqueteAdicionalContratado.cs" />
+    <Compile Include="RegistroUsuarioEmpresas\Registro\EResultadoSuscripcion.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Registro\ETipoPlanes.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Registro\EUsuarioEmpresa.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Registro\NUsuarioEmpresa.cs" />

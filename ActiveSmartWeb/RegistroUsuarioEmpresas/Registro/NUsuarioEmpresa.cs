@@ -158,7 +158,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
         {
             try
             {
-
+                 
                 return dBUsuarioEmpresa.InsertarContratoConSuscripcion(correo, frecuenciapago, idtipocontrato, PaquetesAdicionales);
 
             }
