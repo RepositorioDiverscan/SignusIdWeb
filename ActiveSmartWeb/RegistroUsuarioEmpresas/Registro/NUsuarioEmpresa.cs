@@ -154,7 +154,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
             }
         }
 
-        public string InsertarContratoConSuscripcion(string correo, int frecuenciapago, int idtipocontrato, List<EPaqueteAdicionalContratado> PaquetesAdicionales, EResultadoSuscripcion suscripcion, float monto)
+        public string InsertarContratoConSuscripcion(string correo, int frecuenciapago, int idtipocontrato, List<EPaqueteAdicionalContratado> PaquetesAdicionales, EResultadoSuscripcion suscripcion, decimal monto)
         {
             try
             {
