@@ -251,7 +251,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
 
         }
 
-        public string InsertarContratoConSuscripcion(string correo, int frecuenciapago, int idtipocontrato, List<EPaqueteAdicionalContratado> PaquetesAdicionales,EResultadoSuscripcion suscripcion,decimal monto)
+        public string InsertarContratoConSuscripcion(string correo, int frecuenciapago, int idtipocontrato, List<EPaqueteAdicionalContratado> PaquetesAdicionales,EResultadoSuscripcion suscripcion,float monto)
         {
             //Se crea un datatable con la lista de paquetes adicionales seleccionados.
             var dataTablePaquetesAdicionales = PaquetesAdicionales.ToDataTable();
@@ -268,7 +268,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
             db.AddInParameter(dbCommand, "@IdPaymentProfile", DbType.String, suscripcion.IdPaymentProfile);
             db.AddInParameter(dbCommand, "@AdressId", DbType.String, suscripcion.AdressId);
             db.AddInParameter(dbCommand, "@RefId", DbType.String, suscripcion.@RefId);
-            db.AddInParameter(dbCommand, "@Monto", DbType.Decimal, monto);
+            db.AddInParameter(dbCommand, "@Monto", DbType.Decimal, 10.99M);
 
             SqlParameter parameterPaquetesAdicionales = new SqlParameter();
             parameterPaquetesAdicionales.ParameterName = "@TablaAdicionales";

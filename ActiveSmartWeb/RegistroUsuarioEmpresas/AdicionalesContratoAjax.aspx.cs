@@ -559,7 +559,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         //EResultadoSuscripcion resultado = crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular);
                         EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "2","3","4","No tiene","No tiene");
 
-                        var ResultadoAdicionale = nUsuarioEmpresa.InsertarContratoConSuscripcion(correoUsuario, Convert.ToInt32(frecuencia), tipoContrato, _adicionalcontratado.Values.ToList(),resultadoSuscripcion,costoTotal);
+                        var ResultadoAdicionale = nUsuarioEmpresa.InsertarContratoConSuscripcion(correoUsuario, Convert.ToInt32(frecuencia), tipoContrato, _adicionalcontratado.Values.ToList(),resultadoSuscripcion, (float)costoTotal);
 
                         if (resultadoSuscripcion.Resultado == "Success")
                         {
