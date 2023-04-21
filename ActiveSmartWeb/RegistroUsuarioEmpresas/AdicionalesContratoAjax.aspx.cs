@@ -545,8 +545,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var nombretitular = Request.Form["Nombretitular"];
                         var frecuencia = Request.Form["Frecuencia"];
                         var plan = Convert.ToInt32(Request.Form["CodigoPlan"]);
-                        var correoUsuario = Request.Form["correoUsuario"];
-                        //var correoUsuario = "csalazar.diverscan+8@gmail.com";
+                        //var correoUsuario = Request.Form["correoUsuario"];
+                        var correoUsuario = "csalazar.diverscan+8@gmail.com";
                         var tipoContrato = Convert.ToInt32(Request.Form["tipocontrato"]);
 
                         var infoPlan = nUsuarioEmpresa.CargarPlan(plan);
@@ -559,7 +559,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         EResultadoSuscripcion resultadoSuscripcion = crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular);
                         
                         //Simula una suscripcion para hacer pruebas
-                        //EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "5","3","4","No tiene","No tiene");
+                        //EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
                       
 
                         if (resultadoSuscripcion.Resultado == "Success")
