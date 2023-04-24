@@ -11,14 +11,22 @@ namespace ActiveSmartWeb.Authorize
 {
     public abstract class pagoAuthorize
     {
+        //Credenciales de prueba
         private static string ApiLoginID = "5dP8ESWyp97";
         private static string ApiTransactionKey = "87Mr8AAKc3g3s493";
 
+        //Credenciales de produccion
+        //private static string ApiLoginID = "638MVB6ps3Eb";
+        //private static string ApiTransactionKey = "77M2DrM4HvyP74zj";
+
         public static EResultadoSuscripcion crearSubscripcion(short intervalLength, decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular)
         {
- 
 
-            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
+            //Ambiente de pruebas
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
+
+            //Ambiente de produccion
+            //ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
 
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
             {
@@ -60,7 +68,7 @@ namespace ActiveSmartWeb.Authorize
 
             ARBSubscriptionType subscriptionType = new ARBSubscriptionType()
             {
-                amount = amount,
+                amount = 0.01M,
                 trialAmount = 0.00m,
                 paymentSchedule = schedule,
                 billTo = addressInfo,
