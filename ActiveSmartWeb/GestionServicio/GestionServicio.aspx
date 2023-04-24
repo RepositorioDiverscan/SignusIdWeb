@@ -133,7 +133,6 @@
               
               </div>
             </div>
-              <img src="../images/signus_id3.png" />
              <div id="w-node-_1881bb3d-bb04-a65f-0013-ab2c81d34079-731f63ba" class="div-tarjeta tablagestion tarjeta-gestion tarjeta-responsive">
                   <div class="contenedor-grid visor">
                 <table style="width:100%">
@@ -204,7 +203,7 @@
                 <div id="w-node-c8689383-f869-af00-8fed-b75b3bbc331a-731f63ba" class="div-tarjeta div-cinta">
               <div class="div-block-170">
                 <div class="text-block-17" v-cloak>{{listaIdiomas.MsjTienda}}</div> 
-                <a href="*" class="boton call2action w-button" v-cloak>{{listaIdiomas.MsjbtnTienda}}<strong></strong></a> 
+                <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak>{{listaIdiomas.MsjbtnTienda}}<strong></strong></a> 
               </div>
             </div>
            </div>

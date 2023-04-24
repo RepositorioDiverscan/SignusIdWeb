@@ -102,7 +102,7 @@
             <div id="w-node-_67ea17a5-0864-b43e-d363-995e3e85454f-2106bd5d" class="div-tarjeta div-cinta">
               <div class="div-block-170">
                 <div class="text-block-17" v-cloak> {{listaidiomaRegistroActivo.MsjTienda}}</div> 
-                <a href="*" class="boton call2action w-button" v-cloak>{{listaidiomaRegistroActivo.MsjBtnTienda}}<strong></strong></a> 
+                <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak>{{listaidiomaRegistroActivo.MsjBtnTienda}}<strong></strong></a> 
               </div>
             </div>
             <div id="w-node-aa3c62d1-2c7e-3084-f639-dda43903fc83-2106bd5d" class="div-tarjeta tarjeta-registro">

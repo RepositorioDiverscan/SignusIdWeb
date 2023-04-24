@@ -125,7 +125,7 @@
               <div class="div-tarjeta cinta-tienda-ai cinta-perfil">
                 <div class="div-block-170">
                   <div class="text-block-17" v-cloak>{{listaIdiomas.Tienda}}</div>
-                  <a href="*" class="boton call2action w-button" v-cloak>{{listaIdiomas.MsjTienda}}<strong></strong></a>
+                  <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak>{{listaIdiomas.MsjTienda}}<strong></strong></a>
                 </div>
               </div>
             </div>

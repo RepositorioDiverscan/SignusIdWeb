@@ -204,7 +204,7 @@
             <div id="w-node-a5ddfd93-6478-1c5c-3584-0439e4003df7-fb048ddf" class="div-tarjeta div-cinta">
               <div class="div-block-170">
                 <div class="text-block-17" v-cloak>{{listaidiomaSincronizActivo.ActDisp}}</div> 
-                <a href="*" class="boton call2action w-button" v-cloak>{{listaidiomaSincronizActivo.IrTienda}}<strong></strong></a> 
+                <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak>{{listaidiomaSincronizActivo.IrTienda}}<strong></strong></a> 
               </div>
             </div>
           </div>

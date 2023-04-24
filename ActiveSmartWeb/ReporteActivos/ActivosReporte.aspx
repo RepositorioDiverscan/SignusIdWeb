@@ -255,7 +255,7 @@
             <div id="w-node-_7ebb2f58-3823-38f6-0b04-dcf5a7a92582-81b79b2e" class="div-tarjeta div-cinta tarjeta-responisve">
               <div class="div-block-170">
                 <div class="text-block-17" v-cloak>{{listaIdioma.MsjTienda}}</div> 
-                <a href="*" class="boton call2action w-button" v-cloak>{{listaIdioma.MsjbtnTienda}}<strong></strong></a> 
+                <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak>{{listaIdioma.MsjbtnTienda}}<strong></strong></a> 
               </div>
             </div>
           </div>
