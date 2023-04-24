@@ -207,11 +207,11 @@
                             <div class="div-block-footer-logos">
                                 <h2 style="visibility:hidden" id="w-node-_2117ab26-b6cc-2a9c-b27e-7ca8c386100e-8c09cdbe" class="footer-heading app" v-cloak>{{options.DescApp}}</h2><!--¿Ya descargaste nuestra App?-->
                                 <div id="w-node-c11b8b20-a398-4f4a-bce0-d56be48f050f-8c09cdbe" class="div-block-logo-lines appstore">
-                                    <a href="#" class="link-block-4 w-inline-block">
+                                    <a href="https://play.google.com/store/apps/details?id=com.companyname.activesmartid&hl=es_419&gl=US" target="_blank" class="link-block-4 w-inline-block">
                                         <img src="../images/gplay.svg" loading="lazy" alt="" class="image-41"></a>
                                 </div>
                                 <div id="w-node-e5945614-8b75-d125-84bc-23b37db37b6e-8c09cdbe" class="div-block-logo-lines googleplay">
-                                    <a href="#" class="link-app-download w-inline-block">
+                                    <a href="../APK/SignusID.apk" class="link-app-download w-inline-block">
                                         <img src="../images/android.svg" loading="lazy" alt="" class="image-41"></a>
                                 </div>
                                 <div id="w-node-e881a1e3-26b8-c910-2fbb-d8d92a0ba898-8c09cdbe" class="div-block-social">

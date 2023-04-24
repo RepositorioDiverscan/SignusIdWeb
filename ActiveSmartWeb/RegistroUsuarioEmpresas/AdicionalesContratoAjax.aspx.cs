@@ -546,7 +546,6 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var frecuencia = Request.Form["Frecuencia"];
                         var plan = Convert.ToInt32(Request.Form["CodigoPlan"]);
                         var correoUsuario = Request.Form["correoUsuario"];
-                        //var correoUsuario = "csalazar.diverscan+8@gmail.com";
                         var tipoContrato = Convert.ToInt32(Request.Form["tipocontrato"]);
 
                         var infoPlan = nUsuarioEmpresa.CargarPlan(plan);
@@ -556,16 +555,17 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         short frecuenciaDePago = (short)(frecuencia == "1" ? 12 : 1);
 
 
-                        //EResultadoSuscripcion resultadoSuscripcion = pagoAuthorize.crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular, apellidotitular);
+                        EResultadoSuscripcion resultadoSuscripcion = pagoAuthorize.crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular, apellidotitular);
                         
                         //Simula una suscripcion para hacer pruebas
-                        EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
+                        //EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
                       
 
                         if (resultadoSuscripcion.Resultado == "Success")
                         {
                             var ResultadoAdicionale = nUsuarioEmpresa.InsertarContratoConSuscripcion(correoUsuario, Convert.ToInt32(frecuencia), tipoContrato, _adicionalcontratado.Values.ToList(), resultadoSuscripcion, costoTotal);
                             Response.Write("Transacción realizada correctamente");
+
                         }
                         else
                         {
@@ -607,6 +607,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
             //Suma del costo del plan y los adicionales.
             costoTotal += costo;
+
+            costoTotal = frecuencia == "1" ? costoTotal*12 : costoTotal;
 
             return costoTotal;
 

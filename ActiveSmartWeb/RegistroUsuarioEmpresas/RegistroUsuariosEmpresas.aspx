@@ -128,7 +128,6 @@
                       <span class="tyc-span-reg-ai">Términos y Condiciones</span></a></span></label>
                  
                     <button v-cloak  v-on:click="ObtenerDatosRegistro()" class="btn-siguiente-reg-ai w-button">{{listaIdiomas.BtnSiguiente}}</button>
-                    <a v-cloak  href="SeleccionPlan.aspx" class="btn-siguiente-reg-ai w-button">{{listaIdiomas.BtnSiguiente}}</a>
 
                 </div>
                 

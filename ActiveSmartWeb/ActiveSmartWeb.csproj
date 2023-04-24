@@ -2317,6 +2317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\images.rar" />
+    <Content Include="APK\SignusID.apk" />
     <None Include="packages.config" />
     <Content Include="SiteMaster\SiteMasterInicio.Master" />
     <Content Include="Recursos\JSON\Monedas.JSON" />
