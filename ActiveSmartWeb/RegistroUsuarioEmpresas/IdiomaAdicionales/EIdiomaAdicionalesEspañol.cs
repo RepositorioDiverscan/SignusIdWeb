@@ -16,7 +16,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.IdiomaAdicionales
         private const string _numerotarjetaph = "Ingrese el número de la tarjeta";
         private const string _fechavencimiento = "Fecha de vencimiento";
         private const string _nombretitular = "Nombre del titular";
-        private const string _nombretitularph = "Ingrese el nombre del titular";
+        private const string _nombretitularph = "Ingrese el nombre";
         private const string _pais = "País/Región";
         private const string _paisph = "Seleccione el país";
         private const string _estado = "Estado";

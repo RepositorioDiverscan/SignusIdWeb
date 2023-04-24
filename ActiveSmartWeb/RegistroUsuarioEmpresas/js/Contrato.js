@@ -25,7 +25,7 @@ const contrato = new Vue({
         precio: "0",
         rutaImagen: "../images/signus_id_basic.svg",
         frecuenciaPago: "1",
-        terminoscondiciones: "",
+        terminoscondiciones: true,
         adicionalesseleccionados: []
 
     },
@@ -250,32 +250,37 @@ const contrato = new Vue({
                                         if (this.ciudad != '') {
                                             if (this.direccion != '') {
                                                 if (this.frecuenciaPago != '') {
-                                                    sessionStorage.setItem('frecuencia', self.frecuenciaPago);
+                                                    if (this.terminoscondiciones) {
+                                                        sessionStorage.setItem('frecuencia', self.frecuenciaPago);
 
-                                                    $.post(urlAdicionalesContratoAjax, {
+                                                        $.post(urlAdicionalesContratoAjax, {
 
-                                                        option: "RealizarPago",
+                                                            option: "RealizarPago",
 
-                                                        Numerotarjeta: this.numerotarjeta,
-                                                        FechaVencimiento: this.fechaVencimiento,
-                                                        Codigo: this.codigo,
-                                                        Nombretitular: this.nombretitular,
-                                                        Apellidotitular: this.apellidotitular,
-                                                        Frecuencia: this.frecuenciaPago,
-                                                        CodigoPlan: this.codigoPlan,
-                                                        correoUsuario: sessionStorage.getItem('CorreoUsuario'),
-                                                        tipocontrato: sessionStorage.getItem("CodigoPlan")
+                                                            Numerotarjeta: this.numerotarjeta,
+                                                            FechaVencimiento: this.fechaVencimiento,
+                                                            Codigo: this.codigo,
+                                                            Nombretitular: this.nombretitular,
+                                                            Apellidotitular: this.apellidotitular,
+                                                            Frecuencia: this.frecuenciaPago,
+                                                            CodigoPlan: this.codigoPlan,
+                                                            correoUsuario: sessionStorage.getItem('CorreoUsuario'),
+                                                            tipocontrato: sessionStorage.getItem("CodigoPlan")
 
 
-                                                    }, function (data, error) {
-                                                        if (data == "Transacción realizada correctamente") {
-                                                            alertas.success("Trasacción Exitosa", data);
-                                                            //self.InsertarContrato();
-                                                        } else {
-                                                            alertas.error("Error", data);
-                                                        }
+                                                        }, function (data, error) {
+                                                            if (data == "Transacción realizada correctamente") {
+                                                                alertas.success("Trasacción Exitosa", data);
+                                                                //self.InsertarContrato();
+                                                            } else {
+                                                                alertas.error("Error", data);
+                                                            }
 
-                                                    });
+                                                        });
+                                                    }
+                                                    else {
+                                                        alertas.error("Error", "Debe aceptar los términos y condiciones");
+                                                    }
 
                                                     
                                                 }

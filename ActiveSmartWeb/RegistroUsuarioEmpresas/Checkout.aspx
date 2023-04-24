@@ -281,7 +281,10 @@
       <div class="container-f-steps-ai w-container">
         <div class="footer-flex-container-2 f-flex-container-ai w-clearfix">
           <div class="f-block-ai w-clearfix w-form">
-            <div id="email-form-4" name="email-form-4" data-name="Email Form 4" method="get" class="form-t-c-ai"><label class="w-checkbox checkbx-t-c-ai"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" checked="" required="" class="w-checkbox-input box-tyc-ai"><span class="lbl-t-c-ai w-form-label" for="checkbox-2">{{listaIdiomas.TerminosCondiciones}}</span></label></div>
+            <div id="email-form-4" name="email-form-4" data-name="Email Form 4" method="get" class="form-t-c-ai">
+                <label class="w-checkbox checkbx-t-c-ai">
+                    <input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" checked="" required="" class="w-checkbox-input box-tyc-ai" v-model="terminoscondiciones">
+                    <span class="lbl-t-c-ai w-form-label" for="checkbox-2">{{listaIdiomas.TerminosCondiciones}}</span></label></div>
             <div class="w-form-done">
               <div>Thank you! Your submission has been received!</div>
             </div>
