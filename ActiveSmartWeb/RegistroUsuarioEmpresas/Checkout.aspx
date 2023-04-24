@@ -121,7 +121,8 @@
                               <div class="p-price-plan-calc-ai texto-tachado-plan-ai">US$19.99/mes</div>
                             </div>
                             <div class="col-paln-ai w-col w-col-3 w-col-small-3 w-col-tiny-6">
-                              <div class="p-price-plan-calc-ai" v-cloak>US${{adicional.Costo}}/mes</div>
+                              <div v-if="frecuenciaPago=='1'" class="p-price-plan-calc-ai" v-cloak>US${{adicional.Costo}}/mes</div>
+                              <div v-if="frecuenciaPago=='2'" class="p-price-plan-calc-ai" v-cloak>US${{adicional.CostoMensual}}/mes</div>
                             </div>
                           </div>
 
@@ -145,8 +146,20 @@
                             <label for="Cvv-3" class="lbl-pago-info-ai">CVV</label>
                             <input type="text" class="input-info-pago-ai w-input" maxlength="4" name="Cvv" data-name="Cvv" placeholder="CVV" id="Cvv-3" required="" v-model="codigo" onkeypress="return event.charCode>=48 && event.charCode<=57">
                         </div>
-                        <label for="nombre" class="lbl-pago-info-ai" v-cloak>{{listaIdiomas.NombreTitular}}</label>
-                        <input type="text" class="input-info-pago-ai txt-titular w-input" maxlength="256" name="nombre" data-name="nombre" :placeholder="listaIdiomas.NombreTitularPH" id="nombre" required="" v-model="nombretitular">
+
+
+                            <div class="data-payment-ai month-ai w-clearfix">
+                            <label for="fecha" class="lbl-pago-info-ai" v-cloak>{{listaIdiomas.NombreTitular}}</label>
+                            <input type="text" class="input-info-pago-ai w-input" maxlength="256" name="nombre" data-name="nombre" :placeholder="listaIdiomas.NombreTitularPH" id="nombre" required="" v-model="nombretitular">
+                          </div>
+                          <div class="data-payment-ai w-clearfix">
+                            <label for="Cvv-3" class="lbl-pago-info-ai">Apellido del titular</label>
+                            <input type="text" class="input-info-pago-ai w-input" maxlength="256" name="apellido" data-name="apellido" placeholder="Ingrese el apellido" id="apellido" required="" v-model="apellidotitular">
+                        </div>
+
+
+                        <%--<label for="nombre" class="lbl-pago-info-ai" v-cloak>{{listaIdiomas.NombreTitular}}</label>
+                        <input type="text" class="input-info-pago-ai txt-titular w-input" maxlength="256" name="nombre" data-name="nombre" :placeholder="listaIdiomas.NombreTitularPH" id="nombre" required="" v-model="nombretitular">--%>
                         <label for="Paises-5" class="lbl-pago-info-ai" v-cloak>{{listaIdiomas.Pais}}</label>
                         
                             <input type="text" id="country5" autofocus="true" maxlength="80" name="email-2" data-name="Email 2" class="txt-registro-aii w-input"/>

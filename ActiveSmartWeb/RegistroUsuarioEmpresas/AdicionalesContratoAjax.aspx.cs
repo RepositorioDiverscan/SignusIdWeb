@@ -542,10 +542,11 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var fechaVencimiento = Request.Form["FechaVencimiento"];
                         var codigo = Request.Form["Codigo"];
                         var nombretitular = Request.Form["Nombretitular"];
+                        var apellidotitular = Request.Form["Apellidotitular"];
                         var frecuencia = Request.Form["Frecuencia"];
                         var plan = Convert.ToInt32(Request.Form["CodigoPlan"]);
-                        //var correoUsuario = Request.Form["correoUsuario"];
-                        var correoUsuario = "csalazar.diverscan+8@gmail.com";
+                        var correoUsuario = Request.Form["correoUsuario"];
+                        //var correoUsuario = "csalazar.diverscan+8@gmail.com";
                         var tipoContrato = Convert.ToInt32(Request.Form["tipocontrato"]);
 
                         var infoPlan = nUsuarioEmpresa.CargarPlan(plan);
@@ -555,10 +556,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         short frecuenciaDePago = (short)(frecuencia == "1" ? 12 : 1);
 
 
-                        EResultadoSuscripcion resultadoSuscripcion = pagoAuthorize.crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular);
+                        //EResultadoSuscripcion resultadoSuscripcion = pagoAuthorize.crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular, apellidotitular);
                         
                         //Simula una suscripcion para hacer pruebas
-                        //EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
+                        EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
                       
 
                         if (resultadoSuscripcion.Resultado == "Success")

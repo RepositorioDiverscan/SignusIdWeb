@@ -10,6 +10,7 @@ const contrato = new Vue({
         fechaVencimiento: "",
         codigo: "",
         nombretitular: "",
+        apellidotitular: "",
         pais: "",
         estado: "",
         ciudad: "",
@@ -243,49 +244,55 @@ const contrato = new Vue({
                 if (this.fechaVencimiento != '') {
                     if (this.codigo != '') {
                         if (this.nombretitular != '') {
-                            if (this.pais != '') {
-                                if (this.estado != '') {
-                                    if (this.ciudad != '') {
-                                        if (this.direccion != '') {
-                                            if (this.frecuenciaPago != '') {
-                                                sessionStorage.setItem('frecuencia', self.frecuenciaPago);
+                            if (this.apellidotitular != '') {
+                                if (this.pais != '') {
+                                    if (this.estado != '') {
+                                        if (this.ciudad != '') {
+                                            if (this.direccion != '') {
+                                                if (this.frecuenciaPago != '') {
+                                                    sessionStorage.setItem('frecuencia', self.frecuenciaPago);
 
-                                                $.post(urlAdicionalesContratoAjax, {
+                                                    $.post(urlAdicionalesContratoAjax, {
 
-                                                    option: "RealizarPago",
+                                                        option: "RealizarPago",
 
-                                                    Numerotarjeta: this.numerotarjeta,
-                                                    FechaVencimiento: this.fechaVencimiento,
-                                                    Codigo: this.codigo,
-                                                    Nombretitular: this.nombretitular,
-                                                    Frecuencia: this.frecuenciaPago,
-                                                    CodigoPlan: this.codigoPlan,
-                                                    correoUsuario: sessionStorage.getItem('CorreoUsuario'),
-                                                    tipocontrato: sessionStorage.getItem("CodigoPlan")
+                                                        Numerotarjeta: this.numerotarjeta,
+                                                        FechaVencimiento: this.fechaVencimiento,
+                                                        Codigo: this.codigo,
+                                                        Nombretitular: this.nombretitular,
+                                                        Apellidotitular: this.apellidotitular,
+                                                        Frecuencia: this.frecuenciaPago,
+                                                        CodigoPlan: this.codigoPlan,
+                                                        correoUsuario: sessionStorage.getItem('CorreoUsuario'),
+                                                        tipocontrato: sessionStorage.getItem("CodigoPlan")
 
 
-                                                }, function (data, error) {
-                                                    if (data == "Transacción realizada correctamente") {
-                                                        alertas.success("Trasacción Exitosa", data);
-                                                    } else {
-                                                        alertas.error("Error", data);
-                                                    }
+                                                    }, function (data, error) {
+                                                        if (data == "Transacción realizada correctamente") {
+                                                            alertas.success("Trasacción Exitosa", data);
+                                                            //self.InsertarContrato();
+                                                        } else {
+                                                            alertas.error("Error", data);
+                                                        }
 
-                                                });
+                                                    });
 
-                                                //self.InsertarContrato();
+                                                    
+                                                }
+                                            } else {
+                                                alertas.error("Error", "Por favor ingrese su dirección");
                                             }
                                         } else {
-                                            alertas.error("Error", "Por favor ingrese su dirección");
+                                            alertas.error("Error", "Por favor ingrese la ciudad");
                                         }
                                     } else {
-                                        alertas.error("Error", "Por favor ingrese la ciudad");
+                                        alertas.error("Error", "Por favor ingrese el estado");
                                     }
                                 } else {
-                                    alertas.error("Error", "Por favor ingrese el estado");
+                                    alertas.error("Error", "Por favor seleccione el país");
                                 }
                             } else {
-                                alertas.error("Error", "Por favor seleccione el país");
+                                alertas.error("Error", "Por favor ingrese el apellido del titular de la tarjeta");
                             }
                         } else {
                             alertas.error("Error", "Por favor ingrese el nombre del titular de la tarjeta");

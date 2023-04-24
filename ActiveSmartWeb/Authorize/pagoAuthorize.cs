@@ -19,7 +19,7 @@ namespace ActiveSmartWeb.Authorize
         //private static string ApiLoginID = "638MVB6ps3Eb";
         //private static string ApiTransactionKey = "77M2DrM4HvyP74zj";
 
-        public static EResultadoSuscripcion crearSubscripcion(short intervalLength, decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular)
+        public static EResultadoSuscripcion crearSubscripcion(short intervalLength, decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular, string apellidotitular)
         {
 
             //Ambiente de pruebas
@@ -63,7 +63,7 @@ namespace ActiveSmartWeb.Authorize
             nameAndAddressType addressInfo = new nameAndAddressType()
             {
                 firstName = nombretitular,
-                lastName = "Prueba"
+                lastName = apellidotitular
             };
 
             ARBSubscriptionType subscriptionType = new ARBSubscriptionType()
