@@ -95,11 +95,14 @@ const master2 = new Vue({
         abrirPopUpTC: function () {
             var a = document.getElementById("popupTC");
             a.style.display = "block";
+            $('#popupTCContenido').addClass('mostrarPopUpYC');
         },
 
         cerrarPopUpTC: function () {
             var a = document.getElementById("popupTC");
+            var b = document.getElementById("popupTCContenido");
             a.style.display = "none";
+            b.style.display = "none";
         }
 
     },

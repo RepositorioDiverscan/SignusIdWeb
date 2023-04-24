@@ -47,6 +47,11 @@
     <link href="../images/logo-02.png" rel="apple-touch-icon">
 
     <style>
+
+        .mostrarPopUpYC{
+            display:block !important;
+        }
+
         .iti, .country-select {
             min-width: 100%;
         }
@@ -143,7 +148,7 @@
                 <div class="background-pop-up" id="popupTC" style="display: none;">
 
                     <div class="back-popup-tc none _23" style="display: block; place-content: center;">
-                        <div class="tarjeta-popup" style="margin: auto; height: 604px; width: 72%;">
+                        <div class="tarjeta-popup" id="popupTCContenido" style="margin: auto; height: 604px; width: 72%;">
                             <div class="header-modal-ai">
                                 <h4 class="texto-h-ai">Terminos y condiciones</h4>
                             </div>
