@@ -271,7 +271,7 @@ const contrato = new Vue({
                                                         }, function (data, error) {
                                                             if (data == "Transacción realizada correctamente") {
                                                                 alertas.success("Trasacción Exitosa", data);
-                                                                //self.InsertarContrato();
+                                                                window.location.assign('../../InicioSesion/InicioSesion.aspx');
                                                             } else {
                                                                 alertas.error("Error", data);
                                                             }
