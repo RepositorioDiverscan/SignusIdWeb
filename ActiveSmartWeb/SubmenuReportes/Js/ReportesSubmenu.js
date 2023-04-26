@@ -236,7 +236,7 @@ Vue.component('submenureporte', {
 
                                             }),
                                             createElement('a', {
-                                                attrs: { class: 'boton call2action w-button'},
+                                                attrs: { class: 'boton call2action w-button', href:'../Tienda/Tienda.aspx'},
                                                 domProps: { innerText: this.listaIdiomaSubmenu.MsjbtnTienda }
                                             })
                                     ])

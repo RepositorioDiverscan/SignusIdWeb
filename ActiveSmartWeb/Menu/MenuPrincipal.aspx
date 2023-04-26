@@ -224,7 +224,7 @@
                     <div id="w-node-a911d035-0fb8-b12b-302b-2b0449865d22-a8a2a4c2" class="div-tarjeta div-cinta">
                         <div class="div-block-170">
                             <div class="text-block-17" v-cloak>{{listaidioma.LblMasFunciones}}</div>
-                            <a href="../Menu/MenuPrincipal.aspx" class="boton call2action w-button" v-cloak>{{listaidioma.BtnPro}}<strong></strong></a>
+                            <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak>{{listaidioma.BtnPro}}<strong></strong></a>
                         </div>
                     </div>
                 </div>

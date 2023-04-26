@@ -152,7 +152,7 @@
                         <div class="div-tarjeta cinta-go-store-ai">
                             <div class="div-block-170 go-store-ai">
                                 <div class="text-block-17" v-cloak>{{listaIdiomas.Descubra}}</div>
-                                <a href="*" class="boton call2action w-button" v-cloak><strong>{{listaIdiomas.Tienda}}</strong></a>
+                                <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak><strong>{{listaIdiomas.Tienda}}</strong></a>
                             </div>
                         </div>
                         <h4 class="heading-3 h-empleados-ai">Activos asignados</h4>

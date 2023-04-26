@@ -104,7 +104,7 @@
               <div id="w-node-c8689383-f869-af00-8fed-b75b3bbc331a-731f63ba" class="div-tarjeta div-cinta" style="margin-top: -110px;">
               <div class="div-block-170">
                 <div class="text-block-17" v-cloak>{{listaidiomalubicacion.MsjTienda}}</div>
-                <a href="*" class="boton call2action w-button" v-cloak><strong>{{listaidiomalubicacion.MsjbtnTienda}}</strong></a>
+                <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak><strong>{{listaidiomalubicacion.MsjbtnTienda}}</strong></a>
               </div>
             </div>
           </div>

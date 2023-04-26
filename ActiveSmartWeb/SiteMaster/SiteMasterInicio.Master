@@ -47,6 +47,11 @@
     <link href="../images/logo-02.png" rel="apple-touch-icon">
 
     <style>
+
+        .mostrarPopUpYC{
+            display:block !important;
+        }
+
         .iti, .country-select {
             min-width: 100%;
         }
@@ -143,14 +148,14 @@
                 <div class="background-pop-up" id="popupTC" style="display: none;">
 
                     <div class="back-popup-tc none _23" style="display: block; place-content: center;">
-                        <div class="tarjeta-popup" style="margin: auto; height: 604px; width: 72%;">
+                        <div class="tarjeta-popup" id="popupTCContenido" style="margin: auto; height: 100%; width: 72%; max-height: 100%">
                             <div class="header-modal-ai">
                                 <h4 class="texto-h-ai">Terminos y condiciones</h4>
                             </div>
                             <div class="div-icon-exit-ai" v-on:click="cerrarPopUpTC()">
                                 <img src="images/icono_eliminar_acces-o-01.svg" loading="lazy" alt="" class="img-salir-ai">
                             </div>
-                            <div class="form-block-empresa w-form" style="overflow-y: scroll">
+                            <div class="form-block-empresa w-form" >
              
                                     <div class="text-block-32">
                                         1.     General.<br>
@@ -207,11 +212,11 @@
                             <div class="div-block-footer-logos">
                                 <h2 style="visibility:hidden" id="w-node-_2117ab26-b6cc-2a9c-b27e-7ca8c386100e-8c09cdbe" class="footer-heading app" v-cloak>{{options.DescApp}}</h2><!--¿Ya descargaste nuestra App?-->
                                 <div id="w-node-c11b8b20-a398-4f4a-bce0-d56be48f050f-8c09cdbe" class="div-block-logo-lines appstore">
-                                    <a href="#" class="link-block-4 w-inline-block">
+                                    <a href="https://play.google.com/store/apps/details?id=com.companyname.activesmartid&hl=es_419&gl=US" target="_blank" class="link-block-4 w-inline-block">
                                         <img src="../images/gplay.svg" loading="lazy" alt="" class="image-41"></a>
                                 </div>
                                 <div id="w-node-e5945614-8b75-d125-84bc-23b37db37b6e-8c09cdbe" class="div-block-logo-lines googleplay">
-                                    <a href="#" class="link-app-download w-inline-block">
+                                    <a href="../APK/SignusID.apk" class="link-app-download w-inline-block">
                                         <img src="../images/android.svg" loading="lazy" alt="" class="image-41"></a>
                                 </div>
                                 <div id="w-node-e881a1e3-26b8-c910-2fbb-d8d92a0ba898-8c09cdbe" class="div-block-social">

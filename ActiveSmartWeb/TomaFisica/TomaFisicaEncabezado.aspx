@@ -71,7 +71,7 @@
           <div id="w-node-d648a741-eb22-8676-6b39-5000b52a81a1-53d8c7b1" class="div-tarjeta cinta-tienda-ai">
             <div class="div-block-170">
               <div class="text-block-17" v-cloak>{{Listaidiomas.Anuncio}}</div> 
-              <a href="*" class="boton call2action w-button" v-cloak>{{Listaidiomas.Tienda}}<strong></strong></a> 
+              <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak>{{Listaidiomas.Tienda}}<strong></strong></a> 
             </div>
           </div>
         </div>

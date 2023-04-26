@@ -106,7 +106,7 @@
               <div class="div-tarjeta div-cinta">
                 <div class="div-block-170">
                   <div class="text-block-17" v-cloak>{{listaIdioma.MsjTienda}}</div>
-                  <a href="*" class="boton call2action w-button" v-cloak><strong>{{listaIdioma.MsjbtnTienda}}</strong></a>
+                  <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak><strong>{{listaIdioma.MsjbtnTienda}}</strong></a>
                 </div>
               </div>
             </div>

@@ -1152,6 +1152,7 @@
     <Compile Include="AjaxPrincipalMaster\Entidades\EIdiomaMasterEspanol.cs" />
     <Compile Include="AjaxPrincipalMaster\Entidades\EIdiomaMasterGeneral.cs" />
     <Compile Include="AjaxPrincipalMaster\Entidades\EIdiomaMasterIngles.cs" />
+    <Compile Include="Authorize\pagoAuthorize.cs" />
     <Compile Include="Basic.aspx.cs">
       <DependentUpon>Basic.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1816,6 +1817,7 @@
     <Compile Include="RegistroUsuarioEmpresas\Registro\EIndustria.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Registro\EPaqueteAdicional.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Registro\EPaqueteAdicionalContratado.cs" />
+    <Compile Include="RegistroUsuarioEmpresas\Registro\EResultadoSuscripcion.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Registro\ETipoPlanes.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Registro\EUsuarioEmpresa.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Registro\NUsuarioEmpresa.cs" />
@@ -2315,6 +2317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\images.rar" />
+    <Content Include="APK\SignusID.apk" />
     <None Include="packages.config" />
     <Content Include="SiteMaster\SiteMasterInicio.Master" />
     <Content Include="Recursos\JSON\Monedas.JSON" />

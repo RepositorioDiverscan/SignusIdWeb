@@ -87,7 +87,7 @@
               <div class="div-tarjeta div-cinta">
                 <div class="div-block-170">
                   <div class="text-block-17">{{listaIdiomas.TextoLeyenda}}</div><!---->
-                  <a href="*" class="boton call2action w-button">{{listaIdiomas.BotonIrTienda}}<strong></strong></a>
+                  <a href="../Tienda/Tienda.aspx" class="boton call2action w-button">{{listaIdiomas.BotonIrTienda}}<strong></strong></a>
                 </div>
               </div>
             </div>
