@@ -152,7 +152,7 @@
                             <div class="header-modal-ai">
                                 <h4 class="texto-h-ai">Terminos y condiciones</h4>
                             </div>
-                            <div class="div-icon-exit-ai" v-on:click="cerrarPopUpTC()">
+                            <div class="div-icon-exit-ai" v-on:click="cerrarPopUpTC()" style="cursor:pointer;">
                                 <img src="images/icono_eliminar_acces-o-01.svg" loading="lazy" alt="" class="img-salir-ai">
                             </div>
                             <div class="form-block-empresa w-form" >
