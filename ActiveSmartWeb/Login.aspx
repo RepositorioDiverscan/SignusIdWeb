@@ -37,7 +37,7 @@
               </div>
               <div class="centro-de-recursos">
                 <div class="centro-de-recursos _2">CENTRO DE RECURSOS:</div>
-                <a href="Comunidad/Comounidad.aspx" class="nombre-recurso _2 w-inline-block">¿Cómo cuidar las etiquetas de nuestros activos?</a>
+                <a href="/Comunidad/Comunidad.aspx" class="nombre-recurso _2 w-inline-block">¿Cómo cuidar las etiquetas de nuestros activos?</a>
               </div>
             </div>
           </div>
