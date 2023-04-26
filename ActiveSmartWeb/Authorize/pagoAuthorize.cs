@@ -68,7 +68,7 @@ namespace ActiveSmartWeb.Authorize
 
             ARBSubscriptionType subscriptionType = new ARBSubscriptionType()
             {
-                amount = 0.01M,
+                amount = 1.00M,
                 trialAmount = 0.00m,
                 paymentSchedule = schedule,
                 billTo = addressInfo,
