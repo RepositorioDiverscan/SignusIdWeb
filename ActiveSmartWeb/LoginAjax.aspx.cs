@@ -1,4 +1,5 @@
-﻿using ActiveSmartWeb.Contrasenna.CambioContrasena;
+﻿using ActiveSmartWeb.Authorize;
+using ActiveSmartWeb.Contrasenna.CambioContrasena;
 using ActiveSmartWeb.Login.Entidades;
 using ActiveSmartWeb.Utilities;
 using Newtonsoft.Json;
@@ -16,8 +17,22 @@ namespace ActiveSmartWeb.Login
     {
         private string validarSubscripcion(Nlogin _nlogin, string correo)
         {
-
-            return _nlogin.obtenerSubscripcion(correo);
+            string subscripcion = _nlogin.obtenerSubscripcion(correo);
+            if(subscripcion != "")
+            {
+                string estado = pagoAuthorize.getStatus(subscripcion);
+                if (estado != "active")
+                {
+                    return "Su subscripción se encuentra suspendida";
+                }
+                else
+                {
+                    return "BIEN";
+                }
+                
+            }
+            
+            return "Este usuario no posee una subscripcón";
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -51,8 +66,7 @@ namespace ActiveSmartWeb.Login
 
                         if(Resultado == "Validar Subscripcion")
                         {
-                            string subscripcion = validarSubscripcion(_nlogin, Request.Form["Email"].ToString());
-                            Resultado = subscripcion == ""?"No Tiene":subscripcion;
+                            Resultado = validarSubscripcion(_nlogin, Request.Form["Email"].ToString());
                         }
 
                         if (Resultado != "BIEN")

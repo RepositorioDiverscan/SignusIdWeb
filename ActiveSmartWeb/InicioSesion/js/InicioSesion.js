@@ -132,7 +132,6 @@ const login = new Vue({
                                 alertas.error(self.listaidiomalogin.Atencion, self.listaidiomalogin.TerIntento);
                                 self.intentos = self.intentos - 1
                             } else {
-                                console.log(self.intentos);
                                 alertas.error(self.listaidiomalogin.Atencion, self.listaidiomalogin.CuaIntento);
                             }
                             return;
