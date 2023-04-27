@@ -14,6 +14,12 @@ namespace ActiveSmartWeb.Login
 {
     public partial class LoginAjax : System.Web.UI.Page
     {
+        private string validarSubscripcion(Nlogin _nlogin, string correo)
+        {
+
+            return _nlogin.obtenerSubscripcion(correo);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             NCambioPSW _nPassword = new NCambioPSW();
@@ -23,29 +29,6 @@ namespace ActiveSmartWeb.Login
             try {
                 switch (Request.Form["opciones"])
                 {
-                    case "ValidUsers1":
-
-                        var data = _nlogin.ValidUser(
-                                Request.Form["Email"].ToString(),
-                                Encrypt.EncriptarSHA3_512(Request.Form["Password"].ToString())
-                            );
-
-                        string res = _nlogin.ValidadInicioSesion(Request.Form["Email"].ToString(), Encrypt.EncriptarSHA3_512(Request.Form["Password"].ToString()));
-
-
-                        if (res != "EXITO")
-                        {
-                            Response.Write(res);
-                            break;
-                        } else
-                        if(data.Count == 0)
-                        {
-                            Response.Write("USAURIO NO VALIDO, POR FAVOR INTENTELO NUEVAMENTE");
-                            break;
-                        }
-                        
-                            Response.Write(JsonConvert.SerializeObject(data, Formatting.Indented));
-                            break;
 
 
                     case "ValidUsers":
@@ -66,6 +49,12 @@ namespace ActiveSmartWeb.Login
                             Resultado  = "USAURIO NO VALIDO, POR FAVOR INTENTELO NUEVAMENTE";
                         }
 
+                        if(Resultado == "Validar Subscripcion")
+                        {
+                            string subscripcion = validarSubscripcion(_nlogin, Request.Form["Email"].ToString());
+                            Resultado = subscripcion == ""?"No Tiene":subscripcion;
+                        }
+
                         if (Resultado != "BIEN")
                         {
                             Response.Write(Resultado);
@@ -76,15 +65,6 @@ namespace ActiveSmartWeb.Login
                             Response.Write(JsonConvert.SerializeObject(data1, Formatting.Indented));
                             break;
                         }
-
-                       
-
-                        /* case "ValidaLogin":
-                             var correo = Request.Form["Email"].ToString();
-                             string res = _nlogin.ValidadInicioSesion(correo);
-                             Response.Write(JsonConvert.SerializeObject(res, Formatting.Indented));
-
-                             break;*/
 
                 }
             } 

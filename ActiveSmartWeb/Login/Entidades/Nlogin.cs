@@ -44,6 +44,20 @@ namespace ActiveSmartWeb.Login.Entidades
             }
 
         }
+        
+        public string obtenerSubscripcion(string correo)
+        {
+            try
+            {
+                return _dlogin.obtenerSubscripcion(correo);
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return "";
+            }
+
+        }
 
 
     }

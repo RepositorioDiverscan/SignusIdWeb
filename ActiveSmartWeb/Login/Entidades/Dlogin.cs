@@ -69,5 +69,18 @@ namespace ActiveSmartWeb.Login.Entidades
             var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
             return Respuesta;
         }
+
+        public string obtenerSubscripcion(string correo)
+        {
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("ObtenerSuscripcionPorContrato");
+            db.AddInParameter(dbCommand, "@Correo", DbType.String, correo);
+            db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
+            dbCommand.CommandTimeout = 3600;
+            db.ExecuteNonQuery(dbCommand);
+            var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
+            return Respuesta;
+        }
+
     }
 }
