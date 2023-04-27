@@ -15,7 +15,7 @@
     
 
     <%--<div class="back-popup-tc none">--%>
-    <div v-cloak  id="PopPupEmpresas" class="tarjeta-popup selecem" style="margin: 0 auto; display: none; z-index: 25; width:auto;">
+    <div v-cloak  id="PopPupEmpresas" class="tarjeta-popup selecem" style="margin: 0 auto; display: none; z-index: 25; width:auto; display:flex; align-items:center;">
       <div class="header-modal-ai">
         <h4 class="texto-h-ai">Seleccione su empresa</h4>
       </div>
@@ -26,7 +26,7 @@
             <option v-for="emp in empresas" v-bind:value="emp.IdPerfilEmpresa">{{emp.NombreEmpresa}}</option>
           </select>
       </div>
-      <a href="#" style="margin-right: 44%" @click="establecerempresa" v-on:keyup.enter="establecerempresa()" class="btn-ingresar-ai w-button">Ingresar</a>
+      <a href="#" style="width:auto !important;" @click="establecerempresa" v-on:keyup.enter="establecerempresa()" class="btn-ingresar-ai w-button">Ingresar</a>
     </div>
   <%--</div>--%>
 
