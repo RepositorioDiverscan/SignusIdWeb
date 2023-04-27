@@ -120,20 +120,25 @@ const login = new Vue({
 
                             }
                         } else {
-                            if (self.intentos == 3) {
-                                alertas.error(self.listaidiomalogin.Atencion, self.listaidiomalogin.UnIntento);
-                                self.intentos = self.intentos - 1
+                            if (data == 'Su subscripción se encuentra suspendida' || data == 'Este usuario no posee una subscripcón') {
+                                alertas.error(self.listaidiomalogin.Atencion, data);
                             }
-                            else if (self.intentos == 2) {
-                                alertas.error(self.listaidiomalogin.Atencion, self.listaidiomalogin.SegIntento);
-                                self.intentos = self.intentos - 1
-                            }
-                            else if (self.intentos == 1) {
-                                alertas.error(self.listaidiomalogin.Atencion, self.listaidiomalogin.TerIntento);
-                                self.intentos = self.intentos - 1
-                            } else {
-                                alertas.error(self.listaidiomalogin.Atencion, self.listaidiomalogin.CuaIntento);
-                            }
+                            else {
+                                if (self.intentos == 3) {
+                                    alertas.error(self.listaidiomalogin.Atencion, self.listaidiomalogin.UnIntento);
+                                    self.intentos = self.intentos - 1
+                                }
+                                else if (self.intentos == 2) {
+                                    alertas.error(self.listaidiomalogin.Atencion, self.listaidiomalogin.SegIntento);
+                                    self.intentos = self.intentos - 1
+                                }
+                                else if (self.intentos == 1) {
+                                    alertas.error(self.listaidiomalogin.Atencion, self.listaidiomalogin.TerIntento);
+                                    self.intentos = self.intentos - 1
+                                } else {
+                                    alertas.error(self.listaidiomalogin.Atencion, self.listaidiomalogin.CuaIntento);
+                                }
+                            }     
                             return;
                         }
                     }
