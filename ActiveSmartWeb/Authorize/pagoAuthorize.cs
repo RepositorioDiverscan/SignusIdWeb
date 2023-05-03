@@ -109,6 +109,40 @@ namespace ActiveSmartWeb.Authorize
             return resultado;
         }
 
+
+        public static string getStatus(string subscriptionId)
+        {
+
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
+
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
+            {
+                name = ApiLoginID,
+                ItemElementName = ItemChoiceType.transactionKey,
+                Item = ApiTransactionKey,
+            };
+
+            //please update the subscriptionId according to your sandbox credentials
+            var request = new ARBGetSubscriptionStatusRequest { subscriptionId = subscriptionId };
+
+            var controller = new ARBGetSubscriptionStatusController(request);                          // instantiate the controller that will call the service
+            controller.Execute();
+
+            ARBGetSubscriptionStatusResponse response = controller.GetApiResponse();                   // get the response from the service (errors contained if any)
+
+            // validate response
+            if (response != null && response.messages.resultCode == messageTypeEnum.Ok)
+            {
+                if (response != null && response.messages.message != null)
+                {
+                    return response.status.ToString();
+                }
+            }
+
+            return "No existe";
+        }
+
+
         private string realizarTransaccion(decimal amount, string numerotarjeta, string fechaVencimiento, string codigo, string nombretitular, string pais, string ciudad, string direccion)
         {
 

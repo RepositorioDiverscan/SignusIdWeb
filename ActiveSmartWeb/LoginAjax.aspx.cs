@@ -1,4 +1,5 @@
-﻿using ActiveSmartWeb.Contrasenna.CambioContrasena;
+﻿using ActiveSmartWeb.Authorize;
+using ActiveSmartWeb.Contrasenna.CambioContrasena;
 using ActiveSmartWeb.Login.Entidades;
 using ActiveSmartWeb.Utilities;
 using Newtonsoft.Json;
@@ -14,6 +15,26 @@ namespace ActiveSmartWeb.Login
 {
     public partial class LoginAjax : System.Web.UI.Page
     {
+        private string validarSubscripcion(Nlogin _nlogin, string correo)
+        {
+            string subscripcion = _nlogin.obtenerSubscripcion(correo);
+            if(subscripcion != "")
+            {
+                string estado = pagoAuthorize.getStatus(subscripcion);
+                if (estado != "active")
+                {
+                    return "Su subscripción se encuentra suspendida";
+                }
+                else
+                {
+                    return "BIEN";
+                }
+                
+            }
+            
+            return "Este usuario no posee una subscripcón";
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             NCambioPSW _nPassword = new NCambioPSW();
@@ -23,29 +44,6 @@ namespace ActiveSmartWeb.Login
             try {
                 switch (Request.Form["opciones"])
                 {
-                    case "ValidUsers1":
-
-                        var data = _nlogin.ValidUser(
-                                Request.Form["Email"].ToString(),
-                                Encrypt.EncriptarSHA3_512(Request.Form["Password"].ToString())
-                            );
-
-                        string res = _nlogin.ValidadInicioSesion(Request.Form["Email"].ToString(), Encrypt.EncriptarSHA3_512(Request.Form["Password"].ToString()));
-
-
-                        if (res != "EXITO")
-                        {
-                            Response.Write(res);
-                            break;
-                        } else
-                        if(data.Count == 0)
-                        {
-                            Response.Write("USAURIO NO VALIDO, POR FAVOR INTENTELO NUEVAMENTE");
-                            break;
-                        }
-                        
-                            Response.Write(JsonConvert.SerializeObject(data, Formatting.Indented));
-                            break;
 
 
                     case "ValidUsers":
@@ -66,6 +64,16 @@ namespace ActiveSmartWeb.Login
                             Resultado  = "USAURIO NO VALIDO, POR FAVOR INTENTELO NUEVAMENTE";
                         }
 
+                        if(Resultado == "Validar Subscripcion" || Resultado == "Actualizar")
+                        {
+                            string resultadoValidacion = validarSubscripcion(_nlogin, Request.Form["Email"].ToString());
+                            if(Resultado == "Actualizar" && resultadoValidacion== "BIEN")
+                            {
+                                _nlogin.actualizarFechaExpiracion(Request.Form["Email"].ToString());
+                            }
+                            Resultado = resultadoValidacion;
+                        }
+
                         if (Resultado != "BIEN")
                         {
                             Response.Write(Resultado);
@@ -76,15 +84,6 @@ namespace ActiveSmartWeb.Login
                             Response.Write(JsonConvert.SerializeObject(data1, Formatting.Indented));
                             break;
                         }
-
-                       
-
-                        /* case "ValidaLogin":
-                             var correo = Request.Form["Email"].ToString();
-                             string res = _nlogin.ValidadInicioSesion(correo);
-                             Response.Write(JsonConvert.SerializeObject(res, Formatting.Indented));
-
-                             break;*/
 
                 }
             } 

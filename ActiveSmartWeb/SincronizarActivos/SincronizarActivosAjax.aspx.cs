@@ -178,41 +178,7 @@ namespace ActiveSmartWeb.SincronizarActivos
                 CLErrores.EscribirError(ex.Message, ex.StackTrace);
             }
         }
-        private string obtenerBase64Excel()
-        {
-            IdiomaSincronizarGeneral idioma = obtenerIdiomaHeaders();
 
-            PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(ESincronizaActivos));
-
-            PropertyDescriptor[] propertiesSelected = new PropertyDescriptor[9];
-            propertiesSelected[0] = properties.Find("NumActivo", false);
-            propertiesSelected[1] = properties.Find("NumEtiqueta", false);
-            propertiesSelected[2] = properties.Find("Categoria", false);
-            propertiesSelected[3] = properties.Find("Estado", false);
-            propertiesSelected[4] = properties.Find("Marca", false);
-            propertiesSelected[5] = properties.Find("Modelo", false);
-            propertiesSelected[6] = properties.Find("Ubicacion", false);
-            propertiesSelected[7] = properties.Find("Descripcion", false);
-            propertiesSelected[8] = properties.Find("Costo", false);
-
-
-            var propertySelected = new PropertyDescriptorCollection(propertiesSelected);
-            var rutaVirtual = "~/temp/" + string.Format("SincronizaActivos-" + "" + ".xlsx");
-            var fileName = Server.MapPath(rutaVirtual);
-            List<string> headersReporte = new List<string>() {idioma.NumAct.ToString(), idioma.NumEtiq.ToString(),
-                idioma.Categ.ToString(), idioma.Estado.ToString(),idioma.Marca.ToString(),
-                idioma.Modelo.ToString(), idioma.Ubicacion.ToString(),idioma.Observacion.ToString(),idioma.Costo.ToString()};
-            List<List<string>> headers = new List<List<string>>() { headersReporte };
-
-            ExcelExporter.ExportData(_activos, fileName, propertySelected, headers);
-
-            string cadenaADevolver = Convert.ToBase64String(System.IO.File.ReadAllBytes(fileName));
-            if (File.Exists(fileName))
-            {
-                File.Delete(fileName);
-            }
-            return "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64," + cadenaADevolver;
-        }
         private IdiomaSincronizarGeneral obtenerIdiomaHeaders()
         {
             IdiomaSincronizarGeneral Idioma = new IdiomaSincronizarGeneral();

@@ -1,6 +1,17 @@
 ﻿
 var url = '../AjaxPrincipalMaster/AjaxGeneralMaster.aspx'
 
+$(document).ready(function () {
+    var popupTC = $('#popupTCContenido');
+    $(document).click(function (event) {
+        // Verifica si el evento se originó dentro o fuera del div
+        if (!$(event.target).closest('#popupTCContenido').length) {
+            // Si se hace clic fuera del div, ejecuta este código
+            $("#popupTC").css("display", "none");
+        } 
+    });
+});
+
 setTimeout(function () {
 
 const master = new Vue({
@@ -93,6 +104,7 @@ const master2 = new Vue({
         },
 
         abrirPopUpTC: function () {
+            event.stopPropagation();
             var a = document.getElementById("popupTC");
             a.style.display = "block";
             $('#popupTCContenido').addClass('mostrarPopUpYC');
@@ -103,6 +115,12 @@ const master2 = new Vue({
             var b = document.getElementById("popupTCContenido");
             a.style.display = "none";
             b.style.display = "none";
+        },
+        //Hace el scroll hacia el inicio de la pagina
+        scrollInicio: function () {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 2000);
         }
 
     },
