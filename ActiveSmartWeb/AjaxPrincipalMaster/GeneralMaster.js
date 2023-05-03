@@ -2,7 +2,6 @@
 var url = '../AjaxPrincipalMaster/AjaxGeneralMaster.aspx'
 
 $(document).ready(function () {
-    var popupTC = $('#popupTCContenido');
     $(document).click(function (event) {
         // Verifica si el evento se originó dentro o fuera del div
         if (!$(event.target).closest('#popupTCContenido').length) {
