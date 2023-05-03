@@ -147,8 +147,8 @@
             <div class="footer" id="main2" >
                 <div class="background-pop-up" id="popupTC" style="display: none;">
 
-                    <div class="back-popup-tc none _23" style="display: block; place-content: center;">
-                        <div class="tarjeta-popup" id="popupTCContenido" style="margin: auto; height: 100%; width: 72%; max-height: 100%">
+                    <div class="back-popup-tc none _23" style="place-content: center;">
+                        <div class="tarjeta-popup" id="popupTCContenido" style="display:none; margin: auto; height: 100%; width: 72%; max-height: 100%">
                             <div class="header-modal-ai">
                                 <h4 class="texto-h-ai">Terminos y condiciones</h4>
                             </div>
