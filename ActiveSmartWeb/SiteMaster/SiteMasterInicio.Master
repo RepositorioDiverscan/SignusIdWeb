@@ -176,16 +176,18 @@
                 <footer id="footer" class="footer-2 wf-section">
                     <div class="w-container">
                         <div class="div-logo-footer">
-                            <a href="#" class="footer-logo-link">
+                            <div class="footer-logo-link">
                                 <img src="/images/signus_id3.png" srcset="/images/signus_id3-p-500.png 500w, /images/signus_id3-p-800.png 800w, /images/signus_id3-p-1080.png 1080w, /images/signus_id3.png 1779w" sizes="150.00001525878906px" alt="" class="footer-image imgfooter">
-                            </a>
+                            </div>
                         </div>
                         <div class="footer-flex-container">
                             <div class="div-block-199">
                                 <h2 class="footer-heading" v-cloak>{{options.SobSoluc}}</h2><!--Sobre la Solución-->
                                 <ul role="list" class="list w-list-unstyled">
                                     <li>
-                                        <a href="/InicioSesion/InicioSesion.aspx" aria-current="page" class="footer-link w--current" v-cloak>{{options.Inicio}}</a><!--Inicio-->
+                                        <div @click ="scrollInicio()" style="cursor:pointer;" >
+                                            <a aria-current="page" class="footer-link w--current" v-cloak>{{options.Inicio}}</a><!--Inicio-->
+                                        </div>
                                     </li>
                                     <li>
                                         <a href="/../Contacto/ContactoView.aspx" class="footer-link" v-cloak>{{options.Contacto}}</a><!--Contacto-->
@@ -234,7 +236,6 @@
                 </footer>
             </div>
         </div>
-
     
     <script src="../js/webflow.js" type="text/javascript"></script>
     <script src="../AjaxPrincipalMaster/GeneralMaster.js"></script>

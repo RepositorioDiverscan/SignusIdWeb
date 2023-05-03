@@ -103,6 +103,12 @@ const master2 = new Vue({
             var b = document.getElementById("popupTCContenido");
             a.style.display = "none";
             b.style.display = "none";
+        },
+        //Hace el scroll hacia el inicio de la pagina
+        scrollInicio: function () {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 2000);
         }
 
     },
