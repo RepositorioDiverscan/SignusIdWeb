@@ -59,6 +59,19 @@ namespace ActiveSmartWeb.Login.Entidades
 
         }
 
+        public void actualizarFechaExpiracion(string correo)
+        {
+            try
+            {
+                _dlogin.actualizarFechaExpiracion(correo);
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+            }
+
+        }
+
 
     }
 }

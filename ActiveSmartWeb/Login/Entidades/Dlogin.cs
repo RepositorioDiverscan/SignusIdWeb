@@ -82,5 +82,14 @@ namespace ActiveSmartWeb.Login.Entidades
             return Respuesta;
         }
 
+        public void actualizarFechaExpiracion(string correo)
+        {
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("ActualizarFechaExpiracion");
+            db.AddInParameter(dbCommand, "@Correo", DbType.String, correo);
+            dbCommand.CommandTimeout = 3600;
+            db.ExecuteNonQuery(dbCommand);
+        }
+
     }
 }

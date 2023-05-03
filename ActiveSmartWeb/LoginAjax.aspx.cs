@@ -64,9 +64,14 @@ namespace ActiveSmartWeb.Login
                             Resultado  = "USAURIO NO VALIDO, POR FAVOR INTENTELO NUEVAMENTE";
                         }
 
-                        if(Resultado == "Validar Subscripcion")
+                        if(Resultado == "Validar Subscripcion" || Resultado == "Actualizar")
                         {
-                            Resultado = validarSubscripcion(_nlogin, Request.Form["Email"].ToString());
+                            string resultadoValidacion = validarSubscripcion(_nlogin, Request.Form["Email"].ToString());
+                            if(Resultado == "Actualizar" && resultadoValidacion== "BIEN")
+                            {
+                                _nlogin.actualizarFechaExpiracion(Request.Form["Email"].ToString());
+                            }
+                            Resultado = resultadoValidacion;
                         }
 
                         if (Resultado != "BIEN")
