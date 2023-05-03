@@ -155,16 +155,88 @@
                             <div class="div-icon-exit-ai" v-on:click="cerrarPopUpTC()" style="cursor:pointer;">
                                 <img src="images/icono_eliminar_acces-o-01.svg" loading="lazy" alt="" class="img-salir-ai">
                             </div>
-                            <div class="form-block-empresa w-form" >
+                            <div class="form-block-empresa w-form" style="height:80%;">
              
-                                    <div class="text-block-32">
-                                        1.     General.<br>
+                                    <div class="text-block-32" style="height:100%; overflow-y: auto;">
+                                        ¡Bienvenido a SignusID! Antes de comenzar a utilizar nuestra plataforma web de suscripción para Control de Activos, le solicitamos que lea cuidadosamente estos Términos y Condiciones de uso. Al acceder o utilizar nuestra plataforma, usted acepta estar legalmente obligado por estos términos y condiciones. Le recomendamos que los lea detenidamente antes de utilizar nuestros servicios. <br />
                                         <br>
-                                        Los términos y condiciones incluidos eneste documento constituyen el acuerdo completo entre las partes con respecto altema del presente y reemplazan cualquier representación o acuerdo anterior,oral o escrito y todas las demás comunicaciones entre las partes relacionadascon el tema del presente, incluidos los términos y condiciones establecidas encualquier orden de compra emitida por el Comprador. Todas las ventas de losVendedores., que opera como (&quot;Vendedor&quot;), están expresamentecondicionadas por y bajo estos términos y condiciones(Los&quot;Términos&quot;). La aceptación del pedido del Comprador estáexpresamente condicionada a la aceptación o a sentimiento por parte delComprador de estos Términos, que se establecerán mediante un reconocimiento porescrito, implícitamente o mediante la aceptación o pago de los productossolicitados a continuación. El hecho de que el Vendedor no objete lasdisposiciones contenidas en cualquier comunicación del Comprador no seconsiderará una renuncia a estos Términos. Cualquier cambio en estos Términosdebe ser acordado específicamente por escrito y firmado por un funcionario delVendedor antes de ser vinculante. La recepción por parte del Comprador decualquier producto vendido a continuación se considerará de manera concluyentecomo aceptación de estos Términos.<br>
+                                        1.     Definiciones:<br>
                                         <br>
-                                        2.     Embarque.<br>
+                                        a.  "Acces-o", la empresa que posee y opera la plataforma web de suscripción para control de activos llamada SignusID.<br> 
+                                        b.  "Plataforma" se refiere a la plataforma web de suscripción para control de activos llamada SignusID de la marca Acces-o.<br> 
+                                        c.  "Usuario" se refiere a cualquier persona o entidad que accede o utiliza la Plataforma. <br> 
                                         <br>
-                                        Todos los envíos se realizan en origennacionalizado y sin IVA a menos que se especifique lo contrario. La propiedadde los productos y el riesgo de pérdida pasan al Comprador en el momento delenvío desde el almacén del Vendedor. El comprador se compromete a adquirirtodos y cada uno de los seguros que considere necesarios para indemnizarlocontra cualquier pérdida en el envío. El comprador asume todo el riesgo depérdida en el envío y toda la responsabilidad por pérdida o daño, ya seadirecto, indirecto, consecuente o de otro tipo, debido a demoras una vez quelos productos se hayan entregado al transportista. El Comprador cumplirá contodas las leyes, reglamentos y ordenanzas aplicables de cualquier autoridadgubernamental en cualquier país que tenga la jurisdicción adecuada, incluidas,entre otras, las leyes de los Costa Rica u otros países que regulan laimportación o exportación de los bienes proporcionados por el Vendedor ydeberán obtener todas las licencias de importación / exportación necesarias enrelación con cualquier importación, exportación, reexportación, transferencia yuso posteriores de todas las compras de bienes, tecnología y software,licenciadas y recibidas del Vendedor. A menos que se acuerde lo contrario por escrito.
+                                        2.     Aceptación de los términos y condiciones:<br>
+                                        <br>
+                                        Al acceder o utilizar la plataforma web de suscripción SignusID de la marca Acces-o, usted acepta estos términos y condiciones, que rigen su uso de nuestra plataforma y cualquier política, contenido, características, procedimientos, directrices, productos o servicios ofrecidos en o a través de nuestra plataforma.<br />
+                                        <br/>
+                                        3.     Servicios:<br>
+                                        <br>
+                                        La Plataforma ofrece servicios de control de activos, incluyendo la gestión de inventarios, seguimiento de equipos y monitoreo de ubicaciones. La Plataforma se ofrece como un servicio de suscripción, con diferentes planes de suscripción disponibles para adaptarse a las necesidades de cada Usuario.  <br />
+                                        <br/>
+                                        4.     Registro:<br>
+                                        <br>
+                                        Para utilizar la plataforma web de suscripción SignusID, usted debe registrarse y crear una cuenta de usuario. Es su responsabilidad proporcionar información precisa y actualizada sobre sí mismo en el momento del registro según lo solicitado por el formulario de registro y mantener la seguridad de su cuenta.  <br />
+                                        <br/>
+                                        5.     Responsabilidades del Usuario:<br>
+                                        <br>
+                                        a.  Los Usuarios son responsables de mantener la confidencialidad de su cuenta y contraseña de acceso a la Plataforma.<br />
+                                        b.  Los Usuarios deben cumplir con todas las leyes y regulaciones aplicables al utilizar la Plataforma.<br />
+                                        c.  Los Usuarios son responsables de garantizar que toda la información proporcionada en la Plataforma sea precisa y actualizada.<br />
+                                        d.  Los Usuarios deben utilizar la Plataforma únicamente para fines legítimos y no para actividades ilegales o fraudulentas.<br />
+                                        <br/>
+                                        6.     Propiedad intelectual:<br>
+                                        <br>
+                                        El contenido de la plataforma, incluyendo el software, los gráficos, los códigos, los diseños, los gráficos, los logotipos, los nombres de marca, los iconos y los textos, las interfaces de usuario, la marca y sus derechos son propiedad exclusiva de Acces-o o de terceros y están protegidos por las leyes de propiedad intelectual aplicables. Los usuarios no tienen derecho a utilizar el contenido de la plataforma de ninguna forma que no esté expresamente autorizada por Acces-o.   <br />
+                                        
+                                        Los Usuarios no pueden copiar, reproducir, modificar, distribuir, transmitir, mostrar públicamente, vender o crear obras derivadas de ninguna parte de la Plataforma sin el consentimiento previo por escrito de Acces-o.  <br />
+                                        
+                                        Usted no puede utilizar, copiar o distribuir el contenido de la plataforma sin el consentimiento previo por escrito de la empresa propietaria. <br />
+                                        <br />
+                                        6.     Política de privacidad:<br>
+                                        <br />
+                                        Acces-o recopila y procesa información personal de los Usuarios de acuerdo con su Política de Privacidad. Al utilizar la Plataforma, los Usuarios aceptan los términos de la Política de Privacidad de Acces-o. <br />
+                                        <br />
+                                        7.     Limitación de responsabilidad:<br>
+                                        <br />
+                                        En ningún caso Acces-o no será responsable de ningún daño directo, indirecto, especial, incidental, consecuencial o punitivo resultante del uso o la incapacidad de uso de la Plataforma. Acces-o no garantiza que la Plataforma esté libre de errores o que esté disponible de manera ininterrumpida.<br />
+                                        En ningún caso, la responsabilidad total de Acces-o ante un Usuario por cualquier reclamo relacionado con la Plataforma excederá el monto total pagado por el Usuario a Acces-o durante el período de tres meses previos al reclamo. <br />
+                                        <br />
+                                        8.     Terminación:<br>
+                                        <br />
+                                        Los Usuarios pueden cancelar su suscripción a la Plataforma en cualquier momento. Además, Acces-o se reserva el derecho de suspender o cancelar la cuenta de cualquier Usuario que viole estos Términos y Condiciones.  <br />
+                                        <br />
+                                        9.     Uso de la plataforma:<br>
+                                        <br />
+                                        SignusID es una plataforma de suscripción que permite a los usuarios controlar y gestionar sus activos, destinada única y exclusivamente para uso personal o empresarial y no para uso comercial. El usuario se compromete a no utilizar la plataforma de manera que pueda dañar, desactivar, sobrecargar o afectar negativamente la plataforma. El Usuario acepta y se compromete a utilizar la plataforma web de suscripción SignusID solo para fines legales y de conformidad con estos términos y condiciones. Usted además acepta no utilizar la plataforma para cualquier actividad ilegal, fraudulenta o que infrinja los derechos de terceros. El uso de la plataforma para cualquier otro propósito está estrictamente prohibido.  <br />
+                                        <br />
+                                        10.    Pago:<br>
+                                        <br />
+                                         El Usuario podrá acceder a SignusID a través de una suscripción, cuyo costo se especificará en la plataforma. SignusID requiere el pago de una tarifa de suscripción para acceder a sus servicios y contenido. Para acceder al servicio, deberá proporcionar un método de pago válido. El usuario se compromete a pagar la suscripción en el momento de la contratación y a mantener actualizada la información de pago, debiendo pagar la tarifa de suscripción en la moneda especificada en la plataforma.  <br />
+                                         La suscripción se renueva automáticamente a menos que cancele su suscripción antes de la fecha de renovación. En caso de que el usuario incumpla con el pago de la suscripción, Acces-o se reserva el derecho de suspender o cancelar el acceso del usuario a la plataforma. La plataforma se reserva el derecho de cambiar las tarifas de suscripción en cualquier momento.   <br />
+                                        <br />
+                                        11.    Cancelación:<br>
+                                        <br />
+                                        El Usuario podrá cancelar su suscripción en cualquier momento, sin embargo, la plataforma no proporciona reembolsos por cancelaciones parciales o totales de suscripciones ni por los períodos de tiempo no utilizados de la suscripción.  <br />
+                                        <br />
+                                        12.    Contenido:<br>
+                                        <br />
+                                        La plataforma web de suscripción puede proporcionar contenido de terceros. La plataforma no es responsable de la precisión, integridad, legalidad, fiabilidad o disponibilidad del contenido de terceros. Usted acepta que el uso del contenido de terceros es bajo su propio riesgo.  <br />
+                                        <br />
+                                        13.    Exclusión de responsabilidad:<br>
+                                        <br />
+                                        La plataforma SignusID se proporciona "tal cual" y "según disponibilidad" y Acces-o no ofrece ninguna garantía, ya sea expresa o implícita, con respecto al funcionamiento de la plataforma, la calidad del contenido o la exactitud de la información proporcionada. La empresa propietaria no garantiza que la plataforma esté libre de errores, virus u otros componentes dañinos. Acces-o no será responsable por cualquier pérdida, costo o gasto, daño directo, indirecto, incidental, especial o consecuente resultante del uso o la imposibilidad de uso de la plataforma. <br />
+                                        <br />
+                                        14.    Modificaciones:<br>
+                                        <br />
+                                         Acce-o se reserva el derecho de modificar estos términos y condiciones en cualquier momento y sin previo aviso. Los cambios entrarán en vigor inmediatamente después de su publicación en la plataforma. El uso continuado de la plataforma web de suscripción SignusID de la marca Acces-o después de cualquier cambio significa que usted acepta dichos cambios. La versión actualizada de los términos y condiciones estará disponible en la plataforma y será vinculante para el usuario a partir del momento en que se publique en la plataforma. <br />
+                                        <br />
+                                        15.    Ley aplicable:<br>
+                                        <br />
+                                         Estos términos y condiciones se regirán e interpretarán de acuerdo con las leyes del país donde se encuentra la empresa propietaria de la plataforma. Cualquier disputa que surja en relación con estos términos y condiciones se resolverá exclusivamente mediante los tribunales competentes del país de origen de Acces-o.  <br />
+                                        <br />
+                                        Si tiene alguna pregunta sobre estos términos y condiciones, por favor contáctenos.
+
                                     </div>
                   
                             </div>
