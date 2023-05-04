@@ -17,10 +17,11 @@
             <div class="tabs-content w-tab-content">
               <div data-w-tab="Tab 1" class="tab-pane-tab-1 w-tab-pane">
                 <div class="w-layout-grid grid-tab-01">
-                  <div id="w-node-fd0f23a7-42a1-2ec4-ed56-dbe549a49fec-8230d09e"><img width="2830" sizes="(max-width: 767px) 72.71666717529297px, (max-width: 991px) 14vw, 16vw" src="images/banner-header-signusid-basic_1.jpg" loading="lazy" srcset="images/banner-header-signusid-basic_1-p-500.jpg 500w, images/banner-header-signusid-basic_1-p-800.jpg 800w, images/banner-header-signusid-basic_1-p-1080.jpg 1080w, images/banner-header-signusid-basic_1-p-1600.jpg 1600w, images/banner-header-signusid-basic_1.jpg 1920w" alt="" class="image-56"></div>
+                  <div id="w-node-fd0f23a7-42a1-2ec4-ed56-dbe549a49fec-8230d09e">
+                      <img width="2830" sizes="(max-width: 767px) 72.71666717529297px, (max-width: 991px) 14vw, 16vw" src="images/banner-header-signusid-basic_1.png" loading="lazy" alt="" class="image-56"></div>
                   <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048caa-8230d09e" class="div-text-principal">
                     <h1 class="heading-inicial">EQUIPOS DE HARDWARE COMPATIBLES</h1>
-                    <p class="paragraph-basic centrada">Complete su solución adquiriendo los dispositivos necesarios para su inventario de Activos, compatibilidad absoluta con Dispositivos Zebra Technologies y Datalogic que han sido probados para sacar el mayor provecho al uso de SignusID en todas sus versiones.</p>
+                    <p class="paragraph-basic centrada">Complete su solución adquiriendo los dispositivos necesarios para su inventario de Activos, compatibilidad absoluta con Dispositivos Unitech, Datalogic y Sato, que han sido probados para sacar el mayor provecho al uso de SignusID en todas sus versiones. Además, podrá hacer uso de la tecnología RFID con la que logrará mayor agilidad en los procesos de inventario, eficacia y trazabilidad completa de forma segura.</p>
                   </div>
                   <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048caf-8230d09e" class="div-icon-basic"><img sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 16vw" srcset="images/banner-productos-signusid-basic-p-500.jpg 500w, images/banner-productos-signusid-basic-p-800.jpg 800w, images/banner-productos-signusid-basic-p-1080.jpg 1080w, images/banner-productos-signusid-basic.jpg 1080w" src="images/banner-productos-signusid-basic.jpg" loading="lazy" alt="">
                     <div class="text-block-icon-basic">Computadora<br>móviles TC21</div>
@@ -71,7 +72,7 @@
               <div id="w-node-_253bd33a-a142-5b41-d8ab-819004b99e4a-8230d09e" class="div-block-197"><img src="images/Icono_ActiveID_Smart-Basic.svg" loading="lazy" width="200" height="200" alt="Imagen de Icono Active-ID-Smart_basico"></div>
               <div id="w-node-_7451bc21-d4aa-3cf6-fd98-d89ee091d936-8230d09e">
                 <p class="paragraph-info-paquete">Usted podrá hacer Inventarios diarios, semanales, mensuales o en cualquier momento y no peder el control de todos sus activos fijos de la empresa.<br><br>Implemente fácilmente, sin necesidad de técnicos o capacitación alguna, empiece a operar de inmediato.</p>
-                <p class="paragraph-presentacion"><br>Registro de 500 activos máximo<br>1 Usuario Administrador, 1 Usuario Delegado<br>App móvil en dispositivo Android (no incluye dispositivo)<br>Dos reportes de sistema<br>Manejo de Ubicaciones (1 Nivel)<br>Soporte <br>Uso de Aplicativo Active ID Smart Basic</p>
+                <p class="paragraph-presentacion"><br>Registro de 250 activos<br>1 Usuario Administrador, 1 Usuario Delegado<br>App móvil en dispositivo Android (no incluye dispositivo)<br>Dos reportes de sistema<br>Manejo de Ubicaciones (1 Nivel)<br>Soporte <br>Uso de Aplicativo Active ID Smart Basic</p>
                 <p class="precio">$14.99 (Pago mensual)</p>
               </div>
             </div>
