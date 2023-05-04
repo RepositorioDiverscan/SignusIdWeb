@@ -341,6 +341,7 @@
     <Content Include="images\banner-header-signusid-contact-p-500.jpg" />
     <Content Include="images\banner-header-signusid-contact-p-800.jpg" />
     <Content Include="images\banner-header-signusid-contact.jpg" />
+    <Content Include="images\banner-header-signusid-pro.png" />
     <Content Include="images\banner-productos-signusid-basic-p-1080.jpg" />
     <Content Include="images\banner-productos-signusid-basic-p-500.jpg" />
     <Content Include="images\banner-productos-signusid-basic-p-800.jpg" />
@@ -509,6 +510,7 @@
     <Content Include="images\paque-de-hardware-signusid-pro-p-500.jpg" />
     <Content Include="images\paque-de-hardware-signusid-pro-p-800.jpg" />
     <Content Include="images\paque-de-hardware-signusid-pro.jpg" />
+    <Content Include="images\paque-de-hardware-signusid-pro.png" />
     <Content Include="images\paquete-de-hardware-signusid-basic-b-p-1080.jpg" />
     <Content Include="images\paquete-de-hardware-signusid-basic-b-p-1600.jpg" />
     <Content Include="images\paquete-de-hardware-signusid-basic-b-p-500.jpg" />
@@ -525,6 +527,7 @@
     <Content Include="images\paquete-de-hardware-signusid-pro2-p-800.jpg" />
     <Content Include="images\paquete-de-hardware-signusid-pro2.jpg" />
     <Content Include="images\paquete-de-hardware-signusid-pro2.jpg.png" />
+    <Content Include="images\paquete-de-hardware-signusid-pro2.png" />
     <Content Include="images\paso_1.png" />
     <Content Include="images\perf.png" />
     <Content Include="images\perfil.jpg" />
