@@ -30,7 +30,7 @@
                     </div>
                     <div id="w-node-_0ba4e7cc-0fa9-b929-33b9-a13d966d1375-46128f7f">
                         <label for="Email" id="contact-email" class="label-contacto">{{listaidioma.Correo}}*</label>
-                        <input tabindex="4" type="email" class="text-field-8 w-input" maxlength="256" name="Email" data-name="Email" placeholder="" id="Email" v-model="correo">
+                        <input tabindex="4" type="text" class="text-field-8 w-input" maxlength="256" name="Email" data-name="Email" placeholder="" id="Email" v-model="correo">
                        
                     </div>
                     <div id="w-node-_0ba4e7cc-0fa9-b929-33b9-a13d966d1379-46128f7f" class="div-phone-number w-clearfix">
@@ -48,7 +48,7 @@
                     </div>
               </div>
         
-              <input tabindex="7" type="submit" :value="listaidioma.Enviar" @click="ObtenerDatosRegistro()" data-wait="Please wait..." class="submit-button-3 w-button">
+              <button v-bind:disabled="desabilitarBoton" tabindex="7" type="submit" @click="ObtenerDatosRegistro()" data-wait="Please wait..." class="submit-button-3 w-button">{{listaidioma.Enviar}}</button>
             
             </form>
             

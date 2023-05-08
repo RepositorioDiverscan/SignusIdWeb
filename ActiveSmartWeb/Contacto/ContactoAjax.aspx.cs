@@ -21,7 +21,7 @@ namespace ActiveSmartWeb.Contacto
                 switch (Request.Form["option"])
                 {
 
-                    //Opcion del switch para cargar las configuraciones de los planes.
+                    
                     case "EnviarCorreoContacto":
 
                         var Nombre = Request.Form["Nombre"];
@@ -32,7 +32,8 @@ namespace ActiveSmartWeb.Contacto
                         var Asunto = Request.Form["Asunto"];
                         var realizado = Correo.EnviarCorreo("csalazar.diverscan@gmail.com", Asunto, Mensaje);
 
-                        string hola = "hola";
+                        Response.Write(realizado);
+
                         break;
 
 

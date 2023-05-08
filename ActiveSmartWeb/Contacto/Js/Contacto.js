@@ -6,15 +6,16 @@ const contactos = new Vue({
 
     data: {
             listaidioma: {},
-            IdiomaContactos: "",
-            nombre: "",
-            apellido: "",
-            correo: "",
-            telefono: "",
-            mensaje:"",
+            IdiomaContactos: '',
+            nombre: '',
+            apellido: '',
+            correo: '',
+            telefono: '',
+            mensaje:'',
             telNational: '',
             phoneInput4: '',
-            asunto: ''
+            asunto: '',
+            desabilitarBoton: false
     },
     mounted: function () {
         this.ObtenerIdioma();
@@ -64,40 +65,81 @@ const contactos = new Vue({
             }
         },
 
+        validarCorreo: function (correo) {
+            var expresionRegular = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return expresionRegular.test(correo);
+        },
+
+        limpiarInputs: function () {
+            var self = this;
+            self.nombre = '';
+            self.apellido= '';
+            self.correo= '';
+            self.telefono= '';
+            self.mensaje='';
+            self.asunto= '';
+        },
+
         ObtenerDatosRegistro: function () {
             var self = this;
-            if (self.nombre != '') {
+            if (self.asunto != '') {
+                if (self.nombre != '') {
 
-                if (self.apellido != '') {
-
-
-                    if (self.correo != '') {
-
-                        $.post(urlContactoAjax, {
-                            option: 'EnviarCorreoContacto',
-                            Nombre: self.nombre,
-                            Apellido: self.apellido,
-                            Correo: self.correo,
-                            Telefono: self.phoneInput4.getNumber(),
-                            Mensaje: self.mensaje,
-                            Asunto: self.asunto
-                        }, function (data, error) {
+                    if (self.apellido != '') {
 
 
-                        });
+                        if (self.correo != '') {
+
+                            if (self.telefono != '') {
+
+                                if (self.mensaje != '') {
+
+                                    if (self.validarCorreo(self.correo)) {
+                                        self.desabilitarBoton = true;
+                                        $.post(urlContactoAjax, {
+                                            option: 'EnviarCorreoContacto',
+                                            Nombre: self.nombre,
+                                            Apellido: self.apellido,
+                                            Correo: self.correo,
+                                            Telefono: self.phoneInput4.getNumber(),
+                                            Mensaje: self.mensaje,
+                                            Asunto: self.asunto
+                                        }, function (data, error) {
+
+                                            if (data == 0) {
+                                                self.limpiarInputs();
+                                                alertas.success("Atención:", "Solicitud de contacto realizada con éxito");
+                                            }
+                                            self.desabilitarBoton = false;
+                                        });
+
+                                    } else {
+                                        alertas.error("Atención:", this.listaidioma.ErrCorreoValido);
+                                    }
+
+                                } else {
+                                    alertas.error("Atención:", this.listaidioma.ErrMensaje);
+                                }
+
+                            } else {
+                                alertas.error("Atención:", this.listaidioma.ErrTelefono);
+                            }
+
+
+                        } else {
+                            alertas.error("Atención:", this.listaidioma.ErrCorreo);
+                        }
 
 
                     } else {
-                        alertas.error("Atención:", this.listaidioma.ErrCorreo);
+                        alertas.error("Atención:", this.listaidioma.ErrApellido);
                     }
 
-
                 } else {
-                    alertas.error("Atención:", this.listaidioma.ErrApellido);
+                    alertas.error("Atención:", this.listaidioma.ErrNombre);
                 }
-
             } else {
-                alertas.error("Atención:", this.listaidioma.ErrNombre);
+                alertas.error("Atención:", this.listaidioma.ErrAsunto);
             }
 
 
