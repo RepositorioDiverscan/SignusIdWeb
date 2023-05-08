@@ -28,6 +28,10 @@ namespace ActiveSmartWeb.Contacto.Idioma
                         Idioma.ErrNombre = EIdiomaEspannol._errNombre;
                         Idioma.ErrApellido = EIdiomaEspannol._errApellido;
                         Idioma.ErrCorreo = EIdiomaEspannol._errCorreo;
+                        Idioma.ErrAsunto = EIdiomaEspannol._errAsunto;
+                        Idioma.ErrTelefono = EIdiomaEspannol._errTelefono;
+                        Idioma.ErrMensaje = EIdiomaEspannol._errMensaje;
+                        Idioma.ErrCorreoValido = EIdiomaEspannol._errCorreoValido;
                         Response.Write(JsonConvert.SerializeObject(Idioma, Formatting.Indented));
                         break;
                     case "EN":
@@ -53,6 +57,10 @@ namespace ActiveSmartWeb.Contacto.Idioma
                         Idioma.ErrNombre = EIdiomaEspannol._errNombre;
                         Idioma.ErrApellido = EIdiomaEspannol._errApellido;
                         Idioma.ErrCorreo = EIdiomaEspannol._errCorreo;
+                        Idioma.ErrAsunto = EIdiomaEspannol._errAsunto;
+                        Idioma.ErrTelefono = EIdiomaEspannol._errTelefono;
+                        Idioma.ErrMensaje = EIdiomaEspannol._errMensaje;
+                        Idioma.ErrCorreoValido = EIdiomaEspannol._errCorreoValido;
                         Response.Write(JsonConvert.SerializeObject(Idioma, Formatting.Indented));
 
                         break;

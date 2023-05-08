@@ -16,5 +16,9 @@ namespace ActiveSmartWeb.Contacto.Idioma
         public const string _errNombre = "No ha ingresado el nombre aún";
         public const string _errApellido = "No ha ingresado el apellido del usuario aún";
         public const string _errCorreo = "No ha ingresado el correo del usuario aún";
+        public const string _errAsunto = "No ha ingresado el asunto aún";
+        public const string _errTelefono = "No ha ingresado el telefono del usuario aún";
+        public const string _errMensaje = "No ha ingresado el mensaje del usuario aún";
+        public const string _errCorreoValido = "Debe ingresar un correo válido";
     }
 }

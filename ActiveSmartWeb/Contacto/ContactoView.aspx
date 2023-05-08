@@ -7,7 +7,7 @@
       resize: none;
     }
   </style>
-
+    <div id="alertas">
     <div class="main contact" id="contacto">
 
       <div class="div-block-236"><img src="../images/banner-header-signusid-contact.jpg" loading="lazy" sizes="(max-width: 1920px) 100vw, 1920px" srcset="../images/banner-header-signusid-contact.jpg 500w, ../images/banner-header-signusid-contact.jpg 800w, ../images/banner-header-signusid-contact.jpg 1080w, ../images/banner-header-signusid-contact.jpg 1600w" alt=""></div>
@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    
+   </div> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.18/js/intlTelInput.min.js"></script>
     <script src="Js/Contacto.js"></script>

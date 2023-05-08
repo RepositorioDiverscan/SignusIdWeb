@@ -66,12 +66,12 @@ const contactos = new Vue({
 
         ObtenerDatosRegistro: function () {
             var self = this;
-            if (this.nombre != '') {
+            if (self.nombre != '') {
 
-                if (this.apellido != '') {
+                if (self.apellido != '') {
 
 
-                    if (this.correo != '') {
+                    if (self.correo != '') {
 
                         $.post(urlContactoAjax, {
                             option: 'EnviarCorreoContacto',
