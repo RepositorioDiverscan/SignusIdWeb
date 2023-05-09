@@ -10,10 +10,13 @@
       <div class="section-banner-animado wf-section">
         <div class="w-layout-grid grid-7">
           <div id="w-node-_59f26435-a030-9f74-024a-595142f3f928-1d7244d5" class="form-block-8 w-form">
-            <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form-5"><label class="subtitulo centrado ingreso ingresar">Ingresar</label><input type="text" class="text-field _90 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Correo Electrónico" id="field-2" required=""><input type="text" class="text-field _90 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Contraseña" id="field-2" required="">
-              <a href="menu.html" class="boton ingreso w-button">Ingresar</a>
-              <div class="reestablecer">Reestablecer Contraseña</div><input type="submit" value="Crear Cuenta Nueva" data-wait="Please wait..." class="button-newacc w-button">
-            </form>
+              <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form-5">
+                  <label class="subtitulo centrado ingreso ingresar">Ingresar</label>
+                  <input type="text" class="text-field _90 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Correo Electrónico" id="field-2" required=""><input type="text" class="text-field _90 w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Contraseña" id="field-2" required="">
+                  <a href="menu.html" class="boton ingreso w-button">Ingresar</a>
+                  <div class="reestablecer">Reestablecer Contraseña</div>
+                  <input type="submit" value="Crear Cuenta Nueva" data-wait="Please wait..." class="button-newacc w-button">
+              </form>
             <div class="w-form-done">
               <div>Thank you! Your submission has been received!</div>
             </div>
