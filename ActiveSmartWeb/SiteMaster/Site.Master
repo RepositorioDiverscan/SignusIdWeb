@@ -261,7 +261,7 @@
             <h2 class="footer-heading" v-cloak>{{options.SobSoluc}}</h2><!--Sobre la solución-->
             <ul v-cloak role="list" class="list list-footer w-list-unstyled">
               <li>
-                <a href="Menu/MenuPrincipal.aspx" class="footer-link text-link" >{{options.Inicio}}</a><!--Inicio-->
+                <a href="../Menu/MenuPrincipal.aspx" class="footer-link text-link" >{{options.Inicio}}</a><!--Inicio-->
               </li>
               <%--<li>
                 <a href="/../Contacto/ContactoView.aspx" class="footer-link" >{{options.Contacto}}</a><!--Contacto-->

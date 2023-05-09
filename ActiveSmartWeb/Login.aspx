@@ -128,7 +128,7 @@
             </div>
             <div id="w-node-a7063d94-57dd-c998-0739-1757a305b9c7-1d7244d5" class="tarjeta-2"><img src="images/activeID_sector_servicios.png" loading="lazy" alt="laptop muestra servicios de mantenimiento de activos" class="image-colum">
               <h3 class="titulo-tarjeta serv">Servicios </h3>
-              <p class="paragraph-tarjeta">Los servicios son mas rantables si sus activos estan controlados, el control y la disponibilidad es lo que importa.</p>
+              <p class="paragraph-tarjeta">Los servicios son mas rentables si sus activos estan controlados, el control y la disponibilidad es lo que importa.</p>
             </div>
             <div id="w-node-_06224b09-ade5-6a0c-d584-2d5966897b3d-1d7244d5" class="tarjeta-2"><img src="images/activeID_sector_salud.png" loading="lazy" alt="Imagen representando el sector de salud con ambulancia frente hospital y corazón saludable desplegado al fondo" class="image-colum">
               <h3 class="titulo-tarjeta sal">Salud </h3>
@@ -148,7 +148,7 @@
             </div>
             <div id="w-node-d6bdc4f3-dd8a-2e63-6a45-128658b79909-1d7244d5" class="tarjeta-2"><img src="images/activeID_sector_turismo.png" loading="lazy" width="259" alt="Imagen de cámara fotográfica y equipaje y viaje en avión y de la estatua de la libertad representando el sector turístico " class="image-colum">
               <h3 class="titulo-tarjeta turis">Turismo </h3>
-              <p class="paragraph-tarjeta">Para SignusID la experiencia de los turistas esta marcado por la disponibildad de los activos que ellos usan.</p>
+              <p class="paragraph-tarjeta">Para SignusID la experiencia de los turistas esta marcada por la disponibildad de los activos que ellos usan.</p>
             </div>
           </div>
         </div>
