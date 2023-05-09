@@ -42,11 +42,13 @@
                     <div class="text-block-icon-basic">Escáner de mano MS912+ Unitech</div>
                   </div>
                   <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048cc7-8230d09e" class="div-block-196">
-                    <div><img width="1163" sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 15vw" src="images/paquete-de-hardware-signusid-basic.jpg" loading="lazy" srcset="images/paquete-de-hardware-signusid-basic-p-500.jpg 500w, images/paquete-de-hardware-signusid-basic-p-800.jpg 800w, images/paquete-de-hardware-signusid-basic-p-1080.jpg 1080w, images/paquete-de-hardware-signusid-basic-p-1600.jpg 1600w, images/paquete-de-hardware-signusid-basic.jpg 1920w" alt="" class="mov-img">
+                    <div>
+                      <img width="1163" sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 15vw" src="images/paquete-de-hardware-signusid-basic.jpg" loading="lazy" alt="" class="mov-img">
                       <p class="paragraph-basic">Aproveche el paquete de Hardware A (Hand Held, Impresora, Paquete de 500 Etiquetas Código de barras y uso anual de aplicación de SignusID Basic).<br><br>$940.00 (sin costo de envío)</p>
                     </div>
                   </div>
-                  <div id="w-node-_41094853-7546-c027-19a8-21b7171c6c16-8230d09e"><img width="795" sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 15vw" src="images/paquete-de-hardware-signusid-basic-b.jpg" loading="lazy" srcset="images/paquete-de-hardware-signusid-basic-b-p-500.jpg 500w, images/paquete-de-hardware-signusid-basic-b-p-800.jpg 800w, images/paquete-de-hardware-signusid-basic-b-p-1080.jpg 1080w, images/paquete-de-hardware-signusid-basic-b-p-1600.jpg 1600w, images/paquete-de-hardware-signusid-basic-b.jpg 1920w" alt="" class="mov-img">
+                  <div id="w-node-_41094853-7546-c027-19a8-21b7171c6c16-8230d09e">
+                    <img width="795" sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 15vw" src="images/paquete-de-hardware-signusid-basic-b.jpg" loading="lazy"  alt="" class="mov-img">
                     <p id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048ccd-8230d09e" class="paragraph-basic">Aproveche el paquete de Hardware (Scanner, Impresora, Paquete de 500 Etiquetas Codigo de barras y uso anual de aplicación de SignusID Basic).<br><br>$820.00 (sin costo de envío)</p>
                   </div>
                 </div>
