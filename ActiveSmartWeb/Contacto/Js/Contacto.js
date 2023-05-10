@@ -109,6 +109,8 @@ const contactos = new Vue({
                                             if (data == 0) {
                                                 self.limpiarInputs();
                                                 alertas.success("Atención:", "Solicitud de contacto realizada con éxito");
+                                            } else {
+                                                alertas.error("Atención:", "La solicitud de contacto no se realizó correctamente");
                                             }
                                             self.desabilitarBoton = false;
                                         });
