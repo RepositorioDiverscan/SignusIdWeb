@@ -29,9 +29,13 @@ namespace ActiveSmartWeb.Contacto
                         var Email = Request.Form["Correo"];
                         var Telefono = Request.Form["Telefono"];
                         var Mensaje = Request.Form["Mensaje"];
-                        var Asunto = Request.Form["Asunto"];
-                        var realizadoClientre = Correo.EnviarCorreoContactoCliente("csalazar.diverscan@gmail.com");
+                        var Asunto = Request.Form["Asunto"];                     
                         var realizado = Correo.EnviarCorreoContactoInformacion("csalazar.diverscan@gmail.com", Asunto, Nombre, Apellido, Email,Telefono,Mensaje);
+
+                        if(realizado == 0)
+                        {
+                            Correo.EnviarCorreoContactoCliente(Email);
+                        }
 
                         Response.Write(realizado);
 
