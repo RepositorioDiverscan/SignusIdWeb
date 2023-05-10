@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -88,6 +89,123 @@ namespace ActiveSmartWeb.Utilities
                 smtp.Port = 587; //Puerto de salida
 
                 smtp.Credentials = new System.Net.NetworkCredential("pruebas.activeidsmart@gmail.com", "hlnorislpucdyrux");//Cuenta de correo "Diverscan2022."
+                ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+                smtp.EnableSsl = true;//True si el servidor de correo permite ssl
+
+                smtp.Send(correo);
+
+                return 0;
+            }
+            catch (Exception e)
+            {
+                CLErrores.EscribirError(e.Message, e.StackTrace);
+                return -1;
+            }
+
+        }
+
+        //Mensaje predeterminado que se le envia al cliente al llenar el formulario de contacto
+        public static int EnviarCorreoContactoCliente(string Destinatario)
+        {
+
+            //Correo de envio.
+            var correode = ConfigurationManager.AppSettings["CorreDe"];
+            var pass = ConfigurationManager.AppSettings["Pass"];
+
+            string correofrom = ConfigurationManager.AppSettings["CorreEnvio"];
+
+
+            //Mensajes con la informacion brindada.
+
+            MailMessage correo = new MailMessage();
+            try
+            {
+
+                //Cuerpo de correo
+                string cuerpoCorreo;
+                using (var stringReader = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plantillastxt", "ContactoCliente.txt"), true))
+                {
+                    cuerpoCorreo = stringReader.ReadToEnd();
+                }
+
+
+                // hlnorislpucdyrux
+                correo.From = new MailAddress(correofrom, "Sistema Active ID SMART", System.Text.Encoding.UTF8);//Correo de salida
+                correo.To.Add(Destinatario); //Correo destino
+                correo.Subject = "Contacto Signus ID"; //Asunto
+                correo.Body = cuerpoCorreo; //Mensaje del correo
+                correo.IsBodyHtml = true;
+                correo.Priority = MailPriority.Normal;
+
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.UseDefaultCredentials = false;
+                smtp.Host = ConfigurationManager.AppSettings["ServerSmtp"]; //Host del servidor de correo
+                smtp.Port = Convert.ToInt32(ConfigurationManager.AppSettings["PortSmtp"]); //Puerto de salida
+
+                smtp.Credentials = new System.Net.NetworkCredential(correode, pass);//Cuenta de correo "Diverscan2022."
+                ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+                smtp.EnableSsl = true;//True si el servidor de correo permite ssl
+
+                smtp.Send(correo);
+
+                return 0;
+            }
+            catch (Exception e)
+            {
+                CLErrores.EscribirError(e.Message, e.StackTrace);
+                return -1;
+            }
+
+        }
+
+        //Mensaje que se envia al correo de signus con la informacion suministrada
+        //por el cliente en el formulario de contacto
+        public static int EnviarCorreoContactoInformacion(string Destinatario, string asunto, string nombre, string apellido, string correoUsuario, string numero, string mensaje)
+        {
+
+            //Correo de envio.
+            var correode = ConfigurationManager.AppSettings["CorreDe"];
+            var pass = ConfigurationManager.AppSettings["Pass"];
+
+            string correofrom = ConfigurationManager.AppSettings["CorreEnvio"];
+
+
+            //Mensajes con la informacion brindada.
+
+            MailMessage correo = new MailMessage();
+            try
+            {
+
+                //Cuerpo de correo
+                string cuerpoCorreo;
+                using (var stringReader = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plantillastxt", "ContactoInformacionCliente.txt"), true))
+                {
+                    cuerpoCorreo = stringReader.ReadToEnd();
+                }
+
+                cuerpoCorreo = cuerpoCorreo.Replace("@Asunto", asunto);
+                cuerpoCorreo = cuerpoCorreo.Replace("@Nombre", nombre);
+                cuerpoCorreo = cuerpoCorreo.Replace("@Apellido", apellido);
+                cuerpoCorreo = cuerpoCorreo.Replace("@Correo", correoUsuario);
+                cuerpoCorreo = cuerpoCorreo.Replace("@Numero", numero);
+                cuerpoCorreo = cuerpoCorreo.Replace("@Mensaje", mensaje);
+
+                // hlnorislpucdyrux
+                correo.From = new MailAddress(correofrom, "Sistema Active ID SMART", System.Text.Encoding.UTF8);//Correo de salida
+                correo.To.Add(Destinatario); //Correo destino
+                correo.Subject = "Contacto Signus ID"; //Asunto
+                correo.Body = cuerpoCorreo; //Mensaje del correo
+                correo.IsBodyHtml = true;
+                correo.Priority = MailPriority.Normal;
+
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.UseDefaultCredentials = false;
+                smtp.Host = ConfigurationManager.AppSettings["ServerSmtp"]; //Host del servidor de correo
+                smtp.Port = Convert.ToInt32(ConfigurationManager.AppSettings["PortSmtp"]); //Puerto de salida
+
+                smtp.Credentials = new System.Net.NetworkCredential(correode, pass);//Cuenta de correo "Diverscan2022."
                 ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
                 smtp.EnableSsl = true;//True si el servidor de correo permite ssl
 
