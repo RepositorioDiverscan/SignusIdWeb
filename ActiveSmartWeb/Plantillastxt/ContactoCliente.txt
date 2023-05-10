@@ -19,7 +19,7 @@
              <tbody>
               <tr>
                <td class="mcnImageContent" valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                <img align="left" alt="" src="http://drive.google.com/uc?export=view&id=1DZ7XE7rWXfR03aPMIrZ-J30ir2cpkYhs" width="200" style="max-width: 671px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
+                <img align="left" alt="" src="http://drive.google.com/uc?export=view&id=1DZ7XE7rWXfR03aPMIrZ-J30ir2cpkYhs" width="300" style="max-width: 671px; padding-bottom: 0; display: inline !important; vertical-align: bottom; border: 0; height: auto; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; padding-left: 135px;" class="mcnImage">
                </td>
               </tr>
              </tbody>
@@ -86,7 +86,7 @@
               <tr>
                <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;line-height: 100%;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #757575;font-family: Helvetica;font-size: 16px;text-align: left;">
                 <h1 class="null" margin="-10px" style="text-align: center;display: block;margin: 0;padding: 0;color: #222222;font-family: Helvetica;font-style: normal;font-weight: bold;line-height: 150%;letter-spacing: normal;text-transform:uppercase; margin-bottom: 10px">
-                 <strong>Gracias por contactarnos</strong>
+                 <strong>GRACIAS POR CONTACTARNOS</strong>
                 </h1>
                </td>
               </tr>
@@ -103,11 +103,7 @@
            <td valign="top" style="padding: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="mcnImageBlockInner">
             <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
              <tbody>
-              <tr>
-               <td class="mcnImageContent" valign="top" style="padding-right: 0px;padding-left: 0px;padding-top: 0;padding-bottom: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                <img align="center" alt="" src="http://drive.google.com/uc?export=view&id=1DZ7XE7rWXfR03aPMIrZ-J30ir2cpkYhs" width="500" style="max-width: 671px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
-               </td>
-              </tr>
+              <tr> </tr>
              </tbody>
             </table>
            </td>
@@ -142,8 +138,8 @@
                <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;line-height: 100%;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #757575;font-family: Helvetica;font-size: 16px;text-align: left;">
                 <div class="div-leyenda" data-w-id="a31ea263-3c48-301c-c59c-890084ec4a56" data-wf-id="[&quot;a31ea263-3c48-301c-c59c-890084ec4a56&quot;]">
                  <div class="form-block-20 w-form" data-w-id="ddc27392-10c1-c4ea-9956-d5799fb789b4" data-wf-id="[&quot;ddc27392-10c1-c4ea-9956-d5799fb789b4&quot;]" style="width: 100%">
-                  <h2 class="mc-toc-title" data-w-id="ddc27392-10c1-c4ea-9956-d5799fb789b8" data-wf-id="[&quot;ddc27392-10c1-c4ea-9956-d5799fb789b8&quot;]" style="display: block;margin: 0;padding: 0;color: #606060;font-family: Helvetica;font-size: 21px;font-style: normal;font-weight: normal;line-height: 150%;letter-spacing: normal;text-align: left;">Estimado usuario:</h2>
-                  <p class="mensaje-zc" style="width: 100%"> Queremos informarle que hemos recibido su mensaje y lo estamos revisando cuidadosamente. Nuestro equipo se esforzará al máximo para brindarle una respuesta lo más pronto posible. </p>
+                  <p class="mc-toc-title" data-w-id="ddc27392-10c1-c4ea-9956-d5799fb789b8" data-wf-id="[&quot;ddc27392-10c1-c4ea-9956-d5799fb789b8&quot;]" style="display: block; margin: 0; padding: 0; color: #606060; font-family: Helvetica; font-size: 21px; font-style: normal; font-weight: normal; line-height: 150%; letter-spacing: normal; text-align: center;">Reciba un cordial saludo</p>
+                  <h1 class="mc-toc-title" data-w-id="ddc27392-10c1-c4ea-9956-d5799fb789b8" data-wf-id="[&quot;ddc27392-10c1-c4ea-9956-d5799fb789b8&quot;]" style="display: block; margin: 0; padding: 0; color: #606060; font-family: Helvetica; font-size: 16px; font-style: normal; font-weight: normal; line-height: 150%; letter-spacing: normal; text-align: center;">Queremos informarle que hemos recibido su mensaje y lo estamos revisando cuidadosamente. Nuestro equipo se esforzará al máximo para brindarle una respuesta lo más pronto posible.</h1>
                   
                  </div>
                 </div>
@@ -151,7 +147,47 @@
               </tr>
              </tbody>
             </table>
-            
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+             <!--[if gte mso 9]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%">
+                                      <![endif]-->
+             <tbody class="mcnBoxedTextBlockOuter">
+              <tr style="text-align: center;"> </tr>
+              <tr>
+               <td valign="top" class="mcnBoxedTextBlockInner" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                <!--[if gte mso 9]>
+                                            <td align="center" valign="top" ">
+                                              <![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="mcnBoxedTextContentContainer">
+                 <tbody>
+                  <tr>
+                   <td style="padding-top: 9px;padding-left: 18px;padding-bottom: 9px;padding-right: 18px;
+                    mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">        
+
+                    <table border="0" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important;background-color: #404040;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                     <tbody>
+                     
+                      <tr> </tr>
+                     </tbody>
+                    </table>
+
+
+
+                   </td>
+                  </tr>
+                 </tbody>
+                </table>
+                <!--[if gte mso 9]>
+                                              </td>
+                                              <![endif]-->
+                <!--[if gte mso 9]>
+                                            </tr>
+                                          </table>
+                                          <![endif]-->
+               </td>
+              </tr>
+             </tbody>
+            </table>
             <!--[if mso]>
                                 </td>
                                 <![endif]-->
@@ -313,10 +349,10 @@
                                  <tbody>
                                   <tr>
                                    <td align="center" valign="middle" width="24" class="mcnFollowIconContent" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                      <a href="https://www.instagram.com/grupodiverscan/?hl=es"> 
-                                        <img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-light-instagram-48.png" alt="Link" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="24" width="24" class=""> 
-                                     </a>   
-                                  </td>
+                                      <a href="https://www.instagram.com/signusid/">
+                                          <img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-light-instagram-48.png" alt="Link" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="30" width="30" class=""> </td>
+                                      </a>
+                                     
                                   </tr>
                                  </tbody>
                                 </table>
@@ -346,10 +382,9 @@
                                  <tbody>
                                   <tr>
                                    <td align="center" valign="middle" width="24" class="mcnFollowIconContent" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                    <a href="https://www.youtube.com/channel/UCCbnw6iQGy10JllY1TWOaew">
-                                     <img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-light-youtube-48.png" alt="YouTube" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="24" width="24" class=""> 
-                                    </a> 
-                                  </td>
+                                      <a href="https://www.youtube.com/channel/UCCbnw6iQGy10JllY1TWOaew">
+                                        <img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-light-youtube-48.png" alt="YouTube" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="30" width="30" class=""> </td>
+                                      </a>
                                   </tr>
                                  </tbody>
                                 </table>
