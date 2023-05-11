@@ -79,6 +79,7 @@ const IncidenteVue = new Vue({
             if (self.idTipoIncidente != 0) {
                 if (self.phoneInput5.getNumber() != "") {
                     if (self.mensaje != '') {
+                        
                         $.post(urlIncidente, {
                             opciones: 'InsertarIncidente',
                             
@@ -94,7 +95,10 @@ const IncidenteVue = new Vue({
                                 alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.Error);
                             } else {
                                 alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.Guardado);
-                                //self.EnviarCorreo();
+                                self.IdTipoIncidente = 0;
+                                self.phoneInput5.setNumber('');
+                                self.mensaje = '';
+                                self.EnviarCorreo();
                             }
                         }
 

@@ -61,7 +61,7 @@ namespace ActiveSmartWeb.Incidentes
                             ", número de cuenta " + idPerfilActive + 
                             " ha reportado un incidente: " + mensaje;
 
-                        var realizado = Correo.EnviarCorreo("cgarcia.diverscan@gmail.com", "Incidente ActiveID SMART", Texto);
+                        var realizado = Correo.EnviarCorreo("csalazar.diverscan@gmail.com", "Incidente ActiveID SMART", Texto);
 
                         Response.Write(JsonConvert.SerializeObject(incidente1, Formatting.Indented));
                         break;
