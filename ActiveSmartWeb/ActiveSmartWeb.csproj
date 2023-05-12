@@ -1258,6 +1258,7 @@
     </Compile>
     <Compile Include="Contacto\Entidades\EContacto.cs" />
     <Compile Include="Contacto\Entidades\DContacto.cs" />
+    <Compile Include="Contacto\Entidades\NContacto.cs" />
     <Compile Include="Contacto\Idioma\ContactoIdioma.aspx.cs">
       <DependentUpon>ContactoIdioma.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
