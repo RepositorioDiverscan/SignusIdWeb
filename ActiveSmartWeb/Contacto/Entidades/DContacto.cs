@@ -20,10 +20,10 @@ namespace ActiveSmartWeb.Contacto.Entidades
             db.AddInParameter(dbCommand, "@telefono", DbType.String, contacto.Telefono);
             db.AddInParameter(dbCommand, "@correo", DbType.String, contacto.Correo);
             db.AddInParameter(dbCommand, "@mensaje", DbType.String, contacto.Mensaje);
-            db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
+            db.AddOutParameter(dbCommand, "@resultado", DbType.String, 200);
             dbCommand.CommandTimeout = 3600;
             db.ExecuteNonQuery(dbCommand);
-            var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
+            var Respuesta = db.GetParameterValue(dbCommand, "@resultado").ToString();
             return Respuesta;
         }
 
