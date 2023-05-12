@@ -109,10 +109,10 @@ namespace ActiveSmartWeb.Utilities
         {
 
             //Correo de envio.
-            var correode = ConfigurationManager.AppSettings["CorreDe"];
-            var pass = ConfigurationManager.AppSettings["Pass"];
+            var correode = ConfigurationManager.AppSettings["CorreoSignus"];
+            var pass = ConfigurationManager.AppSettings["PassSignus"];
 
-            string correofrom = ConfigurationManager.AppSettings["CorreEnvio"];
+            string correofrom = ConfigurationManager.AppSettings["CorreoNoReply"];
 
 
             //Mensajes con la informacion brindada.
@@ -130,7 +130,7 @@ namespace ActiveSmartWeb.Utilities
 
 
                 // hlnorislpucdyrux
-                correo.From = new MailAddress(correofrom, "Sistema Active ID SMART", System.Text.Encoding.UTF8);//Correo de salida
+                correo.From = new MailAddress(correofrom, "NO-REPLY", System.Text.Encoding.UTF8);//Correo de salida
                 correo.To.Add(Destinatario); //Correo destino
                 correo.Subject = "Contacto Signus ID"; //Asunto
                 correo.Body = cuerpoCorreo; //Mensaje del correo
@@ -161,14 +161,14 @@ namespace ActiveSmartWeb.Utilities
 
         //Mensaje que se envia al correo de signus con la informacion suministrada
         //por el cliente en el formulario de contacto
-        public static int EnviarCorreoContactoInformacion(string Destinatario, string asunto, string nombre, string apellido, string correoUsuario, string numero, string mensaje)
+        public static int EnviarCorreoContactoInformacion(string asunto, string nombre, string apellido, string correoUsuario, string numero, string mensaje)
         {
 
             //Correo de envio.
-            var correode = ConfigurationManager.AppSettings["CorreDe"];
-            var pass = ConfigurationManager.AppSettings["Pass"];
+            var correode = ConfigurationManager.AppSettings["CorreoSignus"];
+            var pass = ConfigurationManager.AppSettings["PassSignus"];
 
-            string correofrom = ConfigurationManager.AppSettings["CorreEnvio"];
+            string correofrom = ConfigurationManager.AppSettings["CorreoSupport"];
 
 
             //Mensajes con la informacion brindada.
@@ -192,8 +192,8 @@ namespace ActiveSmartWeb.Utilities
                 cuerpoCorreo = cuerpoCorreo.Replace("@Mensaje", mensaje);
 
                 // hlnorislpucdyrux
-                correo.From = new MailAddress(correofrom, "Sistema Active ID SMART", System.Text.Encoding.UTF8);//Correo de salida
-                correo.To.Add(Destinatario); //Correo destino
+                correo.From = new MailAddress(correofrom, "Solicitud de contacto", System.Text.Encoding.UTF8);//Correo de salida
+                correo.To.Add(correofrom); //Correo destino
                 correo.Subject = "Contacto Signus ID"; //Asunto
                 correo.Body = cuerpoCorreo; //Mensaje del correo
                 correo.IsBodyHtml = true;
