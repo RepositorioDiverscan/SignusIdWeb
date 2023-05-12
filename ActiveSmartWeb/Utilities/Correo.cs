@@ -18,11 +18,17 @@ namespace ActiveSmartWeb.Utilities
         public static int EnviarCorreo(string Destinatatio, string Asunto, string Mensaje)
         {
 
+            //Correo de envio.
+            var correode = ConfigurationManager.AppSettings["CorreoSignus"];
+            var pass = ConfigurationManager.AppSettings["PassSignus"];
+
+            string correofrom = ConfigurationManager.AppSettings["CorreoNoReply"];
+
             MailMessage correo = new MailMessage();
             try
             {
                 // hlnorislpucdyrux
-                correo.From = new MailAddress("pruebas.activeidsmart@gmail.com", "Sistema Active ID SMART", System.Text.Encoding.UTF8);//Correo de salida
+                correo.From = new MailAddress(correofrom, "NO-REPLY", System.Text.Encoding.UTF8);//Correo de salida
                 correo.To.Add(Destinatatio); //Correo destino
                 correo.Subject = Asunto; //Asunto
                 correo.Body = Mensaje; //Mensaje del correo
@@ -34,7 +40,7 @@ namespace ActiveSmartWeb.Utilities
                 smtp.Host = "smtp.gmail.com"; //Host del servidor de correo
                 smtp.Port = 587; //Puerto de salida
 
-                smtp.Credentials = new System.Net.NetworkCredential("pruebas.activeidsmart@gmail.com", "hlnorislpucdyrux");//Cuenta de correo "Diverscan2022."
+                smtp.Credentials = new System.Net.NetworkCredential(correode, pass);//Cuenta de correo "Diverscan2022."
                 ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
                 smtp.EnableSsl = true;//True si el servidor de correo permite ssl
 
@@ -53,11 +59,17 @@ namespace ActiveSmartWeb.Utilities
         public static int EnviarCorreoContrasenna(string Destinatatio, string Asunto, string Mensaje)
         {
 
+            //Correo de envio.
+            var correode = ConfigurationManager.AppSettings["CorreoSignus"];
+            var pass = ConfigurationManager.AppSettings["PassSignus"];
+
+            string correofrom = ConfigurationManager.AppSettings["CorreoNoReply"];
+
             MailMessage correo = new MailMessage();
             try
             {
                 // hlnorislpucdyrux
-                correo.From = new MailAddress("pruebas.activeidsmart@gmail.com", "Sistema Active ID SMART", System.Text.Encoding.UTF8);//Correo de salida
+                correo.From = new MailAddress(correofrom, "NO-REPLY", System.Text.Encoding.UTF8);//Correo de salida
                 correo.To.Add(Destinatatio); //Correo destino
                 correo.Subject = Asunto; //Asunto
                 correo.Body = Mensaje; //Mensaje del correo
@@ -88,7 +100,7 @@ namespace ActiveSmartWeb.Utilities
                 smtp.Host = "smtp.gmail.com"; //Host del servidor de correo
                 smtp.Port = 587; //Puerto de salida
 
-                smtp.Credentials = new System.Net.NetworkCredential("pruebas.activeidsmart@gmail.com", "hlnorislpucdyrux");//Cuenta de correo "Diverscan2022."
+                smtp.Credentials = new System.Net.NetworkCredential(correode, pass);//Cuenta de correo "Diverscan2022."
                 ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
                 smtp.EnableSsl = true;//True si el servidor de correo permite ssl
 
@@ -287,11 +299,17 @@ namespace ActiveSmartWeb.Utilities
         public static int EnviarCorreoCodigo(string Destinatatio, string Asunto, string Mensaje, string Codigo)
         {
 
+            //Correo de envio.
+            var correode = ConfigurationManager.AppSettings["CorreoSignus"];
+            var pass = ConfigurationManager.AppSettings["PassSignus"];
+
+            string correofrom = ConfigurationManager.AppSettings["CorreoNoReply"];
+
             MailMessage correo = new MailMessage();
             try
             {
                 // hlnorislpucdyrux
-                correo.From = new MailAddress("pruebas.activeidsmart@gmail.com", "Sistema Active ID SMART", System.Text.Encoding.UTF8);//Correo de salida
+                correo.From = new MailAddress(correofrom, "NO-REPLY", System.Text.Encoding.UTF8);//Correo de salida
                 correo.To.Add(Destinatatio); //Correo destino
                 correo.Subject = Asunto; //Asunto
                 correo.Body = Mensaje; //Mensaje del correo
@@ -322,7 +340,7 @@ namespace ActiveSmartWeb.Utilities
                 smtp.Host = "smtp.gmail.com"; //Host del servidor de correo
                 smtp.Port = 587; //Puerto de salida
 
-                smtp.Credentials = new System.Net.NetworkCredential("pruebas.activeidsmart@gmail.com", "hlnorislpucdyrux");//Cuenta de correo "Diverscan2022."
+                smtp.Credentials = new System.Net.NetworkCredential(correode, pass);
                 ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
                 smtp.EnableSsl = true;//True si el servidor de correo permite ssl
 
@@ -341,11 +359,17 @@ namespace ActiveSmartWeb.Utilities
         public static int EnviarCorreoCambioContrasenna(string Destinatatio, string Asunto, string Mensaje)
         {
 
+            //Correo de envio.
+            var correode = ConfigurationManager.AppSettings["CorreoSignus"];
+            var pass = ConfigurationManager.AppSettings["PassSignus"];
+
+            string correofrom = ConfigurationManager.AppSettings["CorreoNoReply"];
+
             MailMessage correo = new MailMessage();
             try
             {
                 // hlnorislpucdyrux
-                correo.From = new MailAddress("pruebas.activeidsmart@gmail.com", "Sistema Active ID SMART", System.Text.Encoding.UTF8);//Correo de salida
+                correo.From = new MailAddress(correofrom, "NO-REPLY", System.Text.Encoding.UTF8);//Correo de salida
                 correo.To.Add(Destinatatio); //Correo destino
                 correo.Subject = Asunto; //Asunto
                 correo.Body = Mensaje; //Mensaje del correo
@@ -376,7 +400,7 @@ namespace ActiveSmartWeb.Utilities
                 smtp.Host = "smtp.gmail.com"; //Host del servidor de correo
                 smtp.Port = 587; //Puerto de salida
 
-                smtp.Credentials = new System.Net.NetworkCredential("pruebas.activeidsmart@gmail.com", "hlnorislpucdyrux");//Cuenta de correo "Diverscan2022."
+                smtp.Credentials = new System.Net.NetworkCredential(correode, pass);//Cuenta de correo "Diverscan2022."
                 ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
                 smtp.EnableSsl = true;//True si el servidor de correo permite ssl
 
