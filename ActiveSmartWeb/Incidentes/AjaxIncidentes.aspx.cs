@@ -47,6 +47,8 @@ namespace ActiveSmartWeb.Incidentes
 
                         var idPerfilActive = Request.Form["IdPerfilActive"].ToString();
 
+                        var asunto = Request.Form["IdTipoIncidente"].ToString();
+
                         var nombre = Request.Form["Nombre"].ToString();
 
                         var apellido = Request.Form["Apellido"].ToString();
@@ -57,11 +59,7 @@ namespace ActiveSmartWeb.Incidentes
 
                         var mensaje = Request.Form["Mensaje"].ToString();
 
-                        string Texto = "El usuario " + nombre + " " + apellido +
-                            ", número de cuenta " + idPerfilActive + 
-                            " ha reportado un incidente: " + mensaje;
-
-                        var realizado = Correo.EnviarCorreo("csalazar.diverscan@gmail.com", "Incidente ActiveID SMART", Texto);
+                        var realizado = Correo.EnviarCorreoIncidenteInformacion(asunto,nombre,apellido,email,telefono,mensaje, idPerfilActive);
 
                         Response.Write(JsonConvert.SerializeObject(incidente1, Formatting.Indented));
                         break;

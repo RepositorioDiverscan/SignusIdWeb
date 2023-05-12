@@ -82,10 +82,13 @@ const IncidenteVue = new Vue({
                         
                         $.post(urlIncidente, {
                             opciones: 'InsertarIncidente',
-                            
+
+                            Nombre: self.nombre,
+                            Apellido: self.apellido,
                             IdPerfilActive: self.idPerfilActive,
                             IdTipoIncidente: self.idTipoIncidente,
                             Mensaje: self.mensaje,
+                            Correo: self.email,
                             Telefono: self.phoneInput5.getNumber(intlTelInputUtils.numberFormat.E164),
 
                         }, function (data, error) {
@@ -95,10 +98,10 @@ const IncidenteVue = new Vue({
                                 alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.Error);
                             } else {
                                 alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.Guardado);
+                                self.EnviarCorreo();
                                 self.IdTipoIncidente = 0;
                                 self.phoneInput5.setNumber('');
                                 self.mensaje = '';
-                                self.EnviarCorreo();
                             }
                         }
 
@@ -140,10 +143,11 @@ const IncidenteVue = new Vue({
 
             $.post(urlIncidente, {
                 opciones: 'EnviarCorreo',
+                IdTipoIncidente: self.idTipoIncidente,
                 IdPerfilActive: self.idPerfilActive,
                 Nombre: self.nombre,
                 Apellido: self.apellido,
-                Telefono: self.telefono,
+                Telefono: self.phoneInput5.getNumber(),
                 Correo: self.email,
                 Mensaje: self.mensaje
 

@@ -771,6 +771,7 @@
     <Content Include="Perfil\AjaxPerfilUsuario.aspx" />
     <Content Include="Perfil\js\Perfil.js" />
     <Content Include="Perfil\PerfilUsuario.aspx" />
+    <Content Include="Plantillastxt\ReporteIncidenteInformacion.txt" />
     <Content Include="Plantillastxt\ContactoInformacionCliente.txt" />
     <Content Include="Plantillastxt\contraseña signus id 2.txt" />
     <Content Include="Plantillastxt\ContactoCliente.txt" />
