@@ -20,22 +20,22 @@
                 <div class="contact-form-grid">
                     <div id="w-node-_0ba4e7cc-0fa9-b929-33b9-a13d966d136d-46128f7f">
                         <label for="First-Name" id="contact-first-name" class="label-contacto">{{listaidioma.Nombre}}*</label>
-                        <input tabindex="2" type="text" class="text-field-8 w-input" maxlength="256" name="First-Name" data-name="First Name" placeholder="" id="First-Name" v-model="nombre">
+                        <input tabindex="2" type="text" class="text-field-8 w-input" maxlength="100" name="First-Name" data-name="First Name" placeholder="" id="First-Name" v-model="nombre">
                           
                     </div>
                     <div id="w-node-_0ba4e7cc-0fa9-b929-33b9-a13d966d1371-46128f7f">
                         <label for="Last-Name" id="contact-last-name" class="label-contacto">{{listaidioma.Apellido}}*</label>
-                        <input tabindex="3" type="text" class="text-field-8 w-input" maxlength="256" name="Last-Name" data-name="Last Name" placeholder="" id="Last-Name" v-model="apellido">
+                        <input tabindex="3" type="text" class="text-field-8 w-input" maxlength="100" name="Last-Name" data-name="Last Name" placeholder="" id="Last-Name" v-model="apellido">
                         
                     </div>
                     <div id="w-node-_0ba4e7cc-0fa9-b929-33b9-a13d966d1375-46128f7f">
                         <label for="Email" id="contact-email" class="label-contacto">{{listaidioma.Correo}}*</label>
-                        <input tabindex="4" type="text" class="text-field-8 w-input" maxlength="256" name="Email" data-name="Email" placeholder="" id="Email" v-model="correo">
+                        <input tabindex="4" type="text" class="text-field-8 w-input" maxlength="250" name="Email" data-name="Email" placeholder="" id="Email" v-model="correo">
                        
                     </div>
                     <div id="w-node-_0ba4e7cc-0fa9-b929-33b9-a13d966d1379-46128f7f" class="div-phone-number w-clearfix">
                         <label for="field" id="contact-phone" class="label-contacto">{{listaidioma.NumTelefono}}</label>
-                        <input tabindex="5" type="tel" class="text-field-8 w-input" maxlength="256" name="Contact-Phone-Number-2" data-name="Contact Phone Number 2" placeholder="" id="telNational" v-model="telefono" v-on:keypress="ValidarSoloNumeros()">
+                        <input tabindex="5" type="tel" class="text-field-8 w-input" maxlength="100" name="Contact-Phone-Number-2" data-name="Contact Phone Number 2" placeholder="" id="telNational" v-model="telefono" v-on:keypress="ValidarSoloNumeros()">
                         
                     </div>
                     <div id="w-node-_0ba4e7cc-0fa9-b929-33b9-a13d966d137e-46128f7f">
@@ -44,7 +44,7 @@
                     </div>
                     <div id="w-node-_9bab9b2e-9967-2731-9a12-b90b5c70ad02-46128f7f">
                         <label for="Message-2" id="contact-message" class="label-contacto">Asunto</label>
-                        <input tabindex="1" v-model="asunto" type="text" class="text-field-8 w-input" maxlength="256" name="First-Name-2" data-name="First Name 2" placeholder="" id="First-Name-2" >
+                        <input tabindex="1" v-model="asunto" type="text" class="text-field-8 w-input" maxlength="150" name="First-Name-2" data-name="First Name 2" placeholder="" id="First-Name-2" >
                     </div>
               </div>
         
