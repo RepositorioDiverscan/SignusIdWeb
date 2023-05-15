@@ -71,7 +71,7 @@ namespace ActiveSmartWeb.RolesPermisos
                 };
                 if (pass.Trim() != "")
                 {
-                    smtp.Credentials = new NetworkCredential(destino, pass);
+                    smtp.Credentials = new NetworkCredential(correode, pass);
                 }
                 #endregion
                 smtp.Send(correo);
