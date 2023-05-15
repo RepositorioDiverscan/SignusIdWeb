@@ -156,16 +156,28 @@ Vue.component('submenureporte', {
                                                  })
                                          ]),
                                         //contenedor de reporte de Inventario
+
                                             createElement('div', {
                                                 attrs: { class:'contenedor-admin'}
                                             }, [
+
+                                                JSON.parse(sessionStorage.getItem('DUser'))[0].TipoUsuario == 1 ?
                                                     createElement('a', {
                                                         attrs: { class: 'contenedor-icono-admin w-inline-block', href:"../InventariosReporte/ReporteInventario.aspx"}
                                                     }, [
                                                         createElement('img', {
                                                             attrs: { src: '../images/iconos_admin_activeID_Mesa-de-trabajo-1-copia-8.svg', width: '50', height: '50', class:'icono-smart-admin'}
                                                          })
+                                                    ])
+                                                    : 
+                                                    createElement('div', {
+                                                        attrs: { class: 'contenedor-icono-admin none' }
+                                                    }, [
+                                                        createElement('img', {
+                                                            attrs: { src: '../images/iconos_admin_activeID_Mesa-de-trabajo-1-copia-8.svg', width: '50', height: '50', class: 'icono-smart-admin' }
+                                                        })
                                                     ]),
+
                                                     createElement('div', {
                                                         attrs: { class: 'titulo-icono' },
                                                         domProps: { innerText: this.listaIdiomaSubmenu.ReporteInventario }
