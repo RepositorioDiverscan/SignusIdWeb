@@ -28,7 +28,7 @@ namespace ActiveSmartWeb.Utilities
             try
             {
                 // hlnorislpucdyrux
-                correo.From = new MailAddress(correofrom, "NO-REPLY", System.Text.Encoding.UTF8);//Correo de salida
+                correo.From = new MailAddress(correofrom, "no-reply", System.Text.Encoding.UTF8);//Correo de salida
                 correo.To.Add(Destinatatio); //Correo destino
                 correo.Subject = Asunto; //Asunto
                 correo.Body = Mensaje; //Mensaje del correo
@@ -69,7 +69,7 @@ namespace ActiveSmartWeb.Utilities
             try
             {
                 // hlnorislpucdyrux
-                correo.From = new MailAddress(correofrom, "NO-REPLY", System.Text.Encoding.UTF8);//Correo de salida
+                correo.From = new MailAddress(correofrom, "no-reply", System.Text.Encoding.UTF8);//Correo de salida
                 correo.To.Add(Destinatatio); //Correo destino
                 correo.Subject = Asunto; //Asunto
                 correo.Body = Mensaje; //Mensaje del correo
@@ -142,7 +142,7 @@ namespace ActiveSmartWeb.Utilities
 
 
                 // hlnorislpucdyrux
-                correo.From = new MailAddress(correofrom, "NO-REPLY", System.Text.Encoding.UTF8);//Correo de salida
+                correo.From = new MailAddress(correofrom, "no-reply", System.Text.Encoding.UTF8);//Correo de salida
                 correo.To.Add(Destinatario); //Correo destino
                 correo.Subject = "Contacto Signus ID"; //Asunto
                 correo.Body = cuerpoCorreo; //Mensaje del correo
@@ -309,7 +309,7 @@ namespace ActiveSmartWeb.Utilities
             try
             {
                 // hlnorislpucdyrux
-                correo.From = new MailAddress(correofrom, "NO-REPLY", System.Text.Encoding.UTF8);//Correo de salida
+                correo.From = new MailAddress(correofrom, "no-reply", System.Text.Encoding.UTF8);//Correo de salida
                 correo.To.Add(Destinatatio); //Correo destino
                 correo.Subject = Asunto; //Asunto
                 correo.Body = Mensaje; //Mensaje del correo
@@ -369,7 +369,7 @@ namespace ActiveSmartWeb.Utilities
             try
             {
                 // hlnorislpucdyrux
-                correo.From = new MailAddress(correofrom, "NO-REPLY", System.Text.Encoding.UTF8);//Correo de salida
+                correo.From = new MailAddress(correofrom, "no-reply", System.Text.Encoding.UTF8);//Correo de salida
                 correo.To.Add(Destinatatio); //Correo destino
                 correo.Subject = Asunto; //Asunto
                 correo.Body = Mensaje; //Mensaje del correo
