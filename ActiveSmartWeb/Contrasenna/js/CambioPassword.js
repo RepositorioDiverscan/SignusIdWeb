@@ -98,7 +98,7 @@ const cambioPassword = new Vue({
                     IdPerfilUsuario: self.IdPerfilU,
                 }, function (respuesta, error) {
 
-                    if (respuesta == "Atención! La contraseña debe de tener una longitud entre 10-50 caracteres") {
+                    if (respuesta == "Atención! La contraseña debe de tener una longitud entre 8-50 caracteres") {
                         alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.ErrorLargo);
                         document.getElementById('PswPrincipal').focus();
                     } else if (respuesta == "Atención! La contraseña debe  contener mínimo un número") {

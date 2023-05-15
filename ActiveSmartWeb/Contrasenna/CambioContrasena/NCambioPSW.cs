@@ -20,9 +20,7 @@ namespace ActiveSmartWeb.Contrasenna.CambioContrasena
 
         public string ValidaContrasena(string password, int IdLogPasswordPerfil, int tipoUsuario)
         {
-            int resultadoValidacion = 
-                tipoUsuario == 0 ?  Seguridad.CompruebaNormal(password) 
-                : Seguridad.CompruebaAdmin(password);
+            int resultadoValidacion = Seguridad.CompruebaNormal(password);
 
 
             string passwordEncriptada = Encrypt.EncriptarSHA3_512(password);
@@ -31,9 +29,9 @@ namespace ActiveSmartWeb.Contrasenna.CambioContrasena
             switch (resultadoValidacion)
             {
                 case 1:
-                    respuesta = tipoUsuario == 0 ? 
-                         "Atención! La contraseña debe de tener una longitud entre 8-50 caracteres"
-                       : "Atención! La contraseña debe de tener una longitud entre 10-50 caracteres";
+                    respuesta = "Atención! La contraseña debe de tener una longitud entre 8-50 caracteres";
+
+
                     break;
                 case 2:
                     respuesta = "Atención! La contraseña debe  contener mínimo un número";
@@ -68,9 +66,7 @@ namespace ActiveSmartWeb.Contrasenna.CambioContrasena
         public string ValidaContrasena(string password,int tipoUsuario)
         {
 
-            int resultadoValidacion =
-                tipoUsuario == 0 ? Seguridad.CompruebaNormal(password)
-                : Seguridad.CompruebaAdmin(password);
+            int resultadoValidacion = Seguridad.CompruebaNormal(password);
 
 
             
@@ -79,9 +75,7 @@ namespace ActiveSmartWeb.Contrasenna.CambioContrasena
             switch (resultadoValidacion)
             {
                 case 1:
-                    respuesta = tipoUsuario == 0 ?
-                         "Atención! La contraseña debe de tener una longitud entre 8-50 caracteres"
-                       : "Atención! La contraseña debe de tener una longitud entre 10-50 caracteres";
+                    respuesta = "Atención! La contraseña debe de tener una longitud entre 8-50 caracteres";
                     break;
                 case 2:
                     respuesta = "Atención! La contraseña debe  contener mínimo un número";
@@ -265,7 +259,7 @@ namespace ActiveSmartWeb.Contrasenna.CambioContrasena
         public string ValidaContrasena(string password)
         {
 
-            int resultadoValidacion = Seguridad.CompruebaAdmin(password);
+            int resultadoValidacion = Seguridad.CompruebaNormal(password);
 
 
             string passwordEncriptada = Encrypt.EncriptarSHA3_512(password);
@@ -274,7 +268,7 @@ namespace ActiveSmartWeb.Contrasenna.CambioContrasena
             switch (resultadoValidacion)
             {
                 case 1:
-                    respuesta = "Atención! La contraseña debe de tener una longitud entre 10-50 caracteres";
+                    respuesta = "Atención! La contraseña debe de tener una longitud entre 8-50 caracteres";
                     break;
                 case 2:
                     respuesta = "Atención! La contraseña debe  contener mínimo un número";
