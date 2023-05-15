@@ -25,15 +25,19 @@ namespace ActiveSmartWeb.RolesPermisos
             try
             {
                
-                var destino = ConfigurationManager.AppSettings["CorreDe"];
-                var pass = ConfigurationManager.AppSettings["Pass"];
+                //Correo de envio.
+                var correode = ConfigurationManager.AppSettings["CorreoSignus"];
+                var pass = ConfigurationManager.AppSettings["PassSignus"];
+
+                string correofrom = ConfigurationManager.AppSettings["CorreoNoReply"];
+
                 var BodyText = "";
                 string correoFrom = correoReceptor;
                 #region "Config"
                 var correo = new MailMessage
                 {
 
-                    From = new MailAddress(destino),
+                    From = new MailAddress(correofrom),
                     Subject = "Ingresa a la plataforma",
                     IsBodyHtml = true
                 };
