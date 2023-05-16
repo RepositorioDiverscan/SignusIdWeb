@@ -15,7 +15,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Entidades
         public const string _labelCorreoEmpresa = "Correo";
         public const string _labelNombrePerfil = "Nombre";
         public const string _labelApellidosPerfil = "Apellidos";
-        public const string _labelCorreoPerfil = "Correo Electronico";
+        public const string _labelCorreoPerfil = "Correo Electrónico";
         public const string _labelContrasena = "Contraseña";
         public const string _labelContrasena1 = "Confirmar Contraseña";
         public const string _btnSiguiente = "Siguiente";

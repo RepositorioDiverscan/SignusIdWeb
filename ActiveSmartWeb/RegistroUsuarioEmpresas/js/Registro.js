@@ -84,23 +84,25 @@ const login = new Vue({
 
                             if (this.correoUsuario != '') {
 
-                                if (this.contrasena != '') {
+                                if (this.validarCorreo(this.correoUsuario)) {
 
-                                    if (this.idEmpresa != '') {
+                                    if (this.contrasena != '') {
 
-                                        if (this.idIndustria != '') {
+                                        if (this.idEmpresa != '') {
 
-                                            if (this.idEmpresaTamano != '') {
+                                            if (this.idIndustria != '') {
 
-                                                if (this.pais != '') {
+                                                if (this.idEmpresaTamano != '') {
 
-                                                    this.SeleccionarMonedas($("#country").countrySelect("getSelectedCountryData").iso2);
+                                                    if (this.pais != '') {
 
-                                                    if (this.direccion != '') {
+                                                        this.SeleccionarMonedas($("#country").countrySelect("getSelectedCountryData").iso2);
 
-                                                        if (this.posicion != '') {
+                                                        if (this.direccion != '') {
 
-                                                            if (this.chterminos != false) {
+                                                            if (this.posicion != '') {
+
+                                                                if (this.chterminos != false) {
 
                                                                     if (this.contrasena == this.contrasena1) {
                                                                         $.post(urlRegistroAjax, {
@@ -126,37 +128,42 @@ const login = new Vue({
                                                                                 sessionStorage.setItem('Posicion', self.posicion);
                                                                                 sessionStorage.setItem('Moneda', self.moneda);
                                                                                 self.InsertarUsuariosEmpresas();
-                                                                                
+
                                                                             }
                                                                         });
                                                                     } else {
                                                                         alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrConIgual);
                                                                     }
 
+                                                                } else {
+                                                                    alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrTerminos);
+                                                                }
                                                             } else {
-                                                                alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrTerminos);
+                                                                alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrPosUsuario);
                                                             }
                                                         } else {
-                                                            alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrPosUsuario);
+                                                            alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresaDir);
                                                         }
                                                     } else {
-                                                        alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresaDir);
+                                                        alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresaPais);
                                                     }
                                                 } else {
-                                                    alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresaPais);
+                                                    alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresaTam);
                                                 }
                                             } else {
-                                                alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresaTam);
+                                                alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdIndustria);
                                             }
                                         } else {
-                                            alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdIndustria);
+                                            alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresa);
                                         }
                                     } else {
-                                        alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresa);
+                                        alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrContrasena);
                                     }
+
                                 } else {
-                                    alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrContrasena);
+                                    alertas.error(this.listaIdiomas.Atencion, "Ingrese un correo electrónico válido");
                                 }
+
                             } else {
                                 alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrCorreoUs);
                             }
@@ -304,6 +311,10 @@ const login = new Vue({
                 }
             });
 
+        },
+        validarCorreo: function (correo) {
+            var expresionRegular = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return expresionRegular.test(correo);
         },
         
     },
