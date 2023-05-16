@@ -25,37 +25,14 @@
   <link href="../images/logo-02.png" rel="shortcut icon" type="image/x-icon">
   <link href="../images/logo-02.png" rel="apple-touch-icon">
 
+    <%--Sweet Alert--%>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
     <style>
         .iti, .country-select {
             min-width: 100%;
-        }
-
-        .swal2-styled.swal2-confirm {
-            border: none !important;
-            background-color: #ebbb00 !important;
-        }
-
-            .swal2-styled.swal2-confirm:focus {
-                box-shadow: none !important;
-            }
-
-
-        .swal2-title {
-            font-size: 20px !important;
-        }
-
-        .swal2-icon.swal2-info {
-            border-color: #ebbb00 !important;
-            color: #ebbb00 !important;
-        }
-
-        .swal2-icon {
-            width: 4em !important;
-            height: 4em !important;
-        }
-
-        [v-cloak]{
-            display:none !important;
         }
 
     </style>
@@ -302,6 +279,7 @@
   <script src="../js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
     <script src="../VisorActivos/Vue/vue.min.js"></script>
+    <script src="../Recursos/SweetAlert/sweetalert2@11.js"></script>
   <script src="js/Contrato.js?v=1.2.4"></script>
 
 </body>

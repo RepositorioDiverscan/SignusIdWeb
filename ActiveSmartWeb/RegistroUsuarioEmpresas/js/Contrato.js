@@ -250,7 +250,8 @@ const contrato = new Vue({
                                         if (this.ciudad != '') {
                                             if (this.direccion != '') {
                                                 if (this.frecuenciaPago != '') {
-                                                    if (this.terminoscondiciones) {
+                                                    if (this.terminoscondiciones) {                                                      
+
                                                         sessionStorage.setItem('frecuencia', self.frecuenciaPago);
 
                                                         $.post(urlAdicionalesContratoAjax, {
@@ -266,14 +267,13 @@ const contrato = new Vue({
                                                             CodigoPlan: this.codigoPlan,
                                                             correoUsuario: sessionStorage.getItem('CorreoUsuario'),
                                                             tipocontrato: sessionStorage.getItem("CodigoPlan")
-
+                                                            
 
                                                         }, function (data, error) {
                                                             if (data == "Transacción realizada correctamente") {
-                                                                alertas.success("Trasacción Exitosa", data);
-                                                                window.location.assign('../../InicioSesion/InicioSesion.aspx');
+                                                                self.MensajeTransaccionSucces()
                                                             } else {
-                                                                alertas.error("Error", data);
+                                                                self.MensajeTransaccionError(data)
                                                             }
 
                                                         });
@@ -312,6 +312,29 @@ const contrato = new Vue({
                 alertas.error("Error", "Por favor ingrese el número de la tarjeta");
             }
 
+        },
+
+        MensajeTransaccionSucces: function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Trasacción Exitosa',
+                text: 'Transacción realizada correctamente',
+                confirmButtonColor: '#ebbb00', // Cambia el color del botón de confirmación
+                confirmButtonText: 'Entendido',
+                willClose: () => {
+                    window.location.assign('../../InicioSesion/InicioSesion.aspx'); // Reemplaza la URL
+                }
+            })
+        },
+
+        MensajeTransaccionError: function (data) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data,
+                confirmButtonColor: '#ebbb00', // Cambia el color del botón de confirmación
+                confirmButtonText: 'Entendido'
+            })
         },
 
         //Metodo para ingresar el contrato.

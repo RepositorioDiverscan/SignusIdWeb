@@ -556,10 +556,9 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
 
                         EResultadoSuscripcion resultadoSuscripcion = pagoAuthorize.crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular, apellidotitular);
-                        
+
                         //Simula una suscripcion para hacer pruebas
                         //EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
-                      
 
                         if (resultadoSuscripcion.Resultado == "Success")
                         {
