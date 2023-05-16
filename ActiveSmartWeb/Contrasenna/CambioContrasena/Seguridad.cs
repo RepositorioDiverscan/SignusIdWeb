@@ -8,8 +8,8 @@ namespace ActiveSmartWeb.Contrasenna.CambioContrasena
 {
     public static class Seguridad
     {
-        private static string LongitudAdmin = @"^\w{10,50}\b";
-        private static string LongitudNormal    =  @"^\w{8,50}\b";
+        private static string LongitudAdmin = @"^[\wñÑ\-_¿.#¡*$&@]{8,50}\b";
+        private static string LongitudNormal    = @"^[\wñÑ\-_¿.#¡*$&@]{8,50}\b";
         private static string Numeros     = @"\d";
         private static string Especiales  = @"[ñÑ\-_¿.#¡*$&@]";
         private static string Mayusculas  = @"[A-Z]";
@@ -32,11 +32,11 @@ namespace ActiveSmartWeb.Contrasenna.CambioContrasena
         ///</remarks>
         public static int CompruebaNormal(string cadena)
         {
-             matchLongitud = Regex.Match(cadena, LongitudNormal);
-             matchNumeros = Regex.Match(cadena, Numeros);
-             matchEspeciales = Regex.Match(cadena, Especiales);
-             matchMayusculas = Regex.Match(cadena, Mayusculas);
-             matchMinusculas = Regex.Match(cadena, Minusculas);
+            matchLongitud = Regex.Match(cadena, LongitudNormal);
+            matchEspeciales = Regex.Match(cadena, Especiales);
+            matchNumeros = Regex.Match(cadena, Numeros);         
+            matchMayusculas = Regex.Match(cadena, Mayusculas);
+            matchMinusculas = Regex.Match(cadena, Minusculas);
 
             return Analiza();
 

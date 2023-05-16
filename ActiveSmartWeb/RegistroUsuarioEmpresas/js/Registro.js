@@ -101,7 +101,6 @@ const login = new Vue({
                                                         if (this.posicion != '') {
 
                                                             if (this.chterminos != false) {
-                                                                if (this.validarContrasenna()) {
 
                                                                     if (this.contrasena == this.contrasena1) {
                                                                         $.post(urlRegistroAjax, {
@@ -127,16 +126,13 @@ const login = new Vue({
                                                                                 sessionStorage.setItem('Posicion', self.posicion);
                                                                                 sessionStorage.setItem('Moneda', self.moneda);
                                                                                 self.InsertarUsuariosEmpresas();
-
+                                                                                
                                                                             }
                                                                         });
                                                                     } else {
                                                                         alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrConIgual);
                                                                     }
 
-                                                                } else {
-
-                                                                }
                                                             } else {
                                                                 alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrTerminos);
                                                             }
@@ -309,27 +305,6 @@ const login = new Vue({
             });
 
         },
-
-        validarContrasenna: function () {
-            if (this.contrasena.length < 8 || this.contrasena.length > 50) {
-                alertas.error(this.listaIdiomas.Atencion, 'La contraseña debe tener entre 8 y 50 caracteres.')
-                return false;
-            } else if (!/\d/.test(this.contrasena)) {
-                alertas.error(this.listaIdiomas.Atencion, 'La contraseña debe contener al menos un número.')
-                return false;
-            } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(this.contrasena)) {
-                alertas.error(this.listaIdiomas.Atencion, 'La contraseña debe contener al menos un carácter especial.')
-                return false;
-            } else if (!/[a-z]/.test(this.contrasena)) {
-                alertas.error(this.listaIdiomas.Atencion, 'La contraseña debe contener al menos una letra minúscula.')
-                return false;
-            } else if (!/[A-Z]/.test(this.contrasena)) {
-                alertas.error(this.listaIdiomas.Atencion, 'La contraseña debe contener al menos una letra mayúscula.')
-                return false;
-            } else {
-                return true;
-            }
-        }
         
     },
 })
