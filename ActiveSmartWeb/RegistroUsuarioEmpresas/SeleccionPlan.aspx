@@ -107,7 +107,7 @@
                 </div>
 
                 <div>
-                    <img src="../images/rubros-signus-id.jpg" loading="lazy" width="1008" sizes="(max-width: 991px) 180.00001525878906px, 18vw" srcset="../images/rubros-signus-id-p-500.jpg 500w, ../images/rubros-signus-id-p-800.jpg 800w, ../images/rubros-signus-id-p-1080.jpg 1080w, ../images/rubros-signus-id-p-1600.jpg 1600w, ../images/rubros-signus-id.jpg 1920w" alt="">
+                    <img src="../images/rubros signus id-01.png" loading="lazy" width="1008" sizes="(max-width: 991px) 180.00001525878906px, 18vw" alt="">
                 </div>
               </div>
               
