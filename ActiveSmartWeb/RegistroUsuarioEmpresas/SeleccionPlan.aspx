@@ -91,10 +91,10 @@
                   <div id="w-node-_01c0ae54-b714-1851-f0c8-620771593690-290239ef" class="div-plan-ai">
                     <h3 class="titulo-plan-type-ai">buSineSs</h3>
                     <div id="w-node-efb82b03-3cc6-42c1-b94c-45f349b2cd97-290239ef">
-                      <div class="text-type-price-ai">$300</div>
+                      <div class="text-type-price-ai">Contactenos</div>
                     </div>
                     <div id="w-node-_36c11641-0617-b84f-0105-f20f8fe746e5-290239ef">
-                      <div class="text-facturacion-ai" v-cloak>{{listaIdiomas.MontoUsuarioBusiness}}</div>
+                      <div class="text-facturacion-ai" v-cloak><%--{{listaIdiomas.MontoUsuarioBusiness}}--%></div>
                       <div class="text-facturacion-ai" v-cloak>{{listaIdiomas.FacturaBusiness}}</div>
                     </div>
                     <div id="w-node-b5c6f485-40eb-16df-80e4-b045fae44363-290239ef">
