@@ -6,6 +6,7 @@ const Planes = new Vue({
 
     data: {
         listaIdiomas: [],
+        frecuencia:'1'
     },
 
     mounted: function () {
@@ -59,6 +60,8 @@ const Planes = new Vue({
         CambiarFrecuenciaPlanAnual: function () {
             var self = this;
 
+            self.frecuencia = '1';
+
             $(btnMensual).removeClass("button-4").addClass("button-5");
             $(btnAnual).removeClass("button-5").addClass("button-4");
 
@@ -69,6 +72,8 @@ const Planes = new Vue({
         //Metodo para cambiar la frecuencia de pago a mensual
         CambiarFrecuenciaPlanMensual: function () {
             var self = this;
+
+            self.frecuencia = '2';
 
             $(btnAnual).removeClass("button-4").addClass("button-5");
             $(btnMensual).removeClass("button-5").addClass("button-4");
@@ -87,7 +92,7 @@ const Planes = new Vue({
             var self = this;
 
             sessionStorage.setItem('CodigoPlan', '2');
-            window.location.assign('Checkout.aspx');
+            self.cambioPantallaCheckout(self.frecuencia)
         },
         FREE: function () {
             var self = this;
@@ -99,7 +104,13 @@ const Planes = new Vue({
 
         BUSINESS: function () {
             window.location.assign('../Contacto/ContactoView.aspx');
-        }
+        },
+        cambioPantallaCheckout: function (seccion) {
+
+            var url = 'Checkout.aspx?frecuencia=' + encodeURIComponent(seccion);
+            window.location.href = url;
+
+        },
     },
 
 })

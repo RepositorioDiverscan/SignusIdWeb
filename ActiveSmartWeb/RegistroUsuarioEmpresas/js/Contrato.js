@@ -41,6 +41,7 @@ const contrato = new Vue({
         this.CargarPrecio();
         this.CargarInputPaises();
         this.CargarAdicionalesContratado();
+        this.frecuenciaPago = this.obtenerFrecuencia();
     },
     watch: {
         frecuenciaPago: function (valorNuevo, ValorAnterior) {
@@ -59,6 +60,26 @@ const contrato = new Vue({
             }, function (data, error) {
                 self.listaIdiomas = JSON.parse(data);
             });
+        },
+        //Obtiene la frecuencia de pago seleccionada, esta viene en el url
+        obtenerFrecuencia: function () {
+            self = this;
+            var seccionSeleccionada = self.getParameterByName('frecuencia');
+            if (seccionSeleccionada == null) {
+                return '1';
+            }
+            return seccionSeleccionada;
+        },
+
+        //Obtiene el valor del parametro enviado, este viene en el url
+        getParameterByName: function (name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
         },
 
         validardigitosfechavencimiento: function () {
