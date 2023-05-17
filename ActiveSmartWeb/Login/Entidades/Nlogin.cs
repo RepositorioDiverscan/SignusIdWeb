@@ -45,11 +45,11 @@ namespace ActiveSmartWeb.Login.Entidades
 
         }
         
-        public string obtenerSubscripcion(string correo)
+        public string obtenerSubscripcionPorCorreo(string correo)
         {
             try
             {
-                return _dlogin.obtenerSubscripcion(correo);
+                return _dlogin.obtenerSubscripcionPorCorreo(correo);
             }
             catch (Exception ex)
             {

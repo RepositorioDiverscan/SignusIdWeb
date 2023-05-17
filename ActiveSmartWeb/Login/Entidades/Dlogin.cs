@@ -70,7 +70,7 @@ namespace ActiveSmartWeb.Login.Entidades
             return Respuesta;
         }
 
-        public string obtenerSubscripcion(string correo)
+        public string obtenerSubscripcionPorCorreo(string correo)
         {
             var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
             var dbCommand = db.GetStoredProcCommand("ObtenerSuscripcionPorContrato");

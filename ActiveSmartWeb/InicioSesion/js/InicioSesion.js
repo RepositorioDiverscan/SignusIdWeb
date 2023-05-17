@@ -45,6 +45,18 @@ const login = new Vue({
                 }
             });
         },
+
+        validarSuscripcionEmpresa: function (idEmpresa) {
+            $.post(urllogin, {
+                opciones: 'validarSuscripcionEmpresa',
+                idEmpresa: idEmpresa
+            }, function (respuesta, error) {
+
+                return respuesta;
+
+            });
+        },
+
         AbrirPopPup: function () {
             var a = document.getElementById('PopPupEmpresas');
             a.style.display = 'block';

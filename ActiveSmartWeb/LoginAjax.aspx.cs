@@ -15,9 +15,9 @@ namespace ActiveSmartWeb.Login
 {
     public partial class LoginAjax : System.Web.UI.Page
     {
-        private string validarSubscripcion(Nlogin _nlogin, string correo)
+        private string validarSubscripcion(string subscripcion)
         {
-            string subscripcion = _nlogin.obtenerSubscripcion(correo);
+            
             if(subscripcion != "")
             {
                 string estado = pagoAuthorize.getStatus(subscripcion);
@@ -66,7 +66,8 @@ namespace ActiveSmartWeb.Login
 
                         if(Resultado == "Validar Subscripcion" || Resultado == "Actualizar")
                         {
-                            string resultadoValidacion = validarSubscripcion(_nlogin, Request.Form["Email"].ToString());
+                            string subscripcion = _nlogin.obtenerSubscripcionPorCorreo(Request.Form["Email"].ToString());
+                            string resultadoValidacion = validarSubscripcion(subscripcion);
                             if(Resultado == "Actualizar" && resultadoValidacion== "BIEN")
                             {
                                 _nlogin.actualizarFechaExpiracion(Request.Form["Email"].ToString());
@@ -84,6 +85,10 @@ namespace ActiveSmartWeb.Login
                             Response.Write(JsonConvert.SerializeObject(data1, Formatting.Indented));
                             break;
                         }
+
+                    case "validarSuscripcionEmpresa":
+
+                        break;
 
                 }
             } 

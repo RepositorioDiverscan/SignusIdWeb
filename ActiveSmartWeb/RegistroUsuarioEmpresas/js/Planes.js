@@ -99,7 +99,7 @@ const Planes = new Vue({
 
 
             sessionStorage.setItem('CodigoPlan', '1');
-            window.location.assign('Checkout.aspx');
+            self.cambioPantallaCheckout(self.frecuencia)
         },
 
         BUSINESS: function () {
