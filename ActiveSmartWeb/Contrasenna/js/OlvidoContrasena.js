@@ -80,18 +80,34 @@ const cambioPassword = new Vue({
             }, function (respuesta, error) {
                 if (respuesta != '0') {
 
-                    alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.OlCorreoEr);
+                    self.MensajeAlertaErrorEnvioCorreo(self.listaIdiomas.Atencion, self.listaIdiomas.OlCorreoEr)
 
-                    } else {
-                    alertas.info(self.listaIdiomas.Atencion, self.listaIdiomas.OlCorreoEn);
-                    self.correoUsuario = '';
-                    //Delay 5 segundos
-                        setInterval(function () {
-                        self.IrMenu();
-                        }, 5000);
-                   }
+                } else {
+                    self.MensajeAlertaEnvioCorreo(self.listaIdiomas.Atencion, self.listaIdiomas.OlCorreoEn)
+                }
             });
 
+        },
+        MensajeAlertaEnvioCorreo: function (atencion,mensaje) {
+            Swal.fire({
+                icon: 'warning',
+                title: atencion,
+                text: mensaje,
+                confirmButtonColor: '#ebbb00', // Cambia el color del botón de confirmación
+                confirmButtonText: 'Entendido',
+                willClose: () => {
+                    window.location.replace('../Login.aspx'); // Reemplaza la URL
+                }
+            })
+        },
+        MensajeAlertaErrorEnvioCorreo: function (atencion, mensaje) {
+            Swal.fire({
+                icon: 'error',
+                title: atencion,
+                text: mensaje,
+                confirmButtonColor: '#ebbb00', // Cambia el color del botón de confirmación
+                confirmButtonText: 'Entendido',
+            })
         },
         IrMenu: function () {
             window.location.replace('../Login.aspx');

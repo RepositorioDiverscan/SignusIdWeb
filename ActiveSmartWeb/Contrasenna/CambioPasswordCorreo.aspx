@@ -62,5 +62,6 @@
         </div>
     <script src="../js/webflow.js"></script>
     <script src="../Recursos/JQuery/jquery-3.5.1.min.dc5e7f18c8.js"></script>
+    <script src="../Recursos/SweetAlert/sweetalert2@11.js"></script>
     <script src="js/CambioPassword2.js"></script>
 </asp:Content>

@@ -22,6 +22,7 @@
 
 <script src="../Recursos/JQuery/jquery-3.5.1.min.dc5e7f18c8.js"></script>
 <script src="../VisorActivos/Vue/vue.min.js"></script>
+<script src="../Recursos/SweetAlert/sweetalert2@11.js"></script>
 <script src="js/OlvidoContrasena.js?v=1.1.2"></script>
 
 </asp:Content>

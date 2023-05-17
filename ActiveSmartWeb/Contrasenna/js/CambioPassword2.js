@@ -67,14 +67,22 @@ const cambioPassword = new Vue({
                 CorreoUser: self.correoUsuario,
             }, function (respuesta, error) {
 
-                alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.ContraCambiada);
-
-                //Delay 5 segundos
-                setInterval(function () {
-                    self.ActualizarLink();
-                }, 5000);
+                self.MensajeCambioSuccess(self.listaIdiomas.Atencion, self.listaIdiomas.ContraCambiada);
 
             });
+        },
+
+        MensajeCambioSuccess: function (atencion, mensaje) {
+            Swal.fire({
+                icon: 'success',
+                title: atencion,
+                text: mensaje,
+                confirmButtonColor: '#ebbb00', // Cambia el color del botón de confirmación
+                confirmButtonText: 'Entendido',
+                willClose: () => {
+                    window.location.href = "../Login.aspx"; // Reemplaza la URL
+                }
+            })
         },
 
         ObtenerInformacionUsuario: function () {
