@@ -38,6 +38,7 @@ const login = new Vue({
             let empresa = this.empresa;
             array.forEach(function (entry) {
                 if (empresa == entry.IdPerfilEmpresa) {
+
                     var Json = JSON.stringify([{ IdPerfilUsuario: entry.IdPerfilUsuario, Nombre: entry.Nombre, Apellildo: entry.Apellildo, ImagenPerfil: entry.ImagenPerfil, Identificacion: entry.Identificacion, IdPerfilActive: entry.IdPerfilActive, IdPerfilEmpresa: entry.IdPerfilEmpresa, NombreEmpresa: entry.NombreEmpresa, Correo: entry.Correo, TipoUsuario: entry.TipoUsuario}]);
                     sessionStorage.setItem('DUser', Json);
 

@@ -87,7 +87,11 @@ namespace ActiveSmartWeb.Login
                         }
 
                     case "validarSuscripcionEmpresa":
+                        var idEmpresa = int.Parse(Request.Form["idEmpresa"]);
+                        var idSuscripcion = _nlogin.obtenerSubscripcionPorIdEmpresa(idEmpresa);
+                        string resultado = validarSubscripcion(idSuscripcion);
 
+                        Response.Write(resultado);
                         break;
 
                 }

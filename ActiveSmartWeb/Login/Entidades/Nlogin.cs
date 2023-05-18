@@ -59,6 +59,20 @@ namespace ActiveSmartWeb.Login.Entidades
 
         }
 
+        public string obtenerSubscripcionPorIdEmpresa(int idEmpresa)
+        {
+            try
+            {
+                return _dlogin.obtenerSubscripcionPorIdEpresa(idEmpresa);
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return "";
+            }
+
+        }
+
         public void actualizarFechaExpiracion(string correo)
         {
             try
