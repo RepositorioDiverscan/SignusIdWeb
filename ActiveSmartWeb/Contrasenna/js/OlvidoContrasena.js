@@ -17,7 +17,6 @@ const cambioPassword = new Vue({
     },
     mounted: function () {
         var logueado = JSON.parse(sessionStorage.getItem('DUser'));
-        console.log(urlPagina);
         //this.IdPefil_Empresa = logueado[0].IdPerfilEmpresa;
         this.listaIdiomas = this.ObtenerIdioma();
        // this.IdPefil_Empresa = "1";//+ logueado[0].IdPerfilEmpresa;
@@ -42,7 +41,6 @@ const cambioPassword = new Vue({
                 IdiomaOption: idioma,
             }, function (data, error) {
                 self.listaIdiomas = JSON.parse(data);
-                console.log(JSON.parse(data));
             });
         },
         // FIN METODOS DE IDIOMA
