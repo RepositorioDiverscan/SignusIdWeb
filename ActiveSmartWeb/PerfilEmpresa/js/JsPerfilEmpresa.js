@@ -218,9 +218,7 @@ const PerfilEmpresa = new Vue({
                         alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.ActualizaOk);
                     } else if (respuesta == "Correo no válido") {
                         alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.CorreoError);
-                    } else if (respuesta = "El correo ingresado ya se encuentra registrado") {
-                        alertas.error(self.listaIdiomas.Atencion, "El correo ingresado ya se encuentra registrado");
-                    }
+                    } 
                     else {
                         alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.ActualizaError);
                     }
