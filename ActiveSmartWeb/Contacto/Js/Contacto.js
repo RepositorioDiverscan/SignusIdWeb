@@ -108,7 +108,7 @@ const contactos = new Vue({
 
                                             if (data == 0) {
                                                 self.limpiarInputs();
-                                                alertas.success("Atención:", "Solicitud de contacto realizada con éxito");
+                                                self.MensajeAlertaEnvioCorreo("Atención:", "Solicitud de contacto realizada con éxito");
                                             } else {
                                                 alertas.error("Atención:", "La solicitud de contacto no se realizó correctamente");
                                             }
@@ -145,6 +145,16 @@ const contactos = new Vue({
             }
 
 
+        },
+
+        MensajeAlertaEnvioCorreo: function (atencion, mensaje) {
+            Swal.fire({
+                icon: 'success',
+                title: atencion,
+                text: mensaje,
+                confirmButtonColor: '#ebbb00', // Cambia el color del botón de confirmación
+                confirmButtonText: 'Entendido',
+            })
         },
 
     },
