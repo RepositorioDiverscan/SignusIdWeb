@@ -80,7 +80,7 @@ const cambioPassword = new Vue({
                 confirmButtonColor: '#ebbb00', // Cambia el color del botón de confirmación
                 confirmButtonText: 'Entendido',
                 willClose: () => {
-                    window.location.href = "../Login.aspx"; // Reemplaza la URL
+                    window.location.href = "../InicioSesion/InicioSesion.aspx"; // Reemplaza la URL
                 }
             })
         },
@@ -128,7 +128,7 @@ const cambioPassword = new Vue({
                 Codigolink: LinkUrl,
             }, function (data, error) {
 
-                window.location.href = "../Login.aspx";
+                window.location.href = "../InicioSesion/InicioSesion.aspx";
 
             });
 

@@ -96,7 +96,7 @@ const cambioPassword = new Vue({
                 confirmButtonColor: '#ebbb00', // Cambia el color del botón de confirmación
                 confirmButtonText: 'Entendido',
                 willClose: () => {
-                    window.location.replace('../Login.aspx'); // Reemplaza la URL
+                    window.location.replace('../InicioSesion/InicioSesion.aspx'); // Reemplaza la URL
                 }
             })
         },
@@ -110,7 +110,7 @@ const cambioPassword = new Vue({
             })
         },
         IrMenu: function () {
-            window.location.replace('../Login.aspx');
+            window.location.replace('../InicioSesion/InicioSesion.aspx');
         }
 
     }
