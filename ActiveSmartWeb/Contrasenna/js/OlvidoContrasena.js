@@ -13,6 +13,7 @@ const cambioPassword = new Vue({
         IdPefil_Empresa: '',
         IdPerfilU: '',
         correoUsuario: '',
+        btnEnviarCorreo: false
     },
     mounted: function () {
         var logueado = JSON.parse(sessionStorage.getItem('DUser'));
@@ -51,7 +52,7 @@ const cambioPassword = new Vue({
             var self = this;
             //CorreoURL
             if (self.correoUsuario != "") {
-
+                self.btnEnviarCorreo = true;
                 $.post(urlAjax, {
                     option: 'ValidarInformacion',
                     correo: self.correoUsuario,
@@ -61,7 +62,9 @@ const cambioPassword = new Vue({
                         self.EnviarCorreo();
                     } else {
                         alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.OlCorreoNo);
+                        self.btnEnviarCorreo = false;
                     }
+                    
                 });
 
             } else {
@@ -85,6 +88,7 @@ const cambioPassword = new Vue({
                 } else {
                     self.MensajeAlertaEnvioCorreo(self.listaIdiomas.Atencion, self.listaIdiomas.OlCorreoEn)
                 }
+                self.btnEnviarCorreo = false;
             });
 
         },

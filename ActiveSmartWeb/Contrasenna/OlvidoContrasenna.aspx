@@ -13,7 +13,7 @@
                         <div class="div-reset-passwrd">
                             <input v-model="correoUsuario" type="email" class="txt-email-get-ai w-input" maxlength="256" name="email" data-name="email" :placeholder="listaIdiomas.Correo" id="email" required="">
                         </div>
-                        <input v-on:click="ValidarInformacion()" type="submit" :value="listaIdiomas.Enviar" data-wait="Please wait..." class="btn-login-ai btn-enviar-mew-passwrd btn-enviar-correo w-button">
+                        <input v-on:click="ValidarInformacion()" v-bind:disabled="btnEnviarCorreo" type="submit" :value="listaIdiomas.Enviar" data-wait="Please wait..." class="btn-login-ai btn-enviar-mew-passwrd btn-enviar-correo w-button">
                     </div>
                 </div>
             </div>
