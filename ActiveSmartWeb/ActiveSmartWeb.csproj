@@ -2347,7 +2347,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sdk-dotnet\Authorize.NET\AuthorizeNET.csproj">
+    <ProjectReference Include="..\Authorize.NET\AuthorizeNET.csproj">
       <Project>{5d52eaec-42fb-4313-83b8-69e2f55ebf14}</Project>
       <Name>AuthorizeNET</Name>
     </ProjectReference>
