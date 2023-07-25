@@ -248,7 +248,7 @@ const login = new Vue({
             //Configuración del Input tel 
             this.phoneInput4 = window.intlTelInput(phoneInputField, {
                 initialCountry: "us", //Un prefijo nacional por defecto al cargar
-                preferredCountries: ["us", "cr"], //Puedes agregar prefijos preferenciales para que salgan al inicio
+                preferredCountries: ["us"], //Puedes agregar prefijos preferenciales para que salgan al inicio
                 separateDialCode: true, //Mostrar el prefijo seleccionado en el input
                 autoPlaceholder: "off", //Desactivar el placeholder por defecto
                 utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.14/js/utils.js"
