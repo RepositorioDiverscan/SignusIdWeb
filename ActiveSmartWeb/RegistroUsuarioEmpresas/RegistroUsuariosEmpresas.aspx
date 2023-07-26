@@ -65,6 +65,8 @@
                   <input oncopy = 'return false' oncut = 'return false' onpaste = 'return false' autocomplete="off" type="password" class="txt-registro-aii txt-confirm-contra-ai w-input" autofocus="true" 
                   maxlength="80" name="email-2" data-name="Email 2" placeholder="Confirme su contraseña" id="email-2" v-model="contrasena1">
 
+                  <p style="display: none;" id="pRequisitosContrasenna" class="pass-leyenda leyenda-reg-emp">- La contraseña debe contener como mínimo 8 caracteres.<br>- La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número (0-9) y un carácter especial ( @ &amp; $ * \ - _ ¿ # ¡ .)</p>
+
                   <label for="email-2" class="lbel-registro-ai" v-cloak>{{listaIdiomas.LabelTelefonoEmpresa}}</label>
                   <div >
                       
@@ -133,6 +135,11 @@
                 
               </div>
             </div>
+          
+            <img src="../images/banner-buho.jpg" loading="lazy" id="w-node-ef07178e-9e1d-088f-6538-eed85a85ab90-b1186ab5" width="1030" srcset="../images/banner-buho-p-500.jpg 500w, ../images/banner-buho-p-800.jpg 800w, ../images/banner-buho-p-1080.jpg 1080w, ../images/banner-buho-p-1600.jpg 1600w, ../images/banner-buho.jpg 1920w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 6vw, (max-width: 991px) 7vw, 9vw" alt="">
+            <div id="w-node-_06b8799a-72a6-caee-f3e5-f19f214be297-b1186ab5" class="div-block-252"><img src="../images/Realistic-Laptop-WIth-Smartphone.png" loading="lazy" width="1034" sizes="(max-width: 479px) 100vw, (max-width: 767px) 6vw, (max-width: 991px) 7vw, 9vw" srcset="../images/Realistic-Laptop-WIth-Smartphone.png 500w, ../images/Realistic-Laptop-WIth-Smartphone.png 600w" alt=""></div>
+          
+
           </div>
         </div>
       </div>
