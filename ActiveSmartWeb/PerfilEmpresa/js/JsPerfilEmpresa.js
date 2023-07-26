@@ -257,9 +257,11 @@ const PerfilEmpresa = new Vue({
             }, function (res, error) {
                 if (res == 'Ok') {
                     self.CargarInformacionEmpresa();
-                    alertify.success(self.listaIdiomas.ModificarImagenOk);
+                    alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.ModificarImagenOk);
+
                 } else {
-                    alertify.error(self.listaIdiomas.ModificarImagenError);
+                    alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.ModificarImagenError);
+                    
                 }
             });
 
