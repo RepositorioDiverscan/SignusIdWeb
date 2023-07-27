@@ -10,13 +10,7 @@
                     <ol role="list" class="list-5">
                         <li class="li-ayuda">La contraseña debe contener como mínimo 8 caracteres.</li>
                         <li class="li-ayuda">La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número (0-9) y un carácter especial ( @ & $ * \ - _ ¿ # ¡ .)</li>
-                        <li class="li-ayuda">Las contraseñas deben cambiarse al menos cada 365 días si se implementa el monitoreo de compromiso de credenciales, de lo contrario, cada 90 días+</li>
-                        <li class="li-ayuda">Restricciones en la reutilización de contraseñas utilizadas anteriormente.</li>
-                        <li class="li-ayuda">Cuentas de usuario bloqueadas después de cinco o más intentos fallidos de inicio de sesión.</li>
-                        <li class="li-ayuda">Las contraseñas se almacenan de manera segura para evitar una fácil divulgación (por ejemplo, encriptadas/hash).</li>
-                        <li class="li-ayuda">Prohibición de compartir contraseñas y escribir contraseñas en papel.</li>
-                        <li class="li-ayuda">Eliminación/desactivación/cambio de la contraseña predeterminada de Ventor (antes de que el sistema entre en producción).</li>
-                        <li class="li-ayuda">Requisitos más estrictos para las contraseñas de administrador.</li>
+                        <li class="li-ayuda">No puede ser igual a ninguna de las anteriores.</li>
                     </ol>
                 </nav>
             </div>
