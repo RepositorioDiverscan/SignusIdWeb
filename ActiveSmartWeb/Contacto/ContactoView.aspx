@@ -10,8 +10,8 @@
     <div id="alertas">
     <div class="main contact" id="contacto">
 
-      <div class="div-block-236"><img src="../images/banner-header-signusid-contact.jpg" loading="lazy" sizes="(max-width: 1920px) 100vw, 1920px" srcset="../images/banner-header-signusid-contact.jpg 500w, ../images/banner-header-signusid-contact.jpg 800w, ../images/banner-header-signusid-contact.jpg 1080w, ../images/banner-header-signusid-contact.jpg 1600w" alt=""></div>
-
+      <div class="div-block-236"><img src="../images/pag-contacto2.jpg" loading="lazy" sizes="100vw" srcset="../images/pag-contacto2-p-500.jpg 500w, ../images/pag-contacto2-p-800.jpg 800w, ../images/pag-contacto2-p-1080.jpg 1080w, ../images/pag-contacto2-p-1600.jpg 1600w, ../images/pag-contacto2.jpg 1920w" alt="" class="image-60"></div>
+      
       <div class="section-3 wf-section">
         <div class="div-contac">
           <div class="w-form">
