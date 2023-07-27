@@ -26,7 +26,9 @@ const contrato = new Vue({
         rutaImagen: "../images/signus_id_basic.svg",
         frecuenciaPago: "1",
         terminoscondiciones: true,
-        adicionalesseleccionados: []
+        adicionalesseleccionados: [],
+
+        btnPagar: false
 
     },
     mounted: function () {
@@ -260,7 +262,7 @@ const contrato = new Vue({
 
             var self = this;
             this.pais = $("#country5").countrySelect("getSelectedCountryData").name;
-
+            
             if (this.numerotarjeta != '') {
                 if (this.fechaVencimiento != '') {
                     if (this.codigo != '') {
@@ -274,7 +276,7 @@ const contrato = new Vue({
                                                     if (this.terminoscondiciones) {                                                      
 
                                                         sessionStorage.setItem('frecuencia', self.frecuenciaPago);
-
+                                                        self.btnPagar = true;
                                                         $.post(urlAdicionalesContratoAjax, {
 
                                                             option: "RealizarPago",
@@ -291,10 +293,12 @@ const contrato = new Vue({
                                                             
 
                                                         }, function (data, error) {
+                                                            
                                                             if (data == "Transacción realizada correctamente") {
                                                                 self.MensajeTransaccionSucces()
                                                             } else {
                                                                 self.MensajeTransaccionError(data)
+                                                                self.btnPagar = false;
                                                             }
 
                                                         });

@@ -206,7 +206,7 @@
                           <div class="p-total-pay-ai" v-cloak>US${{totalpago}}</div>
                         </div>
                       </div>
-                      <a href="#" class="btn-pagar-orden-ai w-button" @click="ObtenerDatosRegistro" v-cloak>{{listaIdiomas.BtnPagar}} US${{totalpago}}</a>
+                      <a href="#" v-bind:disabled="btnPagar" class="btn-pagar-orden-ai w-button" @click="ObtenerDatosRegistro" v-cloak>{{listaIdiomas.BtnPagar}} US${{totalpago}}</a>
                     </div>
                     <div class="div-type-compra-ai frec-pago-div-ai">
                       <h4 class="p-pago-adicio-ai" v-cloak>{{listaIdiomas.TituloFrecuenciaPago}}</h4>
