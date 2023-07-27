@@ -261,7 +261,7 @@
                                         <a href="/../Comunidad/Comunidad.aspx" class="footer-link" v-cloak>{{options.Comunidad}}</a><!--Comunidad-->
                                     </li>
                                     <li>
-                                        <a href="#" class="footer-link" v-cloak>{{options.Inversores}}</a><!--Inversores-->
+                                        <a href="../Inversionistas/Inversionistas.aspx" class="footer-link" v-cloak>{{options.Inversores}}</a><!--Inversores-->
                                     </li>
                                 </ul>
                             </div>
@@ -276,11 +276,11 @@
                                         <img src="../images/android.svg" loading="lazy" alt="" class="image-41"></a>
                                 </div>
                                 <div id="w-node-e881a1e3-26b8-c910-2fbb-d8d92a0ba898-8c09cdbe" class="div-block-social">
-                                    <a href="https://www.instagram.com/signusid/" class="link-block-social w-inline-block">
+                                    <a target="_blank" href="https://www.instagram.com/signusid/" class="link-block-social w-inline-block">
                                         <img src="/../images/Iconos-rrss-instagram.svg" loading="lazy" width="50" alt="" class="div-block-social-logo"></a>
-                                    <a href="https://www.youtube.com/channel/UCCbnw6iQGy10JllY1TWOaew" class="link-block-social w-inline-block">
+                                    <a target="_blank" href="https://www.youtube.com/channel/UCCbnw6iQGy10JllY1TWOaew" class="link-block-social w-inline-block">
                                         <img src="/../images/Iconos-rrss-youtube.svg" loading="lazy" width="50" alt="" class="div-block-social-logo"></a>
-                                    <a href="https://www.facebook.com/tusignusid/?show_switched_toast=0&amp;show_invite_to_follow=0&amp;show_switched_tooltip=0&amp;show_podcast_settings=0&amp;show_community_transition=0&amp;show_community_review_changes=0&amp;show_community_rollback=0&amp;show_follower_visibility_disclosure=0" class="link-block-social w-inline-block">
+                                    <a target="_blank" href="https://www.facebook.com/tusignusid/?show_switched_toast=0&amp;show_invite_to_follow=0&amp;show_switched_tooltip=0&amp;show_podcast_settings=0&amp;show_community_transition=0&amp;show_community_review_changes=0&amp;show_community_rollback=0&amp;show_follower_visibility_disclosure=0" class="link-block-social w-inline-block">
                                         <img src="/../images/Iconos-rrss-facebook.svg" loading="lazy" width="50" alt="" class="div-block-social-logo"></a>
                                 </div>
                             </div>

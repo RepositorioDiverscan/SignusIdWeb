@@ -768,6 +768,7 @@
     <Content Include="InventariosReporte\Idioma\IdiomaReporteInventarios.aspx" />
     <Content Include="InventariosReporte\js\ReporteInventarios.js" />
     <Content Include="InventariosReporte\ReporteInventario.aspx" />
+    <Content Include="Inversionistas\Inversionistas.aspx" />
     <Content Include="js\html2pdf.bundle.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1541,6 +1542,13 @@
     </Compile>
     <Compile Include="InventariosReporte\ReporteInventario.aspx.designer.cs">
       <DependentUpon>ReporteInventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inversionistas\Inversionistas.aspx.cs">
+      <DependentUpon>Inversionistas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inversionistas\Inversionistas.aspx.designer.cs">
+      <DependentUpon>Inversionistas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

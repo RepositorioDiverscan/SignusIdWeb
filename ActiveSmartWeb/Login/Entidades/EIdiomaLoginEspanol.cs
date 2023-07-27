@@ -54,7 +54,7 @@ namespace ActiveSmartWeb.Login.Entidades
         public const string _unIntento = "Le quedan 3 intentos de inicio de sesión o se le bloqueará el usuario";
         public const string _segIntento = "Le quedan 2 intentos de inicio de sesión o se le bloqueará el usuario";
         public const string _terIntento = "Le quedan 1 intento de inicio de sesión o se le bloqueará el usuario";
-        public const string _cuaIntento = "Se le ha bloqueado el usuario, dirijase a olvide contraseña";
+        public const string _cuaIntento = "Se le ha bloqueado el usuario, dirijase al botón ¿Olvidó su contraseña?";
         public const string _usNoExiste = "Usuario o contraseña ingresados son incorrectos";
         public const string _atencion = "Atención";
         public const string _ingCorr = "Debe ingresar un correo y una contraseña";

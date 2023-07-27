@@ -56,7 +56,7 @@
                   <div class="block-perf-emp-perfil w-clearfix">
                     <h4 class="txt-emp-name-ai" v-cloak>{{NombreEmpresaTitulo}}</h4>
                     <div class="img-config-ai">
-                      <div class="block-add-emp-img-ai"><img v-bind:src="[[ImagenEmpresa]]" alt="" class="added-img-ai"></div>
+                      <div class="block-add-emp-img-ai"><img :src="ImagenEmpresa + '?' + new Date().getTime()" alt="" class="added-img-ai"></div>
                      <div class="div-load-img-ai">
                           <label class="text-edit-photo-ai" v-cloak>
                            {{listaIdiomas.EditarImagen}}   
