@@ -115,7 +115,7 @@ const login = new Vue({
                                                                                 sessionStorage.setItem('Direccion', self.direccion);
                                                                                 sessionStorage.setItem('Posicion', self.posicion);
                                                                                 sessionStorage.setItem('Moneda', self.moneda);
-                                                                                //self.InsertarUsuariosEmpresas();
+                                                                                self.InsertarUsuariosEmpresas();
 
                                                                             }
                                                                         });
@@ -165,114 +165,7 @@ const login = new Vue({
                 alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrNombreUs);
             }
 
-            //if (this.nombreEmpresa != '') {
-
-            //    if (this.telefonoEmpresa != '') {
-
-            //        if (this.nombreUsuario != '') {
-
-            //            if (this.apellidosUsuario != '') {
-
-            //                if (this.correoUsuario != '') {
-
-            //                    if (this.validarCorreo(this.correoUsuario)) {
-
-            //                        if (this.contrasena != '') {
-
-            //                            if (this.idEmpresa != '') {
-
-            //                                if (this.idIndustria != '') {
-
-            //                                    if (this.idEmpresaTamano != '') {
-
-            //                                        if (this.pais != '') {
-
-            //                                            this.SeleccionarMonedas($("#country").countrySelect("getSelectedCountryData").iso2);
-
-            //                                            if (this.direccion != '') {
-
-            //                                                if (this.posicion != '') {
-
-            //                                                    if (this.chterminos != false) {
-
-            //                                                        if (this.contrasena == this.contrasena1) {
-            //                                                            $.post(urlRegistroAjax, {
-            //                                                                option: 'ValidarPassword',
-            //                                                                passW: this.contrasena
-            //                                                            }, function (respuesta, error) {
-            //                                                                if (respuesta != 'VALIDA') {
-            //                                                                    document.getElementById('PswPrincipal').focus();
-            //                                                                    self.mostrarAlerta(respuesta);
-            //                                                                    $('#pRequisitosContrasenna').attr('style','display:block;');
-            //                                                                } else {
-            //                                                                    $('#pRequisitosContrasenna').attr('style', 'display:none;');
-            //                                                                    sessionStorage.setItem('NombreEmpresa', self.nombreEmpresa);
-            //                                                                    sessionStorage.setItem('TelefonoEmpresa', self.phoneInput4.getNumber());
-            //                                                                    sessionStorage.setItem('CorreoEmpresa', self.correoUsuario);
-            //                                                                    sessionStorage.setItem('NombreUsuario', self.nombreUsuario);
-            //                                                                    sessionStorage.setItem('ApellidosUsuario', self.apellidosUsuario);
-            //                                                                    sessionStorage.setItem('CorreoUsuario', self.correoUsuario);
-            //                                                                    sessionStorage.setItem('Contrasena', self.contrasena);
-            //                                                                    sessionStorage.setItem('IdEmpresa', self.idEmpresa);
-            //                                                                    sessionStorage.setItem('IdIndustria', self.idIndustria);
-            //                                                                    sessionStorage.setItem('IdEmpresaTamano', self.idEmpresaTamano);
-            //                                                                    sessionStorage.setItem('Pais', self.pais);
-            //                                                                    sessionStorage.setItem('Direccion', self.direccion);
-            //                                                                    sessionStorage.setItem('Posicion', self.posicion);
-            //                                                                    sessionStorage.setItem('Moneda', self.moneda);
-            //                                                                    //self.InsertarUsuariosEmpresas();
-
-            //                                                                }
-            //                                                            });
-            //                                                        } else {
-            //                                                            alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrConIgual);
-            //                                                        }
-
-            //                                                    } else {
-            //                                                        alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrTerminos);
-            //                                                    }
-            //                                                } else {
-            //                                                    alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrPosUsuario);
-            //                                                }
-            //                                            } else {
-            //                                                alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresaDir);
-            //                                            }
-            //                                        } else {
-            //                                            alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresaPais);
-            //                                        }
-            //                                    } else {
-            //                                        alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresaTam);
-            //                                    }
-            //                                } else {
-            //                                    alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdIndustria);
-            //                                }
-            //                            } else {
-            //                                alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrIdEmpresa);
-            //                            }
-            //                        } else {
-            //                            alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrContrasena);
-            //                        }
-
-            //                    } else {
-            //                        alertas.error(this.listaIdiomas.Atencion, "Ingrese un correo electrónico válido");
-            //                    }
-
-            //                } else {
-            //                    alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrCorreoUs);
-            //                }
-            //            } else {
-            //                alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrApellidoUs);
-            //            }
-            //        } else {
-            //            alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrNombreUs);
-            //        }
-            //    } else {
-            //        alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrTelEmp);
-            //    }
-
-            //} else {
-            //    alertas.error(this.listaIdiomas.Atencion, this.listaIdiomas.ErrNombreEmp);
-            //}
+            
         },
 
         mostrarAlerta: function (mensaje) {
