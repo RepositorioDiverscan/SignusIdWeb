@@ -170,21 +170,20 @@
             </div>
         </div>
     </div>
-        <div class="background-pop-up" id="PConfirmar" style="display:none; text-align:center">
-            
-      <div class="popup-comercial"  style="display:flex; place-content:center; top: 40%;">
-        <div class="header-modal-ai" style="display:block;">
-          <h4 class="texto-h-ai" style="text-align: center; font-size: 21px" v-cloak>{{listaIdiomas.MsjConf1}}</h4>
-            <br />
-            <h4 class="texto-h-ai" style="text-align: center; font-size: 21px" v-cloak>{{listaIdiomas.MsjConf2}}</h4>
+
+
+        <%--Modal actualizar estado del usuario--%>
+        <div class="div-block-254" style="z-index:2; display:none;" id="PConfirmar">
+            <div class="div-block-255">
+                <h1 class="heading-46">{{listaIdiomas.MsjConf1}}<br>
+                    {{listaIdiomas.MsjConf2}}</h1>
+                <div class="div-block-256">
+                    <a @click="ModificarEstadoEmpleado()" id="w-node-b0c36e4b-f918-aa6d-a3b6-293c1371d96b-ee1567c5" href="#" class="button-6 w-button">{{listaIdiomas.CofSi}}</a>
+                    <a @click="CerrarPopPup()" id="w-node-ee198ab0-f8cb-d7ec-c397-86af750a5c43-ee1567c5" href="#" class="button-7 w-button">{{listaIdiomas.ConfNo}}</a>
+                </div>
+            </div>
         </div>
-        
-        <div class="div-botones-pp" style="padding-top:2%">
-          <a href="#"  class="btn-aceptar-pp w-button" @click="ModificarEstadoEmpleado()" style="margin-right: 25%;" v-cloak>{{listaIdiomas.CofSi}}</a>
-            <a href="#"  class="btn-aceptar-pp w-button" @click="CerrarPopPup()" v-cloak>{{listaIdiomas.ConfNo}}</a>
-        </div>
-      </div>
-    </div>
+
         </div>
     <!--International cellphone input-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.18/js/intlTelInput.min.js"></script>

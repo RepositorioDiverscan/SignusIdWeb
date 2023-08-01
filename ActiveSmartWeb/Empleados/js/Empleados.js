@@ -393,7 +393,7 @@ const Empleados = new Vue({
         AbrirPopPup: function (idE, est) {
             var self = this;
             var a = document.getElementById('PConfirmar');
-            a.style.display = 'block';
+            a.style.display = 'flex';
             self.IdEmpleadoIA = idE;
             self.estadoEmpleado = est;
         },
