@@ -10,7 +10,7 @@
 
 
               <div class="w-layout-grid grid-container-title" style="padding-top:7px; padding-bottom:6px">
-                  <a href="#" onclick="window.history.back()" class="link-block-back w-inline-block">
+                  <a href="../Menu/MenuPrincipal.aspx" class="link-block-back w-inline-block">
                       <img src="../images/Back-arrow.svg" loading="lazy" height="26" width="26" alt="" class="  ">
                   </a>
                   <h1 id="w-node-_9be28721-5dbb-5f12-6325-d0dcd6cba1e6-ffdc8228" class="titulo-principal" v-cloak>{{listaIdiomas.Titulo}}</h1>

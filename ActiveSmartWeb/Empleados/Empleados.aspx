@@ -9,7 +9,7 @@
                     <div id="w-node-_9cf1d33f-1f83-9189-54c6-06f92eacb0e2-ee1567c5" class="div-title-a">
                         <div>
                             <div class="w-layout-grid grid-container-title">
-                                <a href="#" onclick="window.history.back()" class="link-block-back w-inline-block"><img src="../images/Back-arrow.svg" loading="lazy" height="26" width="26" alt="" class="back"></a>
+                                <a href="../Usuarios/Usuarios.aspx" class="link-block-back w-inline-block"><img src="../images/Back-arrow.svg" loading="lazy" height="26" width="26" alt="" class="back"></a>
                   <h1 id="w-node-_042796da-094d-1fbc-7383-a94233637c85-ee1567c5" class="titulo-principal" v-cloak>{{listaIdiomas.Titulo}}</h1>
                   <div data-hover="false" data-delay="0" id="w-node-_8c5e42f9-fffb-ad33-84ed-0fbd39ceec51-ee1567c5" class="dropdown-detalles-ai w-dropdown">
                     <div class="toggle-detalles-ai w-dropdown-toggle" style="padding:0px"><img src="/images/info2.svg" loading="lazy" alt="" class="img-detalles-ai"></div>
