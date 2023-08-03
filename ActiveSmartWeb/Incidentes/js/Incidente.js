@@ -155,11 +155,7 @@ const IncidenteVue = new Vue({
 
             }, function (data, error) {
                 var respuesta = JSON.parse(data);
-                if (respuesta == "ERROR") {
-                    alertify.error(data);
-                } else {
-                    alertify.success("Se le ha notificado a soporte");
-                }
+                
 
             }
             );
