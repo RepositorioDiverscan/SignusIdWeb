@@ -96,14 +96,16 @@ const IncidenteVue = new Vue({
                         }, function (data, error) {
                             var msj = JSON.parse(data);
 
-                            if (msj == "ERROR") {
-                                alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.Error);
-                            } else {
+                            if (msj == "EXITO") {
+
                                 alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.Guardado);
                                 self.EnviarCorreo();
                                 self.IdTipoIncidente = 0;
                                 self.phoneInput5.setNumber('');
                                 self.mensaje = '';
+                                
+                            } else {
+                                alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.Error);
                             }
                         }
 

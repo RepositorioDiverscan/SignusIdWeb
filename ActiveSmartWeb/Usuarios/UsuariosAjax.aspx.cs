@@ -52,6 +52,17 @@ namespace ActiveSmartWeb.Usuarios
 
                         break;
 
+                    case "ActualizarRol":
+
+                        var empresa = Convert.ToInt32(Request.Form["idEmpresa"]);
+
+                        var rol = Convert.ToInt32(Request.Form["idRol"]);
+
+                        var correo = Request.Form["correo"];
+
+                        Response.Write(nMisCompras.ActualizarRol(empresa, rol, correo));
+
+                        break;
 
                 }
 

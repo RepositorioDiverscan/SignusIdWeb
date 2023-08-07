@@ -37,5 +37,19 @@ namespace ActiveSmartWeb.Usuarios.Usuario
             }
         }
 
+        public string ActualizarRol(int idPerfilEmpresa, int idRol, string correo)
+        {
+
+            try
+            {
+                return dUsuarios.ActualizarRol(idPerfilEmpresa, idRol, correo);
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return "";
+            }
+        }
+
     }
 }

@@ -62,5 +62,21 @@ namespace ActiveSmartWeb.Usuarios.Usuario
 
         }
 
+        public string ActualizarRol(int idPerfilEmpresa, int idRol, string correo)
+        {
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("ActualizarRol");
+            db.AddInParameter(dbCommand, "@IdPerfilEmpresa", DbType.Int32, idPerfilEmpresa);
+            db.AddInParameter(dbCommand, "@IdRol", DbType.Int32, idRol);
+            db.AddInParameter(dbCommand, "@Correo", DbType.String, correo);
+            db.AddOutParameter(dbCommand, "@Resultado", DbType.String, 200);
+            dbCommand.CommandTimeout = 3600;
+            db.ExecuteNonQuery(dbCommand);
+            var Respuesta = db.GetParameterValue(dbCommand, "@Resultado").ToString();
+
+            return Respuesta;
+
+        }
+
     }
 }

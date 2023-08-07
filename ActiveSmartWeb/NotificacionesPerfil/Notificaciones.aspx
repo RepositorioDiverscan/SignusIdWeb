@@ -169,7 +169,7 @@
                  <input type="text" v-model="Mensaje" 
                      v-on:keyup="RecargarMensajes()"
                      @keyup.enter="EnviarMensaje()"
-                    class="txt-mensaje w-input" maxlength="256" 
+                    class="txt-mensaje w-input" maxlength="200" 
                     placeholder="Escriba su respuesta" />
                 <!-- Cuidado: No quitar input, no hace nada, pero  si se quita se cae el chat -->
                 <input type="text" style="display:none"/>

@@ -82,7 +82,34 @@ const contrato = new Vue({
                      }
 
                  });
-            },
+        },
+
+
+        //Metodo para actualizar el rol del usuario
+        ActualizarRol: function (e, usuario) {
+            var self = this;
+            let user = JSON.parse(sessionStorage.getItem('DUser'));
+            self.IdRol = e.target.value;
+
+
+            $.post(urlUsuariosAjax, {
+
+                option: 'ActualizarRol',
+                idEmpresa: user[0].IdPerfilEmpresa,
+                idRol: self.IdRol,
+                correo: usuario.Correo,
+
+            }, function (respuesta, error) {
+
+                if (respuesta == "Actualizo") {
+                    alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.RolUsuario);
+                } else {
+                    e.target.value = 3;
+                    alertas.error(self.listaIdiomas.Atencion, respuesta);
+                }
+
+            });
+        },
 
          //Función para filtrar los datos por nombre,apellido,correo.
         FiltrarDatos: function () {

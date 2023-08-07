@@ -555,10 +555,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         short frecuenciaDePago = (short)(frecuencia == "1" ? 12 : 1);
 
 
-                        EResultadoSuscripcion resultadoSuscripcion = pagoAuthorize.crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular, apellidotitular);
+                        //EResultadoSuscripcion resultadoSuscripcion = pagoAuthorize.crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular, apellidotitular);
 
                         //Simula una suscripcion para hacer pruebas
-                        //EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
+                        EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
 
                         if (resultadoSuscripcion.Resultado == "Success")
                         {

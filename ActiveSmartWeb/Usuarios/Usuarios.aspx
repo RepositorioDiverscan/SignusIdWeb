@@ -91,7 +91,7 @@
 
                                         <td class="celda-vacia td-celda-ai" v-else>
                                             <select id="field-4" name="field-4" data-name="Field 4"
-                                                class="select-field select-tabla-ai w-select" :value ="Usuario.IdRol" @change="RegistrarActualizarUsuarioEmpleado($event, Usuario)">
+                                                class="select-field select-tabla-ai w-select" :value ="Usuario.IdRol" @change="ActualizarRol($event, Usuario)">
                                                 <option value="2">Operario</option>
                                                 <option value="3">Sin Asignar</option>
                                             </select>
