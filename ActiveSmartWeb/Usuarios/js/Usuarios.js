@@ -100,11 +100,10 @@ const contrato = new Vue({
                 correo: usuario.Correo,
 
             }, function (respuesta, error) {
-
+                self.CargarUsuarios();
                 if (respuesta == "Actualizo") {
                     alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.RolUsuario);
                 } else {
-                    e.target.value = 3;
                     alertas.error(self.listaIdiomas.Atencion, respuesta);
                 }
 
