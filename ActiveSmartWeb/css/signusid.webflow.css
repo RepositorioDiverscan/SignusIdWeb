@@ -1033,8 +1033,9 @@
             }
 
         .grid._4.grid-notificaciones-ai {
-            grid-template-rows: 30px 30px 30px 30px;
+            grid-template-rows: 30px 60px 60px 60px;
             grid-template-columns: .75fr .75fr 2.5fr .25fr .25fr;
+            margin-bottom: 20px;
         }
 
     .grid._5 {
@@ -1193,8 +1194,13 @@
     }
 
 .parrafo-grid {
+    clear: none;
     color: #888;
     text-align: center;
+    letter-spacing: normal;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: anywhere;
     font-family: Lato, sans-serif;
     font-size: 12px;
     font-weight: 400;
@@ -1204,6 +1210,11 @@
     .parrafo-grid.grid {
         font-size: 12px;
         line-height: 14px;
+    }
+
+    .parrafo-grid._500px {
+        width: 100%;
+        overflow-wrap: anywhere;
     }
 
 .boton-vote {
@@ -2409,6 +2420,7 @@
 
         .div-tarjeta.tarjeta-responsive.tarjeta-notificaciones {
             width: 100%;
+            margin-bottom: 10px;
         }
 
         .div-tarjeta.tarjeta-responsive.tarjeta-perf {
@@ -8246,10 +8258,14 @@
 }
 
 .celda-notf-ai {
+    white-space: break-spaces;
+    word-break: break-all;
+    overflow-wrap: anywhere;
     background-color: #f4f4f4;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 0;
     padding-left: 5px;
     padding-right: 5px;
     display: flex;
@@ -8259,6 +8275,10 @@
         text-align: center;
         padding-left: 0;
         padding-right: 0;
+    }
+
+    .celda-notf-ai._500px {
+        width: 100%;
     }
 
 .columns-2 {

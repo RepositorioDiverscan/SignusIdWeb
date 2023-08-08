@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster/Site.Master" AutoEventWireup="true" CodeBehind="Notificaciones.aspx.cs" Inherits="ActiveSmartWeb.NotificacionesPerfil.Notificaciones" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <style>
+        .grid._4.grid-notificaciones-ai{
+            margin-bottom:2px;
+        }
+    </style>
 
     <div id="NotificacionesVUE">
       <div class="section wf-section">
@@ -25,7 +30,7 @@
                 <div class="contenedor-grid"></div>
                    <table  style="width:100%; overflow:scroll;" >
     <thead >
-        <tr class="w-layout-grid grid _4 grid-notificaciones-ai " style="grid-template-rows: 30px;">
+        <tr class="w-layout-grid grid _4 grid-notificaciones-ai " style="grid-template-rows: 30px; margin-bottom:0px;">
             <th class="texto-blanco" v-cloak>{{listaIdioma.CategoriaTabla}}</th>
         
             <th class="texto-blanco" v-cloak>{{listaIdioma.NumActivo}}</th>
@@ -38,8 +43,8 @@
     </thead>
 
     <tbody  style="display: table; flex-direction: column; width:100%"  class="w-layout-grid grid _4">
-        <tr v-for="(ac, index) in datosPaginados" :key="ac.IdActivo" class="w-layout-grid grid _4 grid-notificaciones-ai " style="grid-template-rows: 30px;">
-            <td class="celda-notf-ai" v-cloak>
+        <tr v-for="(ac, index) in datosPaginados" :key="ac.IdActivo" class="w-layout-grid grid _4 grid-notificaciones-ai " style="grid-template-rows: 100%;">
+            <td id="w-node-fd147c8d-5b96-ea35-353d-382f2b5da7b0-d245ec1a" class="celda-notf-ai" v-cloak>
                 <div class="parrafo-grid" v-if="ac.Vista==0" style="font-size: 15px;">
                      <strong>{{ac.CategoriaNotificacion}}</strong>
                 </div>
@@ -48,7 +53,7 @@
                 </div>
             </td>
         
-            <td class="celda-notf-ai" v-cloak>
+            <td id="w-node-_07831abc-bb5a-acc0-1c5c-e6f25e33b32a-d245ec1a" class="celda-notf-ai" v-cloak>
                 <div class="parrafo-grid" v-if="ac.Vista==0" style="font-size: 15px;">
                      <strong>{{ac.Encabezado}}</strong>
                 </div>
@@ -57,7 +62,7 @@
                 </div>
             </td>
 
-           <td class="celda-notf-ai" v-cloak>
+           <td id="w-node-a7750f7b-a588-b1a6-8296-06fa7387bf64-d245ec1a" class="celda-notf-ai" v-cloak>
               <div class="parrafo-grid" v-if="ac.Vista==0" style="font-size: 15px;">
                    <strong>{{ac.Mensaje}}</strong>
               </div>
@@ -65,7 +70,7 @@
                    {{ac.Mensaje}}
               </div>
           </td>
-            <td class="celda-notf-ai celda-icon" v-cloak>
+            <td id="w-node-e23856b9-a1a3-9a77-9383-98606a3d1083-d245ec1a" class="celda-notf-ai celda-icon" v-cloak>
                 <div class="parrafo-grid link-block-2 amarillo w-inline-block">
                     <a v-if="ac.Estado==1">
                           <img src="../images/check-dark.svg" loading="lazy" width="20" height="20" alt="" class="image-29">
@@ -75,7 +80,7 @@
                     </a>
                 </div>
             </td>
-          <td  class="celda-notf-ai celda-icon">
+          <td id="w-node-_804afb1c-adc6-0d7d-1cd9-02590da4723a-d245ec1a" class="celda-notf-ai celda-icon">
             <div class="parrafo-grid link-block-2 amarillo w-inline-block" 
                v-on:click="AbrirPopPup(ac.IdNotificacion, ac.IdTipoIncidente)">
                 <a href="#"> <img src="../images/ver.svg" loading="lazy" width="20" height="20" alt="" class="image-29"></a>
