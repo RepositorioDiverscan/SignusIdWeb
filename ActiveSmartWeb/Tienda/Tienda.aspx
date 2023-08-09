@@ -61,12 +61,12 @@
                                                                         <p class="precio-zebra precio-anterior">$19.99<strong class="iva">+iva</strong></p>
                                                                     </div>
                                                                     <div class="div-block-226 div-stock w-clearfix">
-                                                                        <a href="#" class="btn-less-ai w-button">-</a>
+                                                                        <a href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</a>
 
-                                                                        <input v-if="adicional.IdPaqueteContratado == 1" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=1 :id="adicional.IdPaqueteContratado" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" id="name-3" required="">
-                                                                        <input v-if="adicional.IdPaqueteContratado != 1" type="text" class="txt-cantidad-ai w-input" maxlength="2" value=2 :id="adicional.IdPaqueteContratado" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" id="name-3" required="">
+                                                                        <input v-if="adicional.IdPaqueteContratado == 1" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=1 :id="adicional.IdPaqueteContratado" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" required="" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicionalActivos(adicional)">
+                                                                        <input v-if="adicional.IdPaqueteContratado != 1" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=2 :id="adicional.IdPaqueteContratado" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" required="" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
                                                                         
-                                                                        <a href="#" class="btn-add-ai w-button">+</a>
+                                                                        <a href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</a>
                                                                     </div>
                                                                 </div>
                                                                 <div data-hover="false" data-delay="0" class="dropdown-detall-zc drop-tienda-ai w-dropdown">
@@ -113,7 +113,7 @@
                                         </div>
                                         <div class="col-order-ai col-precio-ai w-col w-col-5 w-col-small-6 w-col-tiny-6">
                                             <div class="p-duration-plan-ai p-precio-ai p-precio-t">Precio</div>
-                                            <div class="p-price-plan-ai p-precio-t">US$19.99</div>
+                                            <div class="p-price-plan-ai p-precio-t">US$14.99</div>
                                         </div>
                                     </div>
                                     <div class="p-pago-adicio-ai">adicionales</div>
@@ -138,10 +138,10 @@
                                             <div class="p-total-pay-ai">Total a pagar:</div>
                                         </div>
                                         <div class="col-order-ai w-col w-col-6 w-col-small-6 w-col-tiny-6">
-                                            <div class="p-total-pay-ai">US$19.99</div>
+                                            <div class="p-total-pay-ai">US${{totalpago}}</div>
                                         </div>
                                     </div>
-                                    <a href="#" class="btn-pagar-orden-ai w-button">Pagar US$19.99</a>
+                                    <a href="#" class="btn-pagar-orden-ai w-button">Pagar US${{totalpago}}</a>
                                 </div>
                             </div>
                         </div>

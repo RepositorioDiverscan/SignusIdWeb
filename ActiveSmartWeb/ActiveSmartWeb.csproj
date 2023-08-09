@@ -1064,6 +1064,7 @@
     </Content>
     <Content Include="SubmenuUbicaciones\Ubicaciones.aspx" />
     <Content Include="Tienda\AjaxIdiomaTienda.aspx" />
+    <Content Include="Tienda\AjaxTienda.aspx" />
     <Content Include="Tienda\js\Tienda.js" />
     <Content Include="Tienda\Tienda.aspx" />
     <Content Include="TomaFisica\DetalleToma\DetalleTomaFisica.aspx" />
@@ -2114,6 +2115,15 @@
     <Compile Include="Tienda\AjaxIdiomaTienda.aspx.designer.cs">
       <DependentUpon>AjaxIdiomaTienda.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tienda\AjaxTienda.aspx.cs">
+      <DependentUpon>AjaxTienda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tienda\AjaxTienda.aspx.designer.cs">
+      <DependentUpon>AjaxTienda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tienda\Entidades\DBTienda.cs" />
+    <Compile Include="Tienda\Entidades\NTienda.cs" />
     <Compile Include="Tienda\Idioma\IdiomaTiendaEspanol.cs" />
     <Compile Include="Tienda\Idioma\IdiomaTiendaGeneral.cs" />
     <Compile Include="Tienda\Idioma\IdiomaTiendaIngles.cs" />
@@ -2375,7 +2385,6 @@
     <Folder Include="Perfiles\js\" />
     <Folder Include="SiteMaster\Ajax\" />
     <Folder Include="temp\" />
-    <Folder Include="Tienda\Entidades\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\images.rar" />

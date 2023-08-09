@@ -1,5 +1,5 @@
 ﻿var urlAjaxIdioma = 'IdiomaAdicionalesAjax.aspx';
-var urlAdicionalesContratoAjax = 'AdicionalesContratoAjax.aspx';
+var urlAjax = 'AdicionalesContratoAjax.aspx';
 
 const contrato = new Vue({
     
@@ -181,7 +181,7 @@ const contrato = new Vue({
         //Metodo para cargar los adicionales.
         CargarAdicionales: function () {
             var self = this;
-            $.post(urlAdicionalesContratoAjax, {
+            $.post(urlAjax, {
                 option: 'CargarAdicionales'
             }, function (data, error) {
 
@@ -193,7 +193,7 @@ const contrato = new Vue({
         //Metodo para cargar los adicionales seleccionados.
         CargarAdicionalesContratado: function () {
             var self = this;
-            $.post(urlAdicionalesContratoAjax, {
+            $.post(urlAjax, {
                 option: 'CargarAdicionalescontratados'
             }, function (data, error) {
                 self.adicionalesseleccionados = JSON.parse(data);
@@ -205,7 +205,7 @@ const contrato = new Vue({
         //Metodo para cargar el total de la compra.
         CargarTotal: function () {
             var self = this;
-            $.post(urlAdicionalesContratoAjax, {
+            $.post(urlAjax, {
                 option: 'CargarTotal',
                 precioplan: self.precio,
                 frecuenciaPago: self.frecuenciaPago,
@@ -229,7 +229,7 @@ const contrato = new Vue({
              
             
 
-            $.post(urlAdicionalesContratoAjax, {
+            $.post(urlAjax, {
                 option: 'CargarPrecio',
                 CodigoPlan: self.codigoPlan
 
@@ -277,7 +277,7 @@ const contrato = new Vue({
 
                                                         sessionStorage.setItem('frecuencia', self.frecuenciaPago);
                                                         self.btnPagar = true;
-                                                        $.post(urlAdicionalesContratoAjax, {
+                                                        $.post(urlAjax, {
 
                                                             option: "RealizarPago",
 
@@ -367,7 +367,7 @@ const contrato = new Vue({
 
             var self = this;
 
-            $.post(urlAdicionalesContratoAjax, {
+            $.post(urlAjax, {
 
                 option: "InsertarContrato",
 
@@ -401,7 +401,7 @@ const contrato = new Vue({
                 if (cantidadSumar <= 99 && cantidadSumar > 0) {
                     document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
 
-                    $.post(urlAdicionalesContratoAjax, {
+                    $.post(urlAjax, {
                         option: 'agregaradicional',
                         IdAdicional: adicional.IdPaqueteContratado,
                         NombreAdicional: adicional.Nombre,
@@ -435,7 +435,7 @@ const contrato = new Vue({
                 if (cantidadSumar <= 99 && cantidadSumar >= 2) {
                     document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
 
-                    $.post(urlAdicionalesContratoAjax, {
+                    $.post(urlAjax, {
                         option: 'agregaradicional',
                         IdAdicional: adicional.IdPaqueteContratado,
                         NombreAdicional: adicional.Nombre,
@@ -470,7 +470,7 @@ const contrato = new Vue({
                 if (cantidadSumar <= 99) {
                     document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
 
-                    $.post(urlAdicionalesContratoAjax, {
+                    $.post(urlAjax, {
                         option: 'AgregarSumarAdicional',
                         IdAdicional: adicional.IdPaqueteContratado,
                         NombreAdicional: adicional.Nombre,
@@ -497,7 +497,7 @@ const contrato = new Vue({
                  if ((cantidadResta > 0 && adicional.IdPaqueteContratado == 1) || (cantidadResta > 1 && adicional.IdPaqueteContratado != 1)) {
                      document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadResta
 
-                     $.post(urlAdicionalesContratoAjax, {
+                     $.post(urlAjax, {
                          option: 'RestarAdicional',
                          IdAdicional: adicional.IdPaqueteContratado,
                          NombreAdicional: adicional.Nombre,

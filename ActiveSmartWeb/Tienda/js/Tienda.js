@@ -1,5 +1,5 @@
-﻿var urlIdioma = 'AjaxIdiomaTienda.aspx'
-var urlAdicionalesContratoAjax = '../RegistroUsuarioEmpresas/AdicionalesContratoAjax.aspx';
+﻿var urlIdioma = 'AjaxIdiomaTienda.aspx';
+var urlAjax = 'AjaxTienda.aspx';
 
 const app = new Vue({
 
@@ -12,7 +12,9 @@ const app = new Vue({
         personalParaActivos: 0,
         usuariosGestores: 0,
         precio: "0",
-        totalpago: "0",
+        totalpago: "1",
+        frecuenciaPago: "1",
+        codigoPlan: "2",
         adicionales: [],
         adicionalesseleccionados: []
     },
@@ -20,6 +22,7 @@ const app = new Vue({
     mounted: function () {
         this.listaIdiomas = this.ObtenerIdioma();
         this.CargarAdicionales();
+        this.CargarPrecio();
         this.CargarAdicionalesContratado();
     },
 
@@ -58,7 +61,7 @@ const app = new Vue({
         //Metodo para cargar los adicionales.
         CargarAdicionales: function () {
             var self = this;
-            $.post(urlAdicionalesContratoAjax, {
+            $.post(urlAjax, {
                 option: 'CargarAdicionales'
             }, function (data, error) {
                 self.adicionales = JSON.parse(data);
@@ -69,7 +72,7 @@ const app = new Vue({
         //Metodo para cargar los adicionales seleccionados.
         CargarAdicionalesContratado: function () {
             var self = this;
-            $.post(urlAdicionalesContratoAjax, {
+            $.post(urlAjax, {
                 option: 'CargarAdicionalescontratados'
             }, function (data, error) {
                 self.adicionalesseleccionados = JSON.parse(data);
@@ -81,9 +84,10 @@ const app = new Vue({
         //Metodo para cargar el total de la compra.
         CargarTotal: function () {
             var self = this;
-            $.post(urlAdicionalesContratoAjax, {
+            $.post(urlAjax, {
                 option: 'CargarTotal',
-                precioplan: self.precio
+                precioplan: self.precio,
+                frecuenciaPago: self.frecuenciaPago,
             }, function (data, error) {
 
                 self.totalpago = data;
@@ -95,32 +99,156 @@ const app = new Vue({
         //Metodo para cargar el precio,nombre y la imagen del plan seleccionado.
         CargarPrecio: function () {
             var self = this;
-            var codigo = sessionStorage.getItem("CodigoPlan");
 
 
-            if (codigo == "1") {
-                this.rutaImagen = "https://rockcontent.com/es/wp-content/uploads/sites/3/2019/02/Consejos-para-hacer-ima%CC%81genes-increi%CC%81bles-1024x538.png";
-            }
-            else {
-                this.rutaImagen = "../images/smartcostalogo.png";
-            }
-
-
-
-            $.post(urlAdicionalesContratoAjax, {
+            $.post(urlAjax, {
                 option: 'CargarPrecio',
-                CodigoPlan: codigo
+                CodigoPlan: self.codigoPlan
 
             }, function (data, error) {
 
                 let datos = JSON.parse(data);
-                self.textoPlan = datos.NombrePlan;
-                self.precio = datos.Costo;
-                self.totalpago = datos.Costo;
+
+                if (self.frecuenciaPago == "1") {
+                    self.precio = datos.Costo;
+                    if (datos.Cantidad == self.adicionales[0].Cantidad) {
+                        self.totalpago = datos.Costo;
+                    }
+
+
+                } else {
+                    self.precio = datos.CostoMensual;
+                    if (datos.Cantidad == self.adicionales[0].Cantidad) {
+                        self.totalpago = datos.CostoMensual;
+                    }
+
+                }
+
+
             });
         },
 
-        
+        //Metodo para sumar un adicional.
+        sumaradicional: function (adicional) {
+            var self = this;
+            let cantidadSumar = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
+            cantidadSumar = cantidadSumar + 1
+            if (!isNaN(cantidadSumar)) {
+                if (cantidadSumar <= 99) {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
+
+                    $.post(urlAjax, {
+                        option: 'AgregarSumarAdicional',
+                        IdAdicional: adicional.IdPaqueteContratado,
+                        NombreAdicional: adicional.Nombre,
+                        Cantidadpaquete: adicional.Cantidad,
+                        Costo: adicional.Costo,
+                        CostoMensual: adicional.CostoMensual,
+                        CantidaddePaquetes: cantidadSumar
+                    }, function (respuesta, error) {
+
+                        self.CargarAdicionalesContratado();
+
+                    });
+
+                }
+            }
+        },
+
+        //Metodo para restar un adicional.
+        Restaadicional: function (adicional) {
+            var self = this;
+            let cantidadResta = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
+            cantidadResta = cantidadResta - 1
+            if (!isNaN(cantidadResta)) {
+                if ((cantidadResta > 0 && adicional.IdPaqueteContratado == 1) || (cantidadResta > 1 && adicional.IdPaqueteContratado != 1)) {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadResta
+
+                    $.post(urlAjax, {
+                        option: 'RestarAdicional',
+                        IdAdicional: adicional.IdPaqueteContratado,
+                        NombreAdicional: adicional.Nombre,
+                        Cantidadpaquete: adicional.Cantidad,
+                        Costo: adicional.Costo,
+                        CostoMensual: adicional.CostoMensual,
+                        CantidaddePaquetes: cantidadResta
+                    }, function (respuesta, error) {
+
+                        self.CargarAdicionalesContratado();
+
+                    });
+
+                }
+            }
+        },
+
+        //Metodo para agregar un adicional de activos por medio de un metodo change.
+        agregaradicionalActivos: function (adicional) {
+            var self = this;
+            let cantidadSumar = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
+            if (!isNaN(cantidadSumar)) {
+                if (cantidadSumar <= 99 && cantidadSumar > 0) {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
+
+                    $.post(urlAjax, {
+                        option: 'agregaradicional',
+                        IdAdicional: adicional.IdPaqueteContratado,
+                        NombreAdicional: adicional.Nombre,
+                        Cantidadpaquete: adicional.Cantidad,
+                        Costo: adicional.Costo,
+                        CostoMensual: adicional.CostoMensual,
+                        CantidaddePaquetes: cantidadSumar
+                    }, function (respuesta, error) {
+
+                        self.CargarAdicionalesContratado();
+
+                    });
+
+
+                } else {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = 1;
+                    self.agregaradicionalActivos(adicional);
+                }
+            } else {
+                document.getElementById(`${adicional.IdPaqueteContratado}`).value = 1;
+                self.agregaradicionalActivos(adicional);
+            }
+
+        },
+
+        //Metodo para agregar un adicional de activos por medio de un metodo change.
+        agregaradicional: function (adicional) {
+            var self = this;
+            let cantidadSumar = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
+            if (!isNaN(cantidadSumar)) {
+                if (cantidadSumar <= 99 && cantidadSumar >= 2) {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
+
+                    $.post(urlAjax, {
+                        option: 'agregaradicional',
+                        IdAdicional: adicional.IdPaqueteContratado,
+                        NombreAdicional: adicional.Nombre,
+                        Cantidadpaquete: adicional.Cantidad,
+                        Costo: adicional.Costo,
+                        CostoMensual: adicional.CostoMensual,
+                        CantidaddePaquetes: cantidadSumar
+                    }, function (respuesta, error) {
+
+                        self.CargarAdicionalesContratado();
+
+                    });
+
+
+                } else {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = 2;
+                    self.agregaradicional(adicional);
+                }
+            } else {
+                document.getElementById(`${adicional.IdPaqueteContratado}`).value = 2;
+                self.agregaradicional(adicional);
+            }
+
+        },
 
     }
 
