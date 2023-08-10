@@ -128,7 +128,8 @@
                                             <div class="cant-act-ai">{{adicionalseleccionado.Cantidad}}</div>
                                         </div>
                                         <div class="col-paln-ai col-ad-ai w-col w-col-4 w-col-small-4 w-col-tiny-4">
-                                            <div class="p-price-plan-calc-ai">US${{adicionalseleccionado.Costo}}/mes</div>
+                                            <div v-if="frecuenciaPago=='1'" class="p-price-plan-calc-ai">US${{adicionalseleccionado.Costo}}/mes</div>
+                                            <div v-if="frecuenciaPago=='2'" class="p-price-plan-calc-ai">US${{adicionalseleccionado.CostoMensual}}/mes</div>
                                         </div>
                                     </div>
 

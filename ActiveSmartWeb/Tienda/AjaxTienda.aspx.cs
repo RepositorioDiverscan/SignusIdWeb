@@ -1,4 +1,5 @@
 ﻿using ActiveSmartWeb.RegistroUsuarioEmpresas.Registro;
+using ActiveSmartWeb.Tienda.Entidades;
 using ActiveSmartWeb.Utilities;
 using Newtonsoft.Json;
 using System;
@@ -14,6 +15,7 @@ namespace ActiveSmartWeb.Tienda
     public partial class AjaxTienda : System.Web.UI.Page
     {
         NUsuarioEmpresa nUsuarioEmpresa = new NUsuarioEmpresa();
+        NTienda nTienda = new NTienda();
         private int numRegalia = 2;
         private int activosAdicionalesIlimitados = 2250;
         //Directorio de los paquetes adicionales seleccionados por el usuario para poder mostrarlos en la pantalla.
@@ -259,13 +261,20 @@ namespace ActiveSmartWeb.Tienda
                             paquete.Cantidad,
                             paquete.CantidadFree,
                             paquete.Nombre,
-                            0,
-                            0
+                            paquete.IdPaqueteContratado == 1 ? paquete.Costo : 0, //Los activos se cobra, los otros adicionales no(Son regalias)
+                            paquete.IdPaqueteContratado == 1 ? paquete.CostoMensual : 0 //Los activos se cobra, los otros adicionales no(Son regalias)
                             );
                         }
 
                         Response.Clear();
                         Response.Write(JsonConvert.SerializeObject(ePaqueteAdicionales, Formatting.Indented));
+                        Response.End();
+                        break;
+
+                    //Obtiene la frecuencia de pago del cliente
+                    case "obtenerFrecuenciaPago":
+                        Response.Clear();
+                        Response.Write(nTienda.obtenerFrecuenciaPagoPorIdEpresa(Convert.ToInt32(Request.Form["IdEmpresa"])));
                         Response.End();
                         break;
 
@@ -279,11 +288,8 @@ namespace ActiveSmartWeb.Tienda
                     //Opcion del switch para cargar el total del contrato
                     case "CargarTotal":
 
-                        //Costo del plan seleccionado.
-                        var precioplan = Convert.ToDecimal(Request.Form["precioplan"]);
-
                         //Frecuencia de pago
-                        var frecuenciaPago = Convert.ToInt32(Request.Form["frecuenciaPago"]);
+                        int frecuenciaPago = nTienda.obtenerFrecuenciaPagoPorIdEpresa(Convert.ToInt32(Request.Form["IdEmpresa"]));
 
                         //Costos de la suma de todos los adicionales seleccionados.
                         decimal suma;
@@ -296,10 +302,6 @@ namespace ActiveSmartWeb.Tienda
                             suma = _adicionalcontratadomostrar.Sum(x => x.Value.CostoMensual);
                         }
 
-
-                        //Suma del costo del plan y los adicionales.
-                        suma = suma + precioplan;
-
                         Response.Clear();
                         Response.Write(suma);
                         Response.End();
@@ -307,10 +309,16 @@ namespace ActiveSmartWeb.Tienda
 
                     //Opcion del switch para cargar el plan para utilizar el costo y el nombre en la pantalla.
                     case "CargarPrecio":
+                        //Obtiene el tipo de contrato del usurio
+                        var codigoplan = nTienda.obtenerTipoContratoPorIdEpresa(Convert.ToInt32(Request.Form["IdEmpresa"]));
 
-                        var codigoplan = Convert.ToInt32(Request.Form["CodigoPlan"]);
+                        //Si el plan es 1 (Free) se cambia a 2
+                        if(codigoplan == "1")
+                        {
+                            codigoplan = "2";
+                        }
 
-                        var infoPlanes = nUsuarioEmpresa.CargarPlan(codigoplan);
+                        var infoPlanes = nUsuarioEmpresa.CargarPlan(Convert.ToInt32(codigoplan));
 
                         Response.Clear();
                         Response.Write(JsonConvert.SerializeObject(infoPlanes, Formatting.Indented));
@@ -342,16 +350,10 @@ namespace ActiveSmartWeb.Tienda
                             if (idAdicional == 1)
                             {
                                 validarRegaliasInput(cantidadpaquete * cantidad);
-                                if (cantidad == 1)
-                                {
-                                    _adicionalcontratadomostrar[idAdicional].Costo = 0;//La primera unidad es de regalia
-                                    _adicionalcontratadomostrar[idAdicional].CostoMensual = 0;
-                                }
-                                else
-                                {
-                                    _adicionalcontratadomostrar[idAdicional].Costo = costo * (cantidad - 1) + 0.01M;//La primera no se cobra
-                                    _adicionalcontratadomostrar[idAdicional].CostoMensual = costoMensual * (cantidad - 1);
-                                }
+
+                                _adicionalcontratadomostrar[idAdicional].Costo = costo * cantidad;//La primera no se cobra
+                                _adicionalcontratadomostrar[idAdicional].CostoMensual = costoMensual * cantidad;
+
                                 _adicionalcontratado[idAdicional].Cantidad = cantidad;
 
                                 _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * (cantidad);
@@ -443,12 +445,6 @@ namespace ActiveSmartWeb.Tienda
 
                                 _adicionalcontratadomostrar[idAdicionalsumar].Cantidad += cantidadpaquetesumar;
 
-                                //A la primera suma se le agrega 0.01 al costo para que quede en numeros cerrados
-                                if (idAdicionalsumar == 1 && cantidadsumar == 2)
-                                {
-                                    costosumar += 0.01M;
-                                }
-
                                 //Valida si el adicional son activos o si es un adicional diferente y los activos no superan el numero para adicionales ilimitados
                                 if (idAdicionalsumar == 1 || (idAdicionalsumar != 1 && _adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados))
                                 {
@@ -497,13 +493,6 @@ namespace ActiveSmartWeb.Tienda
 
                             //Resta 1 vez las variables.
                             _adicionalcontratadomostrar[idAdicionalrestar].Cantidad -= cantidadpaqueterestar;
-                        }
-
-
-
-                        if (idAdicionalrestar == 1 && cantidadrestar == 1)
-                        {
-                            costorestar += 0.01M;
                         }
 
                         //Valida si el adicional son activos o si es un adicional diferente

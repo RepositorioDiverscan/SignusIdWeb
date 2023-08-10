@@ -13,8 +13,7 @@ const app = new Vue({
         usuariosGestores: 0,
         precio: "0",
         totalpago: "1",
-        frecuenciaPago: "1",
-        codigoPlan: "2",
+        frecuenciaPago: "",
         adicionales: [],
         adicionalesseleccionados: []
     },
@@ -22,8 +21,10 @@ const app = new Vue({
     mounted: function () {
         this.listaIdiomas = this.ObtenerIdioma();
         this.CargarAdicionales();
-        this.CargarPrecio();
+        this.CargarFrecuenciaPago();
+        this.CargarTotal();
         this.CargarAdicionalesContratado();
+        
     },
 
     methods: {
@@ -77,53 +78,35 @@ const app = new Vue({
             }, function (data, error) {
                 self.adicionalesseleccionados = JSON.parse(data);
                 self.CargarTotal();
-                //self.validarCodigoPlan();
+                self.validarCodigoPlan();
+            });
+        },
+
+        CargarFrecuenciaPago: function () {
+            var self = this;
+
+            var usuario = JSON.parse(sessionStorage.getItem("DUser"));
+
+            $.post(urlAjax, {
+                option: 'obtenerFrecuenciaPago',
+                IdEmpresa: usuario[0].IdPerfilEmpresa,
+            }, function (data, error) {
+                self.frecuenciaPago = data;
             });
         },
 
         //Metodo para cargar el total de la compra.
         CargarTotal: function () {
             var self = this;
+
+            var usuario = JSON.parse(sessionStorage.getItem("DUser"));
+
             $.post(urlAjax, {
                 option: 'CargarTotal',
-                precioplan: self.precio,
-                frecuenciaPago: self.frecuenciaPago,
+                IdEmpresa: usuario[0].IdPerfilEmpresa,
             }, function (data, error) {
 
                 self.totalpago = data;
-
-            });
-        },
-
-
-        //Metodo para cargar el precio,nombre y la imagen del plan seleccionado.
-        CargarPrecio: function () {
-            var self = this;
-
-
-            $.post(urlAjax, {
-                option: 'CargarPrecio',
-                CodigoPlan: self.codigoPlan
-
-            }, function (data, error) {
-
-                let datos = JSON.parse(data);
-
-                if (self.frecuenciaPago == "1") {
-                    self.precio = datos.Costo;
-                    if (datos.Cantidad == self.adicionales[0].Cantidad) {
-                        self.totalpago = datos.Costo;
-                    }
-
-
-                } else {
-                    self.precio = datos.CostoMensual;
-                    if (datos.Cantidad == self.adicionales[0].Cantidad) {
-                        self.totalpago = datos.CostoMensual;
-                    }
-
-                }
-
 
             });
         },
@@ -248,6 +231,26 @@ const app = new Vue({
                 self.agregaradicional(adicional);
             }
 
+        },
+
+
+        //valida el codigo del plan para cargar los valores en los inputs
+        validarCodigoPlan: function () {
+            var self = this;
+ 
+            self.actualizarValoresInputs();
+            
+        },
+
+        //Actualiza los valores de los inputs
+        actualizarValoresInputs: function () {
+            var self = this;
+            $.each(self.adicionalesseleccionados, function (index, adicional) {
+                if (adicional.IdPaqueteContratado != 1) {
+                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = adicional.Cantidad;
+                }
+
+            });
         },
 
     }
