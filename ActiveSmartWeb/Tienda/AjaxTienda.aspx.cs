@@ -312,12 +312,13 @@ namespace ActiveSmartWeb.Tienda
                         //Obtiene el tipo de contrato del usurio
                         var codigoplan = nTienda.obtenerTipoContratoPorIdEpresa(Convert.ToInt32(Request.Form["IdEmpresa"]));
 
-                        //Si el plan es 1 (Free) se cambia a 2
+                        //Si el plan es 1 (Free) se cambia a 2(Basic)
                         if(codigoplan == "1")
                         {
                             codigoplan = "2";
                         }
 
+                        //Obtenemos la informacion del plan
                         var infoPlanes = nUsuarioEmpresa.CargarPlan(Convert.ToInt32(codigoplan));
 
                         Response.Clear();
@@ -338,9 +339,6 @@ namespace ActiveSmartWeb.Tienda
                         decimal costo = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US"));
                         decimal costoMensual = Convert.ToDecimal(Request.Form["CostoMensual"], new CultureInfo("en-US"));
 
-                        // var costo = Convert.ToDecimal(Request.Form["Costo"]);
-                        // decimal var1 = Convert.ToDecimal("-37.7130883", new CultureInfo("en-US"));
-
                         int cantidad = 0;
                         var esEntero = int.TryParse(Request.Form["CantidaddePaquetes"], out cantidad);
 
@@ -351,7 +349,7 @@ namespace ActiveSmartWeb.Tienda
                             {
                                 validarRegaliasInput(cantidadpaquete * cantidad);
 
-                                _adicionalcontratadomostrar[idAdicional].Costo = costo * cantidad;//La primera no se cobra
+                                _adicionalcontratadomostrar[idAdicional].Costo = costo * cantidad;
                                 _adicionalcontratadomostrar[idAdicional].CostoMensual = costoMensual * cantidad;
 
                                 _adicionalcontratado[idAdicional].Cantidad = cantidad;
