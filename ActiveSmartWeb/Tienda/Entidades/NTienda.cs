@@ -1,4 +1,5 @@
-﻿using ActiveSmartWeb.Utilities;
+﻿using ActiveSmartWeb.RegistroUsuarioEmpresas.Registro;
+using ActiveSmartWeb.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,23 @@ namespace ActiveSmartWeb.Tienda.Entidades
                 return "";
             }
 
+        }
+
+        public string ActualizarPlan(int idEmpresa, List<EPaqueteAdicionalContratado> PaquetesAdicionales)
+        {
+            try
+            {
+
+                return _dbTienda.ActualizarPlan(idEmpresa, PaquetesAdicionales);
+
+            }
+            catch (Exception ex)
+            {
+
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return null;
+
+            }
         }
 
     }

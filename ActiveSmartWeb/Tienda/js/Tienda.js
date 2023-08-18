@@ -253,6 +253,18 @@ const app = new Vue({
             });
         },
 
+        realizarPago: function () {
+            var self = this;
+            $.post(urlAjax, {
+                option: 'RealizarPago',
+                IdEmpresa: 0,
+            }, function (data, error) {
+                self.adicionalesseleccionados = JSON.parse(data);
+                self.CargarTotal();
+                self.validarCodigoPlan();
+            });
+        },
+
     }
 
 

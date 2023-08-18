@@ -1,7 +1,10 @@
-﻿using Microsoft.Practices.EnterpriseLibrary.Data;
+﻿using ActiveSmartWeb.RegistroUsuarioEmpresas.Registro;
+using ActiveSmartWeb.Utilities;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -27,6 +30,29 @@ namespace ActiveSmartWeb.Tienda.Entidades
             var dbCommand = db.GetStoredProcCommand("ObtenerTipoContratoPagoPorIdEmpresa");
             db.AddInParameter(dbCommand, "@idEmpresa", DbType.Int64, idEmpresa);
             db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
+            dbCommand.CommandTimeout = 3600;
+            db.ExecuteNonQuery(dbCommand);
+            var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
+            return Respuesta;
+        }
+
+        public string ActualizarPlan(int idEmpresa, List<EPaqueteAdicionalContratado> PaquetesAdicionales)
+        {
+
+            //Se crea un datatable con la lista de paquetes adicionales seleccionados.
+            var dataTablePaquetesAdicionales = PaquetesAdicionales.ToDataTable();
+
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("ObtenerTipoContratoPagoPorIdEmpresa");
+            db.AddInParameter(dbCommand, "@idEmpresa", DbType.Int64, idEmpresa);
+            db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
+
+            SqlParameter parameterPaquetesAdicionales = new SqlParameter();
+            parameterPaquetesAdicionales.ParameterName = "@TablaAdicionales";
+            parameterPaquetesAdicionales.SqlDbType = System.Data.SqlDbType.Structured;
+            parameterPaquetesAdicionales.Value = dataTablePaquetesAdicionales;
+            dbCommand.Parameters.Add(parameterPaquetesAdicionales);
+
             dbCommand.CommandTimeout = 3600;
             db.ExecuteNonQuery(dbCommand);
             var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();

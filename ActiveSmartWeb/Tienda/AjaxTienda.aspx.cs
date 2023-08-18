@@ -516,6 +516,13 @@ namespace ActiveSmartWeb.Tienda
 
                         break;
 
+                    case "RealizarPago":
+
+                        Response.Clear();
+                        Response.Write(RealizarPago(Convert.ToInt32(Request.Form["IdEmpresa"])));
+                        Response.End();
+
+                        break;
                 }
 
 
@@ -527,6 +534,21 @@ namespace ActiveSmartWeb.Tienda
 
             }
 
+        }
+
+        private bool RealizarPago(int idEmpresa)
+        {
+            string resultadoTransaccion = "555";
+            if(resultadoTransaccion != "Error")
+            {
+
+                //nTienda.ActualizarPlan(idEmpresa, _adicionalcontratado.Values.ToList());
+
+
+
+            }
+
+            return false;
         }
 
         private decimal calcularPrecioFinal(ETipoPlanes infoPlan, string frecuencia)
