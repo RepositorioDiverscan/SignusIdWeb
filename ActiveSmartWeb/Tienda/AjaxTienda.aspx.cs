@@ -261,8 +261,8 @@ namespace ActiveSmartWeb.Tienda
                             paquete.Cantidad,
                             paquete.CantidadFree,
                             paquete.Nombre,
-                            paquete.IdPaqueteContratado == 1 ? paquete.Costo : 0, //Los activos se cobra, los otros adicionales no(Son regalias)
-                            paquete.IdPaqueteContratado == 1 ? paquete.CostoMensual : 0 //Los activos se cobra, los otros adicionales no(Son regalias)
+                            paquete.IdPaqueteContratado == 1 ? paquete.Costo : 0,
+                            paquete.IdPaqueteContratado == 1 ? paquete.Costo : 0
                             );
                         }
 
@@ -519,7 +519,7 @@ namespace ActiveSmartWeb.Tienda
                     case "RealizarPago":
 
                         Response.Clear();
-                        Response.Write(RealizarPago(Convert.ToInt32(Request.Form["IdEmpresa"])));
+                        Response.Write(RealizarPago(Convert.ToInt32(Request.Form["IdPerfilUsuario"])));
                         Response.End();
 
                         break;
@@ -536,13 +536,13 @@ namespace ActiveSmartWeb.Tienda
 
         }
 
-        private bool RealizarPago(int idEmpresa)
+        private bool RealizarPago(int idPerfilUsuario)
         {
             string resultadoTransaccion = "555";
             if(resultadoTransaccion != "Error")
             {
 
-                //nTienda.ActualizarPlan(idEmpresa, _adicionalcontratado.Values.ToList());
+                nTienda.ActualizarPlan(idPerfilUsuario, _adicionalcontratado.Values.ToList());
 
 
 

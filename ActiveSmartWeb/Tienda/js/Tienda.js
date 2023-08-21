@@ -62,8 +62,10 @@ const app = new Vue({
         //Metodo para cargar los adicionales.
         CargarAdicionales: function () {
             var self = this;
+            var usuario = JSON.parse(sessionStorage.getItem('DUser'));
             $.post(urlAjax, {
-                option: 'CargarAdicionales'
+                option: 'CargarAdicionales',
+                IdPerfilUsuario: usuario[0].IdPerfilUsuario,
             }, function (data, error) {
                 self.adicionales = JSON.parse(data);
                 
@@ -255,9 +257,11 @@ const app = new Vue({
 
         realizarPago: function () {
             var self = this;
+            var usuario = JSON.parse(sessionStorage.getItem('DUser'));
+
             $.post(urlAjax, {
                 option: 'RealizarPago',
-                IdEmpresa: 0,
+                IdPerfilUsuario: usuario[0].IdPerfilUsuario,
             }, function (data, error) {
                 self.adicionalesseleccionados = JSON.parse(data);
                 self.CargarTotal();

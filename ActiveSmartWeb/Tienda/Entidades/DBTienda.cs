@@ -1,4 +1,5 @@
-﻿using ActiveSmartWeb.RegistroUsuarioEmpresas.Registro;
+﻿using ActiveSmartWeb.Perfil;
+using ActiveSmartWeb.RegistroUsuarioEmpresas.Registro;
 using ActiveSmartWeb.Utilities;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System;
@@ -36,15 +37,15 @@ namespace ActiveSmartWeb.Tienda.Entidades
             return Respuesta;
         }
 
-        public string ActualizarPlan(int idEmpresa, List<EPaqueteAdicionalContratado> PaquetesAdicionales)
+        public string ActualizarPlan(int idPerfilUsuario, List<EPaqueteAdicionalContratado> PaquetesAdicionales)
         {
 
             //Se crea un datatable con la lista de paquetes adicionales seleccionados.
             var dataTablePaquetesAdicionales = PaquetesAdicionales.ToDataTable();
 
             var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
-            var dbCommand = db.GetStoredProcCommand("ObtenerTipoContratoPagoPorIdEmpresa");
-            db.AddInParameter(dbCommand, "@idEmpresa", DbType.Int64, idEmpresa);
+            var dbCommand = db.GetStoredProcCommand("SP_ActualizarContrato");
+            db.AddInParameter(dbCommand, "@idPerfilUsuario", DbType.Int64, idPerfilUsuario);
             db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
 
             SqlParameter parameterPaquetesAdicionales = new SqlParameter();
@@ -58,6 +59,39 @@ namespace ActiveSmartWeb.Tienda.Entidades
             var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
             return Respuesta;
         }
+
+
+        //Metodo para cargar los adicionales.
+        public List<EPaqueteAdicional> CargarAdicionales(int idPerfilActive)
+        {
+            List<EPaqueteAdicional> ePaquetesAdicionales = new List<EPaqueteAdicional>();
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("SP_ObtenerPaqueteContratadoTienda");
+            db.AddInParameter(dbCommand, "@IdPerfilActive", DbType.Int64, idPerfilActive);
+            dbCommand.CommandTimeout = 3600;
+
+            using (var reader = db.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+
+                    ePaquetesAdicionales.Add(new EPaqueteAdicional(
+                        Convert.ToDecimal(reader["CostoMensual"].ToString()),
+                        Convert.ToInt32(reader["IdPaqueteContratado"].ToString()),
+                        reader["Nombre"].ToString(),
+                        reader["Descripcion"].ToString(),
+                        Convert.ToInt32(reader["Tipo"].ToString()),
+                        Convert.ToInt32(reader["Cantidad"].ToString()),
+                        Convert.ToInt32(reader["CantidadFree"].ToString()),
+                        Convert.ToDecimal(reader["Costo"].ToString()),
+                        Convert.ToInt32(reader["Regalias"].ToString())
+
+                    ));
+                }
+            }
+            return ePaquetesAdicionales;
+        }
+
 
     }
 }
