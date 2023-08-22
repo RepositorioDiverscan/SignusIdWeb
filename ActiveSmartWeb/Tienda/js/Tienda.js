@@ -23,7 +23,6 @@ const app = new Vue({
         this.CargarAdicionales();
         this.CargarFrecuenciaPago();
         this.CargarTotal();
-        this.CargarPlanUsuario();
     },
 
     methods: {
@@ -66,6 +65,9 @@ const app = new Vue({
                 IdPerfilUsuario: usuario[0].IdPerfilUsuario,
             }, function (data, error) {
                 self.adicionalesseleccionados = JSON.parse(data);
+                //Setea el valor del input de los activos
+                document.getElementById(`1`).value = self.adicionalesseleccionados[1].Cantidad / self.adicionales[0].Cantidad
+                //Setea el valor de los demas inputs
                 self.actualizarValoresInputs();
             });
         },
@@ -79,7 +81,7 @@ const app = new Vue({
                 
             }, function (data, error) {
                 self.adicionales = JSON.parse(data);
-                
+                self.CargarPlanUsuario();
             });
         },
 
