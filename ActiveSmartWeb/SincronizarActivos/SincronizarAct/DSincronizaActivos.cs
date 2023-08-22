@@ -167,7 +167,13 @@ namespace ActiveSmartWeb.SincronizarActivos.SincronizarAct
 
             for (int i = 0; i < eSincronizaActivos.Count; i++)
             {
+                if (eSincronizaActivos[i].Costo =="")
+                {
+                    eSincronizaActivos[i].Costo = "0";
+                }
+
                 var dbCommand = db.GetStoredProcCommand("SincronizarActivos");
+
                 db.AddInParameter(dbCommand, "@idPerfilEmpresa", DbType.Int32, idEmpresa);
                 db.AddInParameter(dbCommand, "@Descripcion", DbType.String, eSincronizaActivos[i].Descripcion);
                 db.AddInParameter(dbCommand, "@NumEtiqueta", DbType.String, eSincronizaActivos[i].NumEtiqueta);
@@ -206,15 +212,15 @@ namespace ActiveSmartWeb.SincronizarActivos.SincronizarAct
                 {
                     eSincronizaActivos[i].EstadoSincronizacionArc = "La marca del activo es obligatoria";
                 }
-                else if (Respuesta.Equals("No se encontró la categoría del activo que quiere insertar"))
+                else if (Respuesta.Equals("No se encontró la categoría del activo que quiere insertar")|| Respuesta.Equals("La categoria del activo es obligatoria"))
                 {
                     eSincronizaActivos[i].EstadoSincronizacionArc = "No se encontró la categoría del activo que quiere insertar";
                 }
-                else if (Respuesta.Equals(" "))
+                else if (Respuesta.Equals("No se encontró el estado del activo que quiere insertar")|| Respuesta.Equals("El estado del activo es obligatorio"))
                 {
                     eSincronizaActivos[i].EstadoSincronizacionArc = "No se encontró el estado del activo que quiere insertar";
                 }
-                else if (Respuesta.Equals("No se encontró la ubicación del activo que quiere insertar"))
+                else if (Respuesta.Equals("No se encontró la ubicación del activo que quiere insertar")|| Respuesta.Equals("La ubicacion del activo es obligatoria"))
                 {
                     eSincronizaActivos[i].EstadoSincronizacionArc = "No se encontró la ubicación del activo que quiere insertar";
                 }

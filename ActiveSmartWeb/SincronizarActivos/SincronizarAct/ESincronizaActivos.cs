@@ -92,6 +92,21 @@ namespace ActiveSmartWeb.SincronizarActivos.SincronizarAct
             FechaCompra = fechaCompra;
         }
 
+        public ESincronizaActivos(string numEtiqueta, string descripcion, string categoria, string estado, string ubicacion, string marca, string modelo, string serie, string costo, string factura)
+        {
+            NumEtiqueta = numEtiqueta;
+            Descripcion = descripcion;
+            Categoria = categoria;
+            Estado = estado;
+            Ubicacion = ubicacion;
+            Marca = marca;
+            Modelo = modelo;
+            Serie = serie;
+            Costo = costo;
+            Factura = factura;
+            
+        }
+
 
         public string NumActivo { get => _numActivo; set => _numActivo = value; }
         public string NumEtiqueta { get => _numEtiqueta; set => _numEtiqueta = value; }

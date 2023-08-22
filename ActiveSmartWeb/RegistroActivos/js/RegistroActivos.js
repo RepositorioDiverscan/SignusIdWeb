@@ -334,7 +334,7 @@ const registroactivo = new Vue({
 
         DatosActivoEditar: function () {
             var self = this;
-
+            
             // ir a la base datos
             $.post(urlActivos, {
                 option: 'ObtenerActivoPorNumActivoCompleto',
@@ -361,7 +361,9 @@ const registroactivo = new Vue({
                     self.numFactura = resp[i].NumeroFactura;
                     self.editarcampos = true;
                     self.editarselect= "pointer-events:none";
-                    self.fechaCompra = resp[i].FechaCompra.split('T')[0];;
+                    self.fechaCompra = resp[i].FechaCompra.split('T')[0];
+                    self.ObtenerDescripcionCategoria();
+                    self.ObtenerDescripcionEstados();
                 }
             });
         },
