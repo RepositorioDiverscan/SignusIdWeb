@@ -531,6 +531,8 @@ const contrato = new Vue({
 
         InsertarActivos: function () {
             var self = this;
+            var lista = JSON.stringify(self.listaActivos);
+            console.log(lista);
             $.post(urlSincroniza, {
                 option: 'InsertarListaActivos',
                 IdPerfilEmpresa: self.idPerfilEmpresa,

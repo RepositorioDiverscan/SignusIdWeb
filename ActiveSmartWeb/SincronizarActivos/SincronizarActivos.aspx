@@ -161,7 +161,7 @@
                                                 {{FormatearFecha(activo.FechaCompra)}}
                                             </div>
                                         </td>
-                                        <td class="celda-vacia celda-activos">
+                                        <td class="detalle-tabla-empleado">
                                             <a href="#" class="link-block-2 rojo w-inline-block">
                                                 <img :src="activo.EstadoActivo" loading="lazy" width="20" height="30" alt="" class="image-29">
                                             </a>

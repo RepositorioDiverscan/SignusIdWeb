@@ -63,21 +63,21 @@ namespace ActiveSmartWeb.SincronizarActivos
                         var modelo = Request.Form["Modelo"];
                         var descripcionCorta = Request.Form["DescripcionCorta"];
                         decimal costo;
-                        if (Request.Form["CostoActivo"] != "")
-                        {
-                            costo = Convert.ToDecimal(Request.Form["CostoActivo"]);
-                        }
-                        else
-                        {
-                            costo = 0;
-                        }
-                        var costoActivo = costo;
-                        var idArchivo = Convert.ToInt32(Request.Form["IdSincArchivo"]);
+                            if (Request.Form["CostoActivo"] != "")
+                            {
+                                costo = Convert.ToDecimal(Request.Form["CostoActivo"]);
+                            }
+                            else
+                            {
+                                costo = 0;
+                            }
+                            var costoActivo = costo;
+                            var idArchivo = Convert.ToInt32(Request.Form["IdSincArchivo"]);
 
-                        var resultadoinsertar = _nSincronizaActivos.InsertarActivoSincronizacion(numeroActivo, numeroPlaca, idEstadoActivo,
-                                                    idCategoriaActivo, idUbicaionA, idPerfilEmpresa, marca, modelo, descripcionCorta,
-                                                    costoActivo, idArchivo);
-                        Response.Write(resultadoinsertar);
+                            var resultadoinsertar = _nSincronizaActivos.InsertarActivoSincronizacion(numeroActivo, numeroPlaca, idEstadoActivo,
+                                                        idCategoriaActivo, idUbicaionA, idPerfilEmpresa, marca, modelo, descripcionCorta,
+                                                        costoActivo, idArchivo);
+                            Response.Write(resultadoinsertar);
                         break;
                     case "InsertarArchivo":
                         var idPerfilEmpresaArch = Convert.ToInt32(Request.Form["IdPerfilEmpresa"]);
@@ -283,23 +283,33 @@ namespace ActiveSmartWeb.SincronizarActivos
                     if (excelWorksheet.Cells[row, 11].Value != null)
                         factura = excelWorksheet.Cells[row, 11].Value.ToString();
 
-                    var fechaCompra = "";
+                    DateTime fechaCompra=DateTime.Now;
                     if (excelWorksheet.Cells[row, 12].Value != null)
                     {
-                        fechaCompra = excelWorksheet.Cells[row, 12].Value.ToString();
-                        fechaCompra = convertirFecha(fechaCompra);
-                        fechaCompra = fechaCompra + " 12:00:00 AM";
-                    }
-                        
-                    if (fechaCompra == "")
-                    { fechaCompra = DateTime.Today.ToString(); }
+                        try
+                        {
+                            fechaCompra = excelWorksheet.Cells[row, 12].GetValue<DateTime>();
+                            //fechaCompra = convertirFecha(fechaCompra);
+                            //fechaCompra = fechaCompra + " 12:00:00 AM";
 
-                    
+
+                        }
+                        catch (Exception)
+                        {
+
+                            dataFiles.Add(new ESincronizaActivos(numeroEtiqueta, descripcion, categoria,
+                        estado, ubicacion, marca, modelo, serie, costo, factura));
+                        }
+        
+
+
+                    }
+                                          
 
 
                     cantidad = cantidad + 1;
                     dataFiles.Add(new ESincronizaActivos(numeroEtiqueta, descripcion, categoria,
-                        estado, ubicacion, marca, modelo, serie, costo, factura, Convert.ToDateTime(fechaCompra)));
+                        estado, ubicacion, marca, modelo, serie, costo, factura, fechaCompra));
                     
                     if (excelWorksheet.Cells[row, 1].Value == null && excelWorksheet.Cells[row, 2].Value == null)
                         contineDatos = false;
@@ -312,20 +322,20 @@ namespace ActiveSmartWeb.SincronizarActivos
         }
 
         //Pasamos la fecha de dd/mm/yyyy a mm/dd/yyyy
-        private string convertirFecha(string fecha)
-        {
-            string[] partesFecha = fecha.Split('/');
-            int dia = int.Parse(partesFecha[0]);
-            int mes = int.Parse(partesFecha[1]);
-            int anio = int.Parse(partesFecha[2]);
+        //private string convertirFecha(string fecha)
+        //{
+        //    string[] partesFecha = fecha.Split('/');
+        //    int dia = int.Parse(partesFecha[0]);
+        //    int mes = int.Parse(partesFecha[1]);
+        //    int anio = int.Parse(partesFecha[2]);
 
-            // crear un objeto DateTime con la fecha en formato "dd/MM/yyyy"
-            DateTime fechaOriginal = new DateTime(anio, mes, dia);
+        //    // crear un objeto DateTime con la fecha en formato "dd/MM/yyyy"
+        //    DateTime fechaOriginal = new DateTime(anio, mes, dia);
 
-            // convertir la fecha a formato "MM/dd/yyyy"
-            return fechaOriginal.ToString("MM/dd/yyyy");
+        //    // convertir la fecha a formato "MM/dd/yyyy"
+        //    return fechaOriginal.ToString("MM/dd/yyyy");
             
-        }
+        //}
 
         private string crearexcel(int IdEmpresa,string Base64, int IdArchivo)
         {
