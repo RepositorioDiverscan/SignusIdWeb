@@ -12,7 +12,7 @@ const app = new Vue({
         personalParaActivos: 0,
         usuariosGestores: 0,
         precio: "0",
-        totalpago: "1",
+        totalpago: "0",
         frecuenciaPago: "",
         adicionales: [],
         adicionalesseleccionados: []
@@ -23,8 +23,7 @@ const app = new Vue({
         this.CargarAdicionales();
         this.CargarFrecuenciaPago();
         this.CargarTotal();
-        this.CargarAdicionalesContratado();
-        
+        this.CargarPlanUsuario();
     },
 
     methods: {
@@ -59,13 +58,25 @@ const app = new Vue({
 
         },
 
-        //Metodo para cargar los adicionales.
-        CargarAdicionales: function () {
+        CargarPlanUsuario: function () {
             var self = this;
             var usuario = JSON.parse(sessionStorage.getItem('DUser'));
             $.post(urlAjax, {
-                option: 'CargarAdicionales',
+                option: 'ObtenerPlanUsuario',
                 IdPerfilUsuario: usuario[0].IdPerfilUsuario,
+            }, function (data, error) {
+                self.adicionalesseleccionados = JSON.parse(data);
+                self.actualizarValoresInputs();
+            });
+        },
+
+        //Metodo para cargar los adicionales.
+        CargarAdicionales: function () {
+            var self = this;
+            
+            $.post(urlAjax, {
+                option: 'CargarAdicionales',
+                
             }, function (data, error) {
                 self.adicionales = JSON.parse(data);
                 

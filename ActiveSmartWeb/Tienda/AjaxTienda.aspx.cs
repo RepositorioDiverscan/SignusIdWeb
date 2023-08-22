@@ -257,18 +257,40 @@ namespace ActiveSmartWeb.Tienda
                         {
                             crearEntidades(
                             paquete.IdPaqueteContratado,
-                            paquete.IdPaqueteContratado == 1 ? 1 : 2,
+                            1,
                             paquete.Cantidad,
                             paquete.CantidadFree,
                             paquete.Nombre,
-                            paquete.IdPaqueteContratado == 1 ? paquete.Costo : 0,
-                            paquete.IdPaqueteContratado == 1 ? paquete.Costo : 0
+                            0,
+                            0
                             );
                         }
 
                         Response.Clear();
                         Response.Write(JsonConvert.SerializeObject(ePaqueteAdicionales, Formatting.Indented));
                         Response.End();
+                        break;
+
+
+                    case "ObtenerPlanUsuario":
+
+                        int idUsuario = Convert.ToInt32(Request.Form["IdPerfilUsuario"]);
+
+                        var planUsuario = nTienda.CargarAdicionales(idUsuario);
+
+                        foreach (var paquete in planUsuario)
+                        {
+                            _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad = paquete.Cantidad;
+                            _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad = paquete.Cantidad;
+
+                            _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias = paquete.Regalias;
+                            _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias = paquete.Regalias;
+                        }
+
+                        Response.Clear();
+                        Response.Write(JsonConvert.SerializeObject(_adicionalcontratadomostrar, Formatting.Indented));
+                        Response.End();
+
                         break;
 
                     //Obtiene la frecuencia de pago del cliente
