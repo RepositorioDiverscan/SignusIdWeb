@@ -65,9 +65,6 @@ const app = new Vue({
                 IdPerfilUsuario: usuario[0].IdPerfilUsuario,
             }, function (data, error) {
                 self.adicionalesseleccionados = JSON.parse(data);
-                //Setea el valor del input de los activos
-                document.getElementById(`1`).value = self.adicionalesseleccionados[1].Cantidad / self.adicionales[0].Cantidad
-                //Setea el valor de los demas inputs
                 self.actualizarValoresInputs();
             });
         },
@@ -260,6 +257,8 @@ const app = new Vue({
         //Actualiza los valores de los inputs
         actualizarValoresInputs: function () {
             var self = this;
+            //Setea el valor del input de los activos
+            document.getElementById(`1`).value = self.adicionalesseleccionados[1].Cantidad / self.adicionales[0].Cantidad
             $.each(self.adicionalesseleccionados, function (index, adicional) {
                 if (adicional.IdPaqueteContratado != 1) {
                     document.getElementById(`${adicional.IdPaqueteContratado}`).value = adicional.Cantidad;
