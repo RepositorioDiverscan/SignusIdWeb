@@ -12,7 +12,7 @@ const app = new Vue({
         personalParaActivos: 0,
         usuariosGestores: 0,
         precio: "0",
-        totalpago: "1",
+        totalpago: "0",
         frecuenciaPago: "",
         adicionales: [],
         adicionalesseleccionados: []
@@ -23,8 +23,6 @@ const app = new Vue({
         this.CargarAdicionales();
         this.CargarFrecuenciaPago();
         this.CargarTotal();
-        this.CargarAdicionalesContratado();
-        
     },
 
     methods: {
@@ -59,14 +57,28 @@ const app = new Vue({
 
         },
 
+        CargarPlanUsuario: function () {
+            var self = this;
+            var usuario = JSON.parse(sessionStorage.getItem('DUser'));
+            $.post(urlAjax, {
+                option: 'ObtenerPlanUsuario',
+                IdPerfilUsuario: usuario[0].IdPerfilUsuario,
+            }, function (data, error) {
+                self.adicionalesseleccionados = JSON.parse(data);
+                self.actualizarValoresInputs();
+            });
+        },
+
         //Metodo para cargar los adicionales.
         CargarAdicionales: function () {
             var self = this;
+            
             $.post(urlAjax, {
-                option: 'CargarAdicionales'
+                option: 'CargarAdicionales',
+                
             }, function (data, error) {
                 self.adicionales = JSON.parse(data);
-                
+                self.CargarPlanUsuario();
             });
         },
 
@@ -245,11 +257,27 @@ const app = new Vue({
         //Actualiza los valores de los inputs
         actualizarValoresInputs: function () {
             var self = this;
+            //Setea el valor del input de los activos
+            document.getElementById(`1`).value = self.adicionalesseleccionados[1].Cantidad / self.adicionales[0].Cantidad
             $.each(self.adicionalesseleccionados, function (index, adicional) {
                 if (adicional.IdPaqueteContratado != 1) {
                     document.getElementById(`${adicional.IdPaqueteContratado}`).value = adicional.Cantidad;
                 }
 
+            });
+        },
+
+        realizarPago: function () {
+            var self = this;
+            var usuario = JSON.parse(sessionStorage.getItem('DUser'));
+
+            $.post(urlAjax, {
+                option: 'RealizarPago',
+                IdPerfilUsuario: usuario[0].IdPerfilUsuario,
+            }, function (data, error) {
+                self.adicionalesseleccionados = JSON.parse(data);
+                self.CargarTotal();
+                self.validarCodigoPlan();
             });
         },
 

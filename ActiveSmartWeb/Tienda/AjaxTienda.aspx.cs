@@ -37,6 +37,26 @@ namespace ActiveSmartWeb.Tienda
             }
         }
 
+
+        //Directorio de los paquetes adicionales seleccionados por el usuario para poder mostrarlos en la pantalla.
+        private Dictionary<int, EPaqueteAdicional> _adicionalPlanUsuario
+        {
+            get
+            {
+                var data = Session["AdicionalesPlanUsuario"] as Dictionary<int, EPaqueteAdicional>;
+                if (data == null)
+                {
+                    data = new Dictionary<int, EPaqueteAdicional>();
+                    Session["AdicionalesPlanUsuario"] = data;
+                }
+                return data;
+            }
+            set
+            {
+                Session["AdicionalesPlanUsuario"] = value;
+            }
+        }
+
         //Directorio de los paquetes adicionales seleccionados por el usuario para poder guardarlos en bd.
         private Dictionary<int, EPaqueteAdicionalContratado> _adicionalcontratado
         {
@@ -78,6 +98,23 @@ namespace ActiveSmartWeb.Tienda
             //Añade a los diccionarios las entidades anterirormente creadas.
             _adicionalcontratado.Add(idAdicional, (adicionelesContratados));
             _adicionalcontratadomostrar.Add(idAdicional, (adicionelesContratadosmostrar));
+        }
+
+        private void crearEntidadPlanUsuario(int idAdicional, int cantidad, int cantidadpaqueteFree, string nombre, decimal costo, decimal costoMensual, int cantidadRegalias)
+        {
+
+            EPaqueteAdicional adicional = new EPaqueteAdicional();
+            adicional.IdPaqueteContratado = idAdicional;
+            adicional.Cantidad =  cantidad;
+            adicional.CantidadFree = cantidadpaqueteFree;
+            adicional.Nombre = nombre;
+            adicional.Descripcion = "";
+            adicional.CantidadRegalias = cantidadRegalias;
+            adicional.Costo = costo * cantidad;
+            adicional.CostoMensual = costoMensual * cantidad;
+
+            //Añade a los diccionarios las entidades anterirormente creadas.
+            _adicionalPlanUsuario.Add(idAdicional, (adicional));
         }
 
         //Valida la cantidad de activos agregados para dar o retirar regalias
@@ -257,18 +294,54 @@ namespace ActiveSmartWeb.Tienda
                         {
                             crearEntidades(
                             paquete.IdPaqueteContratado,
-                            paquete.IdPaqueteContratado == 1 ? 1 : 2,
+                            1,
                             paquete.Cantidad,
                             paquete.CantidadFree,
                             paquete.Nombre,
-                            paquete.IdPaqueteContratado == 1 ? paquete.Costo : 0, //Los activos se cobra, los otros adicionales no(Son regalias)
-                            paquete.IdPaqueteContratado == 1 ? paquete.CostoMensual : 0 //Los activos se cobra, los otros adicionales no(Son regalias)
+                            0,
+                            0
                             );
                         }
 
                         Response.Clear();
                         Response.Write(JsonConvert.SerializeObject(ePaqueteAdicionales, Formatting.Indented));
                         Response.End();
+                        break;
+
+                    //Obtiene la informacion actual del plan del usuario
+                    case "ObtenerPlanUsuario":
+                        //Limpia la informacion del diccionario
+                        _adicionalPlanUsuario.Clear();
+
+                        int idUsuario = Convert.ToInt32(Request.Form["IdPerfilUsuario"]);
+
+                        var planUsuario = nTienda.CargarAdicionales(idUsuario);
+
+                        foreach (var paquete in planUsuario)
+                        {
+
+                            crearEntidadPlanUsuario(
+                            paquete.IdPaqueteContratado,
+                            paquete.Cantidad,
+                            paquete.CantidadFree,
+                            paquete.Nombre,
+                            0,
+                            0,
+                            paquete.CantidadRegalias
+                            );
+
+                            _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad = paquete.Cantidad;
+                            _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Cantidad = paquete.Cantidad;
+
+                            _adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias = paquete.Regalias;
+                            _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias = paquete.Regalias;
+
+                        }
+
+                        Response.Clear();
+                        Response.Write(JsonConvert.SerializeObject(_adicionalcontratadomostrar, Formatting.Indented));
+                        Response.End();
+
                         break;
 
                     //Obtiene la frecuencia de pago del cliente
@@ -475,47 +548,50 @@ namespace ActiveSmartWeb.Tienda
                         var costorestar = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US"));
                         var costoMensualrestar = Convert.ToDecimal(Request.Form["CostoMensual"], new CultureInfo("en-US"));
 
-                        if (idAdicionalrestar == 1)
+                        if(_adicionalPlanUsuario[idAdicionalrestar].Cantidad < _adicionalcontratadomostrar[idAdicionalrestar].Cantidad)
                         {
-                            //Sustituye los valores guardados con los nuevos valores.
-                            _adicionalcontratado[idAdicionalrestar].Cantidad = cantidadrestar;
+                            if (idAdicionalrestar == 1)
+                            {
+                                //Sustituye los valores guardados con los nuevos valores.
+                                _adicionalcontratado[idAdicionalrestar].Cantidad = cantidadrestar;
 
-                            //Resta 1 vez las variables.
-                            _adicionalcontratadomostrar[idAdicionalrestar].Cantidad -= cantidadpaqueterestar;
+                                //Resta 1 vez las variables.
+                                _adicionalcontratadomostrar[idAdicionalrestar].Cantidad -= cantidadpaqueterestar;
 
-                        }
-                        else if (_adicionalcontratado[idAdicionalrestar].CantidadRegalias <= cantidadrestar)
-                        {
-                            //Sustituye los valores guardados con los nuevos valores.
-                            _adicionalcontratado[idAdicionalrestar].Cantidad = cantidadrestar;
+                                _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
+                                _adicionalcontratadomostrar[idAdicionalrestar].CostoMensual -= costoMensualrestar;
 
-                            //Resta 1 vez las variables.
-                            _adicionalcontratadomostrar[idAdicionalrestar].Cantidad -= cantidadpaqueterestar;
-                        }
+                                validadRegalia(false, cantidadrestar * cantidadpaqueterestar);
 
-                        //Valida si el adicional son activos o si es un adicional diferente
-                        if (idAdicionalrestar == 1)
-                        {
-                            _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
-                            _adicionalcontratadomostrar[idAdicionalrestar].CostoMensual -= costoMensualrestar;
+                            }
+                            else if (_adicionalcontratado[idAdicionalrestar].CantidadRegalias <= cantidadrestar)
+                            {
+                                //Sustituye los valores guardados con los nuevos valores.
+                                _adicionalcontratado[idAdicionalrestar].Cantidad = cantidadrestar;
+
+                                //Resta 1 vez las variables.
+                                _adicionalcontratadomostrar[idAdicionalrestar].Cantidad -= cantidadpaqueterestar;
+                            }
 
                             //Valida que los activos no superan el numero para adicionales ilimitados y que la resta no sea menor a las regalias
-                        }
-                        else if (_adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados && _adicionalcontratado[idAdicionalrestar].CantidadRegalias <= cantidadrestar)
-                        {
-                            _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
-                            _adicionalcontratadomostrar[idAdicionalrestar].CostoMensual -= costoMensualrestar;
-                        }
 
-
-                        if (idAdicionalrestar == 1)
-                        {
-                            validadRegalia(false, cantidadrestar * cantidadpaqueterestar);
+                            if (idAdicionalrestar != 1 && _adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados && _adicionalcontratado[idAdicionalrestar].CantidadRegalias <= cantidadrestar)
+                            {
+                                _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
+                                _adicionalcontratadomostrar[idAdicionalrestar].CostoMensual -= costoMensualrestar;
+                            }
                         }
 
 
                         break;
 
+                    case "RealizarPago":
+
+                        Response.Clear();
+                        Response.Write(RealizarPago(Convert.ToInt32(Request.Form["IdPerfilUsuario"])));
+                        Response.End();
+
+                        break;
                 }
 
 
@@ -527,6 +603,21 @@ namespace ActiveSmartWeb.Tienda
 
             }
 
+        }
+
+        private bool RealizarPago(int idPerfilUsuario)
+        {
+            string resultadoTransaccion = "555";
+            if(resultadoTransaccion != "Error")
+            {
+
+                //nTienda.ActualizarPlan(idPerfilUsuario, _adicionalcontratado.Values.ToList());
+
+
+
+            }
+
+            return false;
         }
 
         private decimal calcularPrecioFinal(ETipoPlanes infoPlan, string frecuencia)

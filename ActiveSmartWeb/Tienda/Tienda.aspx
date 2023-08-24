@@ -142,7 +142,7 @@
                                             <div class="p-total-pay-ai">US${{totalpago}}</div>
                                         </div>
                                     </div>
-                                    <a href="#" class="btn-pagar-orden-ai w-button">Pagar US${{totalpago}}</a>
+                                    <a @click="realizarPago()" href="#" class="btn-pagar-orden-ai w-button">Pagar US${{totalpago}}</a>
                                 </div>
                             </div>
                         </div>
