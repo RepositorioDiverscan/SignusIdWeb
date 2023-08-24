@@ -72,13 +72,16 @@ const contrato = new Vue({
                      correo: usuario.Correo,
 
                  }, function (respuesta, error) {
-
+                     self.CargarUsuarios();
                      if (respuesta == "Actualizo") {
 
                          alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.RolUsuario);
-                     } else {
-
+                     } else if (respuesta == "Ingreso completo") {
                          alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.CreaUsuario);
+                     }
+                     else {
+
+                         alertas.error(self.listaIdiomas.Atencion, respuesta);
                      }
 
                  });
