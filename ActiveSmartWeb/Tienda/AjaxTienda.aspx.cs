@@ -611,7 +611,7 @@ namespace ActiveSmartWeb.Tienda
             if(resultadoTransaccion != "Error")
             {
 
-                nTienda.ActualizarPlan(idPerfilUsuario, _adicionalcontratado.Values.ToList());
+                //nTienda.ActualizarPlan(idPerfilUsuario, _adicionalcontratado.Values.ToList());
 
 
 
