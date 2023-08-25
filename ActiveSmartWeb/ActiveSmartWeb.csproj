@@ -794,6 +794,7 @@
     <Content Include="Menu\js\Prueba.js" />
     <Content Include="Menu\MenuPrincipal.aspx" />
     <Content Include="Menu\MenuPrincipalAjax.aspx" />
+    <Content Include="MetodosPago\MetodosPago.aspx" />
     <Content Include="MisCompras\IdiomaMisComprasAjax.aspx" />
     <Content Include="MisCompras\js\MisCompras.js" />
     <Content Include="MisCompras\MisCompras.aspx" />
@@ -1601,6 +1602,13 @@
     </Compile>
     <Compile Include="Menu\MenuPrincipalAjax.aspx.designer.cs">
       <DependentUpon>MenuPrincipalAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MetodosPago\MetodosPago.aspx.cs">
+      <DependentUpon>MetodosPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MetodosPago\MetodosPago.aspx.designer.cs">
+      <DependentUpon>MetodosPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="MisCompras\Compras\DBMisCompras.cs" />
     <Compile Include="MisCompras\Compras\EAdicionalesMisCompras.cs" />
