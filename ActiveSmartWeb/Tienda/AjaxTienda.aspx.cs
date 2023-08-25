@@ -281,7 +281,7 @@ namespace ActiveSmartWeb.Tienda
 
                 switch (Request.Form["option"])
                 {
-
+                    
                     //Opcion del switch para cargar los adicionales.
                     case "CargarAdicionales":
                         //Eliminamos el contenido de los diccionarios
@@ -303,9 +303,9 @@ namespace ActiveSmartWeb.Tienda
                             );
                         }
 
-                        Response.Clear();
+                      
                         Response.Write(JsonConvert.SerializeObject(ePaqueteAdicionales, Formatting.Indented));
-                        Response.End();
+                 
                         break;
 
                     //Obtiene la informacion actual del plan del usuario
@@ -338,24 +338,24 @@ namespace ActiveSmartWeb.Tienda
 
                         }
 
-                        Response.Clear();
+                       
                         Response.Write(JsonConvert.SerializeObject(_adicionalcontratadomostrar, Formatting.Indented));
-                        Response.End();
+                      
 
                         break;
 
                     //Obtiene la frecuencia de pago del cliente
                     case "obtenerFrecuenciaPago":
-                        Response.Clear();
+                        
                         Response.Write(nTienda.obtenerFrecuenciaPagoPorIdEpresa(Convert.ToInt32(Request.Form["IdEmpresa"])));
-                        Response.End();
+                        
                         break;
 
                     //Opcion del switch para cargar los adicionales seleccionados por el usuario.
                     case "CargarAdicionalescontratados":
-                        Response.Clear();
+                      
                         Response.Write(JsonConvert.SerializeObject(_adicionalcontratadomostrar, Formatting.Indented));
-                        Response.End();
+                        
                         break;
 
                     //Opcion del switch para cargar el total del contrato
@@ -375,9 +375,9 @@ namespace ActiveSmartWeb.Tienda
                             suma = _adicionalcontratadomostrar.Sum(x => x.Value.CostoMensual);
                         }
 
-                        Response.Clear();
+                      
                         Response.Write(suma);
-                        Response.End();
+                       
                         break;
 
                     //Opcion del switch para cargar el plan para utilizar el costo y el nombre en la pantalla.
@@ -394,9 +394,9 @@ namespace ActiveSmartWeb.Tienda
                         //Obtenemos la informacion del plan
                         var infoPlanes = nUsuarioEmpresa.CargarPlan(Convert.ToInt32(codigoplan));
 
-                        Response.Clear();
+                        
                         Response.Write(JsonConvert.SerializeObject(infoPlanes, Formatting.Indented));
-                        Response.End();
+                        
 
                         break;
 
@@ -587,9 +587,9 @@ namespace ActiveSmartWeb.Tienda
 
                     case "RealizarPago":
 
-                        Response.Clear();
+                        
                         Response.Write(RealizarPago(Convert.ToInt32(Request.Form["IdPerfilUsuario"])));
-                        Response.End();
+                        
 
                         break;
                 }
