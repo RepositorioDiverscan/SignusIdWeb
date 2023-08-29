@@ -10,18 +10,19 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
     public class NMetodosPago
     {
         DBMetodosPago _dbMetodosPago = new DBMetodosPago();
-        public void ObtenerPerfilesPago()
+        public List<EPerfilPago> ObtenerPerfilesPago(int idEmpresa)
         {
             try
             {
-                
 
-                
+                return _dbMetodosPago.ObtenerPerfilesPago(idEmpresa);
+
+
             }
             catch (Exception ex)
             {
                 CLErrores.EscribirError(ex.Message, ex.StackTrace);
-                
+                return null;
             }
         }
 

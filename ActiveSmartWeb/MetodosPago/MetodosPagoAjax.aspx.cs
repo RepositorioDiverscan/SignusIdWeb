@@ -30,6 +30,11 @@ namespace ActiveSmartWeb.MetodosPago
             //Obtiene el id del perfil de usuario de Authorize
             string perfilUsuario = _nMetodosPago.ObtenerPerfilUsuario(idEmpresa);
 
+            //Obtiene los perfiles de pago del usuario de BD
+            List<EPerfilPago> perfilesPago = _nMetodosPago.ObtenerPerfilesPago(idEmpresa);
+
+            
+
             return perfilUsuario;
 
         }

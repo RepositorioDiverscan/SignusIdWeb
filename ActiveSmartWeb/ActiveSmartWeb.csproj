@@ -1617,6 +1617,7 @@
       <DependentUpon>MenuPrincipalAjax.aspx</DependentUpon>
     </Compile>
     <Compile Include="MetodosPago\Entidades\DBMetodosPago.cs" />
+    <Compile Include="MetodosPago\Entidades\EPerfilPago.cs" />
     <Compile Include="MetodosPago\Entidades\NMetodosPago.cs" />
     <Compile Include="MetodosPago\MetodosPago.aspx.cs">
       <DependentUpon>MetodosPago.aspx</DependentUpon>

@@ -21,5 +21,29 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
             return db.GetParameterValue(dbCommand, "@Respuesta").ToString();
         }
 
+        public List<EPerfilPago> ObtenerPerfilesPago(int idEmpresa)
+        {
+            List<EPerfilPago> ePerfilPago = new List<EPerfilPago>();
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("SP_ObtenerPerfilPagoAuthorize");
+            db.AddInParameter(dbCommand, "@IdEmpresa", DbType.String, idEmpresa);
+            dbCommand.CommandTimeout = 3600;
+
+            using (var reader = db.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+
+                    ePerfilPago.Add(new EPerfilPago(
+                        Convert.ToInt32(reader["idPerfilPagoAuthorize"].ToString()),
+                        reader["idPaymentProfile"].ToString(),
+                        Convert.ToBoolean(reader["Predeterminado"])
+
+                    ));
+                }
+            }
+            return ePerfilPago;
+        }
+
     }
 }
