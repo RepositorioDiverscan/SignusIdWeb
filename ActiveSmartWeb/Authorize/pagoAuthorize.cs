@@ -1,4 +1,5 @@
-﻿using ActiveSmartWeb.RegistroUsuarioEmpresas.Registro;
+﻿using ActiveSmartWeb.MetodosPago.Entidades;
+using ActiveSmartWeb.RegistroUsuarioEmpresas.Registro;
 using AuthorizeNet.Api.Contracts.V1;
 using AuthorizeNet.Api.Controllers;
 using AuthorizeNet.Api.Controllers.Bases;
@@ -9,7 +10,7 @@ using System.Web;
 
 namespace ActiveSmartWeb.Authorize
 {
-    public abstract class pagoAuthorize
+    public abstract class PagoAuthorize
     {
         //Credenciales de prueba
         //private static string ApiLoginID = "5dP8ESWyp97";
@@ -109,7 +110,7 @@ namespace ActiveSmartWeb.Authorize
             return resultado;
         }
 
-
+        //Obtiene el estatus actual de una suscripcion
         public static string getStatus(string subscriptionId)
         {
 
@@ -228,6 +229,62 @@ namespace ActiveSmartWeb.Authorize
             }
 
         }
+
+
+        public static EMetodoPago ObtenerInformacionPerfilPago(string ApiLoginID, string ApiTransactionKey, string customerProfileId, EPerfilPago customerPaymentProfileId)
+        {
+
+
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
+            // define the merchant information (authentication / transaction id)
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
+            {
+                name = ApiLoginID,
+                ItemElementName = ItemChoiceType.transactionKey,
+                Item = ApiTransactionKey,
+            };
+
+            var request = new getCustomerPaymentProfileRequest();
+            request.customerProfileId = customerProfileId;
+            request.customerPaymentProfileId = customerPaymentProfileId.IdPerfilPago;
+
+            // Set this optional property to true to return an unmasked expiration date
+            request.unmaskExpirationDateSpecified = true;
+            request.unmaskExpirationDate = true;
+
+
+            // instantiate the controller that will call the service
+            var controller = new getCustomerPaymentProfileController(request);
+            controller.Execute();
+
+            // get the response from the service (errors contained if any)
+            var response = controller.GetApiResponse();
+
+            if (response != null && response.messages.resultCode == messageTypeEnum.Ok)
+            {
+ 
+                if (response.paymentProfile.payment.Item is creditCardMaskedType)
+                {
+
+                    if (response.paymentProfile.subscriptionIds != null && response.paymentProfile.subscriptionIds.Length > 0)
+                    {
+                        return new EMetodoPago(
+                            customerPaymentProfileId.Id,
+                            customerPaymentProfileId.IdPerfilPago,
+                            (response.paymentProfile.payment.Item as creditCardMaskedType).cardNumber,
+                            (response.paymentProfile.payment.Item as creditCardMaskedType).expirationDate,
+                            (response.paymentProfile.payment.Item as creditCardMaskedType).cardType,
+                            response.paymentProfile.billTo.firstName,
+                            response.paymentProfile.billTo.lastName,
+                            customerPaymentProfileId.Predeterminado
+                            );
+                    }
+                }
+            }
+
+            return null;
+        }
+
 
     }
 }

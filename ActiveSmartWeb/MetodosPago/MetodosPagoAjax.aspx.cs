@@ -1,4 +1,5 @@
-﻿using ActiveSmartWeb.MetodosPago.Entidades;
+﻿using ActiveSmartWeb.Authorize;
+using ActiveSmartWeb.MetodosPago.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace ActiveSmartWeb.MetodosPago
     public partial class MetodosPagoAjax : System.Web.UI.Page
     {
         NMetodosPago _nMetodosPago = new NMetodosPago();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             switch (Request.Form["Opcion"])
@@ -36,6 +38,12 @@ namespace ActiveSmartWeb.MetodosPago
             
 
             return perfilUsuario;
+
+        }
+
+
+        private void ObtenerInformacionPerfilesPago(List<EPerfilPago> perfilesPago)
+        {
 
         }
 

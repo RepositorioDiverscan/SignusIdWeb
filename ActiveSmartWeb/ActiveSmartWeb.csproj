@@ -1219,7 +1219,7 @@
     <Compile Include="AjaxPrincipalMaster\Entidades\EIdiomaMasterEspanol.cs" />
     <Compile Include="AjaxPrincipalMaster\Entidades\EIdiomaMasterGeneral.cs" />
     <Compile Include="AjaxPrincipalMaster\Entidades\EIdiomaMasterIngles.cs" />
-    <Compile Include="Authorize\pagoAuthorize.cs" />
+    <Compile Include="Authorize\PagoAuthorize.cs" />
     <Compile Include="Basic.aspx.cs">
       <DependentUpon>Basic.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1617,6 +1617,7 @@
       <DependentUpon>MenuPrincipalAjax.aspx</DependentUpon>
     </Compile>
     <Compile Include="MetodosPago\Entidades\DBMetodosPago.cs" />
+    <Compile Include="MetodosPago\Entidades\EMetodoPago.cs" />
     <Compile Include="MetodosPago\Entidades\EPerfilPago.cs" />
     <Compile Include="MetodosPago\Entidades\NMetodosPago.cs" />
     <Compile Include="MetodosPago\MetodosPago.aspx.cs">
