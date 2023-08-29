@@ -24,7 +24,7 @@
                     <p class="paragraph-basic centrada">Complete su solución adquiriendo los dispositivos necesarios para su inventario de Activos, compatibilidad absoluta con Dispositivos Unitech, Datalogic y Sato que han sido probados para sacar el mayor provecho al uso de SignusID en todas sus versiones.</p>
                   </div>
                   <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048caf-8230d09e" class="div-icon-basic"><img sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 16vw" srcset="images/banner-productos-signusid-basic-p-500.jpg 500w, images/banner-productos-signusid-basic-p-800.jpg 800w, images/banner-productos-signusid-basic-p-1080.jpg 1080w, images/banner-productos-signusid-basic.jpg 1080w" src="images/banner-productos-signusid-basic.jpg" loading="lazy" alt="">
-                    <div class="text-block-icon-basic">Computadora<br>móviles TC21</div>
+                    <div class="text-block-icon-basic">Computadora<br>móvil EA630</div>
                   </div>
                   <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048cb3-8230d09e" class="div-icon-basic"><img sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 16vw" srcset="images/etiquetas-codigos-de-barra-signusid-basic-p-500.jpg 500w, images/etiquetas-codigos-de-barra-signusid-basic-p-800.jpg 800w, images/etiquetas-codigos-de-barra-signusid-basic-p-1080.jpg 1080w, images/etiquetas-codigos-de-barra-signusid-basic.jpg 1080w" src="images/etiquetas-codigos-de-barra-signusid-basic.jpg" loading="lazy" alt="">
                     <div class="text-block-icon-basic">Etiquetas Personalizadas<br>Código de Barras</div>
@@ -44,12 +44,12 @@
                   <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048cc7-8230d09e" class="div-block-196">
                     <div>
                       <img width="1163" sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 15vw" src="images/paquete-de-hardware-signusid-basic.jpg" loading="lazy" alt="" class="mov-img">
-                      <p class="paragraph-basic">Aproveche el paquete de Hardware A (Hand Held, Impresora, Paquete de 500 Etiquetas Código de barras y uso anual de aplicación de SignusID Basic).<br><br>$940.00 (sin costo de envío)</p>
+                      <p class="paragraph-basic">Aproveche el paquete de Hardware A (Hand Held PDA UNITECH EA520 con accesorios, Impresora SATO WS4, Paquete de 500 Etiquetas para Códigos de Barra y Cinta para activos).<br><br>$1.160,00 FOB Miami - No incluye costos de envío.</p>
                     </div>
                   </div>
                   <div id="w-node-_41094853-7546-c027-19a8-21b7171c6c16-8230d09e">
                     <img width="795" sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 15vw" src="images/paquete-de-hardware-signusid-basic-b.jpg" loading="lazy"  alt="" class="mov-img">
-                    <p id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048ccd-8230d09e" class="paragraph-basic">Aproveche el paquete de Hardware (Scanner, Impresora, Paquete de 500 Etiquetas Codigo de barras y uso anual de aplicación de SignusID Basic).<br><br>$820.00 (sin costo de envío)</p>
+                    <p id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048ccd-8230d09e" class="paragraph-basic">Aproveche el paquete de Hardware B (Escáner de código de barras UNITECH Bluetooth, Impresora SATO WS4, Paquete de 500 Etiquetas para Códigos de Barra y Cinta para activos).<br><br>$690,00 FOB Miami - No incluye costos de envío.</p>
                   </div>
                 </div>
               </div>
