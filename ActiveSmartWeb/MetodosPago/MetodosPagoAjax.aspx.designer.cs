@@ -11,7 +11,7 @@ namespace ActiveSmartWeb.MetodosPago
 {
 
 
-    public partial class MetodosPago
+    public partial class MetodosPagoAjax
     {
     }
 }
