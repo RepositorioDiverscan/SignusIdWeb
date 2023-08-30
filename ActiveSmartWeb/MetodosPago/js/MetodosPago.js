@@ -22,7 +22,7 @@ $(document).ready(function () {
 
 const MetodosPago = new Vue({
 
-    el: '#METODOS-DE-PAGO',
+    el: '#alertas',
 
     data: {
         //Variables a utilizar
@@ -61,6 +61,61 @@ const MetodosPago = new Vue({
 
             });
         },
+
+        ObtenerDatosRegistro: function () {
+
+            var self = this;
+            this.pais = $("#country5").countrySelect("getSelectedCountryData").name;
+
+            if (this.numerotarjeta != '' && this.numerotarjeta.length >= 16) {
+                if (this.fechaVencimiento != '') {
+                    if (this.codigo != '') {
+                        if (this.nombretitular != '') {
+                            if (this.apellidotitular != '') {
+                                if (this.pais != '') {
+                                    if (this.estado != '') {
+                                        if (this.ciudad != '') {
+                                            if (this.direccion != '') {
+                                                
+                                            } else {
+                                                alertas.error("Atención", "Por favor ingrese su dirección");
+                                                
+                                            }
+                                        } else {
+                                            alertas.error("Atención", "Por favor ingrese la ciudad");
+                                            
+                                        }
+                                    } else {
+                                        alertas.error("Atención", "Por favor ingrese el estado");
+                                        
+                                    }
+                                } else {
+                                    alertas.error("Atención", "Por favor seleccione el país");
+                                    
+                                }
+                            } else {
+                                alertas.error("Atención", "Por favor ingrese el apellido del titular de la tarjeta");
+                                
+                            }
+                        } else {
+                            alertas.error("Atención", "Por favor ingrese el nombre del titular de la tarjeta");
+                            
+                        }
+                    } else {
+                        alertas.error("Atención", "Por favor ingrese el código de la tarjeta");
+                        
+                    }
+                } else {
+                    alertas.error("Atención", "Por favor ingrese la fecha de vencimiento de la tarjeta");
+                    
+                }
+            } else {
+                alertas.error("Atención", "Por favor ingrese el número de la tarjeta");
+               
+            }
+
+        },
+
         MostrarPopUpAgregarTarjeta: function () {
             $("#popupAgregarTarjeta").css("display", "flex");
         },

@@ -2,7 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div id="METODOS-DE-PAGO" class="div-block-260" style="margin-top: 5%;">
+    <div id="alertas" class="div-block-260" style="margin-top: 5%;">
+
         <div class="div-block-261">
             <div id="w-node-_78e2992d-60a1-4eee-75ed-9b306bae5558-c75df771" class="div-block-280"></div>
             <div id="w-node-_2c6d322f-101d-bf16-78bb-defab30f3234-c75df771" class="div-block-263">
@@ -119,7 +120,7 @@
                     </div>
                     
                 </div>
-                <a href="#" class="btn-cerrar w-button">Guardar</a>
+                <a @click="ObtenerDatosRegistro()" href="#" class="btn-cerrar w-button">Guardar</a>
             </div>
         </div>
 
