@@ -61,11 +61,35 @@ namespace ActiveSmartWeb.MetodosPago
                 EMetodoPago metodoPago = PagoAuthorize.ObtenerInformacionPerfilPago(perfilUsuario, perfilPago);
                 if(metodoPago != null)
                 {
+                    metodoPago.Estado = ValidarExpiracionTarjeta(metodoPago.FechaExpiracion);
                     metodosPago.Add(metodoPago);
                 }
             }
 
             return metodosPago;
+        }
+
+        //Valida la fecha de expiracion de la tarjeta, si es valida retorna true, si esta vencida false 
+        private bool ValidarExpiracionTarjeta(string fechaExpiracionStr)
+        {
+            DateTime fechaExpiracion;
+            if (DateTime.TryParseExact(fechaExpiracionStr, "yyyy-MM", null, System.Globalization.DateTimeStyles.None, out fechaExpiracion))
+            {
+                DateTime fechaActual = DateTime.Now;
+
+                if (fechaExpiracion < fechaActual)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion

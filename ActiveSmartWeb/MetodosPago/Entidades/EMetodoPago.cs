@@ -16,6 +16,7 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
         string _nombreDuenno;
         string _apellidoDuenno;
         bool _predeterminado;
+        bool _estado;
 
         public EMetodoPago()
         {
@@ -41,6 +42,7 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
         public string NombreDuenno { get => _nombreDuenno; set => _nombreDuenno = value; }
         public string ApellidoDuenno { get => _apellidoDuenno; set => _apellidoDuenno = value; }
         public bool Predeterminado { get => _predeterminado; set => _predeterminado = value; }
+        public bool Estado { get => _estado; set => _estado = value; }
 
     }
 }
