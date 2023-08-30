@@ -10,9 +10,10 @@
                 <div class="div-block-262">
                     <div class="text-block-34">TARJETAS</div>
                     <div class="text-block-35">AGREGAR TARJETAS</div>
-                    <div class="div-block-268">
+                    <a href="#" class="div-block-268" @click="MostrarPopUpAgregarTarjeta()">
+
                         <img src="../images/icono_mas_activeID.svg" loading="lazy" alt="" class="image-70">
-                    </div>
+                    </a>
                 </div>
 
                 <%--Tarjeta--%>
@@ -22,8 +23,8 @@
                     <div class="div-block-265">
                         <div>{{metodo.NumeroTarjeta}}</div>
                         <div>{{metodo.NombreDuenno}} {{metodo.ApellidoDuenno}}</div>
-                        <div v-if="Estado" >{{metodo.FechaExpiracion}}</div>
-                        <div v-if="!Estado">Expiró {{metodo.FechaExpiracion}}</div>                  
+                        <div v-if="metodo.Estado" >{{metodo.FechaExpiracion}}</div>
+                        <div v-if="!metodo.Estado">Expiró {{metodo.FechaExpiracion}}</div>                  
                     </div>
                     <div class="div-block-266">
                         <h1 v-if="metodo.Predeterminado" class="heading-51">PREDETERMINADO</h1>
@@ -69,9 +70,65 @@
             </div>
             <div id="w-node-e7498a71-99bf-2046-a623-8b785ce502f0-c75df771" class="div-block-279"></div>
         </div>
+
+
+         <%--Modal agregar metodo de pago--%>
+        <div class="background-pop-up background-pago" id="popupAgregarTarjeta">
+            <div class="popup-comercial add-pago-pp">
+                <div class="header-modal-ai">
+                    <h4 class="texto-h-ai">Agregar método de pago</h4>
+                    <a href="#" @click="OcultarPopUpAgregarTarjeta()" class="div-icon-exit-ai">
+                        <img src="../images/icono_eliminar_acces-o-01.svg" loading="lazy" alt="" class="img-salir-ai"></a>
+                </div>
+                <div class="form-block-payment-ai form-pp-pago w-form">
+                    <div id="email-form" name="email-form" data-name="Email Form" method="get" class="form-pay-ai w-clearfix" data-wf-page-id="62cdf3fe3f0aa172c75df771" data-wf-element-id="82c6117e-1aa9-e6b9-4ce7-9308970c13e5">
+                        <label for="n-mero-de-tarjeta-3" class="lbl-pago-info-ai">Número de la tarjeta</label>
+                        <img src="../images/tarjeta.svg" loading="lazy" width="28" alt="" class="icon-tarjeta-pago-ai">
+                        <input type="text" class="input-info-pago-ai w-input" maxlength="256"
+                             v-model="numerotarjeta" onkeypress="return event.charCode>=48 && event.charCode<=57" @keyup="validardigitosnumerotarjeta()"
+                            name="num-tarjeta" data-name="num tarjeta" placeholder="Ingrese el número de la tarjeta" id="num-tarjeta" required="">
+                        <div class="data-payment-ai month-ai w-clearfix">
+                            <label for="fecha" class="lbl-pago-info-ai">Fecha de vencimiento</label>
+                            <input v-model="fechaVencimiento" onkeypress="return event.charCode>=48 && event.charCode<=57" @keyup="validardigitosfechavencimiento()" type="text" class="input-info-pago-ai w-input" maxlength="256" name="fecha" data-name="fecha" placeholder="MM / AA" id="fecha" required="">
+                        </div>
+                        <div class="data-payment-ai w-clearfix">
+                            <label for="Cvv-3" class="lbl-pago-info-ai">CVV</label>
+                            <input  v-model="codigo" type="text" class="input-info-pago-ai w-input" maxlength="256" name="Cvv" data-name="Cvv" placeholder="CVV" id="Cvv-3" required="">
+                        </div>
+                        <label for="nombre" class="lbl-pago-info-ai">Nombre del tituar</label>
+                        <input
+                            v-model="nombretitular" type="text" class="input-info-pago-ai txt-titular w-input" maxlength="256" name="nombre" data-name="nombre" placeholder="Ingrese el nombre del titular" id="nombre" required="">
+                        <div>
+                            <div>Apellido del titular </div>
+                            <input v-model="apellidotitular" type="text" class="text-field-18 w-input" maxlength="256" name="field-7" data-name="Field 7" placeholder="Example Text" id="field-7" required="">
+                        </div>
+                        <label for="Paises-5" class="lbl-pago-info-ai">País/Región</label>
+                        <input id="Paises-5" name="Paises" data-name="Paises" required="" class="select-info-pago-ai w-select">
+                        <div class="data-payment-ai state-box-ai w-clearfix">
+                            <label for="Estado-3" class="lbl-pago-info-ai">Estado</label>
+                            <input v-model="estado" type="text" class="input-info-pago-ai w-input" maxlength="256" name="Estado" data-name="Estado" placeholder="Ingrese el estado" id="Estado-3" required="">
+                        </div>
+                        <div class="data-payment-ai w-clearfix">
+                            <label for="Ciudad-3" class="lbl-pago-info-ai">Ciudad</label>
+                            <input v-model="ciudad" type="text" class="input-info-pago-ai w-input" maxlength="256" name="Ciudad" data-name="Ciudad" placeholder="Ingrese la iudad" id="Ciudad-3" required="">
+                        </div>
+                        <label
+                            for="direcci-n-3" class="lbl-pago-info-ai lbl-direcc-ai">
+                            Dirección</label>
+                        <textarea v-model="direccion" placeholder="Ingrese la dirección" maxlength="5000" id="direcci-n-3" name="direcci-n" data-name="dirección" required="" class="text-area-direcci-n-ai w-input"></textarea>
+                    </div>
+                    
+                </div>
+                <a href="#" class="btn-cerrar w-button">Guardar</a>
+            </div>
+        </div>
+
     </div>
 
+
+
     <script src="../Recursos/JQuery/jquery-3.5.1.min.dc5e7f18c8.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/country-select-js/2.1.1/js/countrySelect.min.js"></script>
     <script src="../Recursos/Vue/vue.js"></script>
     <script src="js/MetodosPago.js"></script>
 
