@@ -231,7 +231,7 @@ namespace ActiveSmartWeb.Authorize
         }
 
 
-        public static EMetodoPago ObtenerInformacionPerfilPago(string ApiLoginID, string ApiTransactionKey, string customerProfileId, EPerfilPago customerPaymentProfileId)
+        public static EMetodoPago ObtenerInformacionPerfilPago(string customerProfileId, EPerfilPago customerPaymentProfileId)
         {
 
 

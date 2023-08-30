@@ -6,7 +6,8 @@ const MetodosPago = new Vue({
 
     data: {
         //Variables a utilizar
-        
+        perfilUsuario: '',
+        metodosPago: []
     },
 
     mounted: function () {
@@ -17,11 +18,18 @@ const MetodosPago = new Vue({
     methods: {
 
         ObtenerMetodosPago: function () {
+            var self = this;
+            var usuario = JSON.parse(sessionStorage.getItem("DUser"));
+
             $.post(urlAjax, {
                 Opcion: 'CargarMetodos',
-                IdEmpresa: '123',
+                IdEmpresa: usuario[0].IdPerfilEmpresa,
             }, function (data, error) {
-                //self.listaidioma = JSON.parse(data);
+                data = JSON.parse(data);
+
+                self.perfilUsuario = data.PerfilUsuario;
+                self.metodosPago = data.MetodosPago
+
             });
         },
 
