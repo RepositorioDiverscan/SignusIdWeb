@@ -68,7 +68,7 @@ const MetodosPago = new Vue({
             this.pais = $("#country5").countrySelect("getSelectedCountryData").name;
 
             if (this.numerotarjeta != '' && this.numerotarjeta.length >= 16) {
-                if (this.fechaVencimiento != '') {
+                if (this.fechaVencimiento != '' && this.fechaVencimiento.length >= 5) {
                     if (this.codigo != '') {
                         if (this.nombretitular != '') {
                             if (this.apellidotitular != '') {
