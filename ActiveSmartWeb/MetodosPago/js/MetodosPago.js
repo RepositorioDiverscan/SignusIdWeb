@@ -9,10 +9,10 @@ $(document).ready(function () {
 
         // Verifica si el evento se originó dentro o fuera del div
         if (!popupAgregarTarjeta.is(event.target) && popupAgregarTarjeta.closest(event.target).length === 0) {
-            // Si se hace clic fuera del div, ejecuta este código
+            
 
         } else {
-            // Si se hace clic dentro del div, ejecuta este código
+            // Si se hace clic fuera del div, ejecuta este código
             $("#popupAgregarTarjeta").css("display", "none");
         }
 
