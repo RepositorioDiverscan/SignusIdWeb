@@ -15,7 +15,7 @@
                     </div>
                 </div>
 
-                <%--Tarjeta predeterminada--%>
+                <%--Tarjeta--%>
                 <div v-for="(metodo,index) in metodosPago" :key="index" class="div-block-264">
                     <img v-if="metodo.Tipo == 'Visa'" src="../images/visa.svg" loading="lazy" alt="" class="image-68">
                     <img v-if="metodo.Tipo == 'MasterCard'" src="../images/MasterCard_Logo.svg.png" loading="lazy" sizes="(max-width: 479px) 33.4765625px, (max-width: 767px) 7vw, (max-width: 991px) 5vw, 4vw" srcset="../images/MasterCard_Logo.svg-p-500.png 500w, ../images/MasterCard_Logo.svg-p-800.png 800w, ../images/MasterCard_Logo.svg-p-1080.png 1080w, ../images/MasterCard_Logo.svg-p-1600.png 1600w, ../images/MasterCard_Logo.svg-p-2000.png 2000w, ../images/MasterCard_Logo.svg.png 2560w" alt="" class="image-68">
@@ -42,7 +42,7 @@
                 </div>
 
 
-                <%--Tarjetas--%>
+               
                 <%--<div class="div-block-264">
                     <img src="../images/MasterCard_Logo.svg.png" loading="lazy" sizes="(max-width: 479px) 33.4765625px, (max-width: 767px) 7vw, (max-width: 991px) 5vw, 4vw" srcset="../images/MasterCard_Logo.svg-p-500.png 500w, ../images/MasterCard_Logo.svg-p-800.png 800w, ../images/MasterCard_Logo.svg-p-1080.png 1080w, ../images/MasterCard_Logo.svg-p-1600.png 1600w, ../images/MasterCard_Logo.svg-p-2000.png 2000w, ../images/MasterCard_Logo.svg.png 2560w" alt="" class="image-68">
                     <div class="div-block-265">
