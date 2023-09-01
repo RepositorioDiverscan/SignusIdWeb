@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MetodosPagoAjax.aspx.cs" Inherits="ActiveSmartWeb.MetodosPago.MetodosPagoAjax" %>

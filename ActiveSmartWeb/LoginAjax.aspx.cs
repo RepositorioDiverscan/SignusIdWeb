@@ -20,7 +20,7 @@ namespace ActiveSmartWeb.Login
             
             if(subscripcion != "")
             {
-                string estado = pagoAuthorize.getStatus(subscripcion);
+                string estado = PagoAuthorize.getStatus(subscripcion);
                 if (estado != "active")
                 {
                     return "Su subscripción se encuentra suspendida";

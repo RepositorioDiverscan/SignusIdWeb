@@ -6,7 +6,7 @@
 <html data-wf-page="62a75c9546a08225ea206ea8" data-wf-site="606dfb37871f33efa37244d4">
 <head>
   <meta charset="utf-8">
-  <title>Checkout version2 test</title>
+  <title>Signus ID</title>
   <meta content="Checkout version2 test" property="og:title">
   <meta content="Checkout version2 test" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">

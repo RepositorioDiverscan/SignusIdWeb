@@ -519,6 +519,12 @@
     <Content Include="images\mailing-smart-costa-presentacion-01-p-800.png" />
     <Content Include="images\mailing-smart-costa-presentacion-01.png" />
     <Content Include="images\mastercard-4.svg" />
+    <Content Include="images\MasterCard_Logo.svg-p-1080.png" />
+    <Content Include="images\MasterCard_Logo.svg-p-1600.png" />
+    <Content Include="images\MasterCard_Logo.svg-p-2000.png" />
+    <Content Include="images\MasterCard_Logo.svg-p-500.png" />
+    <Content Include="images\MasterCard_Logo.svg-p-800.png" />
+    <Content Include="images\MasterCard_Logo.svg.png" />
     <Content Include="images\Mesa-de-trabajo-1-p-500.png" />
     <Content Include="images\Mesa-de-trabajo-1-p-800.png" />
     <Content Include="images\Mesa-de-trabajo-1.png" />
@@ -638,6 +644,8 @@
     <Content Include="images\productos-signusid-tag.jpg" />
     <Content Include="images\Realistic-Laptop-WIth-Smartphone-p-500.png" />
     <Content Include="images\Realistic-Laptop-WIth-Smartphone.png" />
+    <Content Include="images\REGISTRE-p-500.png" />
+    <Content Include="images\REGISTRE.png" />
     <Content Include="images\Registro_Icono.gif" />
     <Content Include="images\Reportes_iconos.gif" />
     <Content Include="images\Reporte_activos_iconos.gif" />
@@ -749,6 +757,9 @@
     <Content Include="images\visa - Copia.svg" />
     <Content Include="images\visa.svg" />
     <Content Include="images\webclip.png" />
+    <Content Include="images\WEBINAR-NOTICIAS--p-500.png" />
+    <Content Include="images\WEBINAR-NOTICIAS--p-800.png" />
+    <Content Include="images\WEBINAR-NOTICIAS-.png" />
     <Content Include="images\withoutPhoto-p-130x130q80.jpeg" />
     <Content Include="images\withoutPhoto.jpg" />
     <Content Include="images\x - Copia.png" />
@@ -794,6 +805,9 @@
     <Content Include="Menu\js\Prueba.js" />
     <Content Include="Menu\MenuPrincipal.aspx" />
     <Content Include="Menu\MenuPrincipalAjax.aspx" />
+    <Content Include="MetodosPago\js\MetodosPago.js" />
+    <Content Include="MetodosPago\MetodosPago.aspx" />
+    <Content Include="MetodosPago\MetodosPagoAjax.aspx" />
     <Content Include="MisCompras\IdiomaMisComprasAjax.aspx" />
     <Content Include="MisCompras\js\MisCompras.js" />
     <Content Include="MisCompras\MisCompras.aspx" />
@@ -1205,7 +1219,7 @@
     <Compile Include="AjaxPrincipalMaster\Entidades\EIdiomaMasterEspanol.cs" />
     <Compile Include="AjaxPrincipalMaster\Entidades\EIdiomaMasterGeneral.cs" />
     <Compile Include="AjaxPrincipalMaster\Entidades\EIdiomaMasterIngles.cs" />
-    <Compile Include="Authorize\pagoAuthorize.cs" />
+    <Compile Include="Authorize\PagoAuthorize.cs" />
     <Compile Include="Basic.aspx.cs">
       <DependentUpon>Basic.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1601,6 +1615,24 @@
     </Compile>
     <Compile Include="Menu\MenuPrincipalAjax.aspx.designer.cs">
       <DependentUpon>MenuPrincipalAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MetodosPago\Entidades\DBMetodosPago.cs" />
+    <Compile Include="MetodosPago\Entidades\EMetodoPago.cs" />
+    <Compile Include="MetodosPago\Entidades\EPerfilPago.cs" />
+    <Compile Include="MetodosPago\Entidades\NMetodosPago.cs" />
+    <Compile Include="MetodosPago\MetodosPago.aspx.cs">
+      <DependentUpon>MetodosPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MetodosPago\MetodosPago.aspx.designer.cs">
+      <DependentUpon>MetodosPago.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MetodosPago\MetodosPagoAjax.aspx.cs">
+      <DependentUpon>MetodosPagoAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MetodosPago\MetodosPagoAjax.aspx.designer.cs">
+      <DependentUpon>MetodosPagoAjax.aspx</DependentUpon>
     </Compile>
     <Compile Include="MisCompras\Compras\DBMisCompras.cs" />
     <Compile Include="MisCompras\Compras\EAdicionalesMisCompras.cs" />
