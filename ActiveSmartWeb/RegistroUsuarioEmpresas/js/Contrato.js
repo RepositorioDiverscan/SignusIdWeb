@@ -42,7 +42,7 @@ const contrato = new Vue({
         this.CargarAdicionales();
         this.CargarPrecio();
         this.CargarInputPaises();
-        this.CargarAdicionalesContratado();
+        //this.CargarAdicionalesContratado();
         this.frecuenciaPago = this.obtenerFrecuencia();
     },
     watch: {
@@ -203,7 +203,7 @@ const contrato = new Vue({
         },
 
         //Metodo para cargar el total de la compra.
-        CargarTotal: function () {
+        CargarTotal: function () {           
             var self = this;
             $.post(urlAjax, {
                 option: 'CargarTotal',
@@ -252,7 +252,7 @@ const contrato = new Vue({
                     //}
                     
                 }
-                
+                self.CargarAdicionalesContratado();
                 
             });
         },

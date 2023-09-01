@@ -274,9 +274,15 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                     //Opcion del switch para cargar el total del contrato
                     case "CargarTotal":
-                        
+
                         //Costo del plan seleccionado.
-                        var precioplan = Convert.ToDecimal(Request.Form["precioplan"]);
+                        var precioplan = Request.Form["precioplan"];
+                        var culture = new CultureInfo("en-US"); // Usar cultura USA para evitar que la conversion falle
+                        var precio = Convert.ToDecimal(precioplan, culture);
+        
+                        
+                        
+                        //var precioplan = 14.99M;
 
                         //Frecuencia de pago
                         var frecuenciaPago = Convert.ToInt32(Request.Form["frecuenciaPago"]);
@@ -294,7 +300,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         
 
                         //Suma del costo del plan y los adicionales.
-                        suma = suma + precioplan;
+                        suma = suma + precio;
 
                         Response.Write(suma);
 
@@ -555,10 +561,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         short frecuenciaDePago = (short)(frecuencia == "1" ? 12 : 1);
 
 
-                        EResultadoSuscripcion resultadoSuscripcion = pagoAuthorize.crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular, apellidotitular);
+                        //EResultadoSuscripcion resultadoSuscripcion = pagoAuthorize.crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular, apellidotitular);
 
                         //Simula una suscripcion para hacer pruebas
-                        //EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
+                        EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
 
                         if (resultadoSuscripcion.Resultado == "Success")
                         {
