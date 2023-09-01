@@ -12,11 +12,16 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
         string _idPerfilPago;
         string _numeroTarjeta;
         string _fechaExpiracion;
+        string _codigoCVV;
+        string _pais;
+        string _estado;
+        string _ciudad;
+        string _direccion;
         string _tipo;
         string _nombreDuenno;
         string _apellidoDuenno;
         bool _predeterminado;
-        bool _estado;
+        bool _valido;
 
         public EMetodoPago()
         {
@@ -34,6 +39,19 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
             _predeterminado = predeterminado;
         }
 
+        public EMetodoPago(string numeroTarjeta, string fechaExpiracion, string codigoCVV, string pais, string estado, string ciudad, string direccion, string nombreDuenno, string apellidoDuenno)
+        {
+            _numeroTarjeta = numeroTarjeta;
+            _fechaExpiracion = fechaExpiracion;
+            _codigoCVV = codigoCVV;
+            _pais = pais;
+            _estado = estado;
+            _ciudad = ciudad;
+            _direccion = direccion;
+            _nombreDuenno = nombreDuenno;
+            _apellidoDuenno = apellidoDuenno;
+        }
+
         public int Id { get => _id; set => _id = value; }
         public string IdPerfilPago { get => _idPerfilPago; set => _idPerfilPago = value; }
         public string NumeroTarjeta { get => _numeroTarjeta; set => _numeroTarjeta = value; }
@@ -41,8 +59,13 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
         public string Tipo { get => _tipo; set => _tipo = value; }
         public string NombreDuenno { get => _nombreDuenno; set => _nombreDuenno = value; }
         public string ApellidoDuenno { get => _apellidoDuenno; set => _apellidoDuenno = value; }
+        public string CodigoCVV { get => _codigoCVV; set => _codigoCVV = value; }
+        public string Pais { get => _pais; set => _pais = value; }
+        public string Estado { get => _estado; set => _estado = value; }
+        public string Ciudad { get => _ciudad; set => _ciudad = value; }
+        public string Direccion { get => _direccion; set => _direccion = value; }
         public bool Predeterminado { get => _predeterminado; set => _predeterminado = value; }
-        public bool Estado { get => _estado; set => _estado = value; }
+        public bool Valido { get => _valido; set => _valido = value; }
 
     }
 }

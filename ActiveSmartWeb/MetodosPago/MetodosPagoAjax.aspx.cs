@@ -1,6 +1,5 @@
 ﻿using ActiveSmartWeb.Authorize;
 using ActiveSmartWeb.MetodosPago.Entidades;
-using ActiveSmartWeb.RegistroUsuarioEmpresas.Registro;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,6 +21,11 @@ namespace ActiveSmartWeb.MetodosPago
                 case "CargarMetodos":
                     ObtenerMetodosPago();
                     break;
+
+                case "AgregarMetodoPago":
+                    AgregarMetodoPago();
+                    break;
+
             }
         }
 
@@ -61,7 +65,7 @@ namespace ActiveSmartWeb.MetodosPago
                 EMetodoPago metodoPago = PagoAuthorize.ObtenerInformacionPerfilPago(perfilUsuario, perfilPago);
                 if(metodoPago != null)
                 {
-                    metodoPago.Estado = ValidarExpiracionTarjeta(metodoPago.FechaExpiracion);
+                    metodoPago.Valido = ValidarExpiracionTarjeta(metodoPago.FechaExpiracion);
                     metodosPago.Add(metodoPago);
                 }
             }
@@ -90,6 +94,26 @@ namespace ActiveSmartWeb.MetodosPago
             {
                 return false;
             }
+        }
+
+        private void AgregarMetodoPago()
+        {
+            string perfilUsuario = Request.Form["PerfilUsuario"];
+
+            EMetodoPago nuevoMetodo = new EMetodoPago(
+                Request.Form["Numerotarjeta"],
+                Request.Form["FechaVencimiento"],              
+                Request.Form["Codigo"],              
+                Request.Form["Pais"],              
+                Request.Form["Estado"],              
+                Request.Form["Ciudad"],              
+                Request.Form["Direccion"],              
+                Request.Form["Nombretitular"],              
+                Request.Form["Apellidotitular"]              
+                );
+
+
+
         }
 
         #endregion

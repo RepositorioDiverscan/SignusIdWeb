@@ -116,6 +116,33 @@ const MetodosPago = new Vue({
 
         },
 
+        AgregarMetodoPago: function () {
+            var self = this;
+            
+            
+            $.post(urlCarrito, {
+                option: 'AgregarMetodoPago',
+                PerfilUsuario: self.perfilUsuario,
+                Numerotarjeta: self.numerotarjeta,
+                FechaVencimiento: self.fechaVencimiento,
+                Codigo: self.codigo,
+                Nombretitular: self.nombretitular,
+                Apellidotitular: self.apellidotitular,
+                Direccion: self.direccion,
+                Estado: self.estado,
+                Ciudad: self.ciudad,
+                Pais: self.pais
+
+            }, function (data, error) {
+                if (data == 'Transacción realizada correctamente') {
+                    
+                } else {
+                    
+                }
+                
+            });
+        },
+
         MostrarPopUpAgregarTarjeta: function () {
             $("#popupAgregarTarjeta").css("display", "flex");
         },

@@ -39,5 +39,19 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
             }
         }
 
+        public string AgregarMetodoPago(string idPerfilPago, string perfilUsuario)
+        {
+            try
+            {
+                _dbMetodosPago.AgregarMetodoPago(idPerfilPago, perfilUsuario);
+                return "Exito";
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return null;
+            }
+        }
+
     }
 }

@@ -21,6 +21,18 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
             return db.GetParameterValue(dbCommand, "@Respuesta").ToString();
         }
 
+        public void AgregarMetodoPago(string idPerfilPago, string perfilUsuario)
+        {
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("SP_InsertarPerfilPago");
+            db.AddInParameter(dbCommand, "@IdPerfilPago", DbType.String, idPerfilPago);
+            db.AddInParameter(dbCommand, "@IdPerfilAuthorize", DbType.String, perfilUsuario);
+            
+            dbCommand.CommandTimeout = 3600;
+            db.ExecuteNonQuery(dbCommand);
+           
+        }
+
         public List<EPerfilPago> ObtenerPerfilesPago(int idEmpresa)
         {
             List<EPerfilPago> ePerfilPago = new List<EPerfilPago>();
