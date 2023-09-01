@@ -167,10 +167,12 @@ const Empleados = new Vue({
                         self.IdEmpleadoIA = 0;
                         alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.InsertarCorrecto);
                         self.CargarEmpleadosEstado();
+                        self.LimpiarCampos();
                     } else if (respuesta == "Actualizado") {
                         self.IdEmpleadoIA = 0;
                         alertas.success(self.listaIdiomas.Atencion, self.listaIdiomas.ActualizaCorrecto);
                         self.CargarEmpleadosEstado();
+                        self.LimpiarCampos();
 
                     } else if (respuesta == "Correo") {
                         alertas.error(self.listaIdiomas.Atencion, self.listaIdiomas.ErrorCorreo);
@@ -189,7 +191,7 @@ const Empleados = new Vue({
                         }
 
                     }
-                    self.LimpiarCampos();
+                    
                     document.getElementById("idEmpleadoTxt").disabled = false;
                 });
             }
