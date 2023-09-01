@@ -39,7 +39,7 @@ namespace ActiveSmartWeb.Empleados.Idioma
         private const string _paginaanterior = "Anterior";
         private const string _paginasiguiente = "Siguiente";
         private const string _errorCorreo = "Correo no válido";
-        private const string _errorCorreoUs = "Un empleado ya  usa este correo";
+        private const string _errorCorreoUs = "Un usuario esta registrado con este correo";
         private const string _errorTelefono = "Teléfono no válido";
         private const string _llenarNombre = "Debe llenar el nombre";
         private const string _llenarApellidos = "Debe llenar el apellido";

@@ -274,9 +274,15 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                     //Opcion del switch para cargar el total del contrato
                     case "CargarTotal":
-                        
+
                         //Costo del plan seleccionado.
-                        var precioplan = Convert.ToDecimal(Request.Form["precioplan"]);
+                        var precioplan = Request.Form["precioplan"];
+                        var culture = new CultureInfo("en-US"); // Usar cultura USA para evitar que la conversion falle
+                        var precio = Convert.ToDecimal(precioplan, culture);
+        
+                        
+                        
+                        //var precioplan = 14.99M;
 
                         //Frecuencia de pago
                         var frecuenciaPago = Convert.ToInt32(Request.Form["frecuenciaPago"]);
@@ -294,7 +300,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         
 
                         //Suma del costo del plan y los adicionales.
-                        suma = suma + precioplan;
+                        suma = suma + precio;
 
                         Response.Write(suma);
 
