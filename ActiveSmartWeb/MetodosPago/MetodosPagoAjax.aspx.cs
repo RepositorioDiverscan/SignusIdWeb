@@ -112,7 +112,14 @@ namespace ActiveSmartWeb.MetodosPago
                 Request.Form["Apellidotitular"]              
                 );
 
+            string nuevoPerfilPago = "12345678";
 
+            if(nuevoPerfilPago != "Error")
+            {
+
+                _nMetodosPago.AgregarMetodoPago(nuevoPerfilPago, perfilUsuario);
+
+            }
 
         }
 
