@@ -71,7 +71,7 @@
             </div>
           </div>
           <div class="w-layout-grid grid-diagonal">
-            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07c3-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07c3" class="div-contenedor-diagonal"><img src="images/img-reg.png" loading="lazy" alt="Mano con handheld realiza lectura_RFID sobre un activo" width="275" class="image-diagonal">
+            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07c3-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07c3" class="div-contenedor-diagonal"><img src="images/ImagenReg.jpg" loading="lazy" width="275" class="image-diagonal">
               <div class="contenedor-texto-diagonal w-inline-block">
                 <h2 class="title-colum">REGISTRE</h2>
               </div>
@@ -85,13 +85,13 @@
                 </div>
               </div>
             </div>
-            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07d1-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07d1" class="div-contenedor-diagonal"><img src="images/acces-o_activeIDsmart_controle.jpg" loading="lazy" alt="Una mano verifica la lista de activos registrados" class="image-diagonal">
+            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07d1-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07d1" class="div-contenedor-diagonal"><img src="images/ImagenCtrl.jpg" loading="lazy" alt="Una mano verifica la lista de activos registrados" class="image-diagonal">
               <div class="contenedor-texto-diagonal w-inline-block">
-                <h2 class="title-colum">CONTROLE</h2>
+                <h2 class="title-colum">AUTOMATICE</h2>
               </div>
               <div class="div-info-diagonal">
                 <div class="contenedor-info-diagonal">
-                  <h1 class="title-colum">CONTROLE</h1>
+                  <h1 class="title-colum">AUTOMATICE</h1>
                   <p class="parrafo-diagonal">Tarjetas de identificación para su Empresa.</p>
                 </div>
                 <div class="div-degrado-diagonal">
@@ -99,13 +99,13 @@
                 </div>
               </div>
             </div>
-            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07df-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07df" class="div-contenedor-diagonal"><img src="images/acces-o_activeIDsmart_automatice.jpg" loading="lazy" width="150" alt="Manos sostienen un teléfono móvil mientras utiliza aplicación de acces-o para identificar activos automáticamente." class="image-diagonal">
+            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07df-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07df" class="div-contenedor-diagonal"><img src="images/ImagenAuto.jpg" loading="lazy" width="150" alt="Manos sostienen un teléfono móvil mientras utiliza aplicación de acces-o para identificar activos automáticamente." class="image-diagonal">
               <div class="contenedor-texto-diagonal w-inline-block">
-                <h2 class="title-colum auto">AUTOMATICE</h2>
+                <h2 class="title-colum auto">CONTROLE</h2>
               </div>
               <div class="div-info-diagonal">
                 <div class="contenedor-info-diagonal">
-                  <h1 class="title-colum">AUTOMATICE</h1>
+                  <h1 class="title-colum">CONTROLE</h1>
                   <p class="parrafo-diagonal">Servicio en Sitio, Contratos, Diagnóstico y Reparación.</p>
                 </div>
                 <div class="div-degrado-diagonal">

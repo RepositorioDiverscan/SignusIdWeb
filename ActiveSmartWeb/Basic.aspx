@@ -29,10 +29,10 @@
                   <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048cb3-8230d09e" class="div-icon-basic"><img sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 16vw" srcset="images/etiquetas-codigos-de-barra-signusid-basic-p-500.jpg 500w, images/etiquetas-codigos-de-barra-signusid-basic-p-800.jpg 800w, images/etiquetas-codigos-de-barra-signusid-basic-p-1080.jpg 1080w, images/etiquetas-codigos-de-barra-signusid-basic.jpg 1080w" src="images/etiquetas-codigos-de-barra-signusid-basic.jpg" loading="lazy" alt="">
                     <div class="text-block-icon-basic">Etiquetas Personalizadas<br>Código de Barras</div>
                   </div>
-                  <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048cb7-8230d09e" class="div-icon-basic"><img sizes="(max-width: 767px) 58.26667022705078px, (max-width: 991px) 14vw, 16vw" srcset="images/etiquetas-rfid-zebra-signusid-basic-p-500.jpg 500w, images/etiquetas-rfid-zebra-signusid-basic-p-800.jpg 800w, images/etiquetas-rfid-zebra-signusid-basic-p-1080.jpg 1080w, images/etiquetas-rfid-zebra-signusid-basic.jpg 1080w" src="images/etiquetas-rfid-zebra-signusid-basic.jpg" loading="lazy" alt="">
+                  <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048cb7-8230d09e" class="div-icon-basic"><img sizes="(max-width: 767px) 58.26667022705078px, (max-width: 991px) 14vw, 16vw" src="images/ImagenRolloEtiquetas.png " loading="lazy" alt="">
                     <div class="text-block-icon-basic">Etiquetas con código<br>de barra RFID</div>
                   </div>
-                  <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048cbb-8230d09e" class="div-icon-basic"><img sizes="(max-width: 767px) 62.81666946411133px, (max-width: 991px) 14vw, 16vw" srcset="images/productos-signusid-basic-impresora-portatil-p-500.jpg 500w, images/productos-signusid-basic-impresora-portatil-p-800.jpg 800w, images/productos-signusid-basic-impresora-portatil-p-1080.jpg 1080w, images/productos-signusid-basic-impresora-portatil.jpg 1080w" src="images/productos-signusid-basic-impresora-portatil.jpg" loading="lazy" alt="">
+                  <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048cbb-8230d09e" class="div-icon-basic"><img sizes="(max-width: 767px) 62.81666946411133px, (max-width: 991px) 14vw, 16vw"  src="images/ImagenImpresoraEtiquetas.png" loading="lazy" alt="">
                     <div class="text-block-icon-basic">Impresora<br>portatil FX3-LX</div>
                   </div>
                   <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048cbf-8230d09e" class="div-icon-basic"><img sizes="(max-width: 767px) 72.71666717529297px, (max-width: 991px) 14vw, 16vw" srcset="images/productos-signusid-basic-scaner-p-500.jpg 500w, images/productos-signusid-basic-scaner-p-800.jpg 800w, images/productos-signusid-basic-scaner-p-1080.jpg 1080w, images/productos-signusid-basic-scaner.jpg 1080w" src="images/productos-signusid-basic-scaner.jpg" loading="lazy" alt="">
@@ -43,12 +43,12 @@
                   </div>
                   <div id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048cc7-8230d09e" class="div-block-196">
                     <div>
-                      <img width="1163" sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 15vw" src="images/paquete-de-hardware-signusid-basic.jpg" loading="lazy" alt="" class="mov-img">
+                      <img width="1163" sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 15vw" src="images/Paquete_A_Basic.png" loading="lazy" alt="" class="mov-img">
                       <p class="paragraph-basic">Aproveche el paquete de Hardware A (Hand Held PDA UNITECH EA520 con accesorios, Impresora SATO WS4, Paquete de 500 Etiquetas para Códigos de Barra y Cinta para activos).<br><br>$1.160,00 FOB Miami - No incluye costos de envío.</p>
                     </div>
                   </div>
                   <div id="w-node-_41094853-7546-c027-19a8-21b7171c6c16-8230d09e">
-                    <img width="795" sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 15vw" src="images/paquete-de-hardware-signusid-basic-b.jpg" loading="lazy"  alt="" class="mov-img">
+                    <img width="795" sizes="(max-width: 767px) 98.45000457763672px, (max-width: 991px) 14vw, 15vw" src="images/Paquete_B_Basic.png" loading="lazy"  alt="" class="mov-img">
                     <p id="w-node-aeef5e20-72eb-42a8-15d7-6d2357048ccd-8230d09e" class="paragraph-basic">Aproveche el paquete de Hardware B (Escáner de código de barras UNITECH Bluetooth, Impresora SATO WS4, Paquete de 500 Etiquetas para Códigos de Barra y Cinta para activos).<br><br>$690,00 FOB Miami - No incluye costos de envío.</p>
                   </div>
                 </div>
