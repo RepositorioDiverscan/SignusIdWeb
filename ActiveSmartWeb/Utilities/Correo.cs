@@ -77,8 +77,8 @@ namespace ActiveSmartWeb.Utilities
                 correo.Priority = MailPriority.Normal;
 
                 //Cuerpo de correo
-                string rutaBase = AppDomain.CurrentDomain.BaseDirectory;
-                string rutaArchivo = Path.Combine(rutaBase, "Plantillastxt/contraseña signus id 2.txt");
+              
+                string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plantillastxt/contraseña signus id 2.txt");
                 string cuerpoCorreo;
                 using (var stringReader = new StreamReader(rutaArchivo)) 
                 {
@@ -379,8 +379,8 @@ namespace ActiveSmartWeb.Utilities
                 correo.Priority = MailPriority.Normal;
 
             //Cuerpo de correo
-            string rutaBase = AppDomain.CurrentDomain.BaseDirectory;
-            string rutaArchivo = Path.Combine(rutaBase, "Plantillastxt/link cambio de contraseña.txt");
+            
+            string rutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plantillastxt/link cambio de contraseña.txt");
             string cuerpoCorreo;
             using (var stringReader = new StreamReader(rutaArchivo))
             {
