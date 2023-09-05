@@ -77,8 +77,10 @@ namespace ActiveSmartWeb.Utilities
                 correo.Priority = MailPriority.Normal;
 
                 //Cuerpo de correo
+                string rutaBase = AppDomain.CurrentDomain.BaseDirectory;
+                string rutaArchivo = Path.Combine(rutaBase, "Plantillastxt/contraseña signus id 2.txt");
                 string cuerpoCorreo;
-                using (var stringReader = new StreamReader("C:/Correos Signus/contraseña signus id 2.txt", true))
+                using (var stringReader = new StreamReader(rutaArchivo)) 
                 {
                     cuerpoCorreo = stringReader.ReadToEnd();
                 }
@@ -376,14 +378,16 @@ namespace ActiveSmartWeb.Utilities
                 correo.IsBodyHtml = true;
                 correo.Priority = MailPriority.Normal;
 
-                //Cuerpo de correo
-                string cuerpoCorreo;
-                using (var stringReader = new StreamReader("C:/Correos Signus/link cambio de contraseña.txt", true))
-                {
-                    cuerpoCorreo = stringReader.ReadToEnd();
-                }
+            //Cuerpo de correo
+            string rutaBase = AppDomain.CurrentDomain.BaseDirectory;
+            string rutaArchivo = Path.Combine(rutaBase, "Plantillastxt/link cambio de contraseña.txt");
+            string cuerpoCorreo;
+            using (var stringReader = new StreamReader(rutaArchivo))
+            {
+                cuerpoCorreo = stringReader.ReadToEnd();
+            }
 
-                string _cuerpoCorreo = cuerpoCorreo.Replace("@Link", Mensaje);
+            string _cuerpoCorreo = cuerpoCorreo.Replace("@Link", Mensaje);
 
 
                 var plainView = AlternateView.CreateAlternateViewFromString(Regex.Replace(_cuerpoCorreo, @"<(.|\n)*?>", string.Empty), null, "text/plain");

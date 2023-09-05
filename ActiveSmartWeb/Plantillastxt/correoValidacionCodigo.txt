@@ -396,7 +396,7 @@
                                  <tbody>
                                   <tr>
                                    <td align="center" valign="middle" width="24" class="mcnFollowIconContent" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                      <a href="https://www.instagram.com/signusid/"> 
+                                      <a href="https://www.instagram.com/grupodiverscan/?hl=es"> 
                                         <img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-light-instagram-48.png" alt="Link" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="24" width="24" class=""> 
                                      </a>   
                                   </td>
@@ -429,7 +429,7 @@
                                  <tbody>
                                   <tr>
                                    <td align="center" valign="middle" width="24" class="mcnFollowIconContent" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                    <a href="https://www.youtube.com/channel/UCCbnw6iQGy10JllY1TWOaew">
+                                    <a href="https://www.youtube.com/channel/UC_QFrngyslhjkwO8CzfjAdg">
                                      <img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-light-youtube-48.png" alt="YouTube" style="display: block;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" height="24" width="24" class=""> 
                                     </a> 
                                   </td>
