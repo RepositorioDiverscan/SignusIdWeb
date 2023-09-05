@@ -51,7 +51,7 @@ namespace ActiveSmartWeb.Usuarios.Usuario
             var Respuesta = db.GetParameterValue(dbCommand, "@Resultado").ToString();
             
 
-            if (Respuesta == "Actualizo" )
+            if (Respuesta == "Ingreso completo" )
             {
 
                 var e = Correo.EnviarCorreoContrasenna(correo, "Nuevo Usuario"  ,contrasena);

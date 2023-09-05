@@ -55,8 +55,10 @@ namespace ActiveSmartWeb.Usuarios
                         char[] PassList = Mayusculas.Concat(Minusculas).Concat(Simbolos).Concat(Numeros).ToArray();
 
                         //Crear contraseña random
-                        var longitud = 10;
-                        for (int i = 0; i < longitud; i++)
+                        const int Longitud = 10;
+                        //Constante longitud definida para las contraseñas
+
+                        for (int i = 0; i < Longitud; i++)
                         {
                             int randomNumber = random.Next(0, PassList.Length);
                             Contrasena = Contrasena + PassList[randomNumber];
