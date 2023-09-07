@@ -462,8 +462,14 @@
     <Content Include="images\icono_mas_acces-o_Mesa-de-trabajo-1.svg" />
     <Content Include="images\icono_mas_activeID.svg" />
     <Content Include="images\Icon_-_Check-01.svg" />
+    <Content Include="images\ImagenAuto.jpg" />
+    <Content Include="images\ImagenCtrl.jpg" />
     <Content Include="images\imagenes-web-p-500.jpg" />
     <Content Include="images\imagenes-web.jpg" />
+    <Content Include="images\ImagenImpresoraEtiquetas.png" />
+    <Content Include="images\ImagenMetralleta.png" />
+    <Content Include="images\ImagenReg.jpg" />
+    <Content Include="images\ImagenRolloEtiquetas.png" />
     <Content Include="images\img-reg.png" />
     <Content Include="images\IMG_2499-p-500.png" />
     <Content Include="images\IMG_2499.png" />
@@ -569,6 +575,10 @@
     <Content Include="images\paquete-de-hardware-signusid-pro2.jpg" />
     <Content Include="images\paquete-de-hardware-signusid-pro2.jpg.png" />
     <Content Include="images\paquete-de-hardware-signusid-pro2.png" />
+    <Content Include="images\Paquete_A_Basic.png" />
+    <Content Include="images\Paquete_A_PRO.png" />
+    <Content Include="images\Paquete_B_Basic.png" />
+    <Content Include="images\Paquete_B_PRO.png" />
     <Content Include="images\paso_1.png" />
     <Content Include="images\perf.png" />
     <Content Include="images\perfil.jpg" />
