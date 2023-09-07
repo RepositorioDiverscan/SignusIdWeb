@@ -19,7 +19,7 @@ namespace ActiveSmartWeb.Ubicaciones.Idioma
         private const string _actualizaError = "Error Actualizando la Ubicación";
 
         private const string _msjTienda = "Descubra más de lo que SignusID tiene para Usted";
-        private const string __msjbtnTienda = "Ir a Tienda";
+        private const string __msjbtnTienda = "ACTUALIZA TU PLAN";
         private const string _SeleccioneA = "Seleccione Ubicación A";
         private const string _SeleccioneB = "Seleccione Ubicación B";
         private const string _SeleccioneC = "Seleccione Ubicación C";
