@@ -40,7 +40,7 @@ namespace ActiveSmartWeb.GestionServicio.Idioma
         private const string _selTipoBuq = "Tipo de búsqueda no seleccionado";
         private const string _atencion = "Atención:";
         private const string msjTienda = "Descubra más de lo que SignusID tiene para Usted";
-        private const string msjbtnTienda = "Ir a Tienda";
+        private const string msjbtnTienda = "ACTUALIZA TU PLAN";
         private const string _msj1 = "En esta página puede crear y gestionar servicios";
         private const string _msj2 = "A diferentes activos";
 
