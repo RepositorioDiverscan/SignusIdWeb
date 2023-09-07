@@ -33,7 +33,7 @@
                   <div id="w-node-_86e69afe-ed50-f805-a72b-e659b0396e36-5e075e55" class="div-icon-basic"><img sizes="(max-width: 479px) 277.433349609375px, (max-width: 767px) 272.933349609375px, (max-width: 991px) 277.433349609375px, 16vw" srcset="images/productos-signusid-etiqueta-rfid-p-500.jpg 500w, images/productos-signusid-etiqueta-rfid-p-800.jpg 800w, images/productos-signusid-etiqueta-rfid-p-1080.jpg 1080w, images/productos-signusid-etiqueta-rfid.jpg 1080w" src="images/productos-signusid-etiqueta-rfid.jpg" loading="lazy" alt="">
                     <div class="text-block-icon-basic">Etiquetas RFID</div>
                   </div>
-                  <div id="w-node-_86e69afe-ed50-f805-a72b-e659b0396e3a-5e075e55" class="div-icon-basic"><img sizes="(max-width: 479px) 277.45001220703125px, (max-width: 767px) 272.933349609375px, (max-width: 991px) 277.45001220703125px, 16vw" srcset="images/productos-signusid-pro-hadheld-p-500.jpg 500w, images/productos-signusid-pro-hadheld-p-800.jpg 800w, images/productos-signusid-pro-hadheld-p-1080.jpg 1080w, images/productos-signusid-pro-hadheld.jpg 1080w" src="images/productos-signusid-pro-hadheld.jpg" loading="lazy" alt="">
+                  <div id="w-node-_86e69afe-ed50-f805-a72b-e659b0396e3a-5e075e55" class="div-icon-basic"><img sizes="(max-width: 479px) 277.45001220703125px, (max-width: 767px) 272.933349609375px, (max-width: 991px) 277.45001220703125px, 16vw" src="images/ImagenMetralleta.png" loading="lazy" alt="">
                     <div class="text-block-icon-basic">Hand Held Unitech RG630</div>
                   </div>
                   <div id="w-node-_86e69afe-ed50-f805-a72b-e659b0396e3e-5e075e55" class="div-icon-basic"><img sizes="(max-width: 479px) 277.433349609375px, (max-width: 767px) 272.91668701171875px, (max-width: 991px) 277.433349609375px, 16vw" srcset="images/productos-signusid-pro-impresora-rfid-p-500.jpg 500w, images/productos-signusid-pro-impresora-rfid-p-800.jpg 800w, images/productos-signusid-pro-impresora-rfid-p-1080.jpg 1080w, images/productos-signusid-pro-impresora-rfid.jpg 1080w" src="images/productos-signusid-pro-impresora-rfid.jpg" loading="lazy" alt="">
@@ -43,11 +43,11 @@
                     <div class="text-block-icon-basic">Hald Held Unitech PA760</div>
                   </div>
                   <div id="w-node-a6da5413-899b-7860-da61-a20c2457325b-5e075e55" class="div-block-196">
-                      <img sizes="(max-width: 479px) 277.433349609375px, (max-width: 767px) 272.933349609375px, (max-width: 991px) 277.433349609375px, 16vw" src="images/paque-de-hardware-signusid-pro.png" loading="lazy" alt="" class="image-34 mov-img">
+                      <img sizes="(max-width: 479px) 277.433349609375px, (max-width: 767px) 272.933349609375px, (max-width: 991px) 277.433349609375px, 16vw" src="images/Paquete_A_PRO.png" loading="lazy" alt="" class="image-34 mov-img">
                     <p class="paragraph-basic">Aproveche el paquete de Hardware Pro A con RFID (Hand Held PDA UNITECH EA630 RFID con accesorios, Impresora SATO CL4-LX con codificador RFID, Paquete de 400 Etiquetas Premium para activos RFID y Cinta para activos).<br><br>$3.980,00 FOB Miami - No incluye costos de envío.</p>
                   </div>
                   <div id="w-node-_5391f4cd-8340-2260-5947-1860227ed393-5e075e55" class="div-block-196">
-                      <img sizes="(max-width: 479px) 277.45001220703125px, (max-width: 767px) 272.933349609375px, (max-width: 991px) 277.45001220703125px, 16vw" src="images/paquete-de-hardware-signusid-pro2.png" loading="lazy" alt="" class="image-34 mov-img">
+                      <img sizes="(max-width: 479px) 277.45001220703125px, (max-width: 767px) 272.933349609375px, (max-width: 991px) 277.45001220703125px, 16vw" src="images/Paquete_B_PRO.png" loading="lazy" alt="" class="image-34 mov-img">
                     <p class="paragraph-basic">Aproveche el paquete de Hardware Pro B (Handheld RFD40, 2 Portales Sensormatic, Paquete de 500 Tags RFID y uso anual de aplicación de SignusID Basic).<br><br>$820.00 (sin costo de envío)</p>
                   </div>
                 </div>

@@ -14,7 +14,7 @@ namespace ActiveSmartWeb.Usuarios
     {
 
         NUsuarios nMisCompras = new NUsuarios();
-
+        Random random = new Random();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -44,7 +44,29 @@ namespace ActiveSmartWeb.Usuarios
 
                         var Correo = Request.Form["correo"];
 
-                        string Contrasena = "GrupoDiverscan2022.";
+                        var Contrasena = "";
+
+                        //Asignar posibles caracteres para crear una contraseña
+                        char[] Mayusculas = Enumerable.Range('A', 26).Select(x => (char)x).ToArray();
+                        char[] Minusculas = Enumerable.Range('a', 26).Select(x => (char)x).ToArray();
+                        char[] Simbolos = { '¿', '?', '-', '_', '@', '&', '#', '/', '=', '*','¡'};
+                        char[] Numeros = Enumerable.Range('0', 10).Select(x => (char)x).ToArray();
+
+                        char[] PassList = Mayusculas.Concat(Minusculas).Concat(Simbolos).Concat(Numeros).ToArray();
+
+                        //Crear contraseña random
+                        const int Longitud = 10;
+                        //Constante longitud definida para las contraseñas
+
+                        for (int i = 0; i < Longitud; i++)
+                        {
+                            int randomNumber = random.Next(0, PassList.Length);
+                            Contrasena = Contrasena + PassList[randomNumber];
+
+                        }
+
+
+
 
                         var Respuesta = nMisCompras.RegistrarActualizarUsuarioEmpleado(IdEmpresaIngresar, IdRol, Correo, Contrasena);
 
