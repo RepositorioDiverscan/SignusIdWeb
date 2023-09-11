@@ -60,7 +60,7 @@ namespace ActiveSmartWeb.RegistroActivos.Idioma
         public const string _fechaGarantia = "Fecha de Garantía";
         public const string _tamañoMed = "Tamaño/Medidas";
         public const string _msjTienda = "Descubra más de lo que SignusID tiene para Usted";
-        public const string _msjbtnTienda = "Ir a Tienda";
+        public const string _msjbtnTienda = "ACTUALIZA TU PLAN";
         public const string _color = "Color";
         public const string _selecFiltro = "Seleccione su búsqueda";
         public const string _valnumfactura = "Debe ingresar un número de factura";
