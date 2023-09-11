@@ -17,7 +17,7 @@ namespace ActiveSmartWeb.MisCompras.IdiomaMisCompras
         private const string _titulo2tablaAdicionales = "Total";
         private const string _titulo3tablaAdicionales = "Consumido";
         private const string _textoLeyenda = "Descubra más de lo que ActiveID Smart tiene para Usted";
-        private const string _botonIrTienda = "Ir a Tienda";
+        private const string _botonIrTienda = "ACTUALIZA TU PLAN";
         private const string _msj1 = "En esta página puedes ver los";
         private const string _msj2 = "Productos que has comprado";
 
