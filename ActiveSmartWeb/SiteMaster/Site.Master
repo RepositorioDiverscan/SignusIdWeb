@@ -305,8 +305,8 @@
               <a href="https://www.youtube.com/channel/UCCbnw6iQGy10JllY1TWOaew" target="_blank" class="link-block-social link-social w-inline-block"><img src="../images/Iconos-rrss-youtube.svg" loading="lazy" width="40" alt="" class="div-block-social-logo img-social"></a>
             </div>
           </div>
-        </div>
-        <div class="div-block-2 div-copyright">Copyright © 2021 Acces-o. All rights reserved.</div>
+        </div> 
+      <div class="div-block-2">  Copyright © <script>document.write(new Date().getFullYear());</script> Acces-o. All Rights Reserved</div>
       </div>
     </footer>
   </div>

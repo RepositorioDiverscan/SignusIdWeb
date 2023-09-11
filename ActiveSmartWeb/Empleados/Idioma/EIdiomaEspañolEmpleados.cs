@@ -26,7 +26,7 @@ namespace ActiveSmartWeb.Empleados.Idioma
         private const string _puestoTabla = "Puesto";
         private const string _estadoTabla = "Estado";
         private const string _descubra = "Descubra más de lo que SignusID tiene para Usted";
-        private const string _tienda = "Ir a Tienda";
+        private const string _tienda = "ACTUALIZA TU PLAN";
         private const string _select = "Seleccione...";
         private const string _selectA = "Activo";
         private const string _selectI = "Inactivo";
