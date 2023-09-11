@@ -34,7 +34,7 @@ namespace ActiveSmartWeb.PerfilEmpresa.Idioma
         private const string _Plan = "Plan:";
         private const string _Actualiza = "Actualiza tu plan";
         private const string _Tienda = "Descubra más de lo que SignusID tiene para Usted";
-        private const string _MsjTienda = "Ir a Tienda";
+        private const string _MsjTienda = "ACTUALIZA TU PLAN";
         private const string _SelectIndustria= "Seleccionar Industria";
         private const string _SelectPais = "Seleccione el país";
         private const string _ActualizaOk= "Información actualizada con exito";

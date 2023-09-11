@@ -20,7 +20,7 @@ namespace WCFMultilenguajeActiveID.Menu
         public const string _rolPermission = "ROLES Y PERMISOS";
         public const string _rfid = "RFID";
         public const string _tomaFisica = "TOMA FÍSICA";
-        public const string _btnPro = "Ir a Tienda";
+        public const string _btnPro = "ACTUALIZA TU PLAN";
         public const string _lblMasFunciones = "Descubra más de lo que SignusID tiene para Usted";
         public const string _btnActivosNoPistoleados = "ACTIVOS NO ENCONTRADOS";
         public const string _visorActivos = "VISOR DE ACTIVOS";

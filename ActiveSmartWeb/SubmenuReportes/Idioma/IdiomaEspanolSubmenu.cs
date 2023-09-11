@@ -14,7 +14,7 @@ namespace ActiveSmartWeb.SubmenuReportes.Idioma
         public const string _reporteUsuario = "REPORTE POR USUARIO";
         public const string _reporteCategoria = "REPORTE POR CATEGORÍA";
         public const string _msjTienda = "Descubra más de lo que SignusID tiene para Usted";
-        public const string _msjbtnTienda = "Ir a Tienda";
+        public const string _msjbtnTienda = "ACTUALIZA TU PLAN";
         public const string _msj1 = "En esta página se puede escoger el";
         public const string _msj2 = "tipo de reporte que se necesita";
     }

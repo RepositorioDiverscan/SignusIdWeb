@@ -27,7 +27,7 @@ namespace ActiveSmartWeb.SincronizarActivos.Idioma
         public const string _fecha = "Fecha";
         public const string _btnSinc = "Sincronizar Activos";
         public const string _estadoSinc = "Estado de Sincronización";
-        public const string _irTienda = "Ir a Tienda";
+        public const string _irTienda = "ACTUALIZA TU PLAN";
         public const string _actDisp = "Descubra más de lo que SignusID tiene para Usted";
         public const string _msjdescarga = "Descargando";
         public const string _msjIntenteloNuevo = "Intentelo de nuevo";

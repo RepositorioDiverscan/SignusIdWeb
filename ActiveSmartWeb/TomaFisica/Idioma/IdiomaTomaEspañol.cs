@@ -33,7 +33,7 @@ namespace ActiveSmartWeb.TomaFisica.Idioma
         public const string _info = "En esta página se puede: crear, ver, gestionar y aprobar ";
         public const string _tFinfo = "Tomas Físicas.";
         public const string _msjTienda = "Descubra más de lo que SignusID tiene para Usted";
-        public const string _msjbtnTienda = "Ir a Tienda";
+        public const string _msjbtnTienda = "ACTUALIZA TU PLAN";
         public const string _vobserv = "Sin observación";
         public const string _Tituloobserv = "Observación de toma física";
         public const string _SubTituloobserv = "OBSERVACIONES";

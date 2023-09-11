@@ -22,7 +22,7 @@ namespace ActiveSmartWeb.Perfil.Idioma
         private const string _nuevaContra = "Nueva contraseña*";
         private const string _confirmaContra = "Confirmar contraseña*";
         private const string _descubra = "Descubra más de lo que SignusID tiene para usted";
-        private const string _irTienda = "Ir a tienda";
+        private const string _irTienda = "ACTUALIZA TU PLAN";
         private const string _CorreoError = "Correo inválido";
         private const string _TelefonoError = "Teléfono inválido";
         private const string _faltanCampos = "Falta por llenar campos";

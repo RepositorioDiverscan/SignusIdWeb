@@ -26,7 +26,7 @@ namespace ActiveSmartWeb.ReporteActivos.Idioma
         public const string _descargaRegistro = "Debe Buscar el Activo para Ejecutar la Descarga";
         public const string _descripcionPlace = "Descripción";
         public const string _msjTienda = "Descubra más de lo que SignusID tiene para Usted";
-        public const string _msjbtnTienda = "Ir a Tienda";
+        public const string _msjbtnTienda = "ACTUALIZA TU PLAN";
         public const string _ErrorDescarga = "Error al generar el reporte";
         public const string _OkDescarga = "Reporte generado con éxito";
         public const string _msj1 = "En esta página puedes descargar un archivo excel o pdf ";
