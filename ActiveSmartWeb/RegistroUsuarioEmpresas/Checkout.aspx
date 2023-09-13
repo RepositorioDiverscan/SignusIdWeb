@@ -27,8 +27,7 @@
 
     <%--Sweet Alert--%>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+
 
     <style>
         .iti, .country-select {
@@ -246,6 +245,16 @@
                         </div>
                       </div>
                     </div>
+                      <div>
+                      <div class="w-form">
+                        <form id="email-form-5" name="email-form-5" data-name="Email Form 5" method="get" class="form-19" data-wf-page-id="62a75c9546a08225ea206ea8" data-wf-element-id="fa7394c8-4acb-d17b-a417-9f6c759ef5c8"><label for="name-4">Ingrese código promocional</label>
+                          <input type="text" class="w-input" maxlength="13" name="name-4" data-name="Name 4" placeholder="" id="txtCodigoPromo">
+                            <label id="lblConfirmaCupon"></label>
+                          <input type="button" value="Agregar" data-wait="Please wait..." class="submit-button-4 w-button" id="btnValidarCupon"></form>
+                          
+                      
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -280,7 +289,8 @@
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
     <script src="../VisorActivos/Vue/vue.min.js"></script>
     <script src="../Recursos/SweetAlert/sweetalert2@11.js"></script>
-  <script src="js/Contrato.js?v=1.2.4"></script>
-
+    <script src="js/Cupon.js"></script>
+    <script src="js/Contrato.js?v=1.2.4"></script>
+ 
 </body>
 </html>

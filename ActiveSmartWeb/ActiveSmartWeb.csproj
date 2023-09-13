@@ -881,11 +881,13 @@
     <Content Include="RegistroUsuarioEmpresas\AdicionalesContratoAjax.aspx" />
     <Content Include="RegistroUsuarioEmpresas\AjaxPlanIdioma.aspx" />
     <Content Include="RegistroUsuarioEmpresas\Checkout.aspx" />
+    <Content Include="RegistroUsuarioEmpresas\CuponAjax.aspx" />
     <Content Include="RegistroUsuarioEmpresas\IdiomaAdicionalesAjax.aspx" />
     <Content Include="RegistroUsuarioEmpresas\IdiomaCodigoAjax.aspx" />
     <Content Include="RegistroUsuarioEmpresas\js\Codigo.js" />
     <Content Include="RegistroUsuarioEmpresas\IdiomaRegistroAjax.aspx" />
     <Content Include="RegistroUsuarioEmpresas\js\Contrato.js" />
+    <Content Include="RegistroUsuarioEmpresas\js\Cupon.js" />
     <Content Include="RegistroUsuarioEmpresas\js\Planes.js" />
     <Content Include="RegistroUsuarioEmpresas\js\Registro.js" />
     <Content Include="RegistroUsuarioEmpresas\Planes.aspx" />
@@ -1865,6 +1867,16 @@
     <Compile Include="RegistroUsuarioEmpresas\Codigo\EIdiomaCodigoEspanol.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Codigo\EIdiomaCodigoGeneral.cs" />
     <Compile Include="RegistroUsuarioEmpresas\Codigo\EIdiomaCodigoIngles.cs" />
+    <Compile Include="RegistroUsuarioEmpresas\CuponAjax.aspx.cs">
+      <DependentUpon>CuponAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroUsuarioEmpresas\CuponAjax.aspx.designer.cs">
+      <DependentUpon>CuponAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroUsuarioEmpresas\Cupon\BDACupon.cs" />
+    <Compile Include="RegistroUsuarioEmpresas\Cupon\ECupon.cs" />
+    <Compile Include="RegistroUsuarioEmpresas\Cupon\NCupon.cs" />
     <Compile Include="RegistroUsuarioEmpresas\IdiomaAdicionalesAjax.aspx.cs">
       <DependentUpon>IdiomaAdicionalesAjax.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

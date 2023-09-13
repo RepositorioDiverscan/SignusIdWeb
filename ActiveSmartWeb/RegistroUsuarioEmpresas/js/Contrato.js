@@ -203,12 +203,14 @@ const contrato = new Vue({
         },
 
         //Metodo para cargar el total de la compra.
-        CargarTotal: function () {           
+        CargarTotal: function () {
+            var codigoCupon = sessionStorage.getItem("CodigoCupon")
             var self = this;
             $.post(urlAjax, {
                 option: 'CargarTotal',
                 precioplan: self.precio,
                 frecuenciaPago: self.frecuenciaPago,
+                codigoCupon: codigoCupon
             }, function (data, error) {
 
                 self.totalpago = data;
@@ -237,6 +239,9 @@ const contrato = new Vue({
 
                 let datos = JSON.parse(data);
                 self.textoPlan = datos.NombrePlan;
+                
+
+
 
                 if (self.frecuenciaPago == "1") {
                     self.precio = datos.Costo;
@@ -252,6 +257,9 @@ const contrato = new Vue({
                     //}
                     
                 }
+                var cupon = sessionStorage.getItem("CodigoCupon");
+                if (cupon != 'null') 
+                    self.precio = 0;
                 self.CargarAdicionalesContratado();
                 
             });
@@ -289,7 +297,8 @@ const contrato = new Vue({
                                                             Frecuencia: this.frecuenciaPago,
                                                             CodigoPlan: this.codigoPlan,
                                                             correoUsuario: sessionStorage.getItem('CorreoUsuario'),
-                                                            tipocontrato: sessionStorage.getItem("CodigoPlan")
+                                                            tipocontrato: sessionStorage.getItem("CodigoPlan"),
+                                                            codigoCupon: sessionStorage.getItem("CodigoCupon")
                                                             
 
                                                         }, function (data, error) {
@@ -477,7 +486,8 @@ const contrato = new Vue({
                         Cantidadpaquete: adicional.Cantidad,
                         Costo: adicional.Costo,
                         CostoMensual: adicional.CostoMensual,
-                        CantidaddePaquetes: cantidadSumar
+                        CantidaddePaquetes: cantidadSumar,
+                        Cupon: sessionStorage.getItem("CodigoCupon"),
                     }, function (respuesta, error) {
 
                         self.CargarAdicionalesContratado();
@@ -504,7 +514,8 @@ const contrato = new Vue({
                          Cantidadpaquete: adicional.Cantidad,
                          Costo: adicional.Costo,
                          CostoMensual: adicional.CostoMensual,
-                         CantidaddePaquetes: cantidadResta
+                         CantidaddePaquetes: cantidadResta,
+                         Cupon: sessionStorage.getItem("CodigoCupon"),
                      }, function (respuesta, error) {
 
                          self.CargarAdicionalesContratado();
