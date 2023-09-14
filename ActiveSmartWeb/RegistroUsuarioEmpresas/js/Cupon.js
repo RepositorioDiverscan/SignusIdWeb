@@ -42,7 +42,8 @@ function ValidarCupon(codigo) {
             contrato.CargarTotal();
           
             
-            
+
+
             
         } else {
             labelConfirmaCupon.innerHTML = "El cupon: " + codigo + " es invalido.";
