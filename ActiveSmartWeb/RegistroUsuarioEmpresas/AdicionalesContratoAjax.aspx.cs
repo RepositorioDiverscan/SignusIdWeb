@@ -10,11 +10,13 @@ using AuthorizeNet.Api.Controllers;
 using AuthorizeNet.Api.Contracts.V1;
 using AuthorizeNet.Api.Controllers.Bases;
 using ActiveSmartWeb.Authorize;
+using ActiveSmartWeb.RegistroUsuarioEmpresas.Cupon;
 
 namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 {
     public partial class AdicionalesContratoAjax : System.Web.UI.Page
     {
+        NCupon nCupon = new NCupon();
         NUsuarioEmpresa nUsuarioEmpresa = new NUsuarioEmpresa();
         private int numRegalia = 2;
         private int activosAdicionalesIlimitados = 2250;
@@ -230,7 +232,6 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                 }
             }
         }
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -246,13 +247,13 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         _adicionalcontratado.Clear();
                         _adicionalcontratadomostrar.Clear();
                         //Traemos la informacion de los adicionales
-                        var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();                       
-                        
-                        foreach(var paquete in ePaqueteAdicionales)
+                        var ePaqueteAdicionales = nUsuarioEmpresa.CargarAdicionales();
+
+                        foreach (var paquete in ePaqueteAdicionales)
                         {
                             crearEntidades(
                             paquete.IdPaqueteContratado,
-                            paquete.IdPaqueteContratado == 1?1:2,
+                            paquete.IdPaqueteContratado == 1 ? 1 : 2,
                             paquete.Cantidad,
                             paquete.CantidadFree,
                             paquete.Nombre,
@@ -267,9 +268,9 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                     //Opcion del switch para cargar los adicionales seleccionados por el usuario.
                     case "CargarAdicionalescontratados":
-                        
+
                         Response.Write(JsonConvert.SerializeObject(_adicionalcontratadomostrar, Formatting.Indented));
-                        
+
                         break;
 
                     //Opcion del switch para cargar el total del contrato
@@ -279,9 +280,10 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var precioplan = Request.Form["precioplan"];
                         var culture = new CultureInfo("en-US"); // Usar cultura USA para evitar que la conversion falle
                         var precio = Convert.ToDecimal(precioplan, culture);
-        
-                        
-                        
+                        var cupon = Request.Form["CodigoCupon"];
+
+
+
                         //var precioplan = 14.99M;
 
                         //Frecuencia de pago
@@ -297,13 +299,18 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         {
                             suma = _adicionalcontratadomostrar.Sum(x => x.Value.CostoMensual);
                         }
-                        
 
+
+                        if (cupon != "null")
+                        {
+                            precio = 0;
+                            suma = Decimal.Round(suma);
+                        }
                         //Suma del costo del plan y los adicionales.
-                        suma = suma + precio;
 
-                        Response.Write(suma);
-
+                        precio = suma + precio;
+                        precio = frecuenciaPago == 1 ? precio * 12 : precio;
+                        Response.Write(precio);
                         break;
 
                     //Opcion del switch para cargar el plan para utilizar el costo y el nombre en la pantalla.
@@ -329,7 +336,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         decimal costo = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US"));
                         decimal costoMensual = Convert.ToDecimal(Request.Form["CostoMensual"], new CultureInfo("en-US"));
 
-                       // var costo = Convert.ToDecimal(Request.Form["Costo"]);
+                        // var costo = Convert.ToDecimal(Request.Form["Costo"]);
                         // decimal var1 = Convert.ToDecimal("-37.7130883", new CultureInfo("en-US"));
 
                         int cantidad = 0;
@@ -337,8 +344,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         if (esEntero)
                         {
-                            
-                            if(idAdicional == 1)
+
+                            if (idAdicional == 1)
                             {
                                 validarRegaliasInput(cantidadpaquete * cantidad);
                                 if (cantidad == 1)
@@ -347,17 +354,17 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                     _adicionalcontratadomostrar[idAdicional].CostoMensual = 0;
                                 } else
                                 {
-                                    _adicionalcontratadomostrar[idAdicional].Costo = costo * (cantidad-1) +0.01M;//La primera no se cobra
+                                    _adicionalcontratadomostrar[idAdicional].Costo = costo * (cantidad - 1) + 0.01M;//La primera no se cobra
                                     _adicionalcontratadomostrar[idAdicional].CostoMensual = costoMensual * (cantidad - 1);
                                 }
                                 _adicionalcontratado[idAdicional].Cantidad = cantidad;
 
                                 _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * (cantidad);
-                                
-                                if ((cantidadpaquete * cantidad) >= activosAdicionalesIlimitados && idAdicional ==1)
+
+                                if ((cantidadpaquete * cantidad) >= activosAdicionalesIlimitados && idAdicional == 1)
                                 {
                                     setCostoCero();
-                                }else
+                                } else
                                 {
                                     recalcularCostos();
                                 }
@@ -371,7 +378,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                                     _adicionalcontratadomostrar[idAdicional].Cantidad = cantidadpaquete * cantidad;
 
-                                    if(_adicionalcontratado[idAdicional].CantidadRegalias == cantidad || _adicionalcontratadomostrar[1].Cantidad >= activosAdicionalesIlimitados)
+                                    if (_adicionalcontratado[idAdicional].CantidadRegalias == cantidad || _adicionalcontratadomostrar[1].Cantidad >= activosAdicionalesIlimitados)
                                     {
                                         _adicionalcontratadomostrar[idAdicional].Costo = 0;
                                         _adicionalcontratadomostrar[idAdicional].CostoMensual = 0;
@@ -381,9 +388,9 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                         _adicionalcontratadomostrar[idAdicional].Costo = costo * (cantidad - _adicionalcontratadomostrar[idAdicional].CantidadRegalias);
                                         _adicionalcontratadomostrar[idAdicional].CostoMensual = costoMensual * (cantidad - _adicionalcontratadomostrar[idAdicional].CantidadRegalias);
                                     }
-                                    
 
-                                }else
+
+                                } else
                                 {
                                     _adicionalcontratado[idAdicional].Cantidad = _adicionalcontratado[idAdicional].CantidadRegalias;
 
@@ -393,7 +400,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                 }
 
                             }
-                            
+
 
                         }
 
@@ -408,7 +415,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         var cantidadpaquetesumar = Convert.ToInt32(Request.Form["Cantidadpaquete"]);//250
 
-                      
+                        var codigoCupon = Request.Form["Cupon"];
+
 
                         var costosumar = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US"));
                         var costoMensualsumar = Convert.ToDecimal(Request.Form["CostoMensual"], new CultureInfo("en-US"));
@@ -428,36 +436,37 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                                 //Si el id es uno se usa la cantidad a sumar, para los demas el paquete a sumar
                                 if (idAdicionalsumar == 1)
                                 {
-                                    _adicionalcontratado[idAdicionalsumar].Cantidad = cantidadsumar; 
+                                    _adicionalcontratado[idAdicionalsumar].Cantidad = cantidadsumar;
                                 } else
                                 {
                                     _adicionalcontratado[idAdicionalsumar].Cantidad += cantidadpaquetesumar;
                                 }
-                                
 
-                                
+
+
                                 _adicionalcontratadomostrar[idAdicionalsumar].Cantidad += cantidadpaquetesumar;
 
                                 //A la primera suma se le agrega 0.01 al costo para que quede en numeros cerrados
-                                if (idAdicionalsumar == 1 && cantidadsumar == 2)
+                                if (idAdicionalsumar == 1 && cantidadsumar == 2 && codigoCupon.Equals("null"))
                                 {
                                     costosumar += 0.01M;
                                 }
 
+
                                 //Valida si el adicional son activos o si es un adicional diferente y los activos no superan el numero para adicionales ilimitados
-                                if (idAdicionalsumar == 1 || (idAdicionalsumar !=1 && _adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados))
+                                if (idAdicionalsumar == 1 || (idAdicionalsumar != 1 && _adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados))
                                 {
                                     _adicionalcontratadomostrar[idAdicionalsumar].Costo += costosumar;
                                     _adicionalcontratadomostrar[idAdicionalsumar].CostoMensual += costoMensualsumar;
-                                }       
+                                }
 
 
                                 if (idAdicionalsumar == 1 && (cantidadsumar * cantidadpaquetesumar <= activosAdicionalesIlimitados))
                                 {
-                                    validadRegalia(true,cantidadsumar * cantidadpaquetesumar);
+                                    validadRegalia(true, cantidadsumar * cantidadpaquetesumar);
                                 }
 
-                                
+
                             }
 
                         }
@@ -476,6 +485,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var costorestar = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US"));
                         var costoMensualrestar = Convert.ToDecimal(Request.Form["CostoMensual"], new CultureInfo("en-US"));
 
+                        var codCupon = Request.Form["Cupon"];
+
                         if (idAdicionalrestar == 1)
                         {
                             //Sustituye los valores guardados con los nuevos valores.
@@ -493,12 +504,14 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                             _adicionalcontratadomostrar[idAdicionalrestar].Cantidad -= cantidadpaqueterestar;
                         }
 
-                        
 
-                        if (idAdicionalrestar == 1 && cantidadrestar == 1)
+
+
+                        if (idAdicionalrestar == 1 && cantidadrestar == 1 && codCupon.Equals("null"))
                         {
                             costorestar += 0.01M;
                         }
+
 
                         //Valida si el adicional son activos o si es un adicional diferente
                         if (idAdicionalrestar == 1)
@@ -543,6 +556,18 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         break;
 
+                    case "recalcularPrecioCupon":
+
+                        var codigoCupon1 = Request.Form["codigoCupon"];
+
+                        if (!codigoCupon1.Equals("null") && _adicionalcontratadomostrar[1].CostoMensual % 1 > 0)
+                        {
+                            _adicionalcontratadomostrar[1].CostoMensual = Decimal.Round(_adicionalcontratadomostrar[1].CostoMensual);
+                            Response.Write("Recalculado");
+                        }
+                        Response.Write("");
+                        break;
+
                     case "RealizarPago":
                         var numerotarjeta = Request.Form["Numerotarjeta"];
                         var fechaVencimiento = Request.Form["FechaVencimiento"];
@@ -553,10 +578,11 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var plan = Convert.ToInt32(Request.Form["CodigoPlan"]);
                         var correoUsuario = Request.Form["correoUsuario"];
                         var tipoContrato = Convert.ToInt32(Request.Form["tipocontrato"]);
+                        var cuponFinal = Request.Form["codigoCupon"];
 
                         var infoPlan = nUsuarioEmpresa.CargarPlan(plan);
 
-                        decimal costoTotal = calcularPrecioFinal(infoPlan, frecuencia);
+                        decimal costoTotal = calcularPrecioFinal(infoPlan, frecuencia, cuponFinal,correoUsuario);
                         
                         short frecuenciaDePago = (short)(frecuencia == "1" ? 12 : 1);
 
@@ -593,16 +619,23 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
         }
 
-        private decimal calcularPrecioFinal(ETipoPlanes infoPlan, string frecuencia)
+        private decimal calcularPrecioFinal(ETipoPlanes infoPlan, string frecuencia, string codigoCupon,string correoUsuario)
         {
             var costo = frecuencia == "1" ? infoPlan.Costo : infoPlan.CostoMensual;
+     
 
+            var validacion = nCupon.ActualizarCupon(codigoCupon, correoUsuario);
+            if (validacion == "EXITO")
+                costo = 0;
             decimal costoTotal = 0.00M;
 
             //Costos de la suma de todos los adicionales seleccionados.
             if (frecuencia == "1")
             {
                 costoTotal = _adicionalcontratadomostrar.Sum(x => x.Value.Costo);
+                if (codigoCupon != "null")
+                    costoTotal = decimal.Round(costoTotal);
+
             }
             else
             {
