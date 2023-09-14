@@ -22,6 +22,7 @@ var urlPerfil = '../Perfil/AjaxPerfilUsuario.aspx'
             imagenPerfil: '',
             idPerfilUsuario: 0,
             IdPerfilActive: 0,
+            año: "dfxfg",
 
             TotalNotificaciones: 0,
         },

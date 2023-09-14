@@ -18,7 +18,7 @@ namespace ActiveSmartWeb.Incidentes.Idioma
         private const string _phMensaje = "Ingrese su mensaje";
         private const string _enviar = "Enviar";
         private const string _descubra = "Descubra más de lo que SignusID tiene para Usted";
-        private const string _tienda = "Ir a tienda";
+        private const string _tienda = "ACTUALIZA TU PLAN";
         private const string _llenarTipoIcidente = "Seleccione un incidente";
         private const string _llenarTelefono = "Debe llenar el campo teléfono";
         private const string _llenarMensaje = "Debe llenar el campo mensaje";

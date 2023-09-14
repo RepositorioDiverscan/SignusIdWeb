@@ -16,7 +16,7 @@ namespace ActiveSmartWeb.Usuarios.idioma
         private const string _titulo5tablaUsuarios = "Puesto";
         private const string _titulo6tablaUsuarios = "Rol";
         private const string _textoLeyenda = "Descubra más de lo que SignusID tiene para Usted";
-        private const string _botonIrTienda = "Ir a Tienda";
+        private const string _botonIrTienda = "ACTUALIZA TU PLAN";
         private const string _creaUsuario = "Se a creado el usuario para ese empleado";
         private const string _rolUsuario = "Se a cambiado el rol del usuario seleccionado";
         private const string _atencion = "Atención:";

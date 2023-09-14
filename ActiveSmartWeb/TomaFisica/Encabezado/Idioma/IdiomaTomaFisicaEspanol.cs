@@ -13,7 +13,7 @@ namespace ActiveSmartWeb.TomaFisica.Encabezado.Idioma
         public const string _descripcion = "Descripción*";
         public const string _fecha = "Fecha";
         public const string _anuncio = "Descubra más de lo que SignusID tiene para Usted";
-        public const string _tienda = "Ir a tienda";
+        public const string _tienda = "ACTUALIZA TU PLAN";
         public const string _fechaFinal = "Fecha Final";
         public const string _fechaInicial = "Fecha Inicial";
         public const string _categoria = "Categoría*";
