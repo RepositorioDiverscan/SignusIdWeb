@@ -72,7 +72,7 @@
           </td>
             <td id="w-node-e23856b9-a1a3-9a77-9383-98606a3d1083-d245ec1a" class="celda-notf-ai celda-icon" v-cloak>
                 <div class="parrafo-grid link-block-2 amarillo w-inline-block">
-                    <a v-if="ac.Estado==1">
+                    <a v-if="ac.Estado==0">
                           <img src="../images/check-dark.svg" loading="lazy" width="20" height="20" alt="" class="image-29">
                     </a>
                     <a v-else>

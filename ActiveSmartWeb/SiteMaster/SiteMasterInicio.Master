@@ -285,16 +285,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="div-block-2">  Copyright © <script>document.write(new Date().getFullYear());</script> Acces-o. All Rights Reserved
+                        <div class="div-block-2 div-copyright">Copyright © {{año}} Acces-o. All rights reserved.</div>
                         </div>
-                    </div>
                 </footer>
             </div>
-        </div>
+
     
     <script src="../js/webflow.js" type="text/javascript"></script>
     <script src="../AjaxPrincipalMaster/GeneralMaster.js"></script>
-    <!--SweetAlert2-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.all.min.js"></script>
+   
 </body>
 </html>

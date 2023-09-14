@@ -306,7 +306,7 @@
             </div>
           </div>
         </div> 
-      <div class="div-block-2">  Copyright © <script>document.write(new Date().getFullYear());</script> Acces-o. All Rights Reserved</div>
+        <div class="div-block-2 div-copyright">Copyright © {{año}} Acces-o. All rights reserved.</div>
       </div>
     </footer>
   </div>
