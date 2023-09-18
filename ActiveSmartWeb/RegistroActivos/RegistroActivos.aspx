@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster/Site.Master" AutoEventWireup="true" CodeBehind="RegistroActivos.aspx.cs" Inherits="ActiveSmartWeb.RegistroActivos.RegistroActivos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+      
+
     <div class="main">
       <div class="main" id="registroactivosVUE">
       <div class="section wf-section" id="alertas">
@@ -281,7 +284,12 @@
     }
 
     </style>
+
+        <!--SweetAlert2-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4@5.0.10/bootstrap-4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <script src="../Recursos/JQuery/jquery-3.5.1.min.dc5e7f18c8.js"></script>
-    <link href="../css/signusid.webflow.css" rel="stylesheet" />
+   <%-- <link href="../css/signusid.webflow.css" rel="stylesheet" />--%>
     <script src="js/RegistroActivos.js"></script>
 </asp:Content>
