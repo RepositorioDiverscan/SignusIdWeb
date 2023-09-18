@@ -247,11 +247,7 @@ const registroactivo = new Vue({
 
                     {
 
-                        Swal.fire(
-                            'ACTIVO GUARDADO EXITOSAMENTE ',
-                           
-                            'success'
-                        )
+                        self.InsertarActivo();
 
                         
                     } else if (result.isDenied) {
@@ -259,43 +255,45 @@ const registroactivo = new Vue({
                     }
                 })
 
-                //var self = this;
-                //$.post(urlRegistro, {
-                //    option: 'InsertarActivoFijo',
-                //    IdPerfilEmpresa: self.idPerfilEmpresa,
-                //    NumeroActivo: self.txtnumActivo,
-                //    PlacaActivo: self.numPlaca,
-                //    Observacion: 'sin observacion',
-                //    Marca: self.marca,
-                //    Modelo: self.modelo,
-                //    IdEstadoActivo: self.selectEstado,
-                //    IdCategoriaActivo: self.selectCategoria,
-                //    IdUbicacionA: self.selectUbicacion,
-                //    NumeroSerie: self.numSerie,
-                //    DescripcionCorta: self.descripCorta,
-                //    DescripcionCategoria: self.descripcionCategoria,
-                //    DescripcionEstado: self.descripEstado,
-                //    NumeroFactura: self.numFactura,
-                //    FechaCompra: self.fechaCompra,
-                //    CostoActivo: self.costoActivo,
-                //}, function (respuesta, error) {
-                //    if (respuesta == "Registrado") {
-                //        alertas.success(self.listaidiomaRegistroActivo.Atencion, self.listaidiomaRegistroActivo.AgregarCorrecto);
-                //        self.BorrarDatos();
-                //    } else if (respuesta == "Existe") {
-                //        alertas.error(self.listaidiomaRegistroActivo.Atencion, self.listaidiomaRegistroActivo.ValidActNumAct);
-                //        self.BorrarDatos();
-                //    } else {
-                //        //alertify.error(self.listaidiomaRegistroActivo.AgregarError);
-                //        alertas.error(self.listaidiomaRegistroActivo.Atencion, respuesta);
-                //        return
-                //    }
-
-                //});
+               
             }
         },
-    
 
+        InsertarActivo: function () {
+            var self = this;
+            $.post(urlRegistro, {
+                option: 'InsertarActivoFijo',
+                IdPerfilEmpresa: self.idPerfilEmpresa,
+                NumeroActivo: self.txtnumActivo,
+                PlacaActivo: self.numPlaca,
+                Observacion: 'sin observacion',
+                Marca: self.marca,
+                Modelo: self.modelo,
+                IdEstadoActivo: self.selectEstado,
+                IdCategoriaActivo: self.selectCategoria,
+                IdUbicacionA: self.selectUbicacion,
+                NumeroSerie: self.numSerie,
+                DescripcionCorta: self.descripCorta,
+                DescripcionCategoria: self.descripcionCategoria,
+                DescripcionEstado: self.descripEstado,
+                NumeroFactura: self.numFactura,
+                FechaCompra: self.fechaCompra,
+                CostoActivo: self.costoActivo,
+            }, function (respuesta, error) {
+                if (respuesta == "Registrado") {
+                    alertas.success(self.listaidiomaRegistroActivo.Atencion, self.listaidiomaRegistroActivo.AgregarCorrecto);
+                    self.BorrarDatos();
+                } else if (respuesta == "Existe") {
+                    alertas.error(self.listaidiomaRegistroActivo.Atencion, self.listaidiomaRegistroActivo.ValidActNumAct);
+                    self.BorrarDatos();
+                } else {
+                    //alertify.error(self.listaidiomaRegistroActivo.AgregarError);
+                    alertas.error(self.listaidiomaRegistroActivo.Atencion, respuesta);
+                    return
+                }
+
+            });
+        },
         ModificarActivo: function () {
             var self = this;
             if (this.txtnumActivo == '' || this.txtnumActivo == ' ') {

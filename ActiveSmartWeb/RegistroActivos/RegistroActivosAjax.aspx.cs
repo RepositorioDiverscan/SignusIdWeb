@@ -3,6 +3,7 @@ using ActiveSmartWeb.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -28,7 +29,7 @@ namespace ActiveSmartWeb.RegistroActivos
                         var marca = Request.Form["Marca"];
                         var modelo = Request.Form["Modelo"];
                         var idEstadoActivo = Convert.ToInt32(Request.Form["IdEstadoActivo"]);
-                        var idCategoria =Convert.ToInt32(Request.Form["IdCategoriaActivo"]);
+                        var idCategoria = Convert.ToInt32(Request.Form["IdCategoriaActivo"]);
                         var idUbicacion = Convert.ToInt32(Request.Form["IdUbicacionA"]);
                         var idPerfilEmpresa = Convert.ToInt32(Request.Form["IdPerfilEmpresa"]);
                         var numeroSerie = Request.Form["NumeroSerie"];
@@ -38,7 +39,7 @@ namespace ActiveSmartWeb.RegistroActivos
                         var numeroFactura = Request.Form["NumeroFactura"];
                         var fechaCompra = Convert.ToDateTime(Request.Form["FechaCompra"]);
                         decimal costoActivo;
-                        if(Request.Form["CostoActivo"] != "")
+                        if (Request.Form["CostoActivo"] != "")
                         {
                             costoActivo = Convert.ToDecimal(Request.Form["CostoActivo"]);
                         }
@@ -50,7 +51,7 @@ namespace ActiveSmartWeb.RegistroActivos
 
                         var resultadoinsertar = _nRegistroActivos.InsertarActivoFijo(numeroActivo, numeroPlaca,
                              marca, modelo, idEstadoActivo, idCategoria, idUbicacion, idPerfilEmpresa,
-                            numeroSerie,descripcionCorta,descripcionCategoria,descripcionEstado, numeroFactura,fechaCompra,costoActivo);
+                            numeroSerie, descripcionCorta, descripcionCategoria, descripcionEstado, numeroFactura, fechaCompra, costoActivo);
                         Response.Write(resultadoinsertar);
                         break;
                     case "ConsultaRegistroActivo":
@@ -72,14 +73,15 @@ namespace ActiveSmartWeb.RegistroActivos
                         var acdescripcionEstado = Request.Form["DescripcionEstado"];
                         var acnumeroFactura = Request.Form["NumeroFactura"];
                         var acfechaCompra = Convert.ToDateTime(Request.Form["FechaCompra"]);
-                        decimal acostoActivo = Convert.ToDecimal(Request.Form["CostoActivo"]);
+                        decimal acostoActivo;
+
                         if (Request.Form["CostoActivo"] != "")
                         {
-                            acostoActivo = Convert.ToDecimal(Request.Form["CostoActivo"]);
+                            acostoActivo = Convert.ToDecimal(Request.Form["CostoActivo"].Replace(",", "."), CultureInfo.InvariantCulture);
                         }
                         else
                         {
-                            acostoActivo = 0;
+                            acostoActivo = 0M;
                         }
 
                         var resultadoactualizar = _nRegistroActivos.ActualizaActivoFijo(idActivo, acnumeroActivo, acnumeroPlaca,
