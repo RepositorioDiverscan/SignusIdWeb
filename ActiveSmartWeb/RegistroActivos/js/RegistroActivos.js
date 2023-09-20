@@ -284,7 +284,7 @@ const registroactivo = new Vue({
                 } else {
                     //alertify.error(self.listaidiomaRegistroActivo.AgregarError);
                     alertas.error(self.listaidiomaRegistroActivo.Atencion, respuesta);
-                    Swal.fire('En caso de equivocación en campos no editables, deberá inactivar el mismo y crear un activo nuevo corregido')
+                  
                     return
                 }
 

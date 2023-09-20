@@ -107,7 +107,7 @@
                 </div>
 
                 <div>
-                    <img src="../images/rubros signus id-01.png" loading="lazy" width="1008" sizes="(max-width: 991px) 180.00001525878906px, 18vw" alt="">
+                    <img src="../images/rubros-signus-id-p-1600.jpg" loading="lazy" width="1008"  alt="">
                 </div>
               </div>
               

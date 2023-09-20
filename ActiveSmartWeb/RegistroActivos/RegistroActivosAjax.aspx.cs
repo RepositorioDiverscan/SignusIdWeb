@@ -24,7 +24,7 @@ namespace ActiveSmartWeb.RegistroActivos
                 switch (Request.Form["option"])
                 {
                     case "InsertarActivoFijo":
-                        var x=0;
+                        //var x=0;
                         var numeroActivo = Request.Form["NumeroActivo"];
                         var numeroPlaca = Request.Form["PlacaActivo"];
                         var marca = Request.Form["Marca"];
