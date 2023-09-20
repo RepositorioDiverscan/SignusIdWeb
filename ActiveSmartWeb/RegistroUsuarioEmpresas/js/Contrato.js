@@ -351,7 +351,7 @@ const contrato = new Vue({
         MensajeTransaccionSucces: function () {
             Swal.fire({
                 icon: 'success',
-                title: 'Trasacción Exitosa',
+                title: 'Transacción Exitosa',
                 text: 'Transacción realizada correctamente',
                 confirmButtonColor: '#ebbb00', // Cambia el color del botón de confirmación
                 confirmButtonText: 'Entendido',

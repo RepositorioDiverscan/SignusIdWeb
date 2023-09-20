@@ -197,6 +197,7 @@
                 <div class="contenedor-botones cont-btns-left"></div>
                 <div class="contenedor-botones cont-btns-left">
                   <a href="#" class="boton up btn-sic-actvs w-button" @click="InsertarActivos()">{{listaidiomaSincronizActivo.BtnSinc}}</a> 
+                    
                 </div>
               </div>
             </div>

@@ -28,6 +28,7 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas.Registro
             db.AddInParameter(dbCommand, "@ContrasenaUsuario", DbType.String, Encrypt.EncriptarSHA3_512(eUsuarioEmpresa.Contrasena));
 
             db.AddInParameter(dbCommand, "@IdEmpresa", DbType.String, eUsuarioEmpresa.IdEmpresa);
+            
             db.AddInParameter(dbCommand, "@IdIndustria", DbType.Int32, eUsuarioEmpresa.IdIndustria);
             db.AddInParameter(dbCommand, "@Pais", DbType.String, eUsuarioEmpresa.Pais);
             db.AddInParameter(dbCommand, "@Direccion", DbType.String, eUsuarioEmpresa.Direccion);

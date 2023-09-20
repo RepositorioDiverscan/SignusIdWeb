@@ -24,6 +24,7 @@ namespace ActiveSmartWeb.RegistroActivos
                 switch (Request.Form["option"])
                 {
                     case "InsertarActivoFijo":
+                        var x=0;
                         var numeroActivo = Request.Form["NumeroActivo"];
                         var numeroPlaca = Request.Form["PlacaActivo"];
                         var marca = Request.Form["Marca"];
@@ -39,15 +40,29 @@ namespace ActiveSmartWeb.RegistroActivos
                         var numeroFactura = Request.Form["NumeroFactura"];
                         var fechaCompra = Convert.ToDateTime(Request.Form["FechaCompra"]);
                         decimal costoActivo;
-                        if (Request.Form["CostoActivo"] != "")
+
+                        var costo = Request.Form["CostoActivo"];
+                        if (costo!= "" )
                         {
-                            costoActivo = Convert.ToDecimal(Request.Form["CostoActivo"]);
+
+
+                            if (costo.Contains(","))
+                            {
+                               costo = costo.Replace(",", ".");
+                                costo = costo + "M";
+                            }
+                            
+                     
+
+                            costoActivo = Convert.ToDecimal(costo);
+
+
                         }
                         else
                         {
-                            costoActivo = 0;
+                            costoActivo = 0M; 
                         }
-
+                        var xhffhg = costoActivo;
 
                         var resultadoinsertar = _nRegistroActivos.InsertarActivoFijo(numeroActivo, numeroPlaca,
                              marca, modelo, idEstadoActivo, idCategoria, idUbicacion, idPerfilEmpresa,
@@ -86,7 +101,7 @@ namespace ActiveSmartWeb.RegistroActivos
 
                         var resultadoactualizar = _nRegistroActivos.ActualizaActivoFijo(idActivo, acnumeroActivo, acnumeroPlaca,
                            acmarca, acmodelo, acidEstadoActivo, acidCategoria, acidUbicacion,acnumeroSerie,
-                           acdescripcionCorta,acdDescripcionCategoria,acdescripcionEstado,acnumeroFactura,acfechaCompra,acostoActivo);
+                           acdescripcionCorta,acdDescripcionCategoria,acdescripcionEstado,acnumeroFactura,acfechaCompra, acostoActivo);
                         Response.Write(resultadoactualizar);
                         break;
 

@@ -70,11 +70,11 @@
                               <span class="txt-labl-info-emp-ai" v-cloak>{{listaIdiomas.Nombre}}</span>
 
                           </label>
-                          <input type="text" class="txt-name-perf-emp-ai w-input" autofocus="true" maxlength="80" v-model="NombreEmpresa" name="name" data-name="Name" placeholder="" id="name" required="">
+                          <input type="text" class="txt-name-perf-emp-ai w-input" autofocus="true" maxlength="150" v-model="NombreEmpresa" name="name" data-name="Name" placeholder="" id="name" required="">
                           <label for="name-2" class="txt-lbl-n">
                               <span class="txt-labl-info-emp-ai" v-cloak>{{listaIdiomas.IdEmpresa}}</span>
 
-                          </label><input type="text" class="txt-id-emp-ai w-input" autofocus="true" maxlength="80" v-model="IdEmpresa" name="name-2" data-name="Name 2" placeholder="" id="name-2" required="">
+                          </label><input type="text" class="txt-id-emp-ai w-input" autofocus="true" maxlength="150" v-model="IdEmpresa" name="name-2" data-name="Name 2" placeholder="" id="name-2" required="">
                           <label for="name-2" class="txt-lbl-n"><span class="txt-labl-info-emp-ai" v-cloak>{{listaIdiomas.ContactoPrincipal}}</span></label>
                           <input type="text" class="txt-contacto-emp-ai w-input" autofocus="true" maxlength="80" v-model="ContactoPrincipal" name="name-2" data-name="Name 2" placeholder="" id="name-2" required="">
                           <label for="email" class="txt-lbl-n"><span class="txt-labl-info-emp-ai" v-cloak>{{listaIdiomas.CorreoEmpresa}}</span>

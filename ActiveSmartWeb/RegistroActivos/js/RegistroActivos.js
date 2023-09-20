@@ -210,20 +210,12 @@ const registroactivo = new Vue({
                 a = document.getElementById('marca');
                 a.focus();
                 return
-
-
-
-
             }
 
-
-            //else if (this.fechaCompra < new Date) {
-            //    alertify.error(this.listaidiomaRegistroActivo.Valnumfactura);
-            //    a = document.getElementById('nFactura');
-            //    a.focus();
-            //    return
-            //}
             else {
+
+                
+                
 
                 Swal.fire({
                     title: '<strong>Una vez que confirmes este proceso no se van a poder editar los siguientes campos <u>Número de serie, </u> <u>Número de factura,</u><u>Modelo,</u></u><u>Marca,</u><u>Categoría</u></strong > ',
@@ -237,10 +229,10 @@ const registroactivo = new Vue({
                     focusConfirm: false,
                     confirmButtonText:
                         'Guardar',
-                    confirmButtonAriaLabel: 'Thumbs up, Guardar!',
+                    confirmButtonAriaLabel: "thumbs-up",
                     cancelButtonText:
                         'Cancelar',
-                    cancelButtonAriaLabel: 'Thumbs down'
+                    cancelButtonAriaLabel:" thumbs-down",
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed)
@@ -259,8 +251,11 @@ const registroactivo = new Vue({
             }
         },
 
+      
         InsertarActivo: function () {
             var self = this;
+            
+
             $.post(urlRegistro, {
                 option: 'InsertarActivoFijo',
                 IdPerfilEmpresa: self.idPerfilEmpresa,
@@ -289,6 +284,7 @@ const registroactivo = new Vue({
                 } else {
                     //alertify.error(self.listaidiomaRegistroActivo.AgregarError);
                     alertas.error(self.listaidiomaRegistroActivo.Atencion, respuesta);
+                    Swal.fire('En caso de equivocación en campos no editables, deberá inactivar el mismo y crear un activo nuevo corregido')
                     return
                 }
 
