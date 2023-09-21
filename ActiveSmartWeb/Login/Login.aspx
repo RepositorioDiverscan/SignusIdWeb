@@ -48,68 +48,62 @@
           </div>
         </div>
       </div>   
-      <div class="section-presentacion wf-section">
+      <div class="section-presentacion section-icons-home-ai">
         <div class="container w-container">
           <div class="colums w-row">
-            <div class="column-presentation w-col w-col-4">
-              <img src="../images/acces-o_activeIDsmart_automatice.jpg" loading="lazy" alt="Manos sostienen un teléfono Móvil  mientras revisa sus activos actualizados en el app de Active ID Smart." class="image-colum">
-              <h2 class="title-colum">{{listaidiomalogin.Registre}}</h2>
+            <div class="column-presentation w-col w-col-4"><img src="images/acces-o_activeIDsmart_automatice.jpg" loading="lazy" alt="Manos sostienen un teléfono Móvil  mientras revisa sus activos actualizados en el app de Active ID Smart." class="image-colum">
+              <h2 class="title-colum">REGISTRE</h2>
               <p class="paragraph-colum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
             </div>
-            <div class="column-presentation w-col w-col-4">
-              <img src="../images/active_ID_smart_partners_carousel_gosocket.png" loading="lazy" alt="Go Socket Logo" class="image-colum">
-              <h2 class="title-colum">{{listaidiomalogin.Controle}}</h2>
+            <div class="column-presentation w-col w-col-4"><img src="images/active_ID_smart_partners_carousel_gosocket.png" loading="lazy" alt="Go Socket Logo" class="image-colum">
+              <h2 class="title-colum">CONTROLE</h2>
               <p class="paragraph-colum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
             </div>
-            <div class="column-presentation w-col w-col-4">
-               <img src="../images/acces-o_activeIDsmart_controle.jpg" loading="lazy" alt="Una mano sostiene un lapiz mientras marca sus activos registrados" class="image-colum">
-              <h2 class="title-colum">{{listaidiomalogin.Automatice}}</h2>
+            <div class="column-presentation w-col w-col-4"><img src="images/acces-o_activeIDsmart_controle.jpg" loading="lazy" alt="Una mano sostiene un lapiz mientras marca sus activos registrados" class="image-colum">
+              <h2 class="title-colum">AUTOMATICE</h2>
               <p class="paragraph-colum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
             </div>
           </div>
           <div class="w-layout-grid grid-diagonal">
-            <div data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07c3" class="div-contenedor-diagonal">
-              <img src="../images/acces-o_activeIDsmart_registre.jpg" loading="lazy" alt="Mano con handheld realiza lectura_RFID sobre un activo" width="275" class="image-diagonal">
+            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07c3-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07c3" class="div-contenedor-diagonal"><img src="images/REGISTRE.png" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940.0000610351562px" width="275" alt="Mano con handheld realiza lectura_RFID sobre un activo" srcset="images/REGISTRE-p-500.png 500w, images/REGISTRE.png 653w" class="image-diagonal"><img src="placeholder.svg" loading="lazy" alt="">
               <a href="#" class="contenedor-texto-diagonal w-inline-block">
-                <h2 class="title-colum">{{listaidiomalogin.Registre}}</h2>
-              </a>
-              <div class="div-info-diagonal" style="transform: translate3d(0px, -1%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
-                <div class="contenedor-info-diagonal">
-                  <h1 class="title-colum">{{listaidiomalogin.Registre}}</h1>
-                  <p class="parrafo-diagonal">{{listaidiomalogin.MsjSuminist}}</p>
-                </div>
-                <div class="div-degrado-diagonal">
-                  <a href="#" class="link-2">{{listaidiomalogin.Sabermas}}</a>
-                </div>
-              </div>
-            </div>
-            <div data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07d1" class="div-contenedor-diagonal">
-              <img src="../images/acces-o_activeIDsmart_controle.jpg" loading="lazy" alt="Una mano verifica la lista de activos registrados" class="image-diagonal">
-              <a href="#" class="contenedor-texto-diagonal w-inline-block">
-                <h2 class="title-colum">{{listaidiomalogin.Controle}}</h2>
+                <h2 class="title-colum registre">REGISTRE</h2>
               </a>
               <div class="div-info-diagonal">
                 <div class="contenedor-info-diagonal">
-                  <h1 class="title-colum">{{listaidiomalogin.Controle}}</h1>
+                  <h1 class="title-colum">REGISTRE</h1>
+                  <p class="parrafo-diagonal">Suministros originales, etiquetas, papel de recibo para ruteo, RFID y más.</p>
+                </div>
+                <div class="div-degrado-diagonal">
+                  <a href="saber-mas.html" class="link-2">SABER MÁS</a>
+                </div>
+              </div>
+            </div>
+            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07d1-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07d1" class="div-contenedor-diagonal"><img src="images/imagenes-web.jpg" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940.0000610351562px" srcset="images/imagenes-web-p-500.jpg 500w, images/imagenes-web.jpg 650w" alt="Una mano verifica la lista de activos registrados" class="image-diagonal">
+              <a href="#" class="contenedor-texto-diagonal w-inline-block">
+                <h2 class="title-colum control">AUTOMATICE</h2>
+              </a>
+              <div class="div-info-diagonal">
+                <div class="contenedor-info-diagonal">
+                  <h1 class="title-colum">CONTROLE</h1>
                   <p class="parrafo-diagonal">Tarjetas de identificación para su Empresa.</p>
                 </div>
                 <div class="div-degrado-diagonal">
-                  <a href="#" class="link-2">{{listaidiomalogin.Sabermas}}</a>
+                  <a href="#" class="link-2">SABER MÁS</a>
                 </div>
               </div>
             </div>
-            <div data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07df" class="div-contenedor-diagonal">
-                <img src="../images/acces-o_activeIDsmart_automatice.jpg" loading="lazy" width="150" alt="Manos sostienen un teléfono móvil mientras utiliza aplicación de acces-o para identificar activos automáticamente." class="image-diagonal">
+            <div id="w-node-_937a3a74-a632-ef2c-fcb9-3127688f07df-1d7244d5" data-w-id="937a3a74-a632-ef2c-fcb9-3127688f07df" class="div-contenedor-diagonal"><img src="images/CONTROLE.jpg" loading="lazy" width="150" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940.0000610351562px" alt="Manos sostienen un teléfono móvil mientras utiliza aplicación de acces-o para identificar activos automáticamente." srcset="images/CONTROLE-p-500.jpg 500w, images/CONTROLE.jpg 650w" class="image-diagonal">
               <a href="#" class="contenedor-texto-diagonal w-inline-block">
-                <h2 class="title-colum auto">{{listaidiomalogin.Automatice}}</h2>
+                <h2 class="title-colum auto">CONTROLE</h2>
               </a>
               <div class="div-info-diagonal">
                 <div class="contenedor-info-diagonal">
-                  <h1 class="title-colum">{{listaidiomalogin.Automatice}}</h1>
+                  <h1 class="title-colum">AUTOMATICE</h1>
                   <p class="parrafo-diagonal">Servicio en Sitio, Contratos, Diagnóstico y Reparación.</p>
                 </div>
                 <div class="div-degrado-diagonal">
-                  <a href="#" class="link-2">{{listaidiomalogin.Sabermas}}</a>
+                  <a href="#" class="link-2">SABER MÁS</a>
                 </div>
               </div>
             </div>

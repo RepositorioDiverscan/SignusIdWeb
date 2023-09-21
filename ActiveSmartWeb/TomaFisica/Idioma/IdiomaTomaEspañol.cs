@@ -10,7 +10,7 @@ namespace ActiveSmartWeb.TomaFisica.Idioma
         public const string _titulo = "Toma Física";
         public const string _hasta = "Hasta";
         public const string _desde = "Desde";
-        public const string _nombreTomaF = "Nombre de Toma";
+        public const string _nombreTomaF = "Nombre Toma Física";
         public const string _descripcionTomaF = "Descripción";
         public const string _errorRangoF = "La Fecha Inicial no puede ser mayor a la Fecha Final";
         public const string _fechaFinal = "Fecha Final";

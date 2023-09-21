@@ -84,16 +84,23 @@ const Empleados = new Vue({
                 Nombre: self.nombre,
                 Descripcion: self.descripcion,
                 IdPerfilEmpresa: self.idPerfilEmpresa
+                 
             }, function (respuesta, error) {
+              
                 if (respuesta == "Registrado") {
                     self.nombre = '';
                     self.descripcion = '';
                     self.idUbicacionA = '';
                     alertas.success(self.listaidiomalubicacion.Atencion, self.listaidiomalubicacion.InsertarCorrecto);
+                   
                     self.ObtenerUbicaciones();
+                  
                 } else {
                     //alertify.error(self.listaidiomalubicacion.InsertarError);
                     alertas.error(self.listaidiomalubicacion.Atencion, respuesta);
+                    Swal.fire('¿Está seguro que desea guardar esta ubicación?')
+
+
                 }
             });
         },
@@ -114,7 +121,10 @@ const Empleados = new Vue({
                 Nombre: this.nombre,
                 Descripcion: this.descripcion,
                 IdUbicacionA: this.idUbicacionA
-            }, function (respuesta, error) {
+                 
+            }, function (respuesta, error) 
+             
+            {
                 if (respuesta == "Actualizado") {
 
                     self.nombre = '';

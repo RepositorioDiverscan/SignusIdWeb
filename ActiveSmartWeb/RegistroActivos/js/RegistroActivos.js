@@ -211,48 +211,85 @@ const registroactivo = new Vue({
                 a.focus();
                 return
             }
-            //else if (this.fechaCompra < new Date) {
-            //    alertify.error(this.listaidiomaRegistroActivo.Valnumfactura);
-            //    a = document.getElementById('nFactura');
-            //    a.focus();
-            //    return
-            //}
+
             else {
-                var self = this;
-                $.post(urlRegistro, {
-                    option: 'InsertarActivoFijo',
-                    IdPerfilEmpresa: self.idPerfilEmpresa,
-                    NumeroActivo: self.txtnumActivo,
-                    PlacaActivo: self.numPlaca,
-                    Observacion: 'sin observacion',
-                    Marca: self.marca,
-                    Modelo: self.modelo,
-                    IdEstadoActivo: self.selectEstado,
-                    IdCategoriaActivo: self.selectCategoria,
-                    IdUbicacionA: self.selectUbicacion,
-                    NumeroSerie: self.numSerie,
-                    DescripcionCorta: self.descripCorta,
-                    DescripcionCategoria: self.descripcionCategoria,
-                    DescripcionEstado: self.descripEstado,
-                    NumeroFactura: self.numFactura,
-                    FechaCompra: self.fechaCompra,
-                    CostoActivo: self.costoActivo,
-                }, function (respuesta, error) {
-                    if (respuesta == "Registrado") {
-                        alertas.success(self.listaidiomaRegistroActivo.Atencion, self.listaidiomaRegistroActivo.AgregarCorrecto);
-                        self.BorrarDatos();
-                    } else if (respuesta == "Existe") {
-                        alertas.error(self.listaidiomaRegistroActivo.Atencion, self.listaidiomaRegistroActivo.ValidActNumAct);
-                        self.BorrarDatos();
-                    } else {
-                        //alertify.error(self.listaidiomaRegistroActivo.AgregarError);
-                        alertas.error(self.listaidiomaRegistroActivo.Atencion, respuesta);
-                        return
+
+                
+                
+
+                Swal.fire({
+                    title: '<strong>Una vez que confirmes este proceso no se van a poder editar los siguientes campos <u>Número de serie, </u> <u>Número de factura,</u><u>Modelo,</u></u><u>Marca,</u><u>Categoría</u></strong > ',
+                    icon: 'info',
+                    html:
+                        'Por favor, verifique que los datos sean correctos antes de confirmar' 
+                         +
+                        '',
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    focusConfirm: false,
+                    confirmButtonText:
+                        'Guardar',
+                    confirmButtonAriaLabel: "thumbs-up",
+                    cancelButtonText:
+                        'Cancelar',
+                    cancelButtonAriaLabel:" thumbs-down",
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed)
+
+                    {
+
+                        self.InsertarActivo();
+
+                        
+                    } else if (result.isDenied) {
+                        Swal.fire('Cancelar', '', 'info')
                     }
-                });
+                })
+
+               
             }
         },
 
+      
+        InsertarActivo: function () {
+            var self = this;
+            
+
+            $.post(urlRegistro, {
+                option: 'InsertarActivoFijo',
+                IdPerfilEmpresa: self.idPerfilEmpresa,
+                NumeroActivo: self.txtnumActivo,
+                PlacaActivo: self.numPlaca,
+                Observacion: 'sin observacion',
+                Marca: self.marca,
+                Modelo: self.modelo,
+                IdEstadoActivo: self.selectEstado,
+                IdCategoriaActivo: self.selectCategoria,
+                IdUbicacionA: self.selectUbicacion,
+                NumeroSerie: self.numSerie,
+                DescripcionCorta: self.descripCorta,
+                DescripcionCategoria: self.descripcionCategoria,
+                DescripcionEstado: self.descripEstado,
+                NumeroFactura: self.numFactura,
+                FechaCompra: self.fechaCompra,
+                CostoActivo: self.costoActivo,
+            }, function (respuesta, error) {
+                if (respuesta == "Registrado") {
+                    alertas.success(self.listaidiomaRegistroActivo.Atencion, self.listaidiomaRegistroActivo.AgregarCorrecto);
+                    self.BorrarDatos();
+                } else if (respuesta == "Existe") {
+                    alertas.error(self.listaidiomaRegistroActivo.Atencion, self.listaidiomaRegistroActivo.ValidActNumAct);
+                    self.BorrarDatos();
+                } else {
+                    //alertify.error(self.listaidiomaRegistroActivo.AgregarError);
+                    alertas.error(self.listaidiomaRegistroActivo.Atencion, respuesta);
+                  
+                    return
+                }
+
+            });
+        },
         ModificarActivo: function () {
             var self = this;
             if (this.txtnumActivo == '' || this.txtnumActivo == ' ') {
@@ -294,6 +331,12 @@ const registroactivo = new Vue({
                 a = document.getElementById('marca');
                 a.focus();
                 return
+
+
+
+
+
+
             }
 
             else {
@@ -330,6 +373,8 @@ const registroactivo = new Vue({
                     }
                 })
             }
+
+         
         },
 
         DatosActivoEditar: function () {
@@ -393,6 +438,7 @@ const registroactivo = new Vue({
             self.editarcampos = false;
             sessionStorage.removeItem("DatosActivoEditar");
         },
+
 
         ObtenerActivoPorNumActivo: function () {
             var self = this
