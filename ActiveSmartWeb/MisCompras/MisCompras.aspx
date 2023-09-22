@@ -3,8 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <link href="../css/transicion.css" rel="stylesheet" />
-        <div class="main" id="context">
-      <div class="section wf-section">
+        <div class="main otrodiv" id="context">
+      <div class="section otrodiv">
         <div class="container-2 w-container">
           <div class="w-layout-grid grid-main">
             <div id="w-node-b3e6ab24-c2e2-12bc-4cfe-327d5390147e-5696b687" class="div-banner-extremo"></div>

@@ -93,6 +93,10 @@
         display: flex;
     }
 
+    .main.otrodiv {
+        width: 100%;
+    }
+
 .header {
     width: 100%;
     height: auto;
@@ -1296,6 +1300,10 @@
         justify-content: center;
         align-items: center;
         display: block;
+    }
+
+    .section.otrodiv {
+        width: 100%;
     }
 
 .form-block-8 {
