@@ -31,9 +31,9 @@
 </head>
 <body>
 
-  <div class="header-steps-payout-ai"><img src="images/signus_id.png" loading="lazy" width="158" sizes="150px" alt="" srcset="images/signus_id-p-500.png 500w, images/signus_id-p-800.png 800w, images/signus_id-p-1080.png 1080w, images/signus_id.png 1730w" class="logo-payout-ai"></div>
+  <div class="header-steps-payout-ai"><img src="../images/signus_id.png" loading="lazy" width="158" sizes="150px" alt="" srcset="../images/signus_id-p-500.png 500w, ../images/signus_id-p-800.png 800w, ../images/signus_id-p-1080.png 1080w, ../images/signus_id.png 1730w" class="logo-payout-ai"></div>
   <div class="contenedor-general">
-    <div class="main">
+    <div class="main" id="Planesidioma">
       <div class="section the-section-ai">
         <div class="container-2 contenedor-ai">
           <div class="w-layout-grid grid-8 grid-main grid-responsive-ai grid-lanscape">
@@ -43,8 +43,8 @@
               <div class="div-top-title-ai">
                 <h1 class="titulo-principal main-title-ai">PLANES</h1>
                 <div class="div-block-237">
-                <a href="#" id="btnMensual" class="button-4 w-button" @click="CambiarFrecuenciaPlanAnual()">Mensual</a>
-                <a href="#" id="btnAnual" class="button-5 w-button" @click="CambiarFrecuenciaPlanMensual()">Anual</a>
+                <a href="#" id="btnMensual" class="button-5 w-button" @click="CambiarFrecuenciaPlanMensual()" >Mensual</a>
+                <a href="#" id="btnAnual" class="button-4 w-button" @click="CambiarFrecuenciaPlanAnual()">Anual</a>
                 </div>
                 </div>
                <div class="div-plans-cont-ai">
@@ -55,7 +55,7 @@
                       <h6 class="heading-72">Plataforma de control de activos lista para usarse</h6>
                     </div>
                     <div id="w-node-_3110ed63-6f15-f357-6e01-be624e4386bb-290239ef">
-                      <a href="#" class="btn-sus-plan-ai w-button">suscribir</a>
+                      <a href="#" class="btn-sus-plan-ai w-button" v-on:click="FREE()">suscribir</a>
                     </div>
                     <div id="w-node-_7ab6188d-aefe-cf2a-1e8f-69c54d0f6f9a-290239ef" class="text-facturacion-ai">$0 / usuarios al mes<br>‍</div>
                     <div class="text-type-price-ai">$0</div>
@@ -68,11 +68,11 @@
 
 
                    <div id="w-node-_770370cc-47ba-47e0-07b7-615b1b75e3e9-290239ef">
-                      <a href="#" class="btn-sus-plan-ai w-button">suscribir</a>
+                      <a href="#" class="btn-sus-plan-ai w-button" v-on:click="BASIC()">suscribir</a>
                     </div>
                     <div id="w-node-_4aee93ca-5135-cb53-b2dc-d895f7f6998b-290239ef" class="alance-plan-ai"></div>
                     <div id="w-node-_6d68c22a-6945-7184-f66c-5bf75f0b5635-290239ef" class="text-facturacion-ai">$14.99/ usuarios al mes<br>Facturado anualmente</div>
-                    <div class="text-type-price-ai">$14.99</div>
+                    <div class="text-type-price-ai" id="basicPrecio">$14.99</div>
                   </div>
                   <div id="w-node-_5b8fe47d-7c2f-89fb-e9f4-d931958a25dc-290239ef" class="div-plan-ai">
                     <h3 class="titulo-plan-type-ai">pro</h3>
@@ -92,14 +92,14 @@
                       <div class="text-type-price-ai">$300</div>
                     </div>
                     <div id="w-node-_62452690-352f-2bca-384a-f1187ea8d427-290239ef" class="div-block-372">
-                      <h6 class="heading-72">Funcionalidades avanzadas de gestión</h6>
+                      <h6 class="heading-72">Plataforma completa personalizable para cualquier tamaño de empresa.</h6>
                     </div>
                     <div id="w-node-_36c11641-0617-b84f-0105-f20f8fe746e5-290239ef">
                       <div class="text-facturacion-ai">$300 / usuarios al mes</div>
                       <div class="alance-plan-ai">Facturado anualmente</div>
                     </div>
                     <div id="w-node-b5c6f485-40eb-16df-80e4-b045fae44363-290239ef">
-                      <a href="#" class="btn-sus-plan-ai w-button">contactar</a>
+                      <a href="#" class="btn-sus-plan-ai w-button" v-on:click="">contactar</a>
                     </div>
                   </div>
                 </div>
@@ -114,8 +114,9 @@
                       <div id="w-node-_19b5a8f4-2dc9-9ce3-f554-ccc567b03b18-290239ef" class="div-block-363">
                         <h4 class="heading-65">FREE<br>$0<br>al mes</h4>
                       </div>
+
                       <div id="w-node-_178d6103-f147-e6ee-5ac0-0ef7d1655ad6-290239ef" class="div-block-363">
-                        <h4 class="heading-65">BASIC<br>$14.99/ <br>al mes</h4>
+                        <h4 id="PrecioTabla" class="heading-65">BASIC<br>$14.99/ <br>al mes</h4>
                       </div>
                       <div id="w-node-d23436ba-f965-f232-418b-922ee60e85a4-290239ef" class="div-block-363">
                         <h4 class="heading-65">PRO<br>Muy pronto</h4>
@@ -429,5 +430,7 @@
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=606dfb37871f33efa37244d4" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
+    <script src="../Recursos/Vue/vue.js"></script>
+    <script src="js/Planes.js"></script>
 </body>
 </html>
