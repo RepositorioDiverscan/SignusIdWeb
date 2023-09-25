@@ -18,7 +18,7 @@
                   <div data-hover="false" data-delay="0" id="w-node-_01c345db-44dd-5950-8797-fc0e77f5b71f-731f63ba" class="dropdown-detalles-ai w-dropdown">
                   <div class="toggle-detalles-ai w-dropdown-toggle" style="padding:0px"><img src="../images/info2.svg" loading="lazy" alt="" class="img-detalles-ai"></div>
                   <nav class="detalles-descrp-ai w-dropdown-list">
-                    <p class="p-desc-detalles-ai" v-cloak>{{listaidiomaRegistroActivo.Ms1}} <strong><br>{{listaidiomaRegistroActivo.Ms2}}</strong></p> 
+                    <p class="p-desc-detalles-ai" v-cloak>{{listaidiomaRegistroActivo.Ms1}} <strong><br>{{listaidiomaRegistroActivo.Ms2}}</strong><br><strong>{{listaidiomaRegistroActivo.Ms3}}</strong></p> 
                   </nav>
                 </div>
               </div>

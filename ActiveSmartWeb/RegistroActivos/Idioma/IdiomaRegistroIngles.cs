@@ -70,6 +70,7 @@ namespace ActiveSmartWeb.RegistroActivos.Idioma
         public const string _atencion = "Atention:";
         public const string _ms1 = "In this page you can add and edit";
         public const string _ms2 = "Assets to your company";
+        public const string _ms3 = "En caso de equivocación en campos no editables, deberá inactivar el mismo y crear un activo nuevo corregido.";
         public const string _NFEti = "Tag Number";
     }
 }

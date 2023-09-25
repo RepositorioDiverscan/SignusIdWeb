@@ -7,7 +7,7 @@
  
 
     <link href="../css/transicion.css" rel="stylesheet" />
-<div class="main" id="context" style="width:100%" >
+<div class="main" id="context" style="width:100% ;margin-bottom:3%" >
 <div class="section wf-section" style="width:100%">
 <div class="container-2 w-container">
 <div class="w-layout-grid grid-main">
