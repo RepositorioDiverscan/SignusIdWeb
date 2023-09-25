@@ -2252,6 +2252,10 @@
         margin-right: auto;
     }
 
+    .container-2.divotro {
+        max-width: 100%;
+    }
+
 .div-banner-extremo {
     background-color: rgba(0, 0, 0, 0);
 }
@@ -11174,7 +11178,7 @@
     background-color: rgba(0, 0, 0, .66);
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: none;
     position: fixed;
     top: 0%;
     bottom: 0%;
@@ -12110,6 +12114,10 @@
 
 .image-76 {
     display: inline-block;
+}
+
+.otrodiv {
+    width: 100%;
 }
 
 @media screen and (max-width: 991px) {

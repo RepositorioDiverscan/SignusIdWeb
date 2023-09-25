@@ -2,11 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <style>
-        .container-2{
-            max-width:940px !important;
-        }
-    </style>
 
     <div class="main">
       <div id="submenuReportes" class="section" v-cloak>
