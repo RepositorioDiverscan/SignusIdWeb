@@ -3,8 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
-    <div class="main">
-      <div id="submenuReportes" class="section" v-cloak>
+    <div class="main" style="width:100%">
+      <div id="submenuReportes"  class="section" v-cloak  style="width:100%" >
         <submenureporte></submenureporte>
       </div>
     </div>

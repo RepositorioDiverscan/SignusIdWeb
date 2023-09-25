@@ -11,10 +11,10 @@ Vue.component('submenureporte', {
     render: function (createElement) {
         var self = this
         return createElement('div', {
-            attrs: { class: 'main' }
+            attrs: { class: 'main', style: 'width: 100%;' }
         }, [
             createElement('div', {
-                attrs: { class: 'section wf-section' }
+                attrs: { class: 'section wf-section', style: 'width: 100%;' }
             }, [
                 createElement('div', {
                     attrs: { class: 'container-2 w-container' }
