@@ -93,10 +93,6 @@
         display: flex;
     }
 
-    .main.otrodiv {
-        width: 100%;
-    }
-
 .header {
     width: 100%;
     height: auto;
@@ -1302,10 +1298,6 @@
         display: block;
     }
 
-    .section.otrodiv {
-        width: 100%;
-    }
-
 .form-block-8 {
     z-index: 1;
     width: auto;
@@ -2250,10 +2242,6 @@
     .container-2.contenedor-ai {
         margin-left: auto;
         margin-right: auto;
-    }
-
-    .container-2.divotro {
-        max-width: 100%;
     }
 
 .div-banner-extremo {
@@ -11178,7 +11166,7 @@
     background-color: rgba(0, 0, 0, .66);
     justify-content: center;
     align-items: center;
-    display: none;
+    display: flex;
     position: fixed;
     top: 0%;
     bottom: 0%;
@@ -12114,10 +12102,6 @@
 
 .image-76 {
     display: inline-block;
-}
-
-.otrodiv {
-    width: 100%;
 }
 
 @media screen and (max-width: 991px) {
