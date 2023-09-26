@@ -115,6 +115,19 @@ namespace ActiveSmartWeb.SincronizarActivos.SincronizarAct
                 return "";
             }
         }
+        public string ObtenertipoMonedaporIdEmpresa(int IdPerfilEmpresa)
+        {
+            try
+            {
+                var RegistroActivos = _SincronizaActivos.ObtenertipoMonedaporIdEmpresa(IdPerfilEmpresa);
+                return RegistroActivos;
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return "";
+            }
+        }
 
         public List<EUbicacionA> ConsultarUbicaciones(int idPerfilEmpresa)
         {

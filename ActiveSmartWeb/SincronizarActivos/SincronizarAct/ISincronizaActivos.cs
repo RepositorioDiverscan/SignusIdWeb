@@ -18,6 +18,8 @@ namespace ActiveSmartWeb.SincronizarActivos.SincronizarAct
        List<ESincronizaActivos> ConsultaActivos();
         string ActualizaArchivoEstado(int idArchivo, string estadoSicroniza);
 
+        string ObtenertipoMonedaporIdEmpresa(int IdPerfilEmpresa);
+
 
     }
 }

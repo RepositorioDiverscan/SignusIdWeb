@@ -60,36 +60,64 @@ const Planes = new Vue({
         CambiarFrecuenciaPlanAnual: function () {
             var self = this;
 
+
+
             self.frecuencia = '1';
+
+
 
             $(btnMensual).removeClass("button-4").addClass("button-5");
             $(btnAnual).removeClass("button-5").addClass("button-4");
 
+
+
             $(basicPrecio).text('$14.99');
             $('#w-node-_6d68c22a-6945-7184-f66c-5bf75f0b5635-290239ef').text(`${self.listaIdiomas.MontoUsuarioBasic}\n${self.listaIdiomas.FacturaBasic}`);
+
+            //$(basicPrecioBasic).text('$14.99');
+            $(PrecioTabla).text(`BASIC \n $14.99/ \n al mes`);    
+
         },
+
+
 
         //Metodo para cambiar la frecuencia de pago a mensual
         CambiarFrecuenciaPlanMensual: function () {
             var self = this;
 
+
+
             self.frecuencia = '2';
+
+
 
             $(btnAnual).removeClass("button-4").addClass("button-5");
             $(btnMensual).removeClass("button-5").addClass("button-4");
 
+
+
             $(basicPrecio).text('$17.50');
             $('#w-node-_6d68c22a-6945-7184-f66c-5bf75f0b5635-290239ef').text(`${self.listaIdiomas.MontoUsuarioBasicMensual}\n${self.listaIdiomas.FacturaMensual}`);
-            
+
+            //$(basicPrecioBasic).text('$17.50');
+            $(PrecioTabla).text(`BASIC \n $17.50 / \n al mes`);
+
         },
 
 
-       PRO: function () {
+
+
+
+        PRO: function () {
             var self = this;
+
+
 
         },
         BASIC: function () {
             var self = this;
+
+
 
             sessionStorage.setItem('CodigoPlan', '2');
             self.cambioPantallaCheckout(self.frecuencia)
@@ -98,19 +126,32 @@ const Planes = new Vue({
             var self = this;
 
 
+
+
+
             sessionStorage.setItem('CodigoPlan', '1');
             self.cambioPantallaCheckout(self.frecuencia)
         },
+
+
 
         BUSINESS: function () {
             window.location.assign('../Contacto/ContactoView.aspx');
         },
         cambioPantallaCheckout: function (seccion) {
 
+
+
             var url = 'Checkout.aspx?frecuencia=' + encodeURIComponent(seccion);
             window.location.href = url;
 
+
+
         },
     },
+
+    
+
+
 
 })

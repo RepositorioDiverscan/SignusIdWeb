@@ -118,8 +118,8 @@ namespace ActiveSmartWeb.SincronizarActivos
                         Response.Write(resultadoActualiza);
                         break;
                     case "Exportar":
-                        var idempresa = Convert.ToInt32(Request.Form["IdPerfilEmpresa"]); 
-
+                        var idempresa = Convert.ToInt32(Request.Form["IdPerfilEmpresa"]);
+                        var moneda = _nSincronizaActivos.ObtenertipoMonedaporIdEmpresa(idempresa);
                         var base64Excel = CrearExcelSincronizar(idempresa);
                         //var base64Excel = obtenerBase64Excel();
                         Response.Write(base64Excel);

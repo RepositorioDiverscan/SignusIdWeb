@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster/Site.Master" AutoEventWireup="true" CodeBehind="RegistroActivos.aspx.cs" Inherits="ActiveSmartWeb.RegistroActivos.RegistroActivos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+      
+
     <div class="main">
       <div class="main" id="registroactivosVUE">
       <div class="section wf-section" id="alertas">
@@ -15,7 +18,7 @@
                   <div data-hover="false" data-delay="0" id="w-node-_01c345db-44dd-5950-8797-fc0e77f5b71f-731f63ba" class="dropdown-detalles-ai w-dropdown">
                   <div class="toggle-detalles-ai w-dropdown-toggle" style="padding:0px"><img src="../images/info2.svg" loading="lazy" alt="" class="img-detalles-ai"></div>
                   <nav class="detalles-descrp-ai w-dropdown-list">
-                    <p class="p-desc-detalles-ai" v-cloak>{{listaidiomaRegistroActivo.Ms1}} <strong><br>{{listaidiomaRegistroActivo.Ms2}}</strong></p> 
+                    <p class="p-desc-detalles-ai" v-cloak>{{listaidiomaRegistroActivo.Ms1}} <strong><br>{{listaidiomaRegistroActivo.Ms2}}</strong><br><strong>{{listaidiomaRegistroActivo.Ms3}}</strong></p> 
                   </nav>
                 </div>
               </div>
@@ -69,7 +72,9 @@
 
                     <div id="w-node-_9e8e6069-b991-1517-a8fd-bd574f24680f-2106bd5d" class="form-line"><label v-cloak for="name-5" class="field-label">{{listaidiomaRegistroActivo.Ubicacion}}</label> 
                         <select v-cloak id="selU" name="field-4"  v-model="selectUbicacion"  data-name="Field 4" class="select-field w-select">
+                              
                         <option value="0">{{listaidiomaRegistroActivo.SelectUbi}}</option> 
+                
                         <option v-for="ubicacion in Ubicaciones" :key="ubicacion.IdUbicacionA" :value="ubicacion.IdUbicacionA" >{{ubicacion.Nombre}}</option >    
                      </select></div>
 
@@ -281,7 +286,12 @@
     }
 
     </style>
+
+        <!--SweetAlert2-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4@5.0.10/bootstrap-4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <script src="../Recursos/JQuery/jquery-3.5.1.min.dc5e7f18c8.js"></script>
-    <link href="../css/signusid.webflow.css" rel="stylesheet" />
+   <%-- <link href="../css/signusid.webflow.css" rel="stylesheet" />--%>
     <script src="js/RegistroActivos.js"></script>
 </asp:Content>

@@ -72,8 +72,9 @@ namespace ActiveSmartWeb.RegistroActivos.Idioma
         public const string _ingrErrNumActivo = "El activo no ha sido encontrado";
         public const string _atencion = "Atención:";
 
-        public const string _ms1 = "En esta página puede añadir y editar";
+        public const string _ms1 = "En esta página puede añadir y editar.";
         public const string _ms2 = "Activos de su empresa";
+        public const string _ms3 = "En caso de equivocación en campos no editables, deberá inactivar el mismo y crear un activo nuevo corregido.";
         public const string _NFEti = "Número de Etiqueta";
     }
 }

@@ -76,7 +76,7 @@ namespace ActiveSmartWeb.GestionServicio.Gestion
         {
             List<Elogin> elogins = new List<Elogin>();
             var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
-            var dbCommand = db.GetStoredProcCommand("SP_ConsultaUsuariosEmpresa");
+            var dbCommand = db.GetStoredProcCommand("SP_ConsultaUsuariosEmpresaAdmiSelect");
             db.AddInParameter(dbCommand, "@idEmpresa", DbType.Int32, IdPerfilEmpresa);
             dbCommand.CommandTimeout = 3600;
 
