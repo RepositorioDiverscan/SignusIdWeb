@@ -169,6 +169,7 @@ namespace ActiveSmartWeb.SincronizarActivos.SincronizarAct
             db.ExecuteNonQuery(dbCommand);
             var Respuesta = db.GetParameterValue(dbCommand, "@respuesta").ToString();
             return Respuesta;
+            //
         }
 
 
