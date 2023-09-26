@@ -33,7 +33,7 @@ namespace ActiveSmartWeb.MetodosPago
 
         private void ObtenerMetodosPago()
         {
-            int idEmpresa = Convert.ToInt32(Request.Form["IdEmpresa"]);
+            int idEmpresa = Convert.ToInt32(Request.Form["IdPerfilEmpresa"]);
 
             //Obtiene el id del perfil de usuario de Authorize
             string perfilUsuario = _nMetodosPago.ObtenerPerfilUsuario(idEmpresa);

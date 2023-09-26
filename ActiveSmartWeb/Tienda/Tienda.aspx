@@ -61,12 +61,12 @@
                                                                         <p class="precio-zebra precio-anterior">$19.99<strong class="iva">+iva</strong></p>
                                                                     </div>
                                                                     <div class="div-block-226 div-stock w-clearfix">
-                                                                        <a href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</a>
+                                                                        <button href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</button>
 
                                                                         <input v-if="adicional.IdPaqueteContratado == 1" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=1 :id="adicional.IdPaqueteContratado" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" required="" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicionalActivos(adicional)">
                                                                         <input v-if="adicional.IdPaqueteContratado != 1" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=2 :id="adicional.IdPaqueteContratado" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" required="" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
                                                                         
-                                                                        <a href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</a>
+                                                                        <button href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</button>
                                                                     </div>
                                                                 </div>
                                                                 <div data-hover="false" data-delay="0" class="dropdown-detall-zc drop-tienda-ai w-dropdown">
@@ -76,7 +76,8 @@
                                                                     </div>
                                                                     <nav class="lista-dropdown-zc w-dropdown-list">
                                                                         <a href="#" class="drop-link2-zc w-dropdown-link"></a>
-                                                                        <p class="p-descr-zc">Lorem ipsum dolor sit amet, convfdg es fs fdsfds fsf sfds fdsf sfs fs dfs fs s gs g gs gs s sectetur adipiscing elit. Lorem ipsum dolor sit amet, convfdg es fs fdsfds fsf sfds fdsf sfs fs dfs fs s gs g gs gs s sectetur dolor.</p>
+                                                                        <p class="p-descr-zc">Lorem ipsum dolor sit amet, convfdg es fs  sectetur adipiscing elit.
+                                                                            Lorem ipsum dolor sit amet, convfdg es fs fdsfds fsf sfds fdsf sfs fs dfs fs s gs g gs gs s sectetur dolor.</p>
                                                                         <h4 class="heading-espcf-zc">Especificaciones:</h4>
                                                                         <ul role="list" class="especificaciones-lista-zc">
                                                                             <li class="list-item-zc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen Lorem ipsum do</li>
@@ -113,7 +114,7 @@
                                         </div>
                                         <div class="col-order-ai col-precio-ai w-col w-col-5 w-col-small-6 w-col-tiny-6">
                                             <div class="p-duration-plan-ai p-precio-ai p-precio-t">Precio</div>
-                                            <div class="p-price-plan-ai p-precio-t">US$14.99</div>
+                                            <div class="p-price-plan-ai p-precio-t">US${{precioAct}}</div>
                                         </div>
                                     </div>
                                     <div class="p-pago-adicio-ai">adicionales</div>
@@ -128,21 +129,21 @@
                                             <div class="cant-act-ai">{{adicionalseleccionado.Cantidad}}</div>
                                         </div>
                                         <div class="col-paln-ai col-ad-ai w-col w-col-4 w-col-small-4 w-col-tiny-4">
-                                            <div v-if="frecuenciaPago=='1'" class="p-price-plan-calc-ai">US${{adicionalseleccionado.Costo}}/mes</div>
                                             <div v-if="frecuenciaPago=='2'" class="p-price-plan-calc-ai">US${{adicionalseleccionado.CostoMensual}}/mes</div>
+                                            <div v-if="frecuenciaPago=='1'" class="p-price-plan-calc-ai">US${{adicionalseleccionado.Costo*12}}/Año</div>
                                         </div>
                                     </div>
 
                                     
                                     <div class="colums-order-ai total-price-cols-ai w-row">
                                         <div class="col-order-ai w-col w-col-6 w-col-small-6 w-col-tiny-6">
-                                            <div class="p-total-pay-ai">Total a pagar:</div>
+                                            <div style="font-size:15px" class="p-total-pay-ai">Nueva suscripcion:</div>
                                         </div>
                                         <div class="col-order-ai w-col w-col-6 w-col-small-6 w-col-tiny-6">
                                             <div class="p-total-pay-ai">US${{totalpago}}</div>
                                         </div>
                                     </div>
-                                    <a @click="realizarPago()" href="#" class="btn-pagar-orden-ai w-button">Pagar US${{totalpago}}</a>
+                                    <a @click="realizarPago()" href="#" class="btn-pagar-orden-ai w-button">Pagar diferencia US${{pagoParcial}}</a>
                                 </div>
                             </div>
                         </div>
@@ -150,8 +151,26 @@
                 </div>
             </div>
         </div>
-    </div>
 
+     <div class="background-pop-up background-pago" id="PopUpPago">
+      <div class="popup-comercial add-pago-pp pago2-pp">
+        <div class="header-modal-ai">
+          <h4 class="texto-h-ai">Método de pago predeterminado</h4>
+          <div class="div-icon-exit-ai" @click="CerrarPopUp()" ><img src="../images/icono_eliminar_acces-o-01.svg" loading="lazy" alt="" class="img-salir-ai"></div>
+        </div>
+        <p class="texto-modal-ai"><strong class="bold-text-3">Se realizará el cobro a la </strong><strong>tarjeta predeterminada.</strong></p>
+        <div class="div-tarjeta-prederteminada w-clearfix"><img src="../images/visa.svg" loading="lazy" alt="" class="tarjeta-img tarjeta-prederteminada">
+          <div class="div-tarjetas-img">
+            <div class="t-data-tarjeta">{{CardholderName}}</div>
+            <div class="t-data-tarjeta">{{NumTarjeta}}</div>
+          </div>
+        </div>
+        <div class="div-btns-pp pp-tienda">
+          <a href="#" class="btn-cerrar btn-left-pp w-button">Guardar</a>
+        </div>
+      </div>
+    </div>
+    </div>
     <script src="js/Tienda.js"></script>
 
 </asp:Content>

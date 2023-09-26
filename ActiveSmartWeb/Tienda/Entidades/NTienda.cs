@@ -25,6 +25,46 @@ namespace ActiveSmartWeb.Tienda.Entidades
             }
 
         }
+        public string ObtenercustomerProfileporIdEmpresa(int idEmpresa)
+        {
+            try
+            {
+                return _dbTienda.ObtenercustomerProfileporIdEmpresa(idEmpresa);
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return "ERROR";
+            }
+
+        }
+        public string ObtenerPaymentProfilePredeterminado(string customerID)
+        {
+            try
+            {
+                return _dbTienda.ObtenercustomerProfilePredeterminado(customerID);
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return "ERROR";
+            }
+
+        }
+
+        public string ObtenerIdSuscripcionPorIdEmpresa(int idEmpresa)
+        {
+            try
+            {
+                return _dbTienda.ObtenerIdSuscripcionPorIdEmpresa(idEmpresa);
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return "";
+            }
+
+        }
 
         public string obtenerTipoContratoPorIdEpresa(int idEmpresa)
         {

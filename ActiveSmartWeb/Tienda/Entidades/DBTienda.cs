@@ -19,7 +19,7 @@ namespace ActiveSmartWeb.Tienda.Entidades
             var dbCommand = db.GetStoredProcCommand("ObtenerFrecuenciaPagoPorIdEmpresa");
             db.AddInParameter(dbCommand, "@idEmpresa", DbType.Int64, idEmpresa);
             db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
-            dbCommand.CommandTimeout = 3600;
+            dbCommand.CommandTimeout = 0;
             db.ExecuteNonQuery(dbCommand);
             var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
             return Respuesta;
@@ -31,7 +31,19 @@ namespace ActiveSmartWeb.Tienda.Entidades
             var dbCommand = db.GetStoredProcCommand("ObtenerTipoContratoPagoPorIdEmpresa");
             db.AddInParameter(dbCommand, "@idEmpresa", DbType.Int64, idEmpresa);
             db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
-            dbCommand.CommandTimeout = 3600;
+            dbCommand.CommandTimeout = 0;
+            db.ExecuteNonQuery(dbCommand);
+            var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
+            return Respuesta;
+        }
+
+        public string ObtenerIdSuscripcionPorIdEmpresa(int idEmpresa)
+        {
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("ObtenerIdSuscripcionPorIdEmpresa");
+            db.AddInParameter(dbCommand, "@idEmpresa", DbType.Int64, idEmpresa);
+            db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
+            dbCommand.CommandTimeout = 0;
             db.ExecuteNonQuery(dbCommand);
             var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
             return Respuesta;
@@ -54,7 +66,7 @@ namespace ActiveSmartWeb.Tienda.Entidades
             parameterPaquetesAdicionales.Value = dataTablePaquetesAdicionales;
             dbCommand.Parameters.Add(parameterPaquetesAdicionales);
 
-            dbCommand.CommandTimeout = 3600;
+            dbCommand.CommandTimeout = 0;
             db.ExecuteNonQuery(dbCommand);
             var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
             return Respuesta;
@@ -68,7 +80,7 @@ namespace ActiveSmartWeb.Tienda.Entidades
             var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
             var dbCommand = db.GetStoredProcCommand("SP_ObtenerPaqueteContratadoTienda");
             db.AddInParameter(dbCommand, "@IdPerfilActive", DbType.Int64, idPerfilActive);
-            dbCommand.CommandTimeout = 3600;
+            dbCommand.CommandTimeout = 0;
 
             using (var reader = db.ExecuteReader(dbCommand))
             {
@@ -90,6 +102,38 @@ namespace ActiveSmartWeb.Tienda.Entidades
                 }
             }
             return ePaquetesAdicionales;
+        }
+
+        public string ObtenercustomerProfileporIdEmpresa(int idPerfilEmpresa)
+        {
+            List<EPaqueteAdicional> ePaquetesAdicionales = new List<EPaqueteAdicional>();
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("ObtenercustomerPerfilUsuario");
+            db.AddInParameter(dbCommand, "@idEmpresa", DbType.String, idPerfilEmpresa);
+            db.AddOutParameter(dbCommand, "@customerId", DbType.String, 200);
+            db.AddOutParameter(dbCommand, "@paymentId", DbType.String, 200);
+            dbCommand.CommandTimeout = 0;
+            db.ExecuteNonQuery(dbCommand);
+            var customerId = db.GetParameterValue(dbCommand, "@customerId").ToString();
+            var ProfilePaymentId = db.GetParameterValue(dbCommand, "@paymentId").ToString();
+            return customerId + "-"+ ProfilePaymentId;
+
+
+        }
+
+        public string ObtenercustomerProfilePredeterminado(string idCustomerProfile)
+        {
+            List<EPaqueteAdicional> ePaquetesAdicionales = new List<EPaqueteAdicional>();
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("ObtenercustomerProfileporIdEmpresa");
+            db.AddInParameter(dbCommand, "@idCustomerProfile", DbType.String, idCustomerProfile);
+            db.AddOutParameter(dbCommand, "@Respuesta", DbType.String, 200);
+            dbCommand.CommandTimeout = 0;
+            db.ExecuteNonQuery(dbCommand);
+            var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
+            return Respuesta;
+
+
         }
 
 

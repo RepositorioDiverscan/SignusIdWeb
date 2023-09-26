@@ -16,6 +16,7 @@ namespace ActiveSmartWeb.Authorize
         //private static string ApiLoginID = "5dP8ESWyp97";
         //private static string ApiTransactionKey = "87Mr8AAKc3g3s493";
 
+
         //Credenciales de produccion
         private static string ApiLoginID = "638MVB6ps3Eb";
         private static string ApiTransactionKey = "77M2DrM4HvyP74zj";
@@ -283,6 +284,134 @@ namespace ActiveSmartWeb.Authorize
             }
 
             return null;
+        }
+
+
+        public static decimal ObtenerSuscripcionMonto(string subscriptionId)
+        {
+
+
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
+
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
+            {
+                name = ApiLoginID,
+                ItemElementName = ItemChoiceType.transactionKey,
+                Item = ApiTransactionKey
+            };
+
+            var request = new ARBGetSubscriptionRequest { subscriptionId = subscriptionId };
+
+            var controller = new ARBGetSubscriptionController(request);          // instantiate the controller that will call the service
+            controller.Execute();
+
+            ARBGetSubscriptionResponse response = controller.GetApiResponse();   // get the response from the service (errors contained if any)
+            decimal monto = response.subscription.amount;
+            // validate response
+            if (response != null && response.messages.resultCode == messageTypeEnum.Ok)
+            {
+                if (response.subscription != null)
+                {
+                    Console.WriteLine("Subscription returned : " + response.subscription.name);
+                }
+            }
+            else if (response != null)
+            {
+                if (response.messages.message.Length > 0)
+                {
+                    Console.WriteLine("Error: " + response.messages.message[0].code + "  " +
+                                      response.messages.message[0].text);
+                }
+            }
+            else
+            {
+                if (controller.GetErrorResponse().messages.message.Length > 0)
+                {
+                    Console.WriteLine("Error: " + response.messages.message[0].code + "  " + response.messages.message[0].text);
+                }
+            }
+
+            return monto;
+        }
+
+        public static ANetApiResponse ProcesarPagoTienda( string customerProfileId,string customerPaymentProfileId, decimal Amount)
+        {
+
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
+
+            // define the merchant information (authentication / transaction id)
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
+            {
+                name = ApiLoginID,
+                ItemElementName = ItemChoiceType.transactionKey,
+                Item = ApiTransactionKey
+            };
+
+            //create a customer payment profile
+            customerProfilePaymentType profileToCharge = new customerProfilePaymentType();
+            profileToCharge.customerProfileId = customerProfileId;
+            profileToCharge.paymentProfile = new paymentProfile { paymentProfileId = customerPaymentProfileId };
+
+            var transactionRequest = new transactionRequestType
+            {
+                transactionType = transactionTypeEnum.authCaptureTransaction.ToString(),    // refund type
+                amount = Amount,
+                profile = profileToCharge
+            };
+
+            var request = new createTransactionRequest { transactionRequest = transactionRequest };
+
+            // instantiate the collector that will call the service
+            var controller = new createTransactionController(request);
+            controller.Execute();
+
+            // get the response from the service (errors contained if any)
+            var response = controller.GetApiResponse();
+
+            // validate response
+            if (response != null)
+            {
+                if (response.messages.resultCode == messageTypeEnum.Ok)
+                {
+                    if (response.transactionResponse.messages != null)
+                    {
+                        Console.WriteLine("Successfully created transaction with Transaction ID: " + response.transactionResponse.transId);
+                        Console.WriteLine("Response Code: " + response.transactionResponse.responseCode);
+                        Console.WriteLine("Message Code: " + response.transactionResponse.messages[0].code);
+                        Console.WriteLine("Description: " + response.transactionResponse.messages[0].description);
+                        Console.WriteLine("Success, Auth Code : " + response.transactionResponse.authCode);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed Transaction.");
+                        if (response.transactionResponse.errors != null)
+                        {
+                            Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
+                            Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Failed Transaction.");
+                    if (response.transactionResponse != null && response.transactionResponse.errors != null)
+                    {
+                        Console.WriteLine("Error Code: " + response.transactionResponse.errors[0].errorCode);
+                        Console.WriteLine("Error message: " + response.transactionResponse.errors[0].errorText);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error Code: " + response.messages.message[0].code);
+                        Console.WriteLine("Error message: " + response.messages.message[0].text);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Null Response.");
+            }
+
+            return response;
         }
 
 

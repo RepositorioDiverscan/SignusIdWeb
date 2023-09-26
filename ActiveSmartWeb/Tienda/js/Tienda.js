@@ -1,5 +1,6 @@
 ﻿var urlIdioma = 'AjaxIdiomaTienda.aspx';
 var urlAjax = 'AjaxTienda.aspx';
+var urlMetodosAjax ='../MetodosPago/MetodosPagoAjax.aspx';
 
 const app = new Vue({
 
@@ -11,17 +12,25 @@ const app = new Vue({
         ubicacionesA: 0,
         personalParaActivos: 0,
         usuariosGestores: 0,
-        precio: "0",
-        totalpago: "0",
+        precioAct: 0,
+        pagoParcial : 0,
+        totalpago: 0,
         frecuenciaPago: "",
         adicionales: [],
-        adicionalesseleccionados: []
+        adicionalesseleccionados: [],
+        NumTarjeta: "",
+        CardholderName: "",
+        txtFrecuenciaPago:""
     },
 
     mounted: function () {
         this.listaIdiomas = this.ObtenerIdioma();
         this.CargarAdicionales();
+        this.CargarPrecioActual();
+ 
         this.CargarFrecuenciaPago();
+ 
+
         this.CargarTotal();
     },
 
@@ -68,6 +77,20 @@ const app = new Vue({
                 self.actualizarValoresInputs();
             });
         },
+        //CargarPrecio
+        CargarPrecioActual: function () {
+            var self = this;
+            var usuario = JSON.parse(sessionStorage.getItem('DUser'));
+            var idPerfilEmpresa = usuario[0].IdPerfilEmpresa;
+            $.post(urlAjax, {
+                option: 'CargarPrecioAct',
+                idPerfilEmpresa: idPerfilEmpresa
+            }, function (data, error) {
+               
+                self.precioAct = data;
+
+            });
+        },
 
         //Metodo para cargar los adicionales.
         CargarAdicionales: function () {
@@ -104,6 +127,7 @@ const app = new Vue({
                 IdEmpresa: usuario[0].IdPerfilEmpresa,
             }, function (data, error) {
                 self.frecuenciaPago = data;
+                self.CargarTotal();
             });
         },
 
@@ -115,6 +139,36 @@ const app = new Vue({
 
             $.post(urlAjax, {
                 option: 'CargarTotal',
+                IdEmpresa: usuario[0].IdPerfilEmpresa,
+                frecuenciaPago: self.frecuenciaPago,
+                precioActual : self.precioAct,
+
+            }, function (data, error) {
+
+                self.totalpago = data;
+                
+                var monto = data.replace(",", ".");
+                var actual = self.precioAct.replace(",", ".");
+
+
+
+                self.pagoParcial = (parseFloat(monto) - parseFloat(actual)).toFixed(2);
+
+                 if (parseFloat(self.pagoParcial) < 0)
+                    self.pagoParcial = 0;
+                
+
+            });
+        },
+
+        //Metodo para obtener el idContrato
+        ObtenerFrecuenciaPago: function () {
+            var self = this;
+
+            var usuario = JSON.parse(sessionStorage.getItem("DUser"));
+
+            $.post(urlAjax, {
+                option: 'ObtenerFrecuenciaPago',
                 IdEmpresa: usuario[0].IdPerfilEmpresa,
             }, function (data, error) {
 
@@ -268,18 +322,54 @@ const app = new Vue({
         },
 
         realizarPago: function () {
+           
             var self = this;
             var usuario = JSON.parse(sessionStorage.getItem('DUser'));
 
             $.post(urlAjax, {
-                option: 'RealizarPago',
-                IdPerfilUsuario: usuario[0].IdPerfilUsuario,
+                option: 'CargarDatosTarjeta',
+                idPerfilEmpresa: usuario[0].IdPerfilEmpresa
             }, function (data, error) {
-                self.adicionalesseleccionados = JSON.parse(data);
-                self.CargarTotal();
-                self.validarCodigoPlan();
+
+                var response = data;
+                var tarjeta = response.split("-");
+                self.NumTarjeta = "XXXXXXXX" + tarjeta[1];
+                self.CardholderName = tarjeta[0];
+
+                
+                document.getElementById("PopUpPago").style.display = "flex";
             });
         },
+
+        CerrarPopUp: function () {
+
+            document.getElementById("PopUpPago").style.display = "none";
+           
+        },
+
+        procesarPago: function () {
+
+            var self = this;
+            var usuario = JSON.parse(sessionStorage.getItem('DUser'));
+
+            $.post(urlAjax, {
+                option: 'ProcesarPago',
+                idPerfilEmpresa: usuario[0].IdPerfilEmpresa,
+                frecuenciaPago: self.frecuenciaPago,
+                pagoParcial: self.pagoParcial,
+                pagoTotal:self.pagoTotal
+
+                
+
+            }, function (data, error) {
+
+             
+
+
+                document.getElementById("PopUpPago").style.display = "flex";
+            });
+        },
+
 
     }
 

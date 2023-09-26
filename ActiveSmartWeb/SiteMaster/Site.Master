@@ -231,12 +231,8 @@
 <div class="form-blck-idioma w-form">
 <div   class="form-idoma-ai">
 
- 
-
               <select style="display:none" v-cloak id="refrescaridioma" name="field-6" data-name="Field 6" class="slct-idioma-ai w-select"
                v-model="idioma" tabindex="0">
-
- 
 
               <option value="ES">{{options.Espanol}}</option><!--Español-->
 <!--<option value="EN">{{options.Ingles}}</option>-->
@@ -367,26 +363,26 @@
  
 
             <div id="w-node-c11b8b20-a398-4f4a-bce0-d56be48f050f-8c09cdbe" class="div-block-logo-lines appstore">
-<a style="visibility:hidden" href="#" class="link-block-4 w-inline-block">
-<img src="../images/gplay.svg" loading="lazy" alt="" class="image-41"></a>
-</div>
-<div id="w-node-e5945614-8b75-d125-84bc-23b37db37b6e-8c09cdbe" class="div-block-logo-lines googleplay">
-<a style="visibility:hidden" href="#" class="link-app-download w-inline-block">
-<img src="../images/android.svg" loading="lazy" alt="" class="image-41"></a>
-</div>
-<div id="w-node-e881a1e3-26b8-c910-2fbb-d8d92a0ba898-8c09cdbe" class="div-block-social div-social">
-<a target="_blank" href="https://www.facebook.com/tusignusid/?show_switched_toast=0&amp;show_invite_to_follow=0&amp;show_switched_tooltip=0&amp;show_podcast_settings=0&amp;show_community_transition=0&amp;show_community_review_changes=0&amp;show_community_rollback=0&amp;show_follower_visibility_disclosure=0" class="link-block-social link-social w-inline-block"><img src="../images/Iconos-rrss-facebook.svg" loading="lazy" width="40" alt="" class="div-block-social-logo img-social"></a>
-<a href="https://www.instagram.com/signusid/" target="_blank" class="link-block-social link-social w-inline-block"><img src="../images/Iconos-rrss-instagram.svg" loading="lazy" width="40" alt="" class="div-block-social-logo img-social"></a>
-<a href="https://www.youtube.com/channel/UCCbnw6iQGy10JllY1TWOaew" target="_blank" class="link-block-social link-social w-inline-block"><img src="../images/Iconos-rrss-youtube.svg" loading="lazy" width="40" alt="" class="div-block-social-logo img-social"></a>
-</div>
-</div>
-</div>
-<div class="div-block-2 div-copyright">Copyright © 2021 Acces-o. All rights reserved.</div>
-</div>
-</footer>
-</div>
-
-</div>
+                <a style="visibility:hidden" href="#" class="link-block-4 w-inline-block">
+                    <img src="../images/gplay.svg" loading="lazy" alt="" class="image-41"></a>
+            </div>
+              <div id="w-node-e5945614-8b75-d125-84bc-23b37db37b6e-8c09cdbe" class="div-block-logo-lines googleplay">
+                  <a style="visibility:hidden" href="#" class="link-app-download w-inline-block">
+                      <img src="../images/android.svg" loading="lazy" alt="" class="image-41"></a>
+              </div>
+            <div id="w-node-e881a1e3-26b8-c910-2fbb-d8d92a0ba898-8c09cdbe" class="div-block-social div-social">
+              <a target="_blank" href="https://www.facebook.com/tusignusid/?show_switched_toast=0&amp;show_invite_to_follow=0&amp;show_switched_tooltip=0&amp;show_podcast_settings=0&amp;show_community_transition=0&amp;show_community_review_changes=0&amp;show_community_rollback=0&amp;show_follower_visibility_disclosure=0" class="link-block-social link-social w-inline-block"><img src="../images/Iconos-rrss-facebook.svg" loading="lazy" width="40" alt="" class="div-block-social-logo img-social"></a>
+              <a href="https://www.instagram.com/signusid/" target="_blank" class="link-block-social link-social w-inline-block"><img src="../images/Iconos-rrss-instagram.svg" loading="lazy" width="40" alt="" class="div-block-social-logo img-social"></a>
+              <a href="https://www.youtube.com/channel/UCCbnw6iQGy10JllY1TWOaew" target="_blank" class="link-block-social link-social w-inline-block"><img src="../images/Iconos-rrss-youtube.svg" loading="lazy" width="40" alt="" class="div-block-social-logo img-social"></a>
+            </div>
+          </div>
+        </div> 
+        <div class="div-block-2 div-copyright">Copyright © 2023 Acces-o. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+             
+        </div>
 
  
 
