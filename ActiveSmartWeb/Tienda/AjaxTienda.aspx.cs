@@ -9,11 +9,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ActiveSmartWeb.Authorize;
+using AuthorizeNet.Api.Contracts.V1;
+using AuthorizeNet.Api.Controllers;
+using AuthorizeNet.Api.Controllers.Bases;
+using ActiveSmartWeb.MetodosPago.Entidades;
 
 namespace ActiveSmartWeb.Tienda
 {
     public partial class AjaxTienda : System.Web.UI.Page
     {
+        NMetodosPago nMetodos = new NMetodosPago();
         NUsuarioEmpresa nUsuarioEmpresa = new NUsuarioEmpresa();
         NTienda nTienda = new NTienda();
         private int numRegalia = 2;
@@ -36,7 +42,7 @@ namespace ActiveSmartWeb.Tienda
                 Session["Adicionalesmostrar"] = value;
             }
         }
-
+        
 
         //Directorio de los paquetes adicionales seleccionados por el usuario para poder mostrarlos en la pantalla.
         private Dictionary<int, EPaqueteAdicional> _adicionalPlanUsuario
@@ -114,6 +120,7 @@ namespace ActiveSmartWeb.Tienda
             adicional.CostoMensual = costoMensual * cantidad;
 
             //Añade a los diccionarios las entidades anterirormente creadas.
+
             _adicionalPlanUsuario.Add(idAdicional, (adicional));
         }
 
@@ -207,6 +214,7 @@ namespace ActiveSmartWeb.Tienda
                 if (paquete.IdPaqueteContratado != 1)
                 {
                     _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = 0;
+                
                 }
             }
         }
@@ -223,10 +231,14 @@ namespace ActiveSmartWeb.Tienda
                     if (_adicionalcontratado[paquete.IdPaqueteContratado].CantidadRegalias == _adicionalcontratado[paquete.IdPaqueteContratado].Cantidad)
                     {
                         _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = 0;
+
                     }
                     else
                     {
+                        int cantidad = _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias + _adicionalPlanUsuario[paquete.IdPaqueteContratado].CantidadRegalias;
+
                         _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = paquete.Costo * (_adicionalcontratado[paquete.IdPaqueteContratado].Cantidad - _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias);
+                       
                     }
                 }
             }
@@ -281,7 +293,7 @@ namespace ActiveSmartWeb.Tienda
 
                 switch (Request.Form["option"])
                 {
-                    
+
                     //Opcion del switch para cargar los adicionales.
                     case "CargarAdicionales":
                         //Eliminamos el contenido de los diccionarios
@@ -303,9 +315,9 @@ namespace ActiveSmartWeb.Tienda
                             );
                         }
 
-                      
+
                         Response.Write(JsonConvert.SerializeObject(ePaqueteAdicionales, Formatting.Indented));
-                 
+
                         break;
 
                     //Obtiene la informacion actual del plan del usuario
@@ -338,67 +350,108 @@ namespace ActiveSmartWeb.Tienda
 
                         }
 
-                       
+
                         Response.Write(JsonConvert.SerializeObject(_adicionalcontratadomostrar, Formatting.Indented));
-                      
+
 
                         break;
 
                     //Obtiene la frecuencia de pago del cliente
                     case "obtenerFrecuenciaPago":
-                        
+
                         Response.Write(nTienda.obtenerFrecuenciaPagoPorIdEpresa(Convert.ToInt32(Request.Form["IdEmpresa"])));
-                        
+
                         break;
 
                     //Opcion del switch para cargar los adicionales seleccionados por el usuario.
                     case "CargarAdicionalescontratados":
-                      
+
                         Response.Write(JsonConvert.SerializeObject(_adicionalcontratadomostrar, Formatting.Indented));
-                        
+
                         break;
 
                     //Opcion del switch para cargar el total del contrato
                     case "CargarTotal":
 
                         //Frecuencia de pago
-                        int frecuenciaPago = nTienda.obtenerFrecuenciaPagoPorIdEpresa(Convert.ToInt32(Request.Form["IdEmpresa"]));
+                        var frecuenciaPago = Request.Form["frecuenciaPago"];
+                        var montoActual = Request.Form["precioActual"];
+
+                        if (montoActual.Contains("."))
+                            montoActual = montoActual.Replace(".", ",");
+
 
                         //Costos de la suma de todos los adicionales seleccionados.
                         decimal suma;
-                        if (frecuenciaPago == 1)
+                        if (frecuenciaPago == "1")
                         {
-                            suma = _adicionalcontratadomostrar.Sum(x => x.Value.Costo);
+                            suma = _adicionalcontratadomostrar.Sum(x => x.Value.Costo * 12);
                         }
                         else
                         {
                             suma = _adicionalcontratadomostrar.Sum(x => x.Value.CostoMensual);
                         }
+                        if (frecuenciaPago == "")
+                            suma = 0;
 
-                      
+                        suma = suma + decimal.Parse(montoActual);
+
+
                         Response.Write(suma);
-                       
+
                         break;
 
                     //Opcion del switch para cargar el plan para utilizar el costo y el nombre en la pantalla.
-                    case "CargarPrecio":
+                    case "CargarPrecioAct":
                         //Obtiene el tipo de contrato del usurio
-                        var codigoplan = nTienda.obtenerTipoContratoPorIdEpresa(Convert.ToInt32(Request.Form["IdEmpresa"]));
+                        var IdContrato = nTienda.ObtenerIdSuscripcionPorIdEmpresa(Convert.ToInt32(Request.Form["idPerfilEmpresa"]));
+                        var monto = PagoAuthorize.ObtenerSuscripcionMonto(IdContrato);
 
-                        //Si el plan es 1 (Free) se cambia a 2(Basic)
-                        if(codigoplan == "1")
-                        {
-                            codigoplan = "2";
-                        }
+                       
 
-                        //Obtenemos la informacion del plan
-                        var infoPlanes = nUsuarioEmpresa.CargarPlan(Convert.ToInt32(codigoplan));
+                        Response.Write(JsonConvert.SerializeObject(monto, Formatting.Indented));
 
-                        
-                        Response.Write(JsonConvert.SerializeObject(infoPlanes, Formatting.Indented));
-                        
 
                         break;
+
+                    case "CargarDatosTarjeta":
+                        var Empresa = Request.Form["idPerfilEmpresa"];
+                        int idEmpresa = int.Parse(Empresa);
+                        
+                        var respuesta = nTienda.ObtenercustomerProfileporIdEmpresa(idEmpresa).Split('-');
+
+                        var customerId = respuesta[0];
+                        var ProfilePaymentId = respuesta[1];
+                        EPerfilPago eperfil = new EPerfilPago(1,ProfilePaymentId,true);
+
+
+                        var response = PagoAuthorize.ObtenerInformacionPerfilPago(customerId, eperfil);
+                        
+                        Response.Write(response.NombreDuenno+" "+response.ApellidoDuenno+"-"+response.NumeroTarjeta);
+
+                        break;
+
+
+                    case "ProcesarPago":
+                        var IDEmpresa = Convert.ToInt32( Request.Form["idPerfilEmpresa"]);
+                        var frecuenciaPago2 = Request.Form["frecuenciaPago"];
+                        var diferenciaPago = Request.Form["diferenciaPago"]; ;
+                        var pagoTotal = Request.Form["pagoTotal"];
+
+                        var tx=decimal.Parse(diferenciaPago);
+
+                        var customerInfo = nTienda.ObtenercustomerProfileporIdEmpresa(IDEmpresa).Split('-');
+                        
+                        
+                        if (frecuenciaPago2 == "2")
+                        {
+                          // PagoAuthorize.ProcesarPagoTienda(customerInfo[0], customerInfo[1], tx);
+                        }
+
+
+                        break;
+
+
 
                     //Opcion del switch para agregar adicionales por medio del metodo change del input.
                     case "agregaradicional":
@@ -489,10 +542,7 @@ namespace ActiveSmartWeb.Tienda
 
                         var costosumar = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US"));
                         var costoMensualsumar = Convert.ToDecimal(Request.Form["CostoMensual"], new CultureInfo("en-US"));
-                        /*  decimal costosumar = 0.0M;
-
-                          var aa = decimal.TryParse(Request.Form["Costo"], out costosumar);
-                          */
+                   
                         int cantidadsumar = 0;//Cantidad de paquetes
                         var esEnterosumar = int.TryParse(Request.Form["CantidaddePaquetes"], out cantidadsumar);
 
@@ -585,13 +635,6 @@ namespace ActiveSmartWeb.Tienda
 
                         break;
 
-                    case "RealizarPago":
-
-                        
-                        Response.Write(RealizarPago(Convert.ToInt32(Request.Form["IdPerfilUsuario"])));
-                        
-
-                        break;
                 }
 
 
@@ -605,20 +648,7 @@ namespace ActiveSmartWeb.Tienda
 
         }
 
-        private bool RealizarPago(int idPerfilUsuario)
-        {
-            string resultadoTransaccion = "555";
-            if(resultadoTransaccion != "Error")
-            {
-
-                //nTienda.ActualizarPlan(idPerfilUsuario, _adicionalcontratado.Values.ToList());
-
-
-
-            }
-
-            return false;
-        }
+       
 
         private decimal calcularPrecioFinal(ETipoPlanes infoPlan, string frecuencia)
         {
