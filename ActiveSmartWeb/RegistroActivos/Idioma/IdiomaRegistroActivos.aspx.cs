@@ -84,6 +84,7 @@ namespace ActiveSmartWeb.RegistroActivos
                         Idioma.Atencion = IdiomaRegistroEspannol._atencion;
                         Idioma.Ms1 = IdiomaRegistroEspannol._ms1;
                         Idioma.Ms2 = IdiomaRegistroEspannol._ms2;
+                        Idioma.Ms3 = IdiomaRegistroEspannol._ms3;
                         Idioma.NFEti = IdiomaRegistroEspannol._NFEti;
                         Response.Write(JsonConvert.SerializeObject(Idioma, Formatting.Indented));
                         break;
@@ -151,6 +152,8 @@ namespace ActiveSmartWeb.RegistroActivos
                         Idioma.Atencion = IdiomaRegistroIngles._atencion;
                         Idioma.Ms1 = IdiomaRegistroIngles._ms1;
                         Idioma.Ms2 = IdiomaRegistroIngles._ms2;
+                        Idioma.Ms3 = IdiomaRegistroIngles._ms3;
+
                         Idioma.NFEti = IdiomaRegistroIngles._NFEti;
                         Response.Write(JsonConvert.SerializeObject(Idioma, Formatting.Indented));
                         break;
@@ -218,6 +221,8 @@ namespace ActiveSmartWeb.RegistroActivos
                         Idioma.Atencion = IdiomaRegistroEspannol._atencion;
                         Idioma.Ms1 = IdiomaRegistroEspannol._ms1;
                         Idioma.Ms2 = IdiomaRegistroEspannol._ms2;
+                        Idioma.Ms3 = IdiomaRegistroEspannol._ms3;
+
                         Idioma.NFEti = IdiomaRegistroEspannol._NFEti;
                         Response.Write(JsonConvert.SerializeObject(Idioma, Formatting.Indented));
                         break;

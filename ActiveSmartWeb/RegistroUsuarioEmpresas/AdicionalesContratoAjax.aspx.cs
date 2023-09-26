@@ -582,18 +582,19 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
 
                         var infoPlan = nUsuarioEmpresa.CargarPlan(plan);
 
-                        decimal costoTotal = calcularPrecioFinal(infoPlan, frecuencia, cuponFinal,correoUsuario);
-                        
+                        decimal costoTotal = calcularPrecioFinal(infoPlan, frecuencia, cuponFinal, correoUsuario);
+
                         short frecuenciaDePago = (short)(frecuencia == "1" ? 12 : 1);
 
 
                         //EResultadoSuscripcion resultadoSuscripcion = PagoAuthorize.crearSubscripcion(frecuenciaDePago,costoTotal,numerotarjeta,fechaVencimiento,codigo,nombretitular, apellidotitular);
 
                         //Simula una suscripcion para hacer pruebas
-                        EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8","3","4","No tiene","No tiene");
+                        EResultadoSuscripcion resultadoSuscripcion = new EResultadoSuscripcion("Success", "8", "3", "4", "No tiene", "No tiene");
 
                         if (resultadoSuscripcion.Resultado == "Success")
                         {
+
                             var ResultadoAdicionale = nUsuarioEmpresa.InsertarContratoConSuscripcion(correoUsuario, Convert.ToInt32(frecuencia), tipoContrato, _adicionalcontratado.Values.ToList(), resultadoSuscripcion, costoTotal);
                             Response.Write("Transacción realizada correctamente");
 

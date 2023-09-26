@@ -73,6 +73,10 @@ const Planes = new Vue({
 
             $(basicPrecio).text('$14.99');
             $('#w-node-_6d68c22a-6945-7184-f66c-5bf75f0b5635-290239ef').text(`${self.listaIdiomas.MontoUsuarioBasic}\n${self.listaIdiomas.FacturaBasic}`);
+
+            //$(basicPrecioBasic).text('$14.99');
+            $(PrecioTabla).text(`BASIC \n $14.99/ \n al mes`);    
+
         },
 
 
@@ -94,6 +98,9 @@ const Planes = new Vue({
 
             $(basicPrecio).text('$17.50');
             $('#w-node-_6d68c22a-6945-7184-f66c-5bf75f0b5635-290239ef').text(`${self.listaIdiomas.MontoUsuarioBasicMensual}\n${self.listaIdiomas.FacturaMensual}`);
+
+            //$(basicPrecioBasic).text('$17.50');
+            $(PrecioTabla).text(`BASIC \n $17.50 / \n al mes`);
 
         },
 
@@ -142,6 +149,8 @@ const Planes = new Vue({
 
         },
     },
+
+    
 
 
 

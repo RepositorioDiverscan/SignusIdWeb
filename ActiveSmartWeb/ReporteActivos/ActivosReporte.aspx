@@ -2,8 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="main" id="REA">
-      <div class="section wf-section" id="alertas">
+    <div class="main otrodiv" id="REA">
+      <div class="section otrodiv" id="alertas">
         <div class="container-2 w-container">
           <div class="w-layout-grid grid-main grid-activos">
             <div id="w-node-_80b7fc40-ee3a-65fb-484a-db136c4f7f80-81b79b2e" class="div-banner-extremo"></div>

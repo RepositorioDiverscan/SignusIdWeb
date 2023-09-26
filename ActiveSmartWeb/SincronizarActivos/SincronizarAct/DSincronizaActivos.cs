@@ -157,6 +157,20 @@ namespace ActiveSmartWeb.SincronizarActivos.SincronizarAct
             var Respuesta = db.GetParameterValue(dbCommand, "@Respuesta").ToString();
             return Respuesta;
         }
+        public string ObtenertipoMonedaporIdEmpresa(int IdPerfilEmpresa)
+        {
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("ObtenertipoMonedaporIdEmpresa");
+            db.AddInParameter(dbCommand, "@IdPerfilEmpresa", DbType.Int32, IdPerfilEmpresa);
+
+            db.AddOutParameter(dbCommand, "@respuesta", DbType.String, 10);
+
+            dbCommand.CommandTimeout = 3600;
+            db.ExecuteNonQuery(dbCommand);
+            var Respuesta = db.GetParameterValue(dbCommand, "@respuesta").ToString();
+            return Respuesta;
+            //
+        }
 
 
         public List<ESincronizaActivos> SincronizarActivos(int idEmpresa, List<ESincronizaActivos> eSincronizaActivos)

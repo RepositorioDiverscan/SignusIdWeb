@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
 <div class="main" id="toma">
-    <div class="section wf-section" id="alertas">
+    <div class="section wf-section" id="alertas" style="margin-botton:3%">
       <div class="container-2 w-container">
         <div class="w-layout-grid grid-main grid-add-toma">
           <div id="w-node-d648a741-eb22-8676-6b39-5000b52a816c-53d8c7b1" class="div-banner-extremo"></div>
@@ -68,7 +68,7 @@
              
             </div>
           </div>
-          <div id="w-node-d648a741-eb22-8676-6b39-5000b52a81a1-53d8c7b1" class="div-tarjeta cinta-tienda-ai">
+         <div id="w-node-_1881bb3d-bb04-a65f-0013-ab2c81d34079-731f63ba" class="div-tarjeta tarjeta-responsive">
             <div class="div-block-170">
               <div class="text-block-17" v-cloak>{{Listaidiomas.Anuncio}}</div> 
               <a href="../Tienda/Tienda.aspx" class="boton call2action w-button" v-cloak>{{Listaidiomas.Tienda}}<strong></strong></a> 

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster/Site.Master" AutoEventWireup="true" CodeBehind="TomaFisica.aspx.cs" Inherits="ActiveSmartWeb.TomaFisica.TomaFisica" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <div class="main" id="TomaFisicaVue">
-      <div class="section wf-section" id="alertas">
+     <div class="main" id="TomaFisicaVue" style="width:100%">
+      <div class="section wf-section" id="alertas" style="width:100%">
         <div class="container-2 w-container">
           <div class="w-layout-grid grid-main main-mobil">
             <div id="w-node-_1881bb3d-bb04-a65f-0013-ab2c81d3403c-731f63ba" class="div-banner-extremo"></div>

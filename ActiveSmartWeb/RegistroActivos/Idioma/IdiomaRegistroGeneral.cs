@@ -70,13 +70,14 @@ namespace ActiveSmartWeb.RegistroActivos.Idioma
         private string _atencion;
         private string _ms1;
         private string _ms2;
+        private string _ms3;
         private string _NFEti;
 
         public IdiomaRegistroGeneral()
         {
         }
 
-        public IdiomaRegistroGeneral(string titulo, string marca, string modelo, string observaciones, string categoria, string estado, string ubicacion, string numActivo, string numPlaca, string selectUbi, string validEstado, string validCategoria, string validNumActivo, string actualizaError, string agregarError, string agregarCorrecto, string actualizaCorrecto, string tituloEditar, string numeroSerie, string descripcionCorta, string descripcionCategoria, string descripcionEstado, string numeroFactura, string fechaCompra, string costoActivo, string validDescCorta, string validCostoActivo, string validUbicacion, string validActNumAct, string numParteActivo, string depreciado, string descripcion, string diasvidaU, string cuentaContable, string centroCostos, string empleado, string ubicacionB, string ubicacionC, string ubicacionD, string fechaGarantia, string tamañoMed, string color, string msjTienda, string msjBtnTienda, string selectFiltro, string buscar, string costo, string fotos, string foto1, string foto2, string foto3, string foto4, string foto5, string selectmsj = null, string valnumfactura = null, string valnumetiqueta = null, string valmarca = null, string valmodelo = null, string valnumserie = null, string ingrErrNumActivo = null, string atencion = null, string ms1 = null, string ms2 = null, string nFEti = null)
+        public IdiomaRegistroGeneral(string titulo, string marca, string modelo, string observaciones, string categoria, string estado, string ubicacion, string numActivo, string numPlaca, string selectUbi, string validEstado, string validCategoria, string validNumActivo, string actualizaError, string agregarError, string agregarCorrecto, string actualizaCorrecto, string tituloEditar, string numeroSerie, string descripcionCorta, string descripcionCategoria, string descripcionEstado, string numeroFactura, string fechaCompra, string costoActivo, string validDescCorta, string validCostoActivo, string validUbicacion, string validActNumAct, string numParteActivo, string depreciado, string descripcion, string diasvidaU, string cuentaContable, string centroCostos, string empleado, string ubicacionB, string ubicacionC, string ubicacionD, string fechaGarantia, string tamañoMed, string color, string msjTienda, string msjBtnTienda, string selectFiltro, string buscar, string costo, string fotos, string foto1, string foto2, string foto3, string foto4, string foto5, string selectmsj = null, string valnumfactura = null, string valnumetiqueta = null, string valmarca = null, string valmodelo = null, string valnumserie = null, string ingrErrNumActivo = null, string atencion = null, string ms1 = null, string ms2 = null, string nFEti = null, string ms3 = null)
         {
             Titulo = titulo;
             Marca = marca;
@@ -141,8 +142,10 @@ namespace ActiveSmartWeb.RegistroActivos.Idioma
             Atencion = atencion;
             Ms1 = ms1;
             Ms2 = ms2;
+            Ms3 = ms3;
             NFEti = nFEti;
         }
+
 
         public string Titulo { get => _titulo; set => _titulo = value; }
         public string Marca { get => _marca; set => _marca = value; }
@@ -207,6 +210,7 @@ namespace ActiveSmartWeb.RegistroActivos.Idioma
         public string Atencion { get => _atencion; set => _atencion = value; }
         public string Ms1 { get => _ms1; set => _ms1 = value; }
         public string Ms2 { get => _ms2; set => _ms2 = value; }
+        public string Ms3 { get => _ms3; set => _ms3 = value; }
         public string NFEti { get => _NFEti; set => _NFEti = value; }
     }
     }
