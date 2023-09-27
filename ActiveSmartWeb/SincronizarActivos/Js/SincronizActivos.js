@@ -1,7 +1,7 @@
 ﻿var urlIdioma = 'Idioma/IdiomaSincronizacion.aspx'
 var urlSincroniza = '../SincronizarActivos/SincronizarActivosAjax.aspx'
 var EstadoActivo = 0
-var = carga
+
 Vue.component('sincronizaactivo', {
     props: {
 
@@ -433,6 +433,12 @@ Vue.component('sincronizaactivo', {
         InsertarActivoFijo: function (info) {
             let idArchivoI = info[0]
             var self = this;
+            var = carga 
+           // Mostrar el div de carga
+           carga.getElementById("loading-spinner").style.display = "flex",
+          // Ocultar el div de carga (cuando se complete la carga)
+          carga.getElementById("loading-spinner").style.display = "none",
+
             $.post(urlSincroniza, {
                 option: 'InsertarActivoFijo',
                 IdArchivo: idArchivoI,

@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <style>
+<style>
   .loading-spinner {
   display: none; /* Oculta inicialmente el div de carga */
   position: fixed;
@@ -18,7 +18,7 @@
 .loading-spinner img {
   margin-top: 20%; /* Alinea verticalmente el GIF de carga */
 }
-    </style>
+</style>
 
       
       
