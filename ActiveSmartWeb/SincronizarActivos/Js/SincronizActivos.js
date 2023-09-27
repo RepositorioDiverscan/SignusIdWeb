@@ -1,6 +1,7 @@
 ﻿var urlIdioma = 'Idioma/IdiomaSincronizacion.aspx'
 var urlSincroniza = '../SincronizarActivos/SincronizarActivosAjax.aspx'
 var EstadoActivo = 0
+var = carga
 Vue.component('sincronizaactivo', {
     props: {
 
@@ -75,6 +76,14 @@ Vue.component('sincronizaactivo', {
                         ])
                     ]),
                     //botones de carga y descarga
+
+                    // Mostrar el div de carga
+                    
+                    carga.getElementById("loading-spinner").style.display = "flex",
+
+                 // Ocultar el div de carga (cuando se complete la carga)
+                    document.getElementById("loading-spinner").style.display = "none",
+
                     createElement('div', {
                         attrs: { id: 'w-node-_85f34e9c-c2ff-b66a-5d22-dd251014c3e1-fb048ddf', class: 'contenedor-botones carga-descarga alt' }
                     }, [
@@ -258,6 +267,7 @@ Vue.component('sincronizaactivo', {
         this.ObtenerIdioma();
         this.ObtenerInfoArchivos();
     },
+
     methods: {
         //Idioma
         ObtenerIdioma: function () {

@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster/Site.Master" AutoEventWireup="true" CodeBehind="ReporteInventario.aspx.cs" Inherits="ActiveSmartWeb.ReporteInventariosPrueba.ReporteInventario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-      <div class="main" id="TomaFisicaVue">
-      <div class="section wf-section">
-        <div class="container-2 w-container">
-          <div class="w-layout-grid grid-main main-mobil">
+      <div class="main otrodiv">
+      <div class="section otrodiv">
+        <div class="container-2 divotro w-container">
+          <div class="w-layout-grid grid-main grid-inventario"  >
             <div id="w-node-_1881bb3d-bb04-a65f-0013-ab2c81d3403c-731f63ba" class="div-banner-extremo"></div>
             <div id="w-node-_1881bb3d-bb04-a65f-0013-ab2c81d3403d-731f63ba" class="div-banner-extremo"></div>
             <div id="w-node-_680aac24-239c-4b95-2e31-486e071a336c-731f63ba" class="div-block-223">
