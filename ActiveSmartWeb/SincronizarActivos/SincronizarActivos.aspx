@@ -35,6 +35,7 @@
 
             </div>
           <div class="w-layout-grid grid-main grid-sinc-act">
+             <h5 id="w-node-_1819d972-5541-cbc9-03ce-d1b5eb82c575-fb048ddf">Activos disponibles: 1</h5>
             <div id="w-node-_28f3db33-b16a-6f10-aeaa-110c3af3f04f-fb048ddf" class="div-banner-extremo"></div>
             <div id="w-node-_28f3db33-b16a-6f10-aeaa-110c3af3f050-fb048ddf" class="div-banner-extremo"></div>
             <div id="w-node-_28f3db33-b16a-6f10-aeaa-110c3af3f051-fb048ddf" class="div-block-230">
