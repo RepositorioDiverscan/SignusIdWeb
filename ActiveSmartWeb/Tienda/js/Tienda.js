@@ -20,7 +20,8 @@ const app = new Vue({
         adicionalesseleccionados: [],
         NumTarjeta: "",
         CardholderName: "",
-        txtFrecuenciaPago:""
+        txtFrecuenciaPago: "",
+        contadorRegalias:0
     },
 
     mounted: function () {
@@ -183,6 +184,19 @@ const app = new Vue({
             let cantidadSumar = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
             cantidadSumar = cantidadSumar + 1
             if (!isNaN(cantidadSumar)) {
+               
+                    if (adicional.IdPaqueteContratado == 1) {
+                        var cantidadActivosPlan = self.adicionalesseleccionados[1].Cantidad+250;
+                        if (cantidadActivosPlan == 500 || cantidadActivosPlan == 1000 || cantidadActivosPlan == 1500 || cantidadActivosPlan ==2000) {
+                            if (document.getElementById(`${adicional.IdPaqueteContratado + 1}`).value < 99)
+                                document.getElementById(`${adicional.IdPaqueteContratado + 1}`).value++;
+                            if (document.getElementById(`${adicional.IdPaqueteContratado + 2}`).value < 99)
+                                document.getElementById(`${adicional.IdPaqueteContratado + 2}`).value++;
+                            if (document.getElementById(`${adicional.IdPaqueteContratado + 3}`).value < 99)
+                                document.getElementById(`${adicional.IdPaqueteContratado + 3}`).value++;
+                            self.contadorRegalias++;
+                        }
+                    }
                 if (cantidadSumar <= 99) {
                     document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadSumar
 
@@ -207,10 +221,27 @@ const app = new Vue({
         //Metodo para restar un adicional.
         Restaadicional: function (adicional) {
             var self = this;
+          
             let cantidadResta = parseInt(parseInt(document.getElementById(`${adicional.IdPaqueteContratado}`).value))
             cantidadResta = cantidadResta - 1
             if (!isNaN(cantidadResta)) {
-                if ((cantidadResta > 0 && adicional.IdPaqueteContratado == 1) || (cantidadResta > 1 && adicional.IdPaqueteContratado != 1)) {
+                if (cantidadResta >= 0) {
+                if (adicional.IdPaqueteContratado == 1) {
+                    var cantidadActivosPlan = self.adicionalesseleccionados[1].Cantidad-250;
+                    if (cantidadActivosPlan == 250 || cantidadActivosPlan == 750 || cantidadActivosPlan == 1250 || cantidadActivosPlan == 1750) {
+                        if (document.getElementById(`${adicional.IdPaqueteContratado + 1}`).value >= 1)
+                            document.getElementById(`${adicional.IdPaqueteContratado + 1}`).value--;
+                        if (document.getElementById(`${adicional.IdPaqueteContratado + 2}`).value >= 1)
+                            document.getElementById(`${adicional.IdPaqueteContratado + 2}`).value--;
+                        if (document.getElementById(`${adicional.IdPaqueteContratado + 3}`).value >= 1)
+                            document.getElementById(`${adicional.IdPaqueteContratado + 3}`).value--;
+                        self.contadorRegalias--;
+
+                       
+                    }
+                }
+                    if (adicional.IdPaqueteContratado == 1 || (adicional.IdPaqueteContratado != 1 && document.getElementById(`${adicional.IdPaqueteContratado}`).value > self.contadorRegalias)) {
+
                     document.getElementById(`${adicional.IdPaqueteContratado}`).value = cantidadResta
 
                     $.post(urlAjax, {
@@ -220,12 +251,14 @@ const app = new Vue({
                         Cantidadpaquete: adicional.Cantidad,
                         Costo: adicional.Costo,
                         CostoMensual: adicional.CostoMensual,
-                        CantidaddePaquetes: cantidadResta
+                        CantidaddePaquetes: cantidadResta,
+                        cantidadActivos: cantidadActivosPlan
                     }, function (respuesta, error) {
 
                         self.CargarAdicionalesContratado();
 
                     });
+                    }
 
                 }
             }
@@ -309,17 +342,17 @@ const app = new Vue({
         },
 
         //Actualiza los valores de los inputs
-        actualizarValoresInputs: function () {
-            var self = this;
-            //Setea el valor del input de los activos
-            document.getElementById(`1`).value = self.adicionalesseleccionados[1].Cantidad / self.adicionales[0].Cantidad
-            $.each(self.adicionalesseleccionados, function (index, adicional) {
-                if (adicional.IdPaqueteContratado != 1) {
-                    document.getElementById(`${adicional.IdPaqueteContratado}`).value = adicional.Cantidad;
-                }
+        //actualizarValoresInputs: function () {
+        //    var self = this;
+        //    //Setea el valor del input de los activos
+        //    document.getElementById(`1`).value = self.adicionalesseleccionados[1].Cantidad / self.adicionales[0].Cantidad
+        //    $.each(self.adicionalesseleccionados, function (index, adicional) {
+        //        if (adicional.IdPaqueteContratado != 1) {
+        //            document.getElementById(`${adicional.IdPaqueteContratado}`).value = adicional.Cantidad;
+        //        }
 
-            });
-        },
+        //    });
+        //},
 
         realizarPago: function () {
            
