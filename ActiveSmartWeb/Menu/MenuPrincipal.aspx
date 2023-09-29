@@ -149,9 +149,16 @@
                                 <div :class="btnDashBoard ? 'titulo-icono' : 'titulo-icono none'">DASHBOARD</div>
                             </div>
                         </div>
-
-
                         <div class="type-plan-text-ai">BASIC</div>
+
+
+
+
+                        <input v-if="Basic == 1" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=1 :id="adicional.IdPaqueteContratado" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" required="" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicionalActivos(adicional)">
+                        <input v-if="free== 2" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=2 :id="adicional.IdPaqueteContratado" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" required="" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
+                    
+                    
+                    
                     </div>
                     <div id="w-node-c801d4b9-60fc-9f0d-1568-0b94afe512f8-a8a2a4c2" class="div-resumen-contenedor-ai w-clearfix">
                         <div id="w-node-fdd6831d-b750-e922-1306-c2ddcac0b397-a8a2a4c2" class="resumen-inventarios-e-incidentes mini-resumen">

@@ -120,7 +120,7 @@ namespace ActiveSmartWeb.SincronizarActivos
                     case "Exportar":
                         var idempresa = Convert.ToInt32(Request.Form["IdPerfilEmpresa"]);
                         var moneda = _nSincronizaActivos.ObtenertipoMonedaporIdEmpresa(idempresa);
-                        var base64Excel = CrearExcelSincronizar(idempresa);
+                        var base64Excel = CrearExcelSincronizar(idempresa,moneda);
                         //var base64Excel = obtenerBase64Excel();
                         Response.Write(base64Excel);
                         break;
@@ -418,9 +418,9 @@ namespace ActiveSmartWeb.SincronizarActivos
 
         #region CodigoNuevoSincronizar
 
-        private string CrearExcelSincronizar(int idempresa)
+        private string CrearExcelSincronizar(int idempresa, string moneda)
         {
-            
+            var x = moneda;
             List<EUbicacionA> ubicaciones = _nSincronizaActivos.ConsultarUbicaciones(idempresa);
 
             List<EEstadoActivo> Estado = _nSincronizaActivos.ConsultaEstadoActivo();
@@ -431,7 +431,7 @@ namespace ActiveSmartWeb.SincronizarActivos
             var rutaBase = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PlantillaExcelReporte", "ExcelcargaSIGNUSID.xlsx");
             //var rutaDestino = "C:\\PlantillaExcel\\ExcelcargaSIGNUSID_1.xlsx";
             var rutaDestino = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PlantillaExcelReporte", "ExcelcargaSIGNUSID_1.xlsx");
-
+            
             var fileInfoDestino = new FileInfo(rutaDestino);
 
             using (FileStream fs = File.OpenRead(rutaBase))
@@ -482,6 +482,12 @@ namespace ActiveSmartWeb.SincronizarActivos
                         count = count + 1;
                     }
                 }
+
+                var hojaActual4 = excelPackage.Workbook.Worksheets["Lista de activos"];
+                 var cell = hojaActual4.Cells["J3"];
+                // Cambia el valor de la celda.
+                cell.Value = "Costo ("+moneda+")";
+
 
 
                 excelPackage.SaveAs(fileInfoDestino);

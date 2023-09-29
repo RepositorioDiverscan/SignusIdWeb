@@ -419,6 +419,71 @@ namespace ActiveSmartWeb.Utilities
             }
 
         }
+        ////Mensaje que se envia al correo de signus con la informacion suministrada
+        ////por el cliente al adquirir un plan
+        ////public static int EnviarCorreoResumendelacompra(string planorden, string precioorden, string cantiActivosAdi, string precioadiocionales, string total, string correoUsuario, string idPerfilActive, string idEmpresa)
+        //{
+        //    //Correo de envio.
+        //    //var correode = ConfigurationManager.AppSettings["CorreoSignus"];
+        //    //var pass = ConfigurationManager.AppSettings["PassSignus"];
+
+
+        //    //string correofrom = ConfigurationManager.AppSettings["CorreoNoReply"];
+
+
+        //    //Mensajes con la informacion brindada.
+
+        //    MailMessage correo = new MailMessage();
+        //    try
+        //    {
+
+        //        //Cuerpo de correo
+        //        string cuerpoCorreo;
+        //        using (var stringReader = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plantillastxt", "PlantillaResumenCompra..txt"), true))
+        //        {
+        //            cuerpoCorreo = stringReader.ReadToEnd();
+        //        }
+
+        //        cuerpoCorreo = cuerpoCorreo.Replace("@PlanOrden", planorden);
+        //        cuerpoCorreo = cuerpoCorreo.Replace("@PrecioOrden", precioorden);
+        //        cuerpoCorreo = cuerpoCorreo.Replace("@CantiActivosAdi", cantiActivosAdi);
+        //        cuerpoCorreo = cuerpoCorreo.Replace("@PrecioAdi", precioadiocionales);
+        //        cuerpoCorreo = cuerpoCorreo.Replace("@NTotal", total);
+        //        cuerpoCorreo = cuerpoCorreo.Replace("@IdEmpre", idEmpresa);
+        //        cuerpoCorreo = cuerpoCorreo.Replace("@IdEmpresa", idPerfilActive);
+        //        cuerpoCorreo = cuerpoCorreo.Replace("@Correo", correoUsuario);
+
+
+        //        // hlnorislpucdyrux
+        //        correo.From = new MailAddress(correofrom, "Resumen Compra", System.Text.Encoding.UTF8);//Correo de salida
+        //        correo.To.Add(correofrom); //Correo destino
+        //        correo.Subject = "Contacto Signus ID"; //Asunto
+        //        correo.Body = cuerpoCorreo; //Mensaje del correo
+        //        correo.IsBodyHtml = true;
+        //        correo.Priority = MailPriority.Normal;
+
+
+        //        SmtpClient smtp = new SmtpClient();
+        //        smtp.UseDefaultCredentials = false;
+        //        smtp.Host = ConfigurationManager.AppSettings["ServerSmtp"]; //Host del servidor de correo
+        //        smtp.Port = Convert.ToInt32(ConfigurationManager.AppSettings["PortSmtp"]); //Puerto de salida
+
+        //        smtp.Credentials = new System.Net.NetworkCredential(correode, pass);//Cuenta de correo "Diverscan2022."
+        //        ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+        //        smtp.EnableSsl = true;//True si el servidor de correo permite ssl
+
+        //        smtp.Send(correo);
+
+        //        return 0;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        CLErrores.EscribirError(e.Message, e.StackTrace);
+        //        return -1;
+        //    }
+
+        //}
 
     }
-}
+
+        }
