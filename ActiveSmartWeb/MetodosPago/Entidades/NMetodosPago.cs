@@ -39,11 +39,11 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
             }
         }
 
-        public string AgregarMetodoPago(string idPerfilPago, string perfilUsuario)
+        public string AgregarMetodoPago(string idPerfilPago, string perfilUsuario,int idEmpresa)
         {
             try
             {
-                _dbMetodosPago.AgregarMetodoPago(idPerfilPago, perfilUsuario);
+                _dbMetodosPago.AgregarMetodoPago(idPerfilPago, perfilUsuario,idEmpresa);
                 return "Exito";
             }
             catch (Exception ex)
@@ -51,6 +51,19 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
                 CLErrores.EscribirError(ex.Message, ex.StackTrace);
                 return null;
             }
+        }
+        public string ObtenercustomerProfileporIdEmpresa(int idEmpresa)
+        {
+            try
+            {
+                return _dbMetodosPago.ObtenercustomerProfileporIdEmpresa(idEmpresa);
+            }
+            catch (Exception ex)
+            {
+                CLErrores.EscribirError(ex.Message, ex.StackTrace);
+                return "ERROR";
+            }
+
         }
 
     }

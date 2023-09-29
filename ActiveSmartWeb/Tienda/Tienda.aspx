@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster/Site.Master" AutoEventWireup="true" CodeBehind="Tienda.aspx.cs" Inherits="ActiveSmartWeb.Tienda.Tienda" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
 
+
+    </style>
     <div class="section" id="tiendaVue">
         <div class="container-2 w-container">
             <div class="w-layout-grid grid-main">
@@ -26,78 +29,42 @@
                             <div class="div-checkout-paln-ai">
 
                                 <%--Configuracion del plan, agregar adicionales--%>
-                                <div v-for="(adicional,index) in adicionales" :key="index" class="div-type-compra-ai tarjeta-tienda">
-                                    <div class="div-producto-gd tienda">
-                                        <div class="info-producto-gd info-prod-ai">
-                                            <div class="divdescripcion">
-                                                <div class="contenedorprodcutosuperior">
-                                                    <div class="divinfoproducto producto-tienda w-clearfix">
-                                                        <div class="div-articulo-data w-clearfix">
-                                                            <div class="div-imagen-gd div-img-tienda">
-                                                                <div data-delay="4000" data-animation="slide" class="slider-3 slider-tienda w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
-                                                                    <div class="mask-tienda w-slider-mask">
-                                                                        <div class="slide-tienda w-slide">
-                                                                            <img src="../images/signus_id_basic.svg" loading="lazy" width="212" alt="" class="img-tienda"></div>
-                                                                    </div>
-                                                                    <div class="left-tienda-arrow w-slider-arrow-left">
-                                                                        <div class="icon-5 icon-arrow-tienda w-icon-slider-left"></div>
-                                                                    </div>
-                                                                    <div class="right-tienda-arrow w-slider-arrow-right">
-                                                                        <div class="icon-4 icon-arrow-tienda w-icon-slider-right"></div>
-                                                                    </div>
-                                                                    <div class="slide-nav-2 sliode-nav-tienda w-slider-nav w-round"></div>
-                                                                </div>
-                                                            </div>
-                                                            <h2 class="titulo-02-zebra heading-art-tinda">{{adicional.Nombre}}<br>
-                                                            </h2>
-                                                            
-                                                        </div>
+                                   <div class="div-block-375">
+                      <div class="div-block-376" >
+                        <h5 class="heading-75">CONFIGURE SUS ADICIONALES</h5>
+                          <div v-for="(adicional,index) in adicionales" :key="index">
+                              <h5 class="heading-77">{{adicional.Nombre}}</h5>
+                              <div class="div-block-374 newmasmenos" class="div-type-compra-ai tarjeta-tienda">
 
-                                                        <div class="form-block-15 form-price form-tienda w-form">
-                                                            <div id="email-form" name="email-form" data-name="Email Form" class="form-12 form-p-tienda w-clearfix" data-wf-page-id="62e04453b83e1b10d0b7a149" data-wf-element-id="4c0508b9-af5d-6b19-5450-58730451304f">
-                                                                <div class="div-block-precio-gd tienda precio-tienda">
-                                                                    <div style="margin-bottom:5px;" class="div-block-228">
-                                                                        <p class="precio-zebra precio-ai">US${{adicional.Costo}}<strong class="iva">+iva</strong></p>
-                                                                        <p class="precio-zebra precio-anterior">$19.99<strong class="iva">+iva</strong></p>
-                                                                    </div>
-                                                                    <div class="div-block-226 div-stock w-clearfix">
-                                                                        <button href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</button>
+                                  <div id="w-node-_639e6cee-85b6-2c3d-41bb-9098c6443f9d-d0b7a149" class="fb-cant-ai newmasmenos w-form" >
+                                      <div id="email-form-3" name="email-form-3" data-name="Email Form 3" method="get" class="form-cant-ai w-clearfix" data-wf-page-id="62e04453b83e1b10d0b7a149" data-wf-element-id="639e6cee-85b6-2c3d-41bb-9098c6443f9e">
+                                          <button href="#" class="btn-less-ai w-button" @click="Restaadicional(adicional)">-</button>
 
-                                                                        <input v-if="adicional.IdPaqueteContratado == 1" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=1 :id="adicional.IdPaqueteContratado" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" required="" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicionalActivos(adicional)">
-                                                                        <input v-if="adicional.IdPaqueteContratado != 1" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=2 :id="adicional.IdPaqueteContratado" :v-model="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" required="" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
+                               <input v-if="adicional.IdPaqueteContratado == 1" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=0 :id="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" required="" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicionalActivos(adicional)">
+                               <input v-if="adicional.IdPaqueteContratado != 1" type="text" class="txt-cantidad-ai w-input"maxlength="2" value=0 :id="adicional.IdPaqueteContratado"  name="name-3" data-name="Name 3" placeholder="" required="" onkeypress="return event.charCode>=48 && event.charCode<=57" @change="agregaradicional(adicional)">
                                                                         
-                                                                        <button href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</button>
-                                                                    </div>
-                                                                </div>
-                                                                <div data-hover="false" data-delay="0" class="dropdown-detall-zc drop-tienda-ai w-dropdown">
-                                                                    <div class="dropdwn-detall-zc drp-ai-detalles w-clearfix w-dropdown-toggle">
-                                                                        <div class="text-mas-detalles-zc mas-detall-ai">Más Detalles</div>
-                                                                        <div class="icon-detalles-zc w-icon-dropdown-toggle"></div>
-                                                                    </div>
-                                                                    <nav class="lista-dropdown-zc w-dropdown-list">
-                                                                        <a href="#" class="drop-link2-zc w-dropdown-link"></a>
-                                                                        <p class="p-descr-zc">Lorem ipsum dolor sit amet, convfdg es fs  sectetur adipiscing elit.
-                                                                            Lorem ipsum dolor sit amet, convfdg es fs fdsfds fsf sfds fdsf sfs fs dfs fs s gs g gs gs s sectetur dolor.</p>
-                                                                        <h4 class="heading-espcf-zc">Especificaciones:</h4>
-                                                                        <ul role="list" class="especificaciones-lista-zc">
-                                                                            <li class="list-item-zc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen Lorem ipsum do</li>
-                                                                            <li class="list-item2-zc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen Lorem ipsum do</li>
-                                                                            <li class="list-item3-zc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen Lorem ipsum do</li>
-                                                                            <li class="list-item4-zc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen Lorem ipsum do</li>
-                                                                        </ul>
-                                                                        <ul role="list" class="list-4"></ul>
-                                                                    </nav>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                        <ul role="list" class="especificaciones-lista-zc"></ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                   <button href="#" class="btn-add-ai w-button" @click="sumaradicional(adicional)">+</button>
+                                      </div>
+                                      <div class="w-form-done">
+                                          <div>Thank you! Your submission has been received!</div>
+                                      </div>
+                                      <div class="w-form-fail">
+                                          <div>Oops! Something went wrong while submitting the form.</div>
+                                      </div>
+                                  </div>
+                                 
+                                  <h5 style="margin-right: 20px;"   id="w-node-_1de677f9-6f79-db86-ba75-aa2467ef45ff-d0b7a149" class="heading-76"><del>US$19.99/mes</del> </h5>
+                                  <h5  id="w-node-_5fa76777-814e-5390-4844-ef716bd67458-d0b7a149" class="heading-76 boldtienda">US ${{adicional.Costo}}/mes</h5>
+
+                              </div>
+                              
+                          </div>
+             
+                        
+     
+
+                      </div>
+                    </div>
 
 
                             </div>
@@ -106,7 +73,7 @@
                         <%--Resumen de la compra --%>
                         <div id="w-node-_9ca94d29-d29b-e959-26a7-2120087ff211-d0b7a149" class="div-colum-fixed">
                             <div class="div-checkout-orden-ai div-check-tienda">
-                                <div class="div-total-pago-ai resumen-tienda">
+                                <div class="div-total-pago-ai resumen-tienda"  style="margin-left: 110px;">
                                     <h5 class="p-pago-adicio-ai">Resumen de la orden</h5>
                                     <div class="colums-order-ai cols-price-paln-ai cols-tienda-ai w-row">
                                         <div class="col-order-ai col-border-r-ai w-col w-col-7 w-col-small-6 w-col-tiny-6">

@@ -235,14 +235,16 @@ namespace ActiveSmartWeb.Tienda
                     }
                     else
                     {
-                        int cantidad = _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias + _adicionalPlanUsuario[paquete.IdPaqueteContratado].CantidadRegalias;
+                        int cantidad =_adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias - _adicionalPlanUsuario[paquete.IdPaqueteContratado].Cantidad;
 
-                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = paquete.Costo * (_adicionalcontratado[paquete.IdPaqueteContratado].Cantidad - _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias);
+                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = paquete.Costo * (cantidad);
                        
                     }
                 }
             }
         }
+
+
 
         //Agrega regalias 
         private void agregarRegalia()
@@ -597,8 +599,9 @@ namespace ActiveSmartWeb.Tienda
 
                         var costorestar = Convert.ToDecimal(Request.Form["Costo"], new CultureInfo("en-US"));
                         var costoMensualrestar = Convert.ToDecimal(Request.Form["CostoMensual"], new CultureInfo("en-US"));
+                        var cantidadActivos = Convert.ToInt32(Request.Form["cantidadActivos"]);
 
-                        if(_adicionalPlanUsuario[idAdicionalrestar].Cantidad < _adicionalcontratadomostrar[idAdicionalrestar].Cantidad)
+                        if (_adicionalPlanUsuario[idAdicionalrestar].Cantidad < _adicionalcontratadomostrar[idAdicionalrestar].Cantidad)
                         {
                             if (idAdicionalrestar == 1)
                             {
@@ -611,10 +614,10 @@ namespace ActiveSmartWeb.Tienda
                                 _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
                                 _adicionalcontratadomostrar[idAdicionalrestar].CostoMensual -= costoMensualrestar;
 
-                                validadRegalia(false, cantidadrestar * cantidadpaqueterestar);
+                                validadRegalia(false, cantidadActivos);
 
                             }
-                            else if (_adicionalcontratado[idAdicionalrestar].CantidadRegalias <= cantidadrestar)
+                            else if (_adicionalcontratadomostrar[idAdicionalrestar].Cantidad > _adicionalPlanUsuario[idAdicionalrestar].Cantidad)
                             {
                                 //Sustituye los valores guardados con los nuevos valores.
                                 _adicionalcontratado[idAdicionalrestar].Cantidad = cantidadrestar;
@@ -625,7 +628,7 @@ namespace ActiveSmartWeb.Tienda
 
                             //Valida que los activos no superan el numero para adicionales ilimitados y que la resta no sea menor a las regalias
 
-                            if (idAdicionalrestar != 1 && _adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados && _adicionalcontratado[idAdicionalrestar].CantidadRegalias <= cantidadrestar)
+                            if (idAdicionalrestar != 1 && _adicionalcontratadomostrar[1].Cantidad < activosAdicionalesIlimitados && _adicionalcontratadomostrar[idAdicionalrestar].Cantidad >= _adicionalPlanUsuario[idAdicionalrestar].Cantidad)
                             {
                                 _adicionalcontratadomostrar[idAdicionalrestar].Costo -= costorestar;
                                 _adicionalcontratadomostrar[idAdicionalrestar].CostoMensual -= costoMensualrestar;
