@@ -21,25 +21,28 @@
                 <div v-for="(metodo,index) in metodosPago" :key="index" class="div-block-264">
                     <img v-if="metodo.Tipo == 'Visa'" src="../images/visa.svg" loading="lazy" alt="" class="image-68">
                     <img v-if="metodo.Tipo == 'MasterCard'" src="../images/MasterCard_Logo.svg.png" loading="lazy" sizes="(max-width: 479px) 33.4765625px, (max-width: 767px) 7vw, (max-width: 991px) 5vw, 4vw" srcset="../images/MasterCard_Logo.svg-p-500.png 500w, ../images/MasterCard_Logo.svg-p-800.png 800w, ../images/MasterCard_Logo.svg-p-1080.png 1080w, ../images/MasterCard_Logo.svg-p-1600.png 1600w, ../images/MasterCard_Logo.svg-p-2000.png 2000w, ../images/MasterCard_Logo.svg.png 2560w" alt="" class="image-68">
-                    <div class="div-block-265">
+                    <img v-if="metodo.Tipo !='' && metodo.Tipo != 'MasterCard' && metodo.Tipo != 'Visa' " src="../images/TarjetaSignusId.png" loading="lazy" sizes="(max-width: 479px) 33.4765625px, (max-width: 767px) 7vw, (max-width: 991px) 5vw, 4vw"  alt="" class="image-68">
+                    
+                    <div class="div-block-265" style=" width:45%">
                         <div>{{metodo.NumeroTarjeta}}</div>
                         <div>{{metodo.NombreDuenno}} {{metodo.ApellidoDuenno}}</div>
-                        <div v-if="metodo.Estado" >{{metodo.FechaExpiracion}}</div>
-                        <div v-if="!metodo.Estado">Expiró {{metodo.FechaExpiracion}}</div>                  
+                        <div v-if="metodo.Valido" >{{metodo.FechaExpiracion}}</div>
+                        <div v-if="!metodo.Valido">Expiró {{metodo.FechaExpiracion}}</div>  
+                        
                     </div>
                     <div class="div-block-266">
                         <h1 v-if="metodo.Predeterminado" class="heading-51">PREDETERMINADO</h1>
                         <div v-if="!metodo.Predeterminado" class="form-block-33 w-form">
                             <div id="email-form-4" name="email-form-4" data-name="Email Form 4" method="get" class="form-21" data-wf-page-id="62cdf3fe3f0aa172c75df771" data-wf-element-id="dad112fa-1a32-bf3f-1be2-ace1ce489485">
                                 <label class="w-checkbox checkbox-field-4">
-                                    <input type="checkbox" name="" data-name="." id="checkbox" class="w-checkbox-input checkbox-3"><span class="w-form-label">.</span></label>
+                                    <input type="checkbox" name="" data-name="." id="checkbox" class="w-checkbox-input checkbox-3"><span class="w-form-label"></span></label>
                             </div>
 
                         </div>
                         
                     </div>
                     <div v-if="!metodo.Predeterminado" class="div-block-267 _2">
-                        <img src="../images/cerrar_x_signus.svg" loading="lazy" alt="Icono_X_Cerrar" class="image-69">
+                        <img @click="EliminarMetodoPago(metodo)" src="../images/cerrar_x_signus.svg" loading="lazy" alt="Icono_X_Cerrar" class="image-69">
                     </div>
                 </div>
 
@@ -90,11 +93,11 @@
                             name="num-tarjeta" data-name="num tarjeta" placeholder="Ingrese el número de la tarjeta" id="num-tarjeta" required="">
                         <div class="data-payment-ai month-ai w-clearfix">
                             <label for="fecha" class="lbl-pago-info-ai">Fecha de vencimiento</label>
-                            <input v-model="fechaVencimiento" onkeypress="return event.charCode>=48 && event.charCode<=57" @keyup="validardigitosfechavencimiento()" type="text" class="input-info-pago-ai w-input" maxlength="256" name="fecha" data-name="fecha" placeholder="MM / AA" id="fecha" required="">
+                            <input v-model="fechaVencimiento" onkeypress="return event.charCode>=48 && event.charCode<=57" @keyup="validardigitosfechavencimiento()" type="text" class="input-info-pago-ai w-input" maxlength="256" name="fecha" data-name="fecha" placeholder="MM / AAAA" id="fecha" required="">
                         </div>
                         <div class="data-payment-ai w-clearfix">
                             <label for="Cvv-3" class="lbl-pago-info-ai">CVV</label>
-                            <input  v-model="codigo" type="text" class="input-info-pago-ai w-input" maxlength="256" name="Cvv" data-name="Cvv" placeholder="CVV" id="Cvv-3" required="">
+                            <input  v-model="codigo" type="text" class="input-info-pago-ai w-input" maxlength="4" name="Cvv" data-name="Cvv" placeholder="CVV" id="Cvv-3" required="">
                         </div>
                         <label for="nombre" class="lbl-pago-info-ai">Nombre del tituar</label>
                         <input

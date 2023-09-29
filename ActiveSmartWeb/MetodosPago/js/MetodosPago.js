@@ -43,16 +43,16 @@ const MetodosPago = new Vue({
         this.ObtenerMetodosPago();
         this.CargarInputPaises();
     },
-
+    
     methods: {
 
         ObtenerMetodosPago: function () {
             var self = this;
             var usuario = JSON.parse(sessionStorage.getItem("DUser"));
-
+            
             $.post(urlAjax, {
                 Opcion: 'CargarMetodos',
-                IdEmpresa: usuario[0].IdPerfilEmpresa,
+                IdPerfilEmpresa: usuario[0].IdPerfilEmpresa,
             }, function (data, error) {
                 data = JSON.parse(data);
 
@@ -66,9 +66,12 @@ const MetodosPago = new Vue({
 
             var self = this;
             this.pais = $("#country5").countrySelect("getSelectedCountryData").name;
+            var fechas = self.fechaVencimiento.split("/");
+            var mes = fechas[0];
+
 
             if (this.numerotarjeta != '' && this.numerotarjeta.length >= 16) {
-                if (this.fechaVencimiento != '' && this.fechaVencimiento.length >= 5) {
+                if (this.fechaVencimiento != '' && this.fechaVencimiento.length >= 7&& mes<=12) {
                     if (this.codigo != '') {
                         if (this.nombretitular != '') {
                             if (this.apellidotitular != '') {
@@ -76,7 +79,7 @@ const MetodosPago = new Vue({
                                     if (this.estado != '') {
                                         if (this.ciudad != '') {
                                             if (this.direccion != '') {
-                                                
+                                                self.AgregarMetodoPago();
                                             } else {
                                                 alertas.error("Atención", "Por favor ingrese su dirección");
                                                 
@@ -118,10 +121,10 @@ const MetodosPago = new Vue({
 
         AgregarMetodoPago: function () {
             var self = this;
+            var usuario = JSON.parse(sessionStorage.getItem("DUser"));
             
-            
-            $.post(urlCarrito, {
-                option: 'AgregarMetodoPago',
+            $.post(urlAjax, {
+                Opcion: 'AgregarMetodoPago',
                 PerfilUsuario: self.perfilUsuario,
                 Numerotarjeta: self.numerotarjeta,
                 FechaVencimiento: self.fechaVencimiento,
@@ -131,15 +134,38 @@ const MetodosPago = new Vue({
                 Direccion: self.direccion,
                 Estado: self.estado,
                 Ciudad: self.ciudad,
-                Pais: self.pais
+                Pais: self.pais,
+                IdEmpresa: usuario[0].IdPerfilEmpresa
 
             }, function (data, error) {
                 if (data == 'Transacción realizada correctamente') {
-                    
+                   //AGREGAR LIMPIAR INPUTS 
                 } else {
                     
                 }
                 
+            });
+        },
+
+        EliminarMetodoPago: function (metodo) {
+            var self = this;
+            
+            var idPaymentProfile = metodo.IdPerfilPago;
+            var idCustomerSQL = metodo.Id;
+
+            $.post(urlAjax, {
+                Opcion: 'EliminarMetodoPago',
+                idCustomerSQL: idCustomerSQL,
+                idPaymentProfile : idPaymentProfile
+                
+
+            }, function (data, error) {
+                if (data == 'Transacción realizada correctamente') {
+                    //RECARGAR
+                } else {
+
+                }
+
             });
         },
 
@@ -155,7 +181,7 @@ const MetodosPago = new Vue({
 
             var self = this;
 
-            var template = "xx/xx";
+            var template = "xx/xxxx";
 
             let j = 0;
             let plaintext = "";

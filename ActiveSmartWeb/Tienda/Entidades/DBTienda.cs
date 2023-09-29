@@ -106,7 +106,7 @@ namespace ActiveSmartWeb.Tienda.Entidades
 
         public string ObtenercustomerProfileporIdEmpresa(int idPerfilEmpresa)
         {
-            List<EPaqueteAdicional> ePaquetesAdicionales = new List<EPaqueteAdicional>();
+
             var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
             var dbCommand = db.GetStoredProcCommand("ObtenercustomerPerfilUsuario");
             db.AddInParameter(dbCommand, "@idEmpresa", DbType.String, idPerfilEmpresa);

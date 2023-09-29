@@ -21,12 +21,13 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
             return db.GetParameterValue(dbCommand, "@Respuesta").ToString();
         }
 
-        public void AgregarMetodoPago(string idPerfilPago, string perfilUsuario)
+        public void AgregarMetodoPago(string idPerfilPago, string perfilUsuario,int idEmpresa)
         {
             var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
             var dbCommand = db.GetStoredProcCommand("SP_InsertarPerfilPago");
             db.AddInParameter(dbCommand, "@IdPerfilPago", DbType.String, idPerfilPago);
             db.AddInParameter(dbCommand, "@IdPerfilAuthorize", DbType.String, perfilUsuario);
+            db.AddInParameter(dbCommand, "@IdEmpresa", DbType.Int32, idEmpresa);
             
             dbCommand.CommandTimeout = 3600;
             db.ExecuteNonQuery(dbCommand);
@@ -56,6 +57,20 @@ namespace ActiveSmartWeb.MetodosPago.Entidades
             }
             return ePerfilPago;
         }
+        public string ObtenercustomerProfileporIdEmpresa(int idPerfilEmpresa)
+        {
+            var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
+            var dbCommand = db.GetStoredProcCommand("ObtenercustomerPerfilUsuario");
+            db.AddInParameter(dbCommand, "@idEmpresa", DbType.String, idPerfilEmpresa);
+            db.AddOutParameter(dbCommand, "@customerId", DbType.String, 200);
+            db.AddOutParameter(dbCommand, "@paymentId", DbType.String, 200);
+            dbCommand.CommandTimeout = 0;
+            db.ExecuteNonQuery(dbCommand);
+            var customerId = db.GetParameterValue(dbCommand, "@customerId").ToString();
+            var ProfilePaymentId = db.GetParameterValue(dbCommand, "@paymentId").ToString();
+            return customerId;
 
+
+        }
     }
 }

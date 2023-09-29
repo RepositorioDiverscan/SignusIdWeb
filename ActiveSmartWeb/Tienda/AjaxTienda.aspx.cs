@@ -235,14 +235,16 @@ namespace ActiveSmartWeb.Tienda
                     }
                     else
                     {
-                        int cantidad = _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias + _adicionalPlanUsuario[paquete.IdPaqueteContratado].CantidadRegalias;
+                        int cantidad =_adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias - _adicionalPlanUsuario[paquete.IdPaqueteContratado].Cantidad;
 
-                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = paquete.Costo * (_adicionalcontratado[paquete.IdPaqueteContratado].Cantidad - _adicionalcontratadomostrar[paquete.IdPaqueteContratado].CantidadRegalias);
+                        _adicionalcontratadomostrar[paquete.IdPaqueteContratado].Costo = paquete.Costo * (cantidad);
                        
                     }
                 }
             }
         }
+
+
 
         //Agrega regalias 
         private void agregarRegalia()

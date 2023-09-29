@@ -267,8 +267,8 @@ namespace ActiveSmartWeb.Authorize
                 if (response.paymentProfile.payment.Item is creditCardMaskedType)
                 {
 
-                    if (response.paymentProfile.subscriptionIds != null && response.paymentProfile.subscriptionIds.Length > 0)
-                    {
+                    //if (response.paymentProfile.subscriptionIds != null && response.paymentProfile.subscriptionIds.Length > 0)
+                   // {
                         return new EMetodoPago(
                             customerPaymentProfileId.Id,
                             customerPaymentProfileId.IdPerfilPago,
@@ -279,7 +279,7 @@ namespace ActiveSmartWeb.Authorize
                             response.paymentProfile.billTo.lastName,
                             customerPaymentProfileId.Predeterminado
                             );
-                    }
+                    //}
                 }
             }
 
@@ -414,6 +414,139 @@ namespace ActiveSmartWeb.Authorize
             return response;
         }
 
+        public static string AgregarMetodoPago(string customerProfileId, EMetodoPago eMetodoPago)
+        {
+        
+
+            // set whether to use the sandbox environment, or production enviornment
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
+
+            // define the merchant information (authentication / transaction id)
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
+            {
+                name = ApiLoginID,
+                ItemElementName = ItemChoiceType.transactionKey,
+                Item = ApiTransactionKey,
+            };
+
+            var card = new creditCardType
+            {   
+                cardNumber =eMetodoPago.NumeroTarjeta,
+                expirationDate = eMetodoPago.FechaExpiracion,
+                cardCode = eMetodoPago.CodigoCVV
+               
+            };
+
+            paymentType echeck = new paymentType { Item = card };
+
+            var billTo = new customerAddressType
+            {
+                firstName = eMetodoPago.NombreDuenno,
+                lastName = eMetodoPago.ApellidoDuenno,
+                address = eMetodoPago.Direccion,
+                state = eMetodoPago.Estado,
+                country = eMetodoPago.Pais,
+                city = eMetodoPago.Ciudad,
+                
+                
+            };
+            customerPaymentProfileType echeckPaymentProfile = new customerPaymentProfileType();
+            echeckPaymentProfile.payment = echeck;
+            echeckPaymentProfile.billTo = billTo;
+
+            var request = new createCustomerPaymentProfileRequest
+            {
+                customerProfileId = customerProfileId,
+                paymentProfile = echeckPaymentProfile,
+                validationMode = validationModeEnum.none
+            };
+
+            // instantiate the controller that will call the service
+            var controller = new createCustomerPaymentProfileController(request);
+            controller.Execute();
+
+            // get the response from the service (errors contained if any)
+            createCustomerPaymentProfileResponse response = controller.GetApiResponse();
+
+            // validate response 
+            if (response != null)
+            {
+                if (response.messages.resultCode == messageTypeEnum.Ok)
+                {
+                    if (response.messages.message != null)
+                    {
+                        Console.WriteLine("Success! Customer Payment Profile ID: " + response.customerPaymentProfileId);
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Customer Payment Profile Creation Failed.");
+                    Console.WriteLine("Error Code: " + response.messages.message[0].code);
+                    Console.WriteLine("Error message: " + response.messages.message[0].text);
+                    if (response.messages.message[0].code == "E00039")
+                    {
+                        Console.WriteLine("Duplicate Payment Profile ID: " + response.customerPaymentProfileId);
+                    }
+                }
+            }
+            else
+            {
+                if (controller.GetErrorResponse().messages.message.Length > 0)
+                {
+                    Console.WriteLine("Customer Payment Profile Creation Failed.");
+                    Console.WriteLine("Error Code: " + response.messages.message[0].code);
+                    Console.WriteLine("Error message: " + response.messages.message[0].text);
+                }
+                else
+                {
+                    Console.WriteLine("Null Response.");
+                }
+            }
+
+            return response.customerPaymentProfileId;
+
+        }
+
+
+        public static string EliminarMetodoPago( string customerProfileId, string customerPaymentProfileId)
+        {
+
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.PRODUCTION;
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
+            {
+                name = ApiLoginID,
+                ItemElementName = ItemChoiceType.transactionKey,
+                Item = ApiTransactionKey,
+            };
+
+            //please update the subscriptionId according to your sandbox credentials
+            var request = new deleteCustomerPaymentProfileRequest
+            {
+                customerProfileId = customerProfileId,
+                customerPaymentProfileId = customerPaymentProfileId
+            };
+
+            //Prepare Request
+            var controller = new deleteCustomerPaymentProfileController(request);
+            controller.Execute();
+
+            //Send Request to EndPoint
+            deleteCustomerPaymentProfileResponse response = controller.GetApiResponse();
+            if (response != null && response.messages.resultCode == messageTypeEnum.Ok)
+            {
+                if (response != null && response.messages.message != null)
+                {
+                    Console.WriteLine("Success, ResultCode : " + response.messages.resultCode.ToString());
+                }
+            }
+            else if (response != null)
+            {
+                Console.WriteLine("Error: " + response.messages.message[0].code + "  " + response.messages.message[0].text);
+            }
+
+            return response.messages.message.ToString();
+        }
 
     }
 }

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace ActiveSmartWeb.MetodosPago
 {
     public partial class MetodosPagoAjax : System.Web.UI.Page
@@ -16,7 +17,10 @@ namespace ActiveSmartWeb.MetodosPago
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            switch (Request.Form["Opcion"])
+            var opcion = Request.Form["Opcion"];
+
+
+            switch (opcion)
             {
                 case "CargarMetodos":
                     ObtenerMetodosPago();
@@ -25,6 +29,11 @@ namespace ActiveSmartWeb.MetodosPago
                 case "AgregarMetodoPago":
                     AgregarMetodoPago();
                     break;
+
+                case "EliminarMetodoPago":
+                    EliminarMetodoPago();
+                    break;
+
 
             }
         }
@@ -95,29 +104,60 @@ namespace ActiveSmartWeb.MetodosPago
                 return false;
             }
         }
-
         private void AgregarMetodoPago()
         {
             string perfilUsuario = Request.Form["PerfilUsuario"];
 
+            var fecha = Request.Form["FechaVencimiento"].Split('/');
+            var fechaAuth = fecha[1] + "-" + fecha[0];
+
+
             EMetodoPago nuevoMetodo = new EMetodoPago(
-                Request.Form["Numerotarjeta"],
-                Request.Form["FechaVencimiento"],              
-                Request.Form["Codigo"],              
-                Request.Form["Pais"],              
-                Request.Form["Estado"],              
-                Request.Form["Ciudad"],              
-                Request.Form["Direccion"],              
-                Request.Form["Nombretitular"],              
-                Request.Form["Apellidotitular"]              
-                );
+                Request.Form["Numerotarjeta"].Replace(" ", ""),
+                fechaAuth,
+                Request.Form["Codigo"],
+                Request.Form["Pais"],
+                Request.Form["Estado"],
+                Request.Form["Ciudad"],
+                Request.Form["Direccion"],
+                Request.Form["Nombretitular"],
+                Request.Form["Apellidotitular"]);
 
-            string nuevoPerfilPago = "12345678";
+            string nuevoPerfilPago = PagoAuthorize.AgregarMetodoPago(perfilUsuario, nuevoMetodo);
+            //string nuevoPerfilPago = "";
 
-            if(nuevoPerfilPago != "Error")
+            if (nuevoPerfilPago != "Error")
+            {
+               
+
+             var x = _nMetodosPago.AgregarMetodoPago(nuevoPerfilPago, perfilUsuario, Convert.ToInt32(Request.Form["IdEmpresa"]));
+
+            }
+
+        }
+
+        private void EliminarMetodoPago()
+        {
+            string perfilUsuario = Request.Form["idCustomerSQL"];
+            string idPaymentProfile = Request.Form["idPaymentProfile"];
+
+
+
+         
+
+
+          
+           
+
+            var eliminarMetodo = PagoAuthorize.EliminarMetodoPago(perfilUsuario, idPaymentProfile);
+
+            string nuevoPerfilPago = "";
+
+            if (nuevoPerfilPago != "Error")
             {
 
-                _nMetodosPago.AgregarMetodoPago(nuevoPerfilPago, perfilUsuario);
+
+               //var x = _nMetodosPago.AgregarMetodoPago(nuevoPerfilPago, perfilUsuario, Convert.ToInt32(Request.Form["IdEmpresa"]));
 
             }
 
