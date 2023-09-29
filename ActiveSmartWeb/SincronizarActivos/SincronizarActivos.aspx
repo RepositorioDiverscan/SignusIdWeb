@@ -2,7 +2,23 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+<style>
+  .loading-spinner {
+  display: none; /* Oculta inicialmente el div de carga */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+  z-index: 9999; /* Coloca el div por encima de todo */
+  text-align: center;
+}
 
+.loading-spinner img {
+  margin-top: 20%; /* Alinea verticalmente el GIF de carga */
+}
+</style>
 
       
       
@@ -13,7 +29,13 @@
 
       <div class="section wf-section" id="alertas">
         <div class="container-2 w-container">
+            <div id="loading-spinner" class="loading-spinner" >
+           <img src="../images/gif de carga2.gif" loading="lazy" class="back"style ="width: 25%; height: 44%;margin-left: 36%;margin-top: 14%;">
+
+
+            </div>
           <div class="w-layout-grid grid-main grid-sinc-act">
+             <h5 id="w-node-_1819d972-5541-cbc9-03ce-d1b5eb82c575-fb048ddf">Activos disponibles: 1</h5>
             <div id="w-node-_28f3db33-b16a-6f10-aeaa-110c3af3f04f-fb048ddf" class="div-banner-extremo"></div>
             <div id="w-node-_28f3db33-b16a-6f10-aeaa-110c3af3f050-fb048ddf" class="div-banner-extremo"></div>
             <div id="w-node-_28f3db33-b16a-6f10-aeaa-110c3af3f051-fb048ddf" class="div-block-230">

@@ -162,7 +162,6 @@ namespace ActiveSmartWeb.SincronizarActivos.SincronizarAct
             var db = DatabaseFactory.CreateDatabase("activeidsmartConnectionString");
             var dbCommand = db.GetStoredProcCommand("ObtenertipoMonedaporIdEmpresa");
             db.AddInParameter(dbCommand, "@IdPerfilEmpresa", DbType.Int32, IdPerfilEmpresa);
-
             db.AddOutParameter(dbCommand, "@respuesta", DbType.String, 10);
 
             dbCommand.CommandTimeout = 3600;

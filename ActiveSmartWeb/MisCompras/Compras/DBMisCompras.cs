@@ -23,9 +23,12 @@ namespace ActiveSmartWeb.MisCompras.Compras
                 while (reader.Read())
                 {
 
+                    int IdTipoContrato = Convert.ToInt32(reader["IdTipoContrato"].ToString());
+                        
                     eFechaVencimiento.Add(new EFechavencimientoPlan(
                         reader["NombreTipoContrato"].ToString(),
-                        Convert.ToDateTime(reader["FechaExpiracion"].ToString())
+                        Convert.ToDateTime(reader["FechaExpiracion"].ToString()),
+                         IdTipoContrato
                     ));
                 }
             }

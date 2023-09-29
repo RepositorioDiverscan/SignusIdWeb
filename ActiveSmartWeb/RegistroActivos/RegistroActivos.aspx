@@ -92,11 +92,13 @@
                     <div id="w-node-d5e55e7c-4128-2247-a011-1ce7d3a2a0d5-2106bd5d" class="form-line"><label for="name-5" class="field-label" v-cloak>{{listaidiomaRegistroActivo.NumeroFactura}}</label> 
                         <input v-bind:disabled="editarcampos" type="text" v-model="numFactura" class="text-field-9 w-input" maxlength="80" name="field-5" data-name="Field 5" placeholder="" id="nFactura" required=""></div>
                     <div id="w-node-fa236aec-8879-8489-8b60-9146962aa33c-2106bd5d" class="form-line"><label for="name-5" class="field-label" v-cloak>{{listaidiomaRegistroActivo.FechaCompra}}</label> 
-                      <div class="div-fecha"><input type="date" v-model="fechaCompra" class="text-field w-input" maxlength="80" name="FECHA-3" data-name="FECHA 3" id="FechaC"  :max="fechaHoy" @mouseout="ValidarFecha()"><img v-on:click="AbrirDatePicker('FechaC')" src="../images/calendar.svg" loading="lazy" alt="" class="contenedor-icono cal"></div>
-                    </div>
-                    <div id="w-node-_3895fd63-ed75-d65e-92f7-d7ab59ea7761-2106bd5d" class="form-line"><label for="name-5" class="field-label" v-cloak>{{listaidiomaRegistroActivo.Costo}}</label> 
-                        <input type="number" v-bind:disabled="editarcampos" v-model="costoActivo" class="text-field-11 w-input" autofocus="true" maxlength="80" name="field-5" data-name="Field 5" placeholder="" id="costo" required=""></div>
-                    <div id="w-node-_87695020-6f5c-ec03-bb3a-4174fa111f8a-2106bd5d" class="contenedor-botones">
+                        <input type="text" class="text-field-10 w-input" maxlength="240" name="field-5" data-name="Field 5" placeholder="" id="field-5" required=""><img src="images/calendar.svg" loading="lazy" alt="" class="contenedor-icono cal"></div>
+                    <div id="w-node-_3895fd63-ed75-d65e-92f7-d7ab59ea7761-2106bd5d" class="form-line">
+                        <label for="name-5" class="field-label" v-cloak>{{listaidiomaRegistroActivo.Costo}} (US)</label> 
+                        <%--<h5 class="heading-73"> (US)</h5>--%>
+                    <input type="number" v-bind:disabled="editarcampos" v-model="costoActivo" class="text-field-11 w-input" autofocus="true" maxlength="256" name="field-5" data-name="Field 5" placeholder="" id="costo" required=""></div>  
+                      </div>
+                      <div id="w-node-_87695020-6f5c-ec03-bb3a-4174fa111f8a-2106bd5d" class="contenedor-botones">
                       <a href="#" v-on:click="GuardarRegistroActivos" class="link-block-boton dere w-inline-block"><img src="../images/save_blanco.svg" loading="lazy" alt=""></a>
                       <a href="#"  v-on:click="BorrarDatos" class="link-block-boton dere w-inline-block"><img src="../images/eraser.svg" loading="lazy" alt=""></a>
                     </div>
@@ -145,8 +147,8 @@
                         <option value="0">{{listaidiomaRegistroActivo.SelectUbi}}</option> 
                       </select></div>
                     <div id="w-node-_8a1ebf1f-43dd-e33b-1fab-2707a48d82b5-2106bd5d" class="form-line line-reg-inv"><label for="name-5" class="field-label" v-cloak>{{listaidiomaRegistroActivo.FechaGarantia}}</label> <!-- Fecha de Garantía -->
-                      <div class="div-fecha"><input  v-bind:disabled="FechaG" type="date" class="text-field w-input" maxlength="256" name="FECHA-3" data-name="FECHA 3" id="Fechagarantia" v-model="Fechagarantia" ><img src="../images/calendar.svg" loading="lazy" alt="" class="contenedor-icono cal"></div>
-                    </div>
+                      <div class="div-fecha">
+                          <input v-bind:disabled="FechaG" type="date" class="text-field w-input" maxlength="80" name="FECHA-3" data-name="FECHA 3" id="Fechagarantia" v-model="Fechagarantia" ><img src="../images/calendar.svg" loading="lazy" alt="" class="contenedor-icono cal"></div></div>
                     <div id="w-node-_7233447d-1dec-b326-5eff-659847d6b539-2106bd5d" class="form-line line-reg-inv"><label v-cloak for="name-5" class="field-label">{{listaidiomaRegistroActivo.Color}}</label> <!-- Color -->
                         <input type="text" v-bind:disabled="Color" class="text-field-9 w-input" maxlength="80" name="field-5" data-name="Field 5" placeholder="" id="field-5" required=""></div>
                     <div id="w-node-f446de3d-5772-01ec-ff1a-0def333a72fb-2106bd5d" class="form-line line-reg-inv"><label v-cloak for="name-5" class="field-label">{{listaidiomaRegistroActivo.TamañoMed}}</label> <!-- Tamaño/Medida -->
@@ -276,8 +278,7 @@
       </div>
     </div>
 
-  </div>
-    </div>
+
     <style>
          /*ocultar controles de input date*/  
      input[type="date"]::-webkit-inner-spin-button,

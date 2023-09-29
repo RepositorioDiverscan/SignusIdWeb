@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster/Site.Master" AutoEventWireup="true" CodeBehind="ReporteInventario.aspx.cs" Inherits="ActiveSmartWeb.InventariosReporte.ReporteInventario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <div class="main" id="ReporteInventariosVue">
-      <div class="section wf-section" id="alertas">
-        <div class="container-2 w-container">
-         <div class="w-layout-grid grid-main main-mobil">
+        <div class="main otrodiv"id="ReporteInventariosVue">
+       <div class="section otrodiv" id="alertas" >
+        <div class="container-2 divotro w-container">
+         <div class="w-layout-grid grid-main grid-main-gestion">
             <div id="w-node-_28f83586-84e1-3ab8-9a07-61041cff8530-b415ea5e" class="div-banner-extremo"></div>
             <div id="w-node-_28f83586-84e1-3ab8-9a07-61041cff8531-b415ea5e" class="div-banner-extremo"></div>
             <div id="w-node-_28f83586-84e1-3ab8-9a07-61041cff8532-b415ea5e">
