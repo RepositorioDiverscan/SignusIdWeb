@@ -580,6 +580,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         var tipoContrato = Convert.ToInt32(Request.Form["tipocontrato"]);
                         var cuponFinal = Request.Form["codigoCupon"];
 
+                        
+
                         var infoPlan = nUsuarioEmpresa.CargarPlan(plan);
 
                         decimal costoTotal = calcularPrecioFinal(infoPlan, frecuencia, cuponFinal, correoUsuario);
@@ -596,6 +598,8 @@ namespace ActiveSmartWeb.RegistroUsuarioEmpresas
                         {
 
                             var ResultadoAdicionale = nUsuarioEmpresa.InsertarContratoConSuscripcion(correoUsuario, Convert.ToInt32(frecuencia), tipoContrato, _adicionalcontratado.Values.ToList(), resultadoSuscripcion, costoTotal);
+                            
+                            Correo.EnviarCorreoResumendelacompra(nombretitular, fechaVencimiento,codigo, nombretitular, cuponFinal, apellidotitular, numerotarjeta,frecuencia);
                             Response.Write("Transacción realizada correctamente");
 
                         }
